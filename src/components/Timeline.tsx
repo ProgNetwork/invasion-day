@@ -52,6 +52,13 @@ const events: TimelineEvent[] = [
   },
 ];
 
+const EventCard = ({ title, description }: { title: string, description: string }) => (
+  <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-md">
+    <h3 className="mb-2 text-xl font-bold">{title}</h3>
+    <p className="text-gray-600">{description}</p>
+  </div>
+);
+
 const Timeline: React.FC = () => {
   return (
     <section className="bg-gray-50 py-16 sm:py-24">
@@ -59,36 +66,38 @@ const Timeline: React.FC = () => {
         <div className="mb-20 text-center">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">The Journey to Treaty</h2>
         </div>
-        <div className="relative">
-          {/* The vertical line */}
-          <div className="bg-secondary-200 absolute top-0 left-1/2 h-full w-0.5 -translate-x-1/2 transform"></div>
 
+        {/* Desktop Timeline */}
+        <div className="hidden md:relative md:block">
+          <div className="absolute top-0 left-1/2 h-full w-0.5 -translate-x-1/2 transform bg-primary-200"></div>
           <div className="space-y-12">
             {events.map((event, index) => (
               <div key={index} className="flex w-full items-start justify-between">
-                {/* Left side */}
                 <div className="w-5/12">
-                  {event.side === "left" && (
-                    <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-md">
-                      <h3 className="mb-2 text-xl font-bold">{event.title}</h3>
-                      <p className="text-gray-600">{event.description}</p>
-                    </div>
-                  )}
+                  {event.side === "left" && <EventCard title={event.title} description={event.description} />}
                 </div>
-
-                {/* Center dot */}
-                <div className="bg-secondary-400 z-10 flex h-10 w-10 items-center justify-center rounded-full font-bold text-white shadow-md">
+                <div className="z-10 flex h-10 w-10 items-center justify-center rounded-full bg-primary-700 font-bold text-white shadow-md">
                   {event.year}
                 </div>
-
-                {/* Right side */}
                 <div className="w-5/12">
-                  {event.side === "right" && (
-                    <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-md">
-                      <h3 className="mb-2 text-xl font-bold">{event.title}</h3>
-                      <p className="text-gray-600">{event.description}</p>
-                    </div>
-                  )}
+                  {event.side === "right" && <EventCard title={event.title} description={event.description} />}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Mobile Timeline */}
+        <div className="relative md:hidden">
+          <div className="absolute top-0 left-4 h-full w-0.5 -translate-x-1/2 transform bg-primary-200"></div>
+          <div className="space-y-8">
+            {events.map((event, index) => (
+              <div key={index} className="relative pl-12">
+                <div className="absolute top-0 left-4 z-10 flex h-10 w-10 -translate-x-1/2 transform items-center justify-center rounded-full bg-primary-700 font-bold text-white shadow-md">
+                  {event.year}
+                </div>
+                <div className="pt-1">
+                  <EventCard title={event.title} description={event.description} />
                 </div>
               </div>
             ))}

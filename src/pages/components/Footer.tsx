@@ -1,0 +1,171 @@
+import Link from "next/link";
+import React from "react";
+
+interface FooterItem {
+  label: string;
+  path: string;
+  external?: boolean;
+}
+
+interface FooterColumn {
+  label: string;
+  items: FooterItem[];
+}
+
+interface FooterColumnProps {
+  data: FooterColumn;
+}
+
+const FOOTER_SECTIONS: FooterColumn[] = [
+  {
+    label: "Campaigns",
+    items: [
+      {
+        label: "Volunteer",
+        path: "https://action.getup.org.au",
+        external: true,
+      },
+      {
+        label: "Start a campaign",
+        path: "https://me.getup.org.au",
+        external: true,
+      },
+    ],
+  },
+  {
+    label: "Donate",
+    items: [
+      {
+        label: "Make a donation",
+        path: "https://getup.org.au/donate",
+      },
+      {
+        label: "Gift in your Will",
+        path: "https://getup.org.au/donate/willpower",
+      },
+      {
+        label: "Donations Policy",
+        path: "https://getup.org.au/donations-policy",
+      },
+      {
+        label: "Donations Disclosure",
+        path: "https://getup.org.au/about/transparency",
+      },
+    ],
+  },
+  {
+    label: "Info",
+    items: [
+      {
+        label: "Update your details",
+        path: "https://getup.org.au/dashboard",
+      },
+      {
+        label: "Unsubscribe",
+        path: "https://getup.org.au/unsubscribe",
+      },
+      {
+        label: "Privacy Policy",
+        path: "https://getup.org.au/privacy-policy",
+      },
+      {
+        label: "Frequently Asked Questions",
+        path: "https://getup.org.au/about/faqs",
+      },
+      {
+        label: "Contact Us",
+        path: "https://getup.org.au/contact-us",
+      },
+      {
+        label: "Work at GetUp",
+        path: "https://getup.org.au/about/work-at-getup",
+      },
+    ],
+  },
+];
+
+const FooterLink: React.FC<{ item: FooterItem }> = ({ item }) => {
+  const linkClasses = "my-3 block text-gray-700 hover:text-primary-600 transition-colors duration-200";
+  
+  if (item.external) {
+    return (
+      <a 
+        href={item.path} 
+        className={linkClasses}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {item.label}
+        {/* TODO: needs an external link icon */}
+      </a>
+    );
+  }
+  
+  return (
+    <Link href={item.path} className={linkClasses}>
+      {item.label}
+    </Link>
+  );
+};
+
+const FooterColumn: React.FC<FooterColumnProps> = ({ data }) => (
+  <div className="w-1/2 md:w-3/12 mb-8 md:mb-0 text-sm sm:text-base">
+    <h3 className="text-xs mb-4 uppercase text-gray-400 font-medium tracking-wide">
+      {data.label}
+    </h3>
+    <nav aria-label={`${data.label} links`}>
+      <ul className="space-y-3">
+        {data.items.map((item) => (
+          <li key={item.path}>
+            <FooterLink item={item} />
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+);
+
+const Footer: React.FC = () => {
+  const currentYear = new Date().getFullYear();
+  
+  return (
+    <footer className="bg-gray-100 px-4 py-12" role="contentinfo">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex flex-wrap">
+          <div className="mb-8 w-1/2 text-sm md:mb-0 md:w-3/12">
+            <div 
+              className="-m-1.5 -ml-1.5 mb-4 w-2/5" 
+              style={{ minWidth: "100px", padding: "12px 4px" }}
+            >
+            </div>
+          </div>
+          
+          {FOOTER_SECTIONS.map((section) => (
+            <FooterColumn key={section.label} data={section} />
+          ))}
+        </div>
+        
+        <div className="mt-12 text-xs text-gray-500 space-y-4">
+          <p>
+            Our team acknowledges that we meet and work on the land of the Gadigal people of the Eora Nation. 
+            We wish to pay respect to their Elders — past, present and future — and acknowledge the important 
+            role all Aboriginal and Torres Strait Islander people continue to play within Australia and the 
+            GetUp community.
+          </p>
+          
+          <p className="w-full">
+            WARNING: Aboriginal and Torres Strait Islander people are warned that this website may contain 
+            images or names of deceased persons.
+          </p>
+          
+          <p>
+            © {currentYear} GetUp! All rights reserved. Authorised by L. Baldwin-Roberts, GetUp, 28 Donkin 
+            Street, Brisbane.
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;

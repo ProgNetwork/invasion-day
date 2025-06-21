@@ -91,7 +91,7 @@ const Nav: React.FC = () => {
 
           <div className="lg:hidden flex items-center">
             <Button variant="primary" size="sm" className="mr-3">
-              Join the Movement!
+              Join
             </Button>
             <button
               onClick={toggleMenu}

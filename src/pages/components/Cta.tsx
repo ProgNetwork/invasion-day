@@ -1,0 +1,47 @@
+import React, { useState } from "react";
+import DonateForm from "./form/DonateForm";
+import SignupForm from "./form/SignupForm";
+import Button from "./ui/Button";
+import Modal from "./ui/Modal";
+
+const Cta: React.FC = () => {
+  const [isSignupModalOpen, setIsSignupModalOpen] = useState(false);
+  const [isDonateModalOpen, setIsDonateModalOpen] = useState(false);
+
+  const openSignupModal = () => setIsSignupModalOpen(true);
+  const closeSignupModal = () => setIsSignupModalOpen(false);
+  const openDonateModal = () => setIsDonateModalOpen(true);
+  const closeDonateModal = () => setIsDonateModalOpen(false);
+
+  return (
+    <>
+      <section className="bg-primary-700">
+        <div className="mx-auto max-w-4xl px-4 py-16 text-center sm:px-6 sm:py-20 lg:px-8">
+          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            <span className="block">Join the Movement</span>
+          </h2>
+          <p className="mt-4 text-lg leading-6 text-white">
+            The time for Treaty is now. Together, we can build a national movement of First Nations people and allies
+            standing side-by-side for truth-telling, Treaties and justice.
+          </p>
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
+            <Button variant="white" size="lg" onClick={openSignupModal}>
+              Join the Movement
+            </Button>
+            <Button variant="white-outline" size="lg" onClick={openDonateModal}>
+              Donate
+            </Button>
+          </div>
+        </div>
+      </section>
+      <Modal isOpen={isSignupModalOpen} onClose={closeSignupModal} title="Join the Movement">
+        <SignupForm />
+      </Modal>
+      <Modal isOpen={isDonateModalOpen} onClose={closeDonateModal} title="Donate">
+        <DonateForm />
+      </Modal>
+    </>
+  );
+};
+
+export default Cta;

@@ -1,6 +1,6 @@
+import JoinTheMovement from "./components/Cta";
 import GetInvolved from "./components/GetInvolved";
 import Hero from "./components/Hero";
-import JoinTheMovement from "./components/JoinTheMovement";
 import PowerfulMovement from "./components/PowerfulMovement";
 import TimeForTreaty from "./components/TimeForTreaty";
 import WhyTreatyMatters from "./components/WhyTreatyMatters";

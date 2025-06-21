@@ -1,6 +1,6 @@
 import React from "react";
+import CtaSection from "./components/Cta";
 import Faq from "./components/Faq";
-import CtaSection from "./components/JoinTheMovement";
 import OurVision from "./components/OurVision";
 import PageHeader from "./components/PageHeader";
 import PathForward from "./components/PathForward";

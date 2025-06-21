@@ -1,7 +1,9 @@
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/20/solid";
 import Link from "next/link";
 import React, { useState } from "react";
+import SignupForm from "../form/SignupForm";
 import Button from "../ui/Button";
+import Modal from "../ui/Modal";
 
 interface NavItem {
   label: string;
@@ -15,16 +17,8 @@ const NAV_ITEMS: NavItem[] = [
     path: "/about",
   },
   {
-    label: "Campaigns",
-    path: "/campaigns",
-  },
-  {
-    label: "Get Involved",
-    path: "/get-involved",
-  },
-  {
-    label: "News",
-    path: "/news",
+    label: "Stories",
+    path: "/stories",
   },
   {
     label: "Contact",
@@ -52,6 +46,7 @@ const NavLink: React.FC<{ item: NavItem; onClick?: () => void }> = ({ item, onCl
 
 const Nav: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -78,13 +73,13 @@ const Nav: React.FC = () => {
           </div>
 
           <div className="hidden flex-shrink-0 lg:flex">
-            <Button variant="primary" size="md">
+            <Button variant="primary" size="md" onClick={() => setIsModalOpen(true)}>
               Join the Movement!
             </Button>
           </div>
 
           <div className="flex items-center lg:hidden">
-            <Button variant="primary" size="sm" className="mr-3">
+            <Button variant="primary" size="sm" className="mr-3" onClick={() => setIsModalOpen(true)}>
               Join
             </Button>
             <button
@@ -109,13 +104,16 @@ const Nav: React.FC = () => {
               </div>
             ))}
             <div className="pt-4">
-              <Button variant="primary" size="md" className="w-full">
+              <Button variant="primary" size="md" className="w-full" onClick={() => setIsModalOpen(true)}>
                 Join the movement
               </Button>
             </div>
           </div>
         </div>
       </div>
+      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title="Join the Movement">
+        <SignupForm />
+      </Modal>
     </nav>
   );
 };

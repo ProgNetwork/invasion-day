@@ -1,8 +1,12 @@
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
+import SignupForm from "./form/SignupForm";
 import Button from "./ui/Button";
+import Modal from "./ui/Modal";
 
 const GetInvolved: React.FC = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  
   const actions = [
     {
       title: "Sign the Petition",
@@ -40,7 +44,7 @@ const GetInvolved: React.FC = () => {
               ))}
             </div>
             <div className="mt-8 flex flex-wrap gap-4">
-              <Button variant="primary" size="md">
+              <Button variant="primary" size="md" onClick={() => setIsModalOpen(true)}>
                 Add Your Name
               </Button>
               <Button variant="outline" size="md">
@@ -59,6 +63,9 @@ const GetInvolved: React.FC = () => {
           </div>
         </div>
       </div>
+      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title="Join the Movement">
+        <SignupForm />
+      </Modal>
     </section>
   );
 };

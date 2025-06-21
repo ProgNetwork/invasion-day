@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
+import SignupForm from "./form/SignupForm";
 import Button from "./ui/Button";
+import Modal from "./ui/Modal";
 
 const Hero: React.FC = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <section className="relative flex h-[420px] items-center justify-center overflow-hidden md:h-[600]">
       <div className="absolute inset-0 z-0">
@@ -11,7 +15,7 @@ const Hero: React.FC = () => {
             backgroundImage: "url('./images/hero.png')",
           }}
         />
-        <div className="absolute inset-0 bg-black/50"></div>
+        <div className="absolute inset-0 bg-black/70"></div>
       </div>
 
       <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
@@ -27,7 +31,7 @@ const Hero: React.FC = () => {
         </div>
 
         <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <Button variant="primary" size="md" className="w-full sm:w-auto">
+          <Button variant="primary" size="md" className="w-full sm:w-auto" onClick={() => setIsModalOpen(true)}>
             Join the Movement
           </Button>
           <Button
@@ -39,6 +43,9 @@ const Hero: React.FC = () => {
           </Button>
         </div>
       </div>
+      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title="Join the Movement">
+        <SignupForm/>
+      </Modal>
     </section>
   );
 };

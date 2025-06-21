@@ -34,21 +34,15 @@ const NAV_ITEMS: NavItem[] = [
 
 const NavLink: React.FC<{ item: NavItem; onClick?: () => void }> = ({ item, onClick }) => {
   const linkClasses = "text-gray-700 hover:text-primary-600 transition-colors duration-200 font-medium text-md";
-  
+
   if (item.external) {
     return (
-      <a 
-        href={item.path} 
-        className={linkClasses}
-        target="_blank"
-        rel="noopener noreferrer"
-        onClick={onClick}
-      >
+      <a href={item.path} className={linkClasses} target="_blank" rel="noopener noreferrer" onClick={onClick}>
         {item.label}
       </a>
     );
   }
-  
+
   return (
     <Link href={item.path} className={linkClasses} onClick={onClick}>
       {item.label}
@@ -68,48 +62,47 @@ const Nav: React.FC = () => {
   };
 
   return (
-    <nav className="bg-white border-b border-gray-200" role="navigation">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-14">
+    <nav className="border-b border-gray-200 bg-white" role="navigation">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex h-14 items-center justify-between">
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center">
-              <span className="ml-2 text-md font-bold text-gray-900">Together for Treaty</span>
+              <span className="text-md ml-2 font-bold text-gray-900">Together for Treaty</span>
             </Link>
           </div>
 
-          <div className="hidden lg:flex items-center space-x-8">
+          <div className="hidden items-center space-x-8 lg:flex">
             {NAV_ITEMS.map((item) => (
               <NavLink key={item.path} item={item} />
             ))}
           </div>
 
-          <div className="hidden lg:flex flex-shrink-0">
+          <div className="hidden flex-shrink-0 lg:flex">
             <Button variant="primary" size="md">
               Join the Movement!
             </Button>
           </div>
 
-          <div className="lg:hidden flex items-center">
+          <div className="flex items-center lg:hidden">
             <Button variant="primary" size="sm" className="mr-3">
               Join
             </Button>
             <button
               onClick={toggleMenu}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-primary-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500"
+              className="hover:text-primary-600 focus:ring-primary-500 inline-flex items-center justify-center rounded-md p-2 text-gray-700 hover:bg-gray-100 focus:ring-2 focus:outline-none focus:ring-inset"
               aria-expanded="false"
               aria-label="Toggle navigation menu"
             >
               <span className="sr-only">Open main menu</span>
 
-              <Bars3Icon className={`${isMenuOpen ? 'hidden' : 'block'} h-6 w-6`}/>
-              <XMarkIcon className={`${isMenuOpen ? 'block' : 'hidden'} h-6 w-6`}/>
-
+              <Bars3Icon className={`${isMenuOpen ? "hidden" : "block"} h-6 w-6`} />
+              <XMarkIcon className={`${isMenuOpen ? "block" : "hidden"} h-6 w-6`} />
             </button>
           </div>
         </div>
 
-        <div className={`${isMenuOpen ? 'block' : 'hidden'} lg:hidden`}>
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t border-gray-200">
+        <div className={`${isMenuOpen ? "block" : "hidden"} lg:hidden`}>
+          <div className="space-y-1 border-t border-gray-200 bg-white px-2 pt-2 pb-3 sm:px-3">
             {NAV_ITEMS.map((item) => (
               <div key={item.path} className="block">
                 <NavLink item={item} onClick={closeMenu} />
@@ -127,4 +120,4 @@ const Nav: React.FC = () => {
   );
 };
 
-export default Nav; 
+export default Nav;

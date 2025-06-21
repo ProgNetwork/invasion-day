@@ -86,22 +86,18 @@ const FOOTER_SECTIONS: FooterColumn[] = [
 ];
 
 const FooterLink: React.FC<{ item: FooterItem }> = ({ item }) => {
-  const linkClasses = "my-3 block text-gray-700 hover:text-primary-600 transition-colors duration-200 flex gap-1 items-center";
-  
+  const linkClasses =
+    "my-3 block text-gray-700 hover:text-primary-600 transition-colors duration-200 flex gap-1 items-center";
+
   if (item.external) {
     return (
-      <a 
-        href={item.path} 
-        className={linkClasses}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <a href={item.path} className={linkClasses} target="_blank" rel="noopener noreferrer">
         {item.label}
-        <ArrowTopRightOnSquareIcon className="w-4 h-4 opacity-50" />
+        <ArrowTopRightOnSquareIcon className="h-4 w-4 opacity-50" />
       </a>
     );
   }
-  
+
   return (
     <Link href={item.path} className={linkClasses}>
       {item.label}
@@ -110,10 +106,8 @@ const FooterLink: React.FC<{ item: FooterItem }> = ({ item }) => {
 };
 
 const FooterColumn: React.FC<FooterColumnProps> = ({ data }) => (
-  <div className="w-1/2 md:w-3/12 mb-8 md:mb-0 text-sm sm:text-base">
-    <h3 className="text-xs mb-4 uppercase text-gray-400 font-medium tracking-wide">
-      {data.label}
-    </h3>
+  <div className="mb-8 w-1/2 text-sm sm:text-base md:mb-0 md:w-3/12">
+    <h3 className="mb-4 text-xs font-medium tracking-wide text-gray-400 uppercase">{data.label}</h3>
     <nav aria-label={`${data.label} links`}>
       <ul className="space-y-3">
         {data.items.map((item) => (
@@ -128,40 +122,35 @@ const FooterColumn: React.FC<FooterColumnProps> = ({ data }) => (
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
-  
+
   return (
     <footer className="bg-gray-100 px-4 py-12" role="contentinfo">
-      <div className="max-w-7xl mx-auto">
+      <div className="mx-auto max-w-7xl">
         <div className="flex flex-wrap">
           <div className="mb-8 w-1/2 text-sm md:mb-0 md:w-3/12">
-            <div 
-              className="-m-1.5 -ml-1.5 mb-4 w-2/5" 
-              style={{ minWidth: "100px", padding: "12px 4px" }}
-            >
-            </div>
+            <div className="-m-1.5 mb-4 -ml-1.5 w-2/5" style={{ minWidth: "100px", padding: "12px 4px" }}></div>
           </div>
-          
+
           {FOOTER_SECTIONS.map((section) => (
             <FooterColumn key={section.label} data={section} />
           ))}
         </div>
-        
-        <div className="mt-12 text-xs text-gray-500 space-y-4">
+
+        <div className="mt-12 space-y-4 text-xs text-gray-500">
           <p>
-            Our team acknowledges that we meet and work on the land of the Gadigal people of the Eora Nation. 
-            We wish to pay respect to their Elders — past, present and future — and acknowledge the important 
-            role all Aboriginal and Torres Strait Islander people continue to play within Australia and the 
-            GetUp community.
+            Our team acknowledges that we meet and work on the land of the Gadigal people of the Eora Nation. We wish to
+            pay respect to their Elders — past, present and future — and acknowledge the important role all Aboriginal
+            and Torres Strait Islander people continue to play within Australia and the GetUp community.
           </p>
-          
+
           <p className="w-full">
-            WARNING: Aboriginal and Torres Strait Islander people are warned that this website may contain 
-            images or names of deceased persons.
+            WARNING: Aboriginal and Torres Strait Islander people are warned that this website may contain images or
+            names of deceased persons.
           </p>
-          
+
           <p>
-            © {currentYear} GetUp! All rights reserved. Authorised by L. Baldwin-Roberts, GetUp, 28 Donkin 
-            Street, Brisbane.
+            © {currentYear} GetUp! All rights reserved. Authorised by L. Baldwin-Roberts, GetUp, 28 Donkin Street,
+            Brisbane.
           </p>
         </div>
       </div>

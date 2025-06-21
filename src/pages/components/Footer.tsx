@@ -1,3 +1,4 @@
+import { ArrowTopRightOnSquareIcon } from "@heroicons/react/16/solid";
 import Link from "next/link";
 import React from "react";
 
@@ -85,7 +86,7 @@ const FOOTER_SECTIONS: FooterColumn[] = [
 ];
 
 const FooterLink: React.FC<{ item: FooterItem }> = ({ item }) => {
-  const linkClasses = "my-3 block text-gray-700 hover:text-primary-600 transition-colors duration-200";
+  const linkClasses = "my-3 block text-gray-700 hover:text-primary-600 transition-colors duration-200 flex gap-1 items-center";
   
   if (item.external) {
     return (
@@ -96,7 +97,7 @@ const FooterLink: React.FC<{ item: FooterItem }> = ({ item }) => {
         rel="noopener noreferrer"
       >
         {item.label}
-        {/* TODO: needs an external link icon */}
+        <ArrowTopRightOnSquareIcon className="w-4 h-4 opacity-50" />
       </a>
     );
   }

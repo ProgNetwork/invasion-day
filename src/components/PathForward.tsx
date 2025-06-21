@@ -1,5 +1,5 @@
+import FeatureCard from "@/components/ui/FeatureCard";
 import React from "react";
-import FeatureCard from "./ui/FeatureCard";
 
 const PathForward: React.FC = () => {
   const paths = [

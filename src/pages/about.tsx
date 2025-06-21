@@ -1,11 +1,11 @@
+import CtaSection from "@/components/Cta";
+import Faq from "@/components/Faq";
+import OurVision from "@/components/OurVision";
+import PageHeader from "@/components/PageHeader";
+import PathForward from "@/components/PathForward";
+import Timeline from "@/components/Timeline";
+import ValuesAndPrinciples from "@/components/ValuesAndPrinciples";
 import React from "react";
-import CtaSection from "./components/Cta";
-import Faq from "./components/Faq";
-import OurVision from "./components/OurVision";
-import PageHeader from "./components/PageHeader";
-import PathForward from "./components/PathForward";
-import Timeline from "./components/Timeline";
-import ValuesAndPrinciples from "./components/ValuesAndPrinciples";
 
 const AboutPage: React.FC = () => {
   return (

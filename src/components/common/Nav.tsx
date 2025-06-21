@@ -1,9 +1,9 @@
+import SignupForm from "@/components/form/SignupForm";
+import Button from "@/components/ui/Button";
+import Modal from "@/components/ui/Modal";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/20/solid";
 import Link from "next/link";
 import React, { useState } from "react";
-import SignupForm from "../form/SignupForm";
-import Button from "../ui/Button";
-import Modal from "../ui/Modal";
 
 interface NavItem {
   label: string;

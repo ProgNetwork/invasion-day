@@ -1,9 +1,9 @@
-import JoinTheMovement from "./components/Cta";
-import GetInvolved from "./components/GetInvolved";
-import Hero from "./components/Hero";
-import PowerfulMovement from "./components/PowerfulMovement";
-import TimeForTreaty from "./components/TimeForTreaty";
-import WhyTreatyMatters from "./components/WhyTreatyMatters";
+import JoinTheMovement from "@/components/Cta";
+import GetInvolved from "@/components/GetInvolved";
+import Hero from "@/components/Hero";
+import PowerfulMovement from "@/components/PowerfulMovement";
+import TimeForTreaty from "@/components/TimeForTreaty";
+import WhyTreatyMatters from "@/components/WhyTreatyMatters";
 
 export default function Home() {
   return (

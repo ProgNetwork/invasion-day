@@ -1,5 +1,5 @@
+import Accordion, { AccordionItem } from "@/components/ui/Accordion";
 import React from "react";
-import Accordion, { AccordionItem } from "./ui/Accordion";
 
 const Faq: React.FC = () => {
   const faqs = [

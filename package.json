@@ -25,5 +25,9 @@
     "@types/react-dom": "^19",
     "tailwindcss": "^4",
     "typescript": "^5"
-  }
+  },
+  "main": "index.js",
+  "repository": "git@github.com:nirentuladhar/together-for-treaty.git",
+  "author": "Niren Tuladhar <nirentuladhar@gmail.com>",
+  "license": "MIT"
 }

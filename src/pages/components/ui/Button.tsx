@@ -1,3 +1,4 @@
+import { Button as HeadlessButton } from "@headlessui/react";
 import React from "react";
 
 interface ButtonProps {
@@ -45,23 +46,23 @@ const Button: React.FC<ButtonProps> = ({
   if (href) {
     if (external) {
       return (
-        <a href={href} className={buttonClasses} target="_blank" rel="noopener noreferrer">
+        <HeadlessButton as="a" href={href} className={buttonClasses} target="_blank" rel="noopener noreferrer">
           {children}
-        </a>
+        </HeadlessButton>
       );
     }
 
     return (
-      <a href={href} className={buttonClasses}>
+      <HeadlessButton as="a" href={href} className={buttonClasses}>
         {children}
-      </a>
+      </HeadlessButton>
     );
   }
 
   return (
-    <button type={type} className={buttonClasses} onClick={onClick} disabled={disabled}>
+    <HeadlessButton type={type} className={buttonClasses} onClick={onClick} disabled={disabled}>
       {children}
-    </button>
+    </HeadlessButton>
   );
 };
 

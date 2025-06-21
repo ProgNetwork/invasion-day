@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
-import Button from './Button';
+import Button from './ui/Button';
 
 const GetInvolved: React.FC = () => {
   const actions = [

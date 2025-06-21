@@ -1,7 +1,7 @@
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/20/solid";
 import Link from "next/link";
 import React, { useState } from "react";
-import Button from "./Button";
+import Button from "../ui/Button";
 
 interface NavItem {
   label: string;

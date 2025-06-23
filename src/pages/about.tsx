@@ -2,7 +2,6 @@ import CtaSection from "@/components/Cta";
 import Faq from "@/components/Faq";
 import OurVision from "@/components/OurVision";
 import PageHeader from "@/components/PageHeader";
-import PathForward from "@/components/PathForward";
 import Timeline from "@/components/Timeline";
 import ValuesAndPrinciples from "@/components/ValuesAndPrinciples";
 import React from "react";
@@ -12,16 +11,13 @@ const AboutPage: React.FC = () => {
     <main className="min-h-screen bg-white">
       <PageHeader title="Why Treaty, Why Now">
         <p>
-          First Nations peoples have been calling for truth and Treaties for generations. Centuries of resistance and
-          decades of work by our Elders and communities have laid the foundations for the first formal truth and Treaty
-          process in the country, happening in Victoria right now. Together we can build unstoppable momentum for
-          Treaties across the country this decade.
+          We want a country that values all people, whether they have been here five years, five generations or five thousand generations. But too often, First Nations people have been ignored in conversations about who we are and what sort of country we want to be. Treaties provide a way to acknowledge past and present injustices, resolve differences, and work out how to create a shared future.
         </p>
       </PageHeader>
       <OurVision />
       <ValuesAndPrinciples />
       <Timeline />
-      <PathForward />
+      {/* <PathForward /> */}
       <CtaSection />
       <Faq />
     </main>

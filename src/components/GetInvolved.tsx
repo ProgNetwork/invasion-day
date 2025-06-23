@@ -31,7 +31,7 @@ const GetInvolved: React.FC = () => {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid items-center gap-12 md:grid-cols-2">
           <div>
-            <h2 className="mb-4 text-3xl font-bold text-gray-900 sm:text-4xl">Get Involved</h2>
+            <h2 className="mb-4 text-3xl font-bold text-gray-900 sm:text-4xl font-rock-salt">Taking Action Together</h2>
             <p className="mb-8 text-lg text-gray-600">
               There are many ways you can be part of the movement for Treaty. Every action makes a difference.
             </p>

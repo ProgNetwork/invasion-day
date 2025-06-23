@@ -64,7 +64,7 @@ const Timeline: React.FC = () => {
     <section className="bg-gray-50 py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-20 text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">The Journey to Treaty</h2>
+          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl font-rock-salt">The Journey to Treaty</h2>
         </div>
 
         {/* Desktop Timeline */}

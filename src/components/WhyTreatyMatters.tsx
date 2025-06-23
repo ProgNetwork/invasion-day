@@ -30,9 +30,9 @@ const WhyTreatyMatters: React.FC = () => {
     <section className="bg-gray-50 py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <h2 className="mb-4 text-3xl font-bold text-gray-900 sm:text-4xl">Why Treaty Matters</h2>
+          <h2 className="mb-4 text-3xl font-bold text-gray-900 sm:text-4xl font-rock-salt">Why Treaty Matters</h2>
           <p className="mx-auto max-w-3xl text-lg text-gray-600">
-            Hear from First Nations peoples and allies about why Treaty matters to them and their communities.
+            Hear from First Nations peoples and allies about why Treaty matters to them and their communities.       
           </p>
         </div>
         <div className="mt-16 grid gap-8 md:grid-cols-3">

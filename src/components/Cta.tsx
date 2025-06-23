@@ -17,7 +17,7 @@ const Cta: React.FC = () => {
     <>
       <section className="bg-primary-700">
         <div className="mx-auto max-w-4xl px-4 py-16 text-center sm:px-6 sm:py-20 lg:px-8">
-          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl font-rock-salt">
             <span className="block">Join the Movement</span>
           </h2>
           <p className="mt-4 text-lg leading-6 text-white">
@@ -26,7 +26,7 @@ const Cta: React.FC = () => {
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Button variant="white" size="lg" onClick={openSignupModal}>
-              Join the Movement
+              Sign the Petition
             </Button>
             <Button variant="white-outline" size="lg" onClick={openDonateModal}>
               Donate

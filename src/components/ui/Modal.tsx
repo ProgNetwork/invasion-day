@@ -18,7 +18,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children, title }) => {
               transition
               className="w-full max-w-md rounded-xl bg-white/95 p-6 backdrop-blur-2xl duration-300 ease-out data-closed:transform-[scale(95%)] data-closed:opacity-0"
             >
-              <DialogTitle as="h3" className="text-xl font-semibold pb-2 text-gray-700">
+              <DialogTitle as="h3" className="text-2xl font-semibold pb-2 text-gray-700 font-rock-salt">
                 {title}
               </DialogTitle>
               <div>

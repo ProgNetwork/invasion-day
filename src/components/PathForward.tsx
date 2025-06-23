@@ -71,7 +71,7 @@ const PathForward: React.FC = () => {
   return (
     <section className="bg-white py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
-        <h2 className="mb-16 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">The Path Forward</h2>
+        <h2 className="mb-16 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl font-rock-salt">The Path Forward</h2>
         <div className="grid gap-8 md:grid-cols-3">
           {paths.map((path) => (
             <FeatureCard key={path.title} {...path} colorScheme="primary" align="center" size="large" />

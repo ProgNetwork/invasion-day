@@ -62,7 +62,8 @@ const Nav: React.FC = () => {
         <div className="flex h-14 items-center justify-between">
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center">
-              <span className="text-md ml-2 font-bold text-gray-900">Together for Treaty</span>
+              <img src="/images/tft-logo-shape.png" alt="Together for Treaty Logo" className="w-14 h-auto" />
+              <span className="text-lg ml-1 font-bold text-primary-700">Together for Treaty</span>
             </Link>
           </div>
 
@@ -74,7 +75,7 @@ const Nav: React.FC = () => {
 
           <div className="hidden flex-shrink-0 lg:flex">
             <Button variant="primary" size="md" onClick={() => setIsModalOpen(true)}>
-              Join the Movement!
+              Join the Movement
             </Button>
           </div>
 

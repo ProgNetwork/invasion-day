@@ -1,6 +1,6 @@
 import Button from "@/components/ui/Button";
-import { Checkbox } from "@/components/ui/Checkbox";
-import { Input } from "@/components/ui/Input";
+//import { Checkbox } from "@/components/ui/Checkbox";
+//import { Input } from "@/components/ui/Input";
 import { Label } from "@/components/ui/Label";
 import React, { useState } from "react";
 

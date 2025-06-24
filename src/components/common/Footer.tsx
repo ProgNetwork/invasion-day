@@ -129,7 +129,7 @@ const Footer: React.FC = () => {
           <p>
             Our team acknowledges that we meet and work on stolen land. We wish to
             pay respect to their Elders — past, present and future — and acknowledge the important role all Aboriginal
-            and Torres Strait Islander people continue to play within Australia and the GetUp community.
+            and Torres Strait Islander people continue to play within Australia.
           </p>
 
           <p className="w-full">

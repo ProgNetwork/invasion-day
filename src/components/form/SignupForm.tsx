@@ -1,9 +1,9 @@
 // File: src/components/form/SignUpForm.tsx
-import React, { useState } from 'react';
 import Button from '@/components/ui/Button';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/Label';
+import React, { useState } from 'react';
 
 interface Errors {
   email?: string;
@@ -67,13 +67,13 @@ const SignupForm: React.FC = () => {
   }
 
   return (
-    <div className="max-w-xl mx-auto p-6 bg-gray-50 rounded-xl mt-10 border">
+    <div className="max-w-xl mx-auto p-6 bg-gray-50 rounded-xl border">
       <h2 className="text-2xl font-bold mb-2">Add your details to join!</h2>
       <p className="text-md text-gray-500">
         Sign up to receive updates and find out how you can be part of the movement for Treaty.
       </p>
       <form className="mt-4 space-y-4" onSubmit={handleSubmit}>
-        <div>
+        <div className="gap-2 flex flex-col">
           <Label htmlFor="givenName">First Name</Label>
           <Input
             type="text"
@@ -87,7 +87,7 @@ const SignupForm: React.FC = () => {
           />
           {errors.givenName && <p className="text-sm text-red-600">{errors.givenName}</p>}
         </div>
-        <div>
+        <div className="gap-2 flex flex-col">
           <Label htmlFor="familyName">Last Name</Label>
           <Input
             type="text"
@@ -101,7 +101,7 @@ const SignupForm: React.FC = () => {
           />
           {errors.familyName && <p className="text-sm text-red-600">{errors.familyName}</p>}
         </div>
-        <div>
+        <div className="gap-2 flex flex-col">
           <Label htmlFor="email">Email Address</Label>
           <Input
             type="email"
@@ -115,7 +115,7 @@ const SignupForm: React.FC = () => {
           />
           {errors.email && <p className="text-sm text-red-600">{errors.email}</p>}
         </div>
-        <div>
+        <div className="gap-2 flex flex-col">
           <Label htmlFor="postcode">Postcode</Label>
           <Input
             type="text"
@@ -146,6 +146,7 @@ const SignupForm: React.FC = () => {
             variant="primary"
             className="w-full sm:w-auto"
             disabled={loading}
+            fullWidth
           >
             {loading ? 'Submitting…' : 'Sign Up'}
           </Button>

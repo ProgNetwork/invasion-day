@@ -34,10 +34,10 @@ const Cta: React.FC = () => {
           </div>
         </div>
       </section>
-      <Modal isOpen={isSignupModalOpen} onClose={closeSignupModal} title="Join the Movement">
+      <Modal isOpen={isSignupModalOpen} onClose={closeSignupModal} title="" noPadding>
         <SignupForm />
       </Modal>
-      <Modal isOpen={isDonateModalOpen} onClose={closeDonateModal} title="Donate">
+      <Modal isOpen={isDonateModalOpen} onClose={closeDonateModal} title="" noPadding>
         <DonateForm />
       </Modal>
     </>

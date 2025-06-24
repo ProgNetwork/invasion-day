@@ -45,7 +45,7 @@ const Button: React.FC<ButtonProps> = ({
     lg: "px-8 py-3 text-lg",
   };
 
-  const buttonClasses = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${fullWidth ? "w-full" : ""} ${className}`;
+  const buttonClasses = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${fullWidth ? "!w-full" : ""} ${className}`;
 
   if (href) {
     if (external) {

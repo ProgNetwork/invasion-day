@@ -7,7 +7,7 @@ const OurVision: React.FC = () => {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid items-start gap-2 xl:grid-cols-3 xl:gap-8">
           <div className="xl:col-span-2">
-            <h2 className="text-primary-700 mb-6 text-3xl font-bold tracking-tight sm:text-4xl font-rock-salt">What's at Stake</h2>
+            <h2 className="text-primary-700 mb-6 text-3xl font-bold tracking-tight sm:text-4xl ">What's at Stake</h2>
             <div className="space-y-6 text-lg leading-relaxed text-gray-700">
               <p>
                 Decades of leadership by our Elders have laid the foundations for the historic truth and Treaty process underway in Victoria right now: the first in the country.

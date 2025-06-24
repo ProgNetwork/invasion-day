@@ -6,7 +6,7 @@ const TimeForTreaty: React.FC = () => {
     <section className="bg-white py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-gray-800">
-          <h2 className="mb-12 text-3xl font-bold sm:text-4xl font-rock-salt text-center">It's Time for Treaty</h2>
+          <h2 className="mb-12 text-3xl font-bold sm:text-4xl text-center">It's Time for Treaty</h2>
           <div className="grid items-center gap-12 md:grid-cols-2">
           <div className="relative h-80 overflow-hidden rounded-lg shadow-lg md:h-96">
             <Image src="/images/always-was.jpg" alt="" layout="fill" objectFit="cover" />

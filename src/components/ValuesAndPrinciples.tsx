@@ -101,7 +101,7 @@ const ValuesAndPrinciples: React.FC = () => {
   return (
     <section className="bg-white py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <h2 className="mb-8 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl font-rock-salt">Winning Transformative Change</h2>
+        <h2 className="mb-8 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-center">Winning Transformative Change</h2>
         <p className="mb-8 text-lg text-gray-600">Treaty is about putting First Nations people in the driver’s seat of decisions that affect our communities, our culture and our Country. Through truth-telling and Treaty-making, we can secure tangible outcomes and justice for our people - and build a more unified future for everyone.</p>
         <div className="grid gap-8 sm:grid-cols-3">
           {values.map((value) => (

@@ -110,12 +110,14 @@ const DonateFormInner: React.FC = () => {
       <div className="flex space-x-2 mb-4">
         <Button
           variant={donationType === 'once' ? 'primary' : 'outline'}
+          className="font-sans"
           onClick={() => setDonationType('once')}
         >
           One-off
         </Button>
         <Button
           variant={donationType === 'recurring' ? 'primary' : 'outline'}
+          className="font-sans"
           onClick={() => setDonationType('recurring')}
         >
           Recurring

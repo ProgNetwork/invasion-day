@@ -1,4 +1,5 @@
 import { ArrowTopRightOnSquareIcon } from "@heroicons/react/16/solid";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -95,7 +96,7 @@ const FooterLink: React.FC<{ item: FooterItem }> = ({ item }) => {
 };
 
 const FooterColumn: React.FC<FooterColumnProps> = ({ data }) => (
-  <div className="mb-8 w-1/2 text-sm sm:text-base md:mb-0 md:w-3/12">
+  <div className="mb-8 text-sm sm:text-base md:mb-0 ">
     <h3 className="mb-4 text-xs font-medium tracking-wide text-gray-400 uppercase">{data.label}</h3>
     <nav aria-label={`${data.label} links`}>
       <ul className="space-y-3">
@@ -115,11 +116,13 @@ const Footer: React.FC = () => {
   return (
     <footer className="bg-gray-100 px-4 py-12" role="contentinfo">
       <div className="mx-auto max-w-7xl">
-        <div className="flex flex-wrap">
-          <div className="mb-8 w-1/2 text-sm md:mb-0 md:w-3/12">
-            <div className="-m-1.5 mb-4 -ml-1.5 w-2/5" style={{ minWidth: "100px", padding: "12px 4px" }}></div>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-2 md:gap-8 items-start">
+          <div className="md:col-span-1 mb-8 md:mb-0">
+            <div className="w-full ml-0">
+              <Image src="/images/tft-logo.png" alt="Together for Treaty Logo" className="w-2/3 mx-auto md:mx-0" width={1000} height={1000} />
+            </div>
           </div>
-
+          <div className="md:block hidden"/>
           {FOOTER_SECTIONS.map((section) => (
             <FooterColumn key={section.label} data={section} />
           ))}

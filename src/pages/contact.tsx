@@ -45,7 +45,7 @@ const ContactPage: React.FC = () => {
             <div className="relative overflow-hidden lg:col-span-2 mb-16">
               <div className="pointer-events-none absolute inset-0 sm:hidden" aria-hidden="true">
               </div>
-              <h2 className="text-4xl font-bold tracking-tight text-gray-900 font-rock-salt">Get in touch</h2>
+              <h2 className="text-4xl font-bold tracking-tight text-gray-900">Get in touch</h2>
               <p className="mt-6 text-base text-gray-600">
                 Have a question or want to get involved? We'd love to hear from you. Fill out the form or use the contact details below.
               </p>
@@ -56,24 +56,24 @@ const ContactPage: React.FC = () => {
                 <div className="grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-2">
                   <div className="space-y-2">
                     <Label htmlFor="firstName" >First name</Label>
-                    <Input type="text" name="firstName" id="firstName" required value={formData.firstName} onChange={handleInputChange} />
+                    <Input type="text" name="firstName" id="firstName" required value={formData.firstName} onChange={handleInputChange} placeholder="First name"/>
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="lastName" >Last name</Label>
-                    <Input type="text" name="lastName" id="lastName" required value={formData.lastName} onChange={handleInputChange} />
+                    <Input type="text" name="lastName" id="lastName" required value={formData.lastName} onChange={handleInputChange} placeholder="Last name"/>
                   </div>
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="email" >Email</Label>
-                  <Input type="email" name="email" id="email" required value={formData.email} onChange={handleInputChange} />
+                  <Input type="email" name="email" id="email" required value={formData.email} onChange={handleInputChange} placeholder="Email"/>
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="phoneNumber">Phone number</Label>
-                  <Input type="tel" name="phoneNumber" id="phoneNumber" required value={formData.phoneNumber} onChange={handleInputChange} />
+                  <Input type="tel" name="phoneNumber" id="phoneNumber" required value={formData.phoneNumber} onChange={handleInputChange} placeholder="Phone number"/>
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="message">Message</Label>
-                  <Textarea name="message" id="message" rows={4} required value={formData.message} onChange={handleInputChange} />
+                  <Textarea name="message" id="message" rows={4} required value={formData.message} onChange={handleInputChange} placeholder="Message"/>
                 </div>
                 <div className="flex items-center">
                     <Checkbox
@@ -93,7 +93,7 @@ const ContactPage: React.FC = () => {
                       I agree to the{" "}
                       <Link
                         href="/privacy-policy"
-                        className="text-primary-600 underline hover:text-primary-700"
+                        className="text-primary-600 hover:text-primary-700"
                       >
                         Privacy Policy
                       </Link>
@@ -101,7 +101,7 @@ const ContactPage: React.FC = () => {
                   </div>
                 </div>
                 <div className="flex mt-4">
-                  <Button type="submit" variant="primary" size="md" fullWidth className="mt-4">Send message</Button>
+                  <Button type="submit" variant="primary" size="md" fullWidth className="mt-4 font-sans">Send message</Button>
                 </div>
               </form>
             </div>

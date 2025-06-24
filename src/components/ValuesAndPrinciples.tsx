@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 import FeatureCard from "./ui/FeatureCard";
 
@@ -99,11 +100,16 @@ const principles = [
 
 const ValuesAndPrinciples: React.FC = () => {
   return (
-    <section className="bg-white py-16 sm:py-24">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <h2 className="mb-8 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-center">Winning Transformative Change</h2>
-        <p className="mb-8 text-lg text-gray-600">Treaty is about putting First Nations people in the driver’s seat of decisions that affect our communities, our culture and our Country. Through truth-telling and Treaty-making, we can secure tangible outcomes and justice for our people - and build a more unified future for everyone.</p>
-        <div className="grid gap-8 sm:grid-cols-3">
+    <section className="bg-white py-16 sm:py-24 ">
+      <div className="grid grid-cols-3 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 gap-8 items-center">
+      <Image src="/images/treaty-now.jpg" alt="Larissa Baldwin-Roberts" width={1000} height={1000} className="mx-auto rounded-2xl max-w-2xl w-full col-span-3 lg:col-span-1" />
+        <div className="col-span-3 lg:col-span-2">
+          <h2 className="mb-8 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Winning Transformative Change</h2>
+          <p className="text-lg text-gray-600">Treaty is about putting First Nations people in the driver’s seat of decisions that affect our communities, our culture and our Country. Through truth-telling and Treaty-making, we can secure tangible outcomes and justice for our people - and build a more unified future for everyone.</p>
+        </div>
+      </div>
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-8">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {values.map((value) => (
             <FeatureCard key={value.title} {...value} colorScheme="primary"/>
           ))}

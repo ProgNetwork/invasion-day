@@ -63,7 +63,7 @@ const GetInvolved: React.FC = () => {
           </div>
         </div>
       </div>
-      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title="Join the Movement">
+      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} noPadding>
         <SignupForm />
       </Modal>
     </section>

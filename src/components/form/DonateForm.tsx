@@ -35,7 +35,7 @@ const DonateFormInner: React.FC = () => {
     const newErrors: typeof errors = {};
 
     if (!baseAmount || baseAmount <= 0) newErrors.amount = 'Please enter a valid donation amount.';
-    if (!/^\S+@\S+\.\S+$/.test(email)) newErrors.email = 'Please enter a valid email address.';
+    if (!/\S+@\S+\.\S+/.test(email)) newErrors.email = 'Please enter a valid email address.';
     if (!cardName.trim()) newErrors.cardName = 'Please enter the name on the card.';
 
     const cardElement = elements?.getElement(CardElement);
@@ -48,22 +48,11 @@ const DonateFormInner: React.FC = () => {
 
     setLoading(true);
 
-    const { error: cardError, paymentMethod } = await stripe!.createPaymentMethod({
-      type: 'card',
-      card: cardElement!,
-      billing_details: {
-        name: cardName,
-        email,
-      },
-    });
+    const endpoint = donationType === 'recurring'
+      ? '/api/create-subscription'
+      : '/api/create-payment-intent';
 
-    if (cardError) {
-      setErrors({ card: cardError.message || 'Invalid card details.' });
-      setLoading(false);
-      return;
-    }
-
-    const res = await fetch('/api/create-checkout-session', {
+    const res = await fetch(endpoint, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -72,12 +61,40 @@ const DonateFormInner: React.FC = () => {
         donationType,
         interval,
         email,
-        paymentMethodId: paymentMethod.id,
       }),
     });
 
-    const data = await res.json();
-    await stripe?.redirectToCheckout({ sessionId: data.id });
+    const { clientSecret, error: serverError } = await res.json();
+
+    if (serverError || !clientSecret) {
+      setErrors({ card: serverError || 'Server error' });
+      setLoading(false);
+      return;
+    }
+
+    const paymentMethodData = {
+      payment_method: {
+        card: cardElement!,
+        billing_details: {
+          name: cardName,
+          email,
+        },
+      },
+    };
+
+    const confirmResult =
+      donationType === 'recurring'
+        ? await stripe!.confirmCardSetup(clientSecret, paymentMethodData)
+        : await stripe!.confirmCardPayment(clientSecret, paymentMethodData);
+
+    if (confirmResult.error) {
+      setErrors({ card: confirmResult.error.message || 'Payment failed.' });
+    } else {
+      // Success
+      window.location.href = '/?thank-you=true';
+    }
+
+    setLoading(false);
   };
 
   return (
@@ -89,6 +106,35 @@ const DonateFormInner: React.FC = () => {
         Your support will help power grassroots organising, amplify
         First Nations voices, and push for lasting structural change.
       </p>
+
+      <div className="flex space-x-2 mb-4">
+        <Button
+          variant={donationType === 'once' ? 'primary' : 'outline'}
+          onClick={() => setDonationType('once')}
+        >
+          One-off
+        </Button>
+        <Button
+          variant={donationType === 'recurring' ? 'primary' : 'outline'}
+          onClick={() => setDonationType('recurring')}
+        >
+          Recurring
+        </Button>
+      </div>
+
+      {donationType === 'recurring' && (
+        <div className="mb-4">
+          <label className="block text-sm font-medium mb-2">Frequency</label>
+          <select
+            value={interval}
+            onChange={(e) => setInterval(e.target.value as 'month' | 'week')}
+            className="w-full p-2 border rounded"
+          >
+            <option value="week">Weekly</option>
+            <option value="month">Monthly</option>
+          </select>
+        </div>
+      )}
 
       <div className="flex gap-2 mb-2 flex-wrap">
         {presetAmounts.map((amt) => (

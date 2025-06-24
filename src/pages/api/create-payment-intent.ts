@@ -1,0 +1,33 @@
+// File: src/pages/api/create-payment-intent.ts
+import { NextApiRequest, NextApiResponse } from 'next';
+import Stripe from 'stripe';
+
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+  apiVersion: 'latest',
+});
+
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method Not Allowed' });
+  }
+
+  const { amount, email } = req.body;
+
+  if (!amount || !email) {
+    return res.status(400).json({ error: 'Missing required fields.' });
+  }
+
+  try {
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount: Math.round(amount * 100), // Stripe uses cents
+      currency: 'aud',
+      receipt_email: email,
+      metadata: { integration_check: 'donation_oneoff' },
+    });
+
+    return res.status(200).json({ clientSecret: paymentIntent.client_secret });
+  } catch (error: any) {
+    console.error('PaymentIntent Error:', error);
+    return res.status(500).json({ error: error.message });
+  }
+}

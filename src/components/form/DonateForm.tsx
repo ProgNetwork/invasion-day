@@ -1,13 +1,13 @@
 // File: src/components/form/DonateForm.tsx
-import React, { useState, useMemo } from 'react';
 import Button from '@/components/ui/Button';
-import { loadStripe } from '@stripe/stripe-js';
 import {
   CardElement,
   Elements,
   useElements,
   useStripe,
 } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
+import React, { useMemo, useState } from 'react';
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
@@ -98,7 +98,7 @@ const DonateFormInner: React.FC = () => {
   };
 
   return (
-    <div className="max-w-xl mx-auto p-6 bg-gray-50 rounded-xl mt-10 border">
+    <div className="max-w-xl mx-auto p-6 bg-gray-50 rounded-xl border">
       <h2 className="text-2xl font-bold mb-2">Support The Movement</h2>
       <p className="text-sm mb-6 text-gray-600">
         At Together For Treaty, we are building a broad and united movement for truth, justice, and Treaty.
@@ -198,7 +198,7 @@ const DonateFormInner: React.FC = () => {
 
       <Button
         variant="primary"
-        className="w-full"
+        className="w-full font-sans"
         onClick={handleSubmit}
         disabled={loading}
       >

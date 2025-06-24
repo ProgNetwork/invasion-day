@@ -105,7 +105,7 @@ const ValuesAndPrinciples: React.FC = () => {
         <p className="mb-8 text-lg text-gray-600">Treaty is about putting First Nations people in the driver’s seat of decisions that affect our communities, our culture and our Country. Through truth-telling and Treaty-making, we can secure tangible outcomes and justice for our people - and build a more unified future for everyone.</p>
         <div className="grid gap-8 sm:grid-cols-3">
           {values.map((value) => (
-            <FeatureCard key={value.title} {...value} />
+            <FeatureCard key={value.title} {...value} colorScheme="primary"/>
           ))}
         </div>
       </div>

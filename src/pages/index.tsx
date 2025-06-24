@@ -15,12 +15,14 @@ export default function Home() {
         <meta name="description" content="Together for Treaty is a movement of First Nations people and allies standing side-by-side for truth-telling, Treaties and justice." />
       </Head>
       <Hero />
-      <JoinTheMovement />
       <TimeForTreaty />
+      <JoinTheMovement />
       <WhyTreatyMatters />
       <PowerfulMovement />
       <GetInvolved />
-      <DonateForm />
+      <div className="bg-gray-900 py-12">
+        <DonateForm />
+      </div>
     </main>
   );
 }

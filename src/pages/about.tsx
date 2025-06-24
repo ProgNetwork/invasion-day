@@ -14,7 +14,7 @@ const AboutPage: React.FC = () => {
         <title>About - Together for Treaty</title>
         <meta name="description" content="Learn more about the Together for Treaty campaign" />
       </Head>
-      <PageHeader title="Why Treaty, Why Now">
+      <PageHeader title="Why Treaty, Why Now" image="/images/flag.jpg">
         <p>
           We want a country that values all people, whether they have been here five years, five generations or five thousand generations. But too often, First Nations people have been ignored in conversations about who we are and what sort of country we want to be. Treaties provide a way to acknowledge past and present injustices, resolve differences, and work out how to create a shared future.
         </p>

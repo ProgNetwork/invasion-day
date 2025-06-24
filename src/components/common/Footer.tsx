@@ -17,71 +17,60 @@ interface FooterColumnProps {
   data: FooterColumn;
 }
 
+const DONATE_ITEMS: (FooterItem | undefined)[] = [
+  {
+    label: "Make a donation",
+    path: "/donate",
+  },
+  // {
+  //   label: "Gift in your Will",
+  //   path: "/donate/willpower",
+  // },
+  {
+    label: "Donations Policy",
+    path: "/donations-policy",
+  },
+  // {
+  //   label: "Donations Disclosure",
+  //   path: "/about/transparency",
+  // },
+];
+
+const INFO_ITEMS: (FooterItem | undefined)[] = [
+  // {
+  //   label: "Update your details",
+  //   path: "/dashboard",
+  // },
+  // {
+  //   label: "Unsubscribe",
+  //   path: "/unsubscribe",
+  // },
+  {
+    label: "Privacy Policy",
+    path: "/privacy-policy",
+  },
+  // {
+  //   label: "Frequently Asked Questions",
+  //   path: "/about/faqs",
+  // },
+  // {
+  //   label: "Contact Us",
+  //   path: "/contact-us",
+  // },
+  // {
+  //   label: "Work at GetUp",
+  //   path: "/about/work-at-getup",
+  // },
+];
+
 const FOOTER_SECTIONS: FooterColumn[] = [
   {
-    label: "Campaigns",
-    items: [
-      {
-        label: "Volunteer",
-        path: "https://action.getup.org.au",
-        external: true,
-      },
-      {
-        label: "Start a campaign",
-        path: "https://me.getup.org.au",
-        external: true,
-      },
-    ],
-  },
-  {
     label: "Donate",
-    items: [
-      {
-        label: "Make a donation",
-        path: "https://getup.org.au/donate",
-      },
-      {
-        label: "Gift in your Will",
-        path: "https://getup.org.au/donate/willpower",
-      },
-      {
-        label: "Donations Policy",
-        path: "https://getup.org.au/donations-policy",
-      },
-      {
-        label: "Donations Disclosure",
-        path: "https://getup.org.au/about/transparency",
-      },
-    ],
+    items: DONATE_ITEMS.filter(Boolean) as FooterItem[],
   },
   {
     label: "Info",
-    items: [
-      {
-        label: "Update your details",
-        path: "https://getup.org.au/dashboard",
-      },
-      {
-        label: "Unsubscribe",
-        path: "https://getup.org.au/unsubscribe",
-      },
-      {
-        label: "Privacy Policy",
-        path: "https://getup.org.au/privacy-policy",
-      },
-      {
-        label: "Frequently Asked Questions",
-        path: "https://getup.org.au/about/faqs",
-      },
-      {
-        label: "Contact Us",
-        path: "https://getup.org.au/contact-us",
-      },
-      {
-        label: "Work at GetUp",
-        path: "https://getup.org.au/about/work-at-getup",
-      },
-    ],
+    items: INFO_ITEMS.filter(Boolean) as FooterItem[],
   },
 ];
 
@@ -138,7 +127,7 @@ const Footer: React.FC = () => {
 
         <div className="mt-12 space-y-4 text-xs text-gray-500">
           <p>
-            Our team acknowledges that we meet and work on the land of the Gadigal people of the Eora Nation. We wish to
+            Our team acknowledges that we meet and work on stolen land. We wish to
             pay respect to their Elders — past, present and future — and acknowledge the important role all Aboriginal
             and Torres Strait Islander people continue to play within Australia and the GetUp community.
           </p>
@@ -149,8 +138,7 @@ const Footer: React.FC = () => {
           </p>
 
           <p>
-            © {currentYear} GetUp! All rights reserved. Authorised by L. Baldwin-Roberts, GetUp, 28 Donkin Street,
-            Brisbane.
+            © {currentYear} Common Threads All rights reserved. Authorised by L. Baldwin-Roberts, Common Threads.
           </p>
         </div>
       </div>

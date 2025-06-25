@@ -51,15 +51,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       expand: ['latest_invoice.payment_intent'],
     });
 
-    const invoice = subscription.latest_invoice as Stripe.Invoice & {
-      payment_intent: Stripe.PaymentIntent;
-    };
-
     return res.status(200).json({
       subscriptionId: subscription.id,
-      clientSecret: invoice.payment_intent.client_secret,
     });
-
   } catch (error: any) {
     console.error('Subscription Error:', error);
     return res.status(500).json({ error: error.message });

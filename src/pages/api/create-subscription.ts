@@ -11,37 +11,49 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(405).json({ error: 'Method Not Allowed' });
   }
 
-  const { email, amount, interval } = req.body;
+  const { email, paymentMethodId, amount, interval } = req.body;
 
-  if (!email || !amount || !interval) {
+  if (!email || !paymentMethodId || !amount || !interval) {
     return res.status(400).json({ error: 'Missing required fields.' });
   }
 
+  if (!['month', 'week'].includes(interval)) {
+    return res.status(400).json({ error: 'Invalid interval. Must be month or week.' });
+  }
+
   try {
-    // 1. Create a customer
-    const customer = await stripe.customers.create({ email });
+    // 1. Create customer
+    const customer = await stripe.customers.create({
+      email,
+      payment_method: paymentMethodId,
+      invoice_settings: {
+        default_payment_method: paymentMethodId,
+      },
+    });
 
-    // 2. Create a product (optional: reuse an existing one if preferred)
-    const product = await stripe.products.create({ name: 'Recurring Donation' });
+    // 2. Create product for this donation
+    const product = await stripe.products.create({
+      name: 'Recurring Donation',
+    });
 
-    // 3. Create a price with recurring settings
+    // 3. Create price
     const price = await stripe.prices.create({
-      unit_amount: Math.round(amount * 100), // Stripe expects amount in cents
+      unit_amount: Math.round(amount * 100),
       currency: 'aud',
-      recurring: { interval }, // 'month' or 'week'
+      recurring: { interval },
       product: product.id,
     });
 
-    // 4. Create a SetupIntent to collect payment method off-session
-    const setupIntent = await stripe.setupIntents.create({
+    // 4. Create subscription
+    const subscription = await stripe.subscriptions.create({
       customer: customer.id,
-      usage: 'off_session',
+      items: [{ price: price.id }],
+      expand: ['latest_invoice.payment_intent'],
     });
 
     return res.status(200).json({
-      clientSecret: setupIntent.client_secret,
-      customerId: customer.id,
-      priceId: price.id,
+      subscriptionId: subscription.id,
+      clientSecret: subscription.latest_invoice?.payment_intent?.client_secret,
     });
   } catch (error: any) {
     console.error('Subscription Error:', error);

@@ -1,4 +1,3 @@
-// File: src/components/form/DonateForm.tsx
 import Button from '@/components/ui/Button';
 import {
   CardElement,
@@ -48,6 +47,20 @@ const DonateFormInner: React.FC = () => {
 
     setLoading(true);
 
+    const paymentMethodResult = await stripe!.createPaymentMethod({
+      type: 'card',
+      card: cardElement!,
+      billing_details: { name: cardName, email },
+    });
+
+    if (paymentMethodResult.error || !paymentMethodResult.paymentMethod) {
+      setErrors({ card: paymentMethodResult.error?.message || 'Failed to create payment method.' });
+      setLoading(false);
+      return;
+    }
+
+    const paymentMethodId = paymentMethodResult.paymentMethod.id;
+
     const endpoint = donationType === 'recurring'
       ? '/api/create-subscription'
       : '/api/create-payment-intent';
@@ -55,42 +68,31 @@ const DonateFormInner: React.FC = () => {
     const res = await fetch(endpoint, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        cardName,
-        amount: totalAmount,
-        donationType,
-        interval,
-        email,
-      }),
+      body: JSON.stringify(
+        donationType === 'recurring'
+          ? { email, paymentMethodId, amount: totalAmount, interval }
+          : { cardName, email, amount: totalAmount, donationType }
+      ),
     });
 
-    const { clientSecret, error: serverError } = await res.json();
+    const { clientSecret, error: serverError, subscriptionId } = await res.json();
 
-    if (serverError || !clientSecret) {
+    if (serverError || (donationType === 'recurring' && !subscriptionId) || (donationType === 'once' && !clientSecret)) {
       setErrors({ card: serverError || 'Server error' });
       setLoading(false);
       return;
     }
 
-    const paymentMethodData = {
-      payment_method: {
-        card: cardElement!,
-        billing_details: {
-          name: cardName,
-          email,
-        },
-      },
-    };
-
     const confirmResult =
       donationType === 'recurring'
-        ? await stripe!.confirmCardSetup(clientSecret, paymentMethodData)
-        : await stripe!.confirmCardPayment(clientSecret, paymentMethodData);
+        ? await stripe!.confirmCardSetup(clientSecret, { payment_method: paymentMethodId })
+        : await stripe!.confirmCardPayment(clientSecret, {
+            payment_method: paymentMethodResult.paymentMethod.id,
+          });
 
     if (confirmResult.error) {
       setErrors({ card: confirmResult.error.message || 'Payment failed.' });
     } else {
-      // Success
       window.location.href = '/?thank-you=true';
     }
 

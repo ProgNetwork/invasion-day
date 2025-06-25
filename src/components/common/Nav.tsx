@@ -17,10 +17,6 @@ const NAV_ITEMS: NavItem[] = [
     path: "/about",
   },
   {
-    label: "Stories",
-    path: "/stories",
-  },
-  {
     label: "Contact",
     path: "/contact",
   },

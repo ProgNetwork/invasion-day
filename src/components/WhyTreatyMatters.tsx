@@ -3,25 +3,22 @@ import StoryCard from "./StoryCard";
 
 const stories = [
   {
-    imageSrc: "/images/person1.png",
-    name: "Aunty Robyn's Story",
+    imageSrc: "/images/aunty-jackie.png",
+    name: "Aunty Jackie",
     story:
-      "Treaty isn't just about the past, it's about creating a future where my grandchildren can walk with pride in both worlds, knowing their culture is respected and protected.",
-    link: "/stories/aunty-robyn",
+      "The path to Treaty is about how we mend the very fabric of our society. We want everyone to walk side-by-side with us on the path to Treaty, so that we can overcome those huge injustices that still, unfortunately, persist in our society.",
   },
   {
-    imageSrc: "/images/person2.png",
-    name: "Uncle David's Journey",
+    imageSrc: "/images/tamika.png",
+    name: "Tamika",
     story:
-      "For 40 years I've been fighting for recognition. Treaty is about acknowledging that our sovereignty was never ceded and establishing a new relationship based on truth.",
-    link: "/stories/uncle-david",
+      "Truth-telling and Treaties are so important for justice and healing for our mob. It's what our old people have fought for and the next generation continues the movement.",
   },
   {
-    imageSrc: "/images/person3.png",
-    name: "Sarah's Commitment",
+    imageSrc: "/images/mary-joy.png",
+    name: "Mary Joy",
     story:
-      "As a non-Indigenous Australian, supporting Treaty is about acknowledging our shared history and working together to create a more just relationship for the future.",
-    link: "/stories/sarah",
+      "As a non-Indigenous person, supporting Treaty is about acknowledging our shared history and working together to create a more just relationship for the future.",
   },
 ];
 
@@ -42,7 +39,6 @@ const WhyTreatyMatters: React.FC = () => {
               imageSrc={story.imageSrc}
               name={story.name}
               story={story.story}
-              link={story.link}
             />
           ))}
         </div>

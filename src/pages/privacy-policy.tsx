@@ -1,5 +1,6 @@
 import { readFileSync } from "fs";
 import { GetStaticProps } from "next";
+import Head from "next/head";
 import { join } from "path";
 import ReactMarkdown from "react-markdown";
 
@@ -10,6 +11,9 @@ interface PrivacyPolicyProps {
 export default function PrivacyPolicy({ content }: PrivacyPolicyProps) {
   return (
     <div className="min-h-screen bg-gray-50 py-12">
+      <Head>
+        <title>Privacy Policy - Together for Treaty</title>
+      </Head>
       <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
         <article className="prose prose-lg max-w-none">
           <ReactMarkdown
@@ -26,6 +30,11 @@ export default function PrivacyPolicy({ content }: PrivacyPolicyProps) {
                 <a href={href} className="text-primary-600 hover:text-primary-800 underline">
                   {children}
                 </a>
+              ),
+              blockquote: ({ children }) => (
+                <blockquote className="border border-primary-200 bg-primary-50 p-4 pb-1 md:p-8 md:pb-4 rounded-xl my-6 text-gray-700">
+                  {children}
+                </blockquote>
               ),
             }}
           >

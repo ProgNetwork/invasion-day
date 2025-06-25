@@ -47,14 +47,14 @@ const GetInvolved: React.FC = () => {
               <Button variant="primary" size="md" onClick={() => setIsModalOpen(true)}>
                 Add Your Name
               </Button>
-              <Button variant="outline" size="md">
-                Download Campaign Kit
+              <Button variant="outline" size="md" href="https://events.humanitix.com/treaty-conversations-workshop" external>
+                Join a Training
               </Button>
             </div>
           </div>
           <div className="relative h-80 overflow-hidden rounded-lg shadow-lg md:h-96">
             <Image
-              src="/images/get-involved.png"
+              src="/images/group-shot.jpg"
               alt="People gathered in a room for a community event"
               layout="fill"
               objectFit="cover"

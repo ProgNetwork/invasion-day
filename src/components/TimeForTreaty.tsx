@@ -9,7 +9,7 @@ const TimeForTreaty: React.FC = () => {
           <h2 className="mb-12 text-3xl font-bold sm:text-4xl text-center">It's Time for Treaty</h2>
           <div className="grid items-center gap-12 md:grid-cols-2">
           <div className="relative h-80 overflow-hidden rounded-lg shadow-lg md:h-96">
-            <Image src="/images/always-was.jpg" alt="" layout="fill" objectFit="cover" />
+            <Image src="/images/treaty-now.jpg" alt="" layout="fill" objectFit="cover" />
           </div>
           <div className="space-y-6 text-lg leading-relaxed text-gray-700">
             <p>

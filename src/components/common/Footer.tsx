@@ -130,14 +130,7 @@ const Footer: React.FC = () => {
 
         <div className="mt-12 space-y-4 text-xs text-gray-500">
           <p>
-            Our team acknowledges that we meet and work on stolen land. We wish to
-            pay respect to their Elders — past, present and future — and acknowledge the important role all Aboriginal
-            and Torres Strait Islander people continue to play within Australia.
-          </p>
-
-          <p className="w-full">
-            WARNING: Aboriginal and Torres Strait Islander people are warned that this website may contain images or
-            names of deceased persons.
+            We pay respect to our Elders and acknowledge the Traditional Owners who’ve cared for country since time immemorial. Sovereignty was never ceded - it always was, and always will be, Aboriginal land.
           </p>
 
           <p>

@@ -29,8 +29,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       custom_fields: {
         volunteer: volunteer ? 'yes' : 'no',
         atsi: atsi ? 'yes' : 'no',
+        source: sourceCode,
       },
-      source_codes: [sourceCode],
     };
 
     const response = await fetch(ACTION_NETWORK_API_URL, {
@@ -68,7 +68,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 'Content-Type': 'application/json',
                 'OSDI-API-Token': API_KEY,
               },
-              body: JSON.stringify({ add_tags: ['together_for_treaty'] }),
+              body: JSON.stringify({ 
+                add_tags: ['together_for_treaty', sourceCode] 
+              }),
             });
           }
 
@@ -91,7 +93,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           'Content-Type': 'application/json',
           'OSDI-API-Token': API_KEY,
         },
-        body: JSON.stringify({ add_tags: ['together_for_treaty'] }),
+        body: JSON.stringify({ 
+          add_tags: ['together_for_treaty', sourceCode] 
+        }),
       });
     }
 

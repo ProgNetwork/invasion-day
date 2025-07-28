@@ -41,7 +41,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         receipt_message: 'Thank you for supporting the Treaty movement. Your contribution helps fund First Nations organisers, community events, and storytelling initiatives. Together, we can build a stronger future for all Australians.',
       },
       description: `Donation to Together For Treaty - ${donationType || 'one-off'} contribution`,
-      statement_descriptor: 'TOGETHER FOR TREATY',
+      statement_descriptor_suffix: 'TOGETHER FOR TREATY',
     });
 
     return res.status(200).json({ clientSecret: paymentIntent.client_secret });

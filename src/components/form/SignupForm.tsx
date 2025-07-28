@@ -20,7 +20,7 @@ const SignupForm: React.FC = () => {
     email: '',
     postcode: '',
     sourceCode: 'website-tft',
-    atsi: false,
+    first_nations_identifying: false,
     volunteer: false,
   });
   const [loading, setLoading] = useState(false);
@@ -58,7 +58,7 @@ const SignupForm: React.FC = () => {
         email: formData.email,
         postcode: formData.postcode,
         sourceCode: formData.sourceCode,
-        atsi: formData.atsi,
+        first_nations_identifying: formData.first_nations_identifying,
         volunteer: formData.volunteer,
       }),
     });
@@ -141,12 +141,12 @@ const SignupForm: React.FC = () => {
         />
         <div className="flex items-center">
           <Checkbox
-            name="atsi"
-            id="atsi"
-            checked={formData.atsi}
-            onCheckedChange={(checked) => handleCheckboxChange(checked, 'atsi')}
+            name="first_nations_identifying"
+            id="first_nations_identifying"
+            checked={formData.first_nations_identifying}
+            onCheckedChange={(checked) => handleCheckboxChange(checked, 'first_nations_identifying')}
           />
-          <Label htmlFor="atsi" className="ml-2">
+          <Label htmlFor="first_nations_identifying" className="ml-2">
             Do you identify as Aboriginal and/or Torres Strait Islander?
           </Label>
         </div>

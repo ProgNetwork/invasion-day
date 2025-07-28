@@ -10,6 +10,7 @@ interface Errors {
   givenName?: string;
   familyName?: string;
   postcode?: string;
+  sourceCode?: string;
 }
 
 const SignupForm: React.FC = () => {
@@ -18,6 +19,7 @@ const SignupForm: React.FC = () => {
     familyName: '',
     email: '',
     postcode: '',
+    sourceCode: 'website-tft',
     atsi: false,
     volunteer: false,
   });
@@ -55,6 +57,7 @@ const SignupForm: React.FC = () => {
         familyName: formData.familyName,
         email: formData.email,
         postcode: formData.postcode,
+        sourceCode: formData.sourceCode,
         atsi: formData.atsi,
         volunteer: formData.volunteer,
       }),
@@ -131,6 +134,11 @@ const SignupForm: React.FC = () => {
           />
           {errors.postcode && <p className="text-sm text-red-600">{errors.postcode}</p>}
         </div>
+        <input
+          type="hidden"
+          name="sourceCode"
+          value="website-tft"
+        />
         <div className="flex items-center">
           <Checkbox
             name="atsi"

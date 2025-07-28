@@ -14,6 +14,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     familyName,
     email,
     postcode,
+    sourceCode,
     atsi,
     volunteer,
   } = req.body;
@@ -28,6 +29,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       custom_fields: {
         volunteer: volunteer ? 'yes' : 'no',
         atsi: atsi ? 'yes' : 'no',
+        source_code: sourceCode,
       },
     };
 

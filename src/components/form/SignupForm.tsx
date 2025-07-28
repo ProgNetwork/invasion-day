@@ -18,6 +18,7 @@ const SignupForm: React.FC = () => {
     familyName: '',
     email: '',
     postcode: '',
+    atsi: false,
     volunteer: false,
   });
   const [loading, setLoading] = useState(false);
@@ -29,8 +30,8 @@ const SignupForm: React.FC = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleCheckboxChange = (checked: boolean | 'indeterminate') => {
-    setFormData((prev) => ({ ...prev, volunteer: !!checked }));
+  const handleCheckboxChange = (checked: boolean | 'indeterminate', field: string) => {
+    setFormData((prev) => ({ ...prev, [field]: !!checked }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -54,6 +55,7 @@ const SignupForm: React.FC = () => {
         familyName: formData.familyName,
         email: formData.email,
         postcode: formData.postcode,
+        atsi: formData.atsi,
         volunteer: formData.volunteer,
       }),
     });
@@ -131,10 +133,21 @@ const SignupForm: React.FC = () => {
         </div>
         <div className="flex items-center">
           <Checkbox
+            name="atsi"
+            id="atsi"
+            checked={formData.atsi}
+            onCheckedChange={(checked) => handleCheckboxChange(checked, 'atsi')}
+          />
+          <Label htmlFor="atsi" className="ml-2">
+            Do you identify as Aboriginal and/or Torres Strait Islander?
+          </Label>
+        </div>
+        <div className="flex items-center">
+          <Checkbox
             name="volunteer"
             id="volunteer"
             checked={formData.volunteer}
-            onCheckedChange={handleCheckboxChange}
+            onCheckedChange={(checked) => handleCheckboxChange(checked, 'volunteer')}
           />
           <Label htmlFor="volunteer" className="ml-2">
             I'm interested in volunteering with the campaign

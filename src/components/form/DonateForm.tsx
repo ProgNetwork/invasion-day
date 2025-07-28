@@ -19,9 +19,10 @@ const DonateFormInner: React.FC = () => {
   const [interval, setInterval] = useState<'month' | 'week'>('month');
   const [email, setEmail] = useState('');
   const [cardName, setCardName] = useState('');
+  const [postalCode, setPostalCode] = useState('');
   const [coverFees, setCoverFees] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [errors, setErrors] = useState<{ email?: string; amount?: string; cardName?: string; card?: string }>({});
+  const [errors, setErrors] = useState<{ email?: string; amount?: string; cardName?: string; card?: string; postalCode?: string }>({});
 
   const elements = useElements();
   const stripe = useStripe();
@@ -36,6 +37,7 @@ const DonateFormInner: React.FC = () => {
     if (!baseAmount || baseAmount <= 0) { newErrors.amount = 'Please enter a valid donation amount.'; }
     if (!(/\S+@\S+\.\S+/).test(email)) { newErrors.email = 'Please enter a valid email address.'; }
     if (!cardName.trim()) { newErrors.cardName = 'Please enter the name on the card.'; }
+    if (!postalCode.trim()) { newErrors.postalCode = 'Please enter your postal code.'; }
 
     const cardElement = elements?.getElement(CardElement);
     if (!cardElement) {
@@ -50,7 +52,13 @@ const DonateFormInner: React.FC = () => {
     const paymentMethodResult = await stripe!.createPaymentMethod({
       type: 'card',
       card: cardElement!,
-      billing_details: { name: cardName, email },
+      billing_details: { 
+        name: cardName, 
+        email,
+        address: {
+          postal_code: postalCode
+        }
+      },
     });
 
     if (paymentMethodResult.error || !paymentMethodResult.paymentMethod) {
@@ -195,8 +203,22 @@ const DonateFormInner: React.FC = () => {
       />
       {errors.cardName && <p className="text-red-600 text-sm mb-2">{errors.cardName}</p>}
 
+      <input
+        type="text"
+        placeholder="Postal Code"
+        value={postalCode}
+        onChange={(e) => setPostalCode(e.target.value)}
+        className={`w-full p-2 mb-1 border rounded ${errors.postalCode ? 'border-red-500 font-semibold' : ''}`}
+      />
+      {errors.postalCode && <p className="text-red-600 text-sm mb-2">{errors.postalCode}</p>}
+
       <div className="mb-2 p-2 border rounded bg-white">
-        <CardElement options={{ style: { base: { fontSize: '16px' } } }} />
+        <CardElement 
+          options={{ 
+            style: { base: { fontSize: '16px' } },
+            hidePostalCode: false
+          }} 
+        />
       </div>
       {errors.card && <p className="text-red-600 text-sm mb-2">{errors.card}</p>}
 

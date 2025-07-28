@@ -1,16 +1,16 @@
-import React from "react";
+import React from 'react';
 
 interface TimelineEvent {
   year: string;
   title: string;
   description: string | React.ReactNode;
-  side: "left" | "right";
+  side: 'left' | 'right';
 }
 
 const events: TimelineEvent[] = [
   {
-    year: "1",
-    title: "Early Resistance",
+    year: '1',
+    title: 'Early Resistance',
     description:
         <>
           <p>
@@ -20,11 +20,11 @@ const events: TimelineEvent[] = [
             Despite overwhelming odds, First Nations peoples never ceded sovereignty and maintained their connection to Country. Treaty agreements, land rights, justice and accountability have been core demands of our Elders and activists across generations.
           </p>
         </>,
-    side: "left",
+    side: 'left',
   },
   {
-    year: "2",
-    title: "Bark Petitions (1963)",
+    year: '2',
+    title: 'Bark Petitions (1963)',
     description:
         <>
           <p>
@@ -34,42 +34,42 @@ const events: TimelineEvent[] = [
             These historic documents combined traditional bark painting with typed text, symbolizing the meeting of two legal systems.
           </p>
         </>,
-    side: "right",
+    side: 'right',
   },
   {
-    year: "3",
-    title: "Barunga Statement (1988)",
+    year: '3',
+    title: 'Barunga Statement (1988)',
     description:
     <>
-    <p>
+      <p>
     The Barunga Statement called for Aboriginal self-management, a national system of land rights, compensation for loss of lands, respect for Aboriginal identity, and an end to discrimination.
-    </p>
-    <p>
+      </p>
+      <p>
     Prime Minister Bob Hawke promised a treaty by 1990, but this promise was not fulfilled.
-    </p>
-  </>,
-    side: "left",
+      </p>
+    </>,
+    side: 'left',
   },
   {
-    year: "4",
-    title: "Treaty Consultations in Victoria (2016)",
+    year: '4',
+    title: 'Treaty Consultations in Victoria (2016)',
     description:
       "Formal community consultation towards Treaty in Victoria began with the Treaty Working Group in 2016. In 2018, the First Peoples' Assembly was established as an elected representative body to work toward Treaty. Now, in 2025, the Assembly is on the cusp of signing the first statewide Treaty in the country. This also follows a landmark truth-telling process through the Yoorrook Justice Commission.",
-    side: "right",
+    side: 'right',
   },
   {
-    year: "5",
-    title: "Uluru Statement from the Heart (2017)",
+    year: '5',
+    title: 'Uluru Statement from the Heart (2017)',
     description:
       <>
         <p>After extensive consultations with First Nations communities across Australia, the Uluru Statement called for Voice, Treaty, and Truth.</p>
         <p>This landmark document led to the 2023 referendum on a First Nations Voice to Parliament. In the absence of bipartisan support, we saw a No campaign based in racism, fear and misinformation take hold. However, we also saw millions of Australians educate themselves and take action in support of First Nations communities - many for the first time.</p>
       </>,
-    side: "left",
+    side: 'left',
   },
   {
-    year: "6",
-    title: "State and Territory Level Treaty Processes (Present)",
+    year: '6',
+    title: 'State and Territory Level Treaty Processes (Present)',
     description:
       <>
         <p>
@@ -79,11 +79,11 @@ const events: TimelineEvent[] = [
           However, in the wake of the Voice referendum defeat, we are witnessing many governments across the country stall or abandon their commitments to truth and Treaty - including in Queensland, where in 2024 the Crisafulli government axed the Truth Telling & Healing Inquiry and Path to Treaty Act.
         </p>
       </>,
-    side: "right",
+    side: 'right',
   },
   {
-    year: "7",
-    title: "Together for Treaty Campaign (Present)",
+    year: '7',
+    title: 'Together for Treaty Campaign (Present)',
     description:
       <>
         <p>
@@ -93,7 +93,7 @@ const events: TimelineEvent[] = [
         Through education, community organizing, and political advocacy, we're building unstoppable momentum for Treaties across the continent.
         </p>
       </>,
-    side: "left",
+    side: 'left',
   },
 ];
 
@@ -119,13 +119,13 @@ const Timeline: React.FC = () => {
             {events.map((event, index) => (
               <div key={index} className="flex w-full items-start justify-between">
                 <div className="w-5/12">
-                  {event.side === "left" && <EventCard title={event.title} description={event.description} />}
+                  {event.side === 'left' && <EventCard title={event.title} description={event.description} />}
                 </div>
                 <div className="z-10 flex h-10 w-10 items-center justify-center rounded-full bg-primary-700 font-bold text-white shadow-md">
                   {event.year}
                 </div>
                 <div className="w-5/12">
-                  {event.side === "right" && <EventCard title={event.title} description={event.description} />}
+                  {event.side === 'right' && <EventCard title={event.title} description={event.description} />}
                 </div>
               </div>
             ))}

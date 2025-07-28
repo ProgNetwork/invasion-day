@@ -1,11 +1,11 @@
-import Image from "next/image";
-import React from "react";
-import FeatureCard from "./ui/FeatureCard";
+import Image from 'next/image';
+import React from 'react';
+import FeatureCard from './ui/FeatureCard';
 
 const values = [
   {
-    title: "Respect",
-    description: "Honouring the continuing sovereignty of First Nations peoples, respecting and taking pride in the oldest living cultures in the world.",
+    title: 'Respect',
+    description: 'Honouring the continuing sovereignty of First Nations peoples, respecting and taking pride in the oldest living cultures in the world.',
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path
@@ -18,8 +18,8 @@ const values = [
     ),
   },
   {
-    title: "Justice",
-    description: "Addressing historical wrongs and creating equitable systems for the future.",
+    title: 'Justice',
+    description: 'Addressing historical wrongs and creating equitable systems for the future.',
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path
@@ -32,8 +32,8 @@ const values = [
     ),
   },
   {
-    title: "Empowerment",
-    description: "Ensuring our communities are free to shape our own futures, with economic opportunities and strong community controlled services.",
+    title: 'Empowerment',
+    description: 'Ensuring our communities are free to shape our own futures, with economic opportunities and strong community controlled services.',
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path
@@ -46,8 +46,8 @@ const values = [
     ),
   },
   {
-    title: "Truth-Telling and Healing",
-    description: "Acknowledging the reality of injustice in our past and present: facing the truth with open hearts in order to build a better future.",
+    title: 'Truth-Telling and Healing',
+    description: 'Acknowledging the reality of injustice in our past and present: facing the truth with open hearts in order to build a better future.',
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path
@@ -60,8 +60,8 @@ const values = [
     ),
   },
   {
-    title: "Unity",
-    description: "Building relationships of solidarity, understanding and mutual respect among people from all walks of life.",
+    title: 'Unity',
+    description: 'Building relationships of solidarity, understanding and mutual respect among people from all walks of life.',
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path
@@ -74,8 +74,8 @@ const values = [
     ),
   },
   {
-    title: "Protecting Country",
-    description: "Putting Aboriginal land back in Aboriginal hands - equipping our mob with the rights and resources care for Country and protect cultural heritage.",
+    title: 'Protecting Country',
+    description: 'Putting Aboriginal land back in Aboriginal hands - equipping our mob with the rights and resources care for Country and protect cultural heritage.',
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path
@@ -89,20 +89,21 @@ const values = [
   },
 ];
 
-const principles = [
-  "Recognition of continuing sovereignty and self-determination rights",
-  "Formal agreements that protect cultural heritage and land rights",
-  "Frameworks for addressing historical injustices",
-  "Pathways for economic empowerment and shared prosperity",
-  "Mechanisms for truth-telling and healing",
-  "Building a more just and inclusive national identity",
-];
+// Unused principles array - keeping for future use
+// const principles = [
+//   'Recognition of continuing sovereignty and self-determination rights',
+//   'Formal agreements that protect cultural heritage and land rights',
+//   'Frameworks for addressing historical injustices',
+//   'Pathways for economic empowerment and shared prosperity',
+//   'Mechanisms for truth-telling and healing',
+//   'Building a more just and inclusive national identity',
+// ];
 
 const ValuesAndPrinciples: React.FC = () => {
   return (
     <section className="bg-white py-16 sm:py-24 ">
       <div className="grid grid-cols-3 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 gap-8 items-center">
-      <Image src="/images/always-was.jpg" alt="Larissa Baldwin-Roberts" width={1000} height={1000} className="mx-auto rounded-2xl max-w-2xl w-full col-span-3 lg:col-span-1" />
+        <Image src="/images/always-was.jpg" alt="Larissa Baldwin-Roberts" width={1000} height={1000} className="mx-auto rounded-2xl max-w-2xl w-full col-span-3 lg:col-span-1" />
         <div className="col-span-3 lg:col-span-2">
           <h2 className="mb-8 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Winning Transformative Change</h2>
           <p className="text-lg text-gray-600">Treaty is about putting First Nations people in the driver’s seat of decisions that affect our communities, our culture and our Country. Through truth-telling and Treaty-making, we can secure tangible outcomes and justice for our people - and build a more unified future for everyone.</p>

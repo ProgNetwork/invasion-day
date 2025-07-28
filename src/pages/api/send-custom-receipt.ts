@@ -28,13 +28,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     const customer = paymentIntent.customer as Stripe.Customer;
-    
+
     // Get the charge associated with this payment intent
     const charges = await stripe.charges.list({
       payment_intent: paymentIntentId,
       limit: 1,
     });
-    
+
     const charge = charges.data[0];
 
     if (!charge) {
@@ -44,13 +44,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     // Determine if this is a recurring payment
     const isRecurring = paymentIntent.metadata?.donation_type === 'recurring';
     const amount = paymentIntent.amount / 100;
-    
+
     // Get the appropriate receipt template
     const template = getReceiptTemplate(amount, isRecurring);
-    
+
     // Get donor name from payment intent metadata or customer
     const donorName = paymentIntent.metadata?.donor_name || customer.name || '';
-    
+
     // Generate the receipt HTML using the template system
     const receiptHtml = generateReceiptHtml(
       template,
@@ -58,7 +58,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       new Date(paymentIntent.created * 1000).toLocaleDateString('en-AU'),
       charge.receipt_number || 'N/A',
       customMessage,
-      donorName
+      donorName,
     );
 
     // Create a custom receipt email
@@ -73,15 +73,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     // For now, we'll return the email content for manual sending
     // In production, you'd integrate with SendGrid, AWS SES, or similar
 
-    return res.status(200).json({ 
+    return res.status(200).json({
       success: true,
       message: 'Custom receipt prepared',
       emailContent: receiptEmail,
-      receiptUrl: charge.receipt_url
+      receiptUrl: charge.receipt_url,
     });
-
   } catch (error: any) {
     console.error('Custom Receipt Error:', error);
     return res.status(500).json({ error: error.message });
   }
-} 
+}

@@ -27,7 +27,7 @@ export interface ReceiptTemplate {
 export const defaultReceiptTemplate: ReceiptTemplate = {
   subject: 'Thank you for your donation to Together For Treaty',
   header: 'Together For Treaty - Thank you for your support',
-  
+
   impactSection: {
     title: 'Your Impact',
     description: 'Thank you for supporting the Treaty movement. Your contribution helps fund:',
@@ -39,9 +39,9 @@ export const defaultReceiptTemplate: ReceiptTemplate = {
       'Advocacy and policy development',
     ],
   },
-  
+
   taxInfo: 'This campaign is being coordinated by Common Threads, supported by Centre for Australian Progress. Donations over $2 are tax deductible. Your contribution helps support First Nations organisers, community events, and storytelling.',
-  
+
   nextSteps: {
     title: 'What happens next?',
     description: 'Together For Treaty is working towards a future where First Nations peoples have a voice in decisions that affect their lives and communities. Your support helps us:',
@@ -52,13 +52,13 @@ export const defaultReceiptTemplate: ReceiptTemplate = {
       'Create opportunities for truth-telling and reconciliation',
     ],
   },
-  
+
   footer: {
     title: 'Centre for Australian Progress',
     description: 'Building a stronger future for all Australians',
     contactInfo: 'For questions about your donation, please contact us at info@australianprogress.org.au',
   },
-  
+
   branding: {
     primaryColor: '#1a1a1a',
     secondaryColor: '#2d5a27',
@@ -69,7 +69,7 @@ export const recurringReceiptTemplate: ReceiptTemplate = {
   ...defaultReceiptTemplate,
   subject: 'Thank you for your recurring donation to Together For Treaty',
   header: 'Together For Treaty - Thank you for your ongoing support',
-  
+
   impactSection: {
     title: 'Your Ongoing Impact',
     description: 'Thank you for your commitment to the Treaty movement. Your recurring contribution helps sustain:',
@@ -81,7 +81,7 @@ export const recurringReceiptTemplate: ReceiptTemplate = {
       'Community leadership development',
     ],
   },
-  
+
   nextSteps: {
     title: 'Your continued support makes a difference',
     description: 'As a recurring donor, you\'re helping us build sustainable, long-term change. Your ongoing commitment supports:',
@@ -92,7 +92,7 @@ export const recurringReceiptTemplate: ReceiptTemplate = {
       'Ongoing educational and awareness programs',
     ],
   },
-  
+
   footer: {
     title: 'Centre for Australian Progress',
     description: 'Building a stronger future for all Australians',
@@ -104,7 +104,7 @@ export const largeDonationTemplate: ReceiptTemplate = {
   ...defaultReceiptTemplate,
   subject: 'Thank you for your generous donation to Together For Treaty',
   header: 'Together For Treaty - Thank you for your generous support',
-  
+
   impactSection: {
     title: 'Your Generous Impact',
     description: 'Thank you for your significant contribution to the Treaty movement. Your generous donation enables:',
@@ -117,7 +117,7 @@ export const largeDonationTemplate: ReceiptTemplate = {
       'Research and policy development',
     ],
   },
-  
+
   nextSteps: {
     title: 'Your leadership in action',
     description: 'As a major supporter, you\'re helping to lead the way towards reconciliation. Your contribution supports:',
@@ -128,7 +128,7 @@ export const largeDonationTemplate: ReceiptTemplate = {
       'Advanced educational and awareness campaigns',
     ],
   },
-  
+
   footer: {
     title: 'Centre for Australian Progress',
     description: 'Building a stronger future for all Australians',
@@ -140,11 +140,11 @@ export const getReceiptTemplate = (amount: number, isRecurring: boolean = false)
   if (isRecurring) {
     return recurringReceiptTemplate;
   }
-  
+
   if (amount >= 100) {
     return largeDonationTemplate;
   }
-  
+
   return defaultReceiptTemplate;
 };
 
@@ -154,10 +154,10 @@ export const generateReceiptHtml = (
   date: string,
   receiptNumber: string,
   customMessage?: string,
-  donorName?: string
+  donorName?: string,
 ): string => {
   const donorFirstName = donorName ? donorName.split(' ')[0] : 'there';
-  
+
   return `
     <!DOCTYPE html>
     <html>
@@ -263,4 +263,4 @@ export const generateReceiptHtml = (
     </body>
     </html>
   `;
-}; 
+};

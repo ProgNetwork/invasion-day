@@ -1,28 +1,28 @@
-import SignupForm from "@/components/form/SignupForm";
-import Button from "@/components/ui/Button";
-import Modal from "@/components/ui/Modal";
-import Image from "next/image";
-import React, { useState } from "react";
+import SignupForm from '@/components/form/SignupForm';
+import Button from '@/components/ui/Button';
+import Modal from '@/components/ui/Modal';
+import Image from 'next/image';
+import React, { useState } from 'react';
 
 const GetInvolved: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  
+
   const actions = [
     {
-      title: "Sign the Petition",
-      description: "Add your name to show community support for truth-telling and Treaty across the country.",
+      title: 'Sign the Petition',
+      description: 'Add your name to show community support for truth-telling and Treaty across the country.',
     },
     {
-      title: "Attend Local Events",
-      description: "Join community gatherings, workshops and cultural events in your area.",
+      title: 'Attend Local Events',
+      description: 'Join community gatherings, workshops and cultural events in your area.',
     },
     {
-      title: "Spark Conversations",
-      description: "Invite friends and family to learn about Treaty together using our resources.",
+      title: 'Spark Conversations',
+      description: 'Invite friends and family to learn about Treaty together using our resources.',
     },
     {
-      title: "Share the Message",
-      description: "Help spread the word through your networks and social media.",
+      title: 'Share the Message',
+      description: 'Help spread the word through your networks and social media.',
     },
   ];
 

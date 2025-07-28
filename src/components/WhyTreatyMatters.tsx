@@ -1,24 +1,24 @@
-import React from "react";
-import StoryCard from "./StoryCard";
+import React from 'react';
+import StoryCard from './StoryCard';
 
 const stories = [
   {
-    imageSrc: "/images/aunty-jackie.png",
-    name: "Aunty Jackie",
+    imageSrc: '/images/aunty-jackie.png',
+    name: 'Aunty Jackie',
     story:
-      "The path to Treaty is about how we mend the very fabric of our society. We want everyone to walk side-by-side with us on the path to Treaty, so that we can overcome those huge injustices that still, unfortunately, persist in our society.",
+      'The path to Treaty is about how we mend the very fabric of our society. We want everyone to walk side-by-side with us on the path to Treaty, so that we can overcome those huge injustices that still, unfortunately, persist in our society.',
   },
   {
-    imageSrc: "/images/tamika.png",
-    name: "Tamika",
+    imageSrc: '/images/tamika.png',
+    name: 'Tamika',
     story:
       "Truth-telling and Treaties are so important for justice and healing for our mob. It's what our old people have fought for and the next generation continues the movement.",
   },
   {
-    imageSrc: "/images/mary-joy.png",
-    name: "Mary Joy",
+    imageSrc: '/images/mary-joy.png',
+    name: 'Mary Joy',
     story:
-      "As a non-Indigenous person, supporting Treaty is about acknowledging our shared history and working together to create a more just relationship for the future.",
+      'As a non-Indigenous person, supporting Treaty is about acknowledging our shared history and working together to create a more just relationship for the future.',
   },
 ];
 
@@ -29,7 +29,7 @@ const WhyTreatyMatters: React.FC = () => {
         <div className="text-center">
           <h2 className="mb-4 text-3xl font-bold text-gray-900 sm:text-4xl">Why Treaty Matters</h2>
           <p className="mx-auto max-w-3xl text-lg text-gray-600">
-            Hear from First Nations peoples and allies about why Treaty matters to them and their communities.       
+            Hear from First Nations peoples and allies about why Treaty matters to them and their communities.
           </p>
         </div>
         <div className="mt-16 grid gap-8 md:grid-cols-3">

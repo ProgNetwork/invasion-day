@@ -1,8 +1,8 @@
-import DonateForm from "@/components/form/DonateForm";
-import SignupForm from "@/components/form/SignupForm";
-import Button from "@/components/ui/Button";
-import Modal from "@/components/ui/Modal";
-import React, { useState } from "react";
+import DonateForm from '@/components/form/DonateForm';
+import SignupForm from '@/components/form/SignupForm';
+import Button from '@/components/ui/Button';
+import Modal from '@/components/ui/Modal';
+import React, { useState } from 'react';
 
 const Cta: React.FC = () => {
   const [isSignupModalOpen, setIsSignupModalOpen] = useState(false);

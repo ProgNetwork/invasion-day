@@ -1,9 +1,9 @@
-import SignupForm from "@/components/form/SignupForm";
-import Button from "@/components/ui/Button";
-import Modal from "@/components/ui/Modal";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/20/solid";
-import Link from "next/link";
-import React, { useState } from "react";
+import SignupForm from '@/components/form/SignupForm';
+import Button from '@/components/ui/Button';
+import Modal from '@/components/ui/Modal';
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/20/solid';
+import Link from 'next/link';
+import React, { useState } from 'react';
 
 interface NavItem {
   label: string;
@@ -13,17 +13,17 @@ interface NavItem {
 
 const NAV_ITEMS: NavItem[] = [
   {
-    label: "About",
-    path: "/about",
+    label: 'About',
+    path: '/about',
   },
   {
-    label: "Contact",
-    path: "/contact",
+    label: 'Contact',
+    path: '/contact',
   },
 ];
 
 const NavLink: React.FC<{ item: NavItem; onClick?: () => void }> = ({ item, onClick }) => {
-  const linkClasses = "text-gray-700 hover:text-primary-600 transition-colors duration-200 font-medium text-md";
+  const linkClasses = 'text-gray-700 hover:text-primary-600 transition-colors duration-200 font-medium text-md';
 
   if (item.external) {
     return (
@@ -87,13 +87,13 @@ const Nav: React.FC = () => {
             >
               <span className="sr-only">Open main menu</span>
 
-              <Bars3Icon className={`${isMenuOpen ? "hidden" : "block"} h-6 w-6`} />
-              <XMarkIcon className={`${isMenuOpen ? "block" : "hidden"} h-6 w-6`} />
+              <Bars3Icon className={`${isMenuOpen ? 'hidden' : 'block'} h-6 w-6`} />
+              <XMarkIcon className={`${isMenuOpen ? 'block' : 'hidden'} h-6 w-6`} />
             </button>
           </div>
         </div>
 
-        <div className={`${isMenuOpen ? "block" : "hidden"} lg:hidden`}>
+        <div className={`${isMenuOpen ? 'block' : 'hidden'} lg:hidden`}>
           <div className="space-y-1 border-t border-gray-200 bg-white px-2 pt-2 pb-3 sm:px-3">
             {NAV_ITEMS.map((item) => (
               <div key={item.path} className="block">

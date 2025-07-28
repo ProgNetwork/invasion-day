@@ -1,8 +1,8 @@
-import SignupForm from "@/components/form/SignupForm";
-import Button from "@/components/ui/Button";
-import Modal from "@/components/ui/Modal";
-import Image from "next/image";
-import React, { useState } from "react";
+import SignupForm from '@/components/form/SignupForm';
+import Button from '@/components/ui/Button';
+import Modal from '@/components/ui/Modal';
+import Image from 'next/image';
+import React, { useState } from 'react';
 
 const Hero: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);

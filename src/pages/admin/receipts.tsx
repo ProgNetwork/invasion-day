@@ -52,12 +52,12 @@ const ReceiptsAdminPage: NextPage = () => {
 
   const handleReceiptSent = () => {
     if (selectedPayment) {
-      setPayments(prev => 
-        prev.map(payment => 
-          payment.id === selectedPayment.id 
+      setPayments(prev =>
+        prev.map(payment =>
+          payment.id === selectedPayment.id
             ? { ...payment, receipt_sent: true }
-            : payment
-        )
+            : payment,
+        ),
       );
     }
     setShowCustomReceipt(false);
@@ -100,7 +100,7 @@ const ReceiptsAdminPage: NextPage = () => {
               >
                 ← Back to Payments
               </Button>
-              
+
               <CustomReceiptManager
                 paymentIntentId={selectedPayment.id}
                 customerEmail={selectedPayment.email}
@@ -117,7 +117,7 @@ const ReceiptsAdminPage: NextPage = () => {
                     Send custom receipts with substantial content to donors
                   </p>
                 </div>
-                
+
                 <div className="overflow-x-auto">
                   <table className="min-w-full divide-y divide-gray-200">
                     <thead className="bg-gray-50">
@@ -162,8 +162,8 @@ const ReceiptsAdminPage: NextPage = () => {
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap">
                             <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
-                              payment.status === 'succeeded' 
-                                ? 'bg-green-100 text-green-800' 
+                              payment.status === 'succeeded'
+                                ? 'bg-green-100 text-green-800'
                                 : 'bg-yellow-100 text-yellow-800'
                             }`}>
                               {payment.status}
@@ -171,8 +171,8 @@ const ReceiptsAdminPage: NextPage = () => {
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap">
                             <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
-                              payment.receipt_sent 
-                                ? 'bg-green-100 text-green-800' 
+                              payment.receipt_sent
+                                ? 'bg-green-100 text-green-800'
                                 : 'bg-gray-100 text-gray-800'
                             }`}>
                               {payment.receipt_sent ? 'Sent' : 'Pending'}
@@ -216,4 +216,4 @@ const ReceiptsAdminPage: NextPage = () => {
   );
 };
 
-export default ReceiptsAdminPage; 
+export default ReceiptsAdminPage;

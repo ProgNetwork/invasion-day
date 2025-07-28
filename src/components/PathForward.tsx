@@ -1,10 +1,10 @@
-import FeatureCard from "@/components/ui/FeatureCard";
-import React from "react";
+import FeatureCard from '@/components/ui/FeatureCard';
+import React from 'react';
 
 const PathForward: React.FC = () => {
   const paths = [
     {
-      title: "Truth-Telling",
+      title: 'Truth-Telling',
       description:
         "We must be honest about Australia's ugly history regarding Aboriginal peoples – including massacres, stolen land, stolen children and violent repression of language and culture – and how this has led to ongoing inequality today. By facing the truth with open hearts, we can set a new course forward for action, healing and justice.",
       icon: (
@@ -25,9 +25,9 @@ const PathForward: React.FC = () => {
       ),
     },
     {
-      title: "Treaty-Making",
+      title: 'Treaty-Making',
       description:
-        "Treaties must be negotiated in good faith, with First Nations peoples as equal partners. They should address sovereignty, land rights, cultural heritage, political representation, and economic opportunities, while respecting the diversity of First Nations communities.",
+        'Treaties must be negotiated in good faith, with First Nations peoples as equal partners. They should address sovereignty, land rights, cultural heritage, political representation, and economic opportunities, while respecting the diversity of First Nations communities.',
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -46,9 +46,9 @@ const PathForward: React.FC = () => {
       ),
     },
     {
-      title: "Accountability",
+      title: 'Accountability',
       description:
-        "Treaties are not the end, but the beginning. Implementing Treaty commitments will require ongoing dialogue, accountability mechanisms, and resources. We envision Treaties as living documents that evolve to meet the needs of future generations.",
+        'Treaties are not the end, but the beginning. Implementing Treaty commitments will require ongoing dialogue, accountability mechanisms, and resources. We envision Treaties as living documents that evolve to meet the needs of future generations.',
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"

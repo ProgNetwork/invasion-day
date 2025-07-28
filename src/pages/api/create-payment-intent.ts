@@ -33,7 +33,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       currency: 'aud',
       customer: customer.id,
       receipt_email: email,
-      metadata: { 
+      metadata: {
         integration_check: 'donation_oneoff',
         donation_type: donationType || 'one-off',
         campaign: 'together-for-treaty',

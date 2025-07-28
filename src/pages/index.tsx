@@ -1,13 +1,13 @@
-import { useEffect, useState } from "react";
-import JoinTheMovement from "@/components/Cta";
-import GetInvolved from "@/components/GetInvolved";
-import Hero from "@/components/Hero";
-import PowerfulMovement from "@/components/PowerfulMovement";
-import TimeForTreaty from "@/components/TimeForTreaty";
-import WhyTreatyMatters from "@/components/WhyTreatyMatters";
-import DonateForm from "@/components/form/DonateForm";
-import Head from "next/head";
-import Modal from "@/components/ui/Modal";
+import { useEffect, useState } from 'react';
+import JoinTheMovement from '@/components/Cta';
+import GetInvolved from '@/components/GetInvolved';
+import Hero from '@/components/Hero';
+import PowerfulMovement from '@/components/PowerfulMovement';
+import TimeForTreaty from '@/components/TimeForTreaty';
+import WhyTreatyMatters from '@/components/WhyTreatyMatters';
+import DonateForm from '@/components/form/DonateForm';
+import Head from 'next/head';
+import Modal from '@/components/ui/Modal';
 
 export default function Home() {
   const [showThankYouModal, setShowThankYouModal] = useState(false);

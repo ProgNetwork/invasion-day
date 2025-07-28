@@ -1,5 +1,5 @@
-import Image from "next/image";
-import React from "react";
+import Image from 'next/image';
+import React from 'react';
 
 const OurVision: React.FC = () => {
   return (
@@ -26,17 +26,20 @@ const OurVision: React.FC = () => {
               <blockquote className="relative flex flex-col text-md text-gray-800">
                 <span className="text-secondary-200 h-12 font-serif text-8xl leading-none">“</span>
                 <p className="text-secondary-100 mb-4">
-                  <strong>If people from all walks of life stand together with proud support for truth and Treaty, Victoria can lead the way for the whole country to follow.</strong> But if the community goes quiet, First Nations people will be left on the front lines of attacks from racist far-right groups, who are pushing divisive campaigns to wind back our rights.
+                  <strong>
+                    If people from all walks of life stand together with proud support for truth and Treaty, Victoria can lead the way for the whole country to follow.
+                  </strong>
+                  But if the community goes quiet, First Nations people will be left on the front lines of attacks from racist far-right groups, who are pushing divisive campaigns to wind back our rights.
                 </p>
                 <p className="text-secondary-100">
-                  <strong>That’s why it’s so important we talk with our friends, neighbours and politicians about why we support building a brighter future through Treaty.</strong>
+                  <strong>That's why it's so important we talk with our friends, neighbours and politicians about why we support building a brighter future through Treaty.</strong>
                 </p>
               </blockquote>
               <figcaption className="mt-6 flex items-center">
                 <div className="relative mr-4 h-20 w-20 overflow-hidden rounded-full shadow-inner">
                   <Image
                     src="/images/riss.jpg"
-                    alt={`Portrait of Larissa Baldwin-Roberts`}
+                    alt={'Portrait of Larissa Baldwin-Roberts'}
                     layout="fill"
                     objectFit="cover"
                     className="bg-black"

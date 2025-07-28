@@ -1,8 +1,8 @@
-import { readFileSync } from "fs";
-import { GetStaticProps } from "next";
-import Head from "next/head";
-import { join } from "path";
-import ReactMarkdown from "react-markdown";
+import { readFileSync } from 'fs';
+import { GetStaticProps } from 'next';
+import Head from 'next/head';
+import { join } from 'path';
+import ReactMarkdown from 'react-markdown';
 
 interface PrivacyPolicyProps {
   content: string;
@@ -48,8 +48,8 @@ export default function PrivacyPolicy({ content }: PrivacyPolicyProps) {
 
 export const getStaticProps: GetStaticProps<PrivacyPolicyProps> = async () => {
   try {
-    const filePath = join(process.cwd(), "src", "content", "privacy-policy.md");
-    const content = readFileSync(filePath, "utf8");
+    const filePath = join(process.cwd(), 'src', 'content', 'privacy-policy.md');
+    const content = readFileSync(filePath, 'utf8');
 
     return {
       props: {
@@ -57,10 +57,10 @@ export const getStaticProps: GetStaticProps<PrivacyPolicyProps> = async () => {
       },
     };
   } catch (error) {
-    console.error("Error reading privacy policy markdown file:", error);
+    console.error('Error reading privacy policy markdown file:', error);
     return {
       props: {
-        content: "# Privacy Policy\n\nContent could not be loaded.",
+        content: '# Privacy Policy\n\nContent could not be loaded.',
       },
     };
   }

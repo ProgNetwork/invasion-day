@@ -2,7 +2,7 @@ import CampaignIcon from '@mui/icons-material/Campaign';
 import ForumIcon from '@mui/icons-material/Forum';
 import HowToVoteIcon from '@mui/icons-material/HowToVote';
 import VisibilityIcon from '@mui/icons-material/Visibility';
-import React from "react";
+import React from 'react';
 
 interface MovementPillarProps {
   title: string;
@@ -23,25 +23,25 @@ const MovementPillar: React.FC<MovementPillarProps> = ({ title, description, ico
 const PowerfulMovement: React.FC = () => {
   const pillars = [
     {
-      title: "Spark Conversations",
+      title: 'Spark Conversations',
       description:
-        "Using the power of conversations, we can build understanding, support and momentum for Treaty in diverse communities everywhere.",
+        'Using the power of conversations, we can build understanding, support and momentum for Treaty in diverse communities everywhere.',
       icon: <ForumIcon fontSize="large" className="!text-2xl" />,
     },
     {
-      title: "Share the Story",
-      description: "First Nations people hold the truths, solutions and vision to shape a more just future. Everyone can help amplify our message for truth, healing and justice.",
+      title: 'Share the Story',
+      description: 'First Nations people hold the truths, solutions and vision to shape a more just future. Everyone can help amplify our message for truth, healing and justice.',
       icon: <CampaignIcon fontSize="large" className="!text-4xl" />,
     },
     {
-      title: "Show the Momentum",
+      title: 'Show the Momentum',
       description:
-        "We heard it on the radio, and we saw it on the television ... now it's time to make the Treaty movement visible everywhere: from our front yards, to city streets, to the doorsteps of decision-makers.",
+        'We heard it on the radio, and we saw it on the television ... now it&apos;s time to make the Treaty movement visible everywhere: from our front yards, to city streets, to the doorsteps of decision-makers.',
       icon: <VisibilityIcon fontSize="large" className="!text-3xl" />,
     },
     {
-      title: "Shift the Politics",
-      description: "By building a social movement that's impossible to ignore, we'll create the public mandate for political leaders to prioritise truth-telling and Treaty processes at a state, Territory and Federal level.",
+      title: 'Shift the Politics',
+      description: 'By building a social movement that&apos;s impossible to ignore, we&apos;ll create the public mandate for political leaders to prioritise truth-telling and Treaty processes at a state, Territory and Federal level.',
       icon: <HowToVoteIcon fontSize="large" className="!text-3xl" />,
     },
   ];
@@ -52,7 +52,8 @@ const PowerfulMovement: React.FC = () => {
         <div className="text-center">
           <h2 className="mb-4 text-3xl font-bold sm:text-4xl">Let's Make It Happen</h2>
           <p className="mx-auto max-w-3xl text-lg text-gray-600">
-            If we build a huge movement with loud, proud support for truth and Treaties, then governments across the country will be forced to act towards transformational change.
+            If we build a huge movement with loud, proud support for truth and Treaties,
+            then governments across the country will be forced to act towards transformational change.
           </p>
         </div>
         <div className="mt-16 grid gap-12 sm:grid-cols-2 md:grid-cols-4">

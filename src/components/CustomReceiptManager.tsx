@@ -20,10 +20,10 @@ const CustomReceiptManager: React.FC<CustomReceiptManagerProps> = ({
   const [error, setError] = useState('');
 
   const defaultMessages = [
-    "Thank you for your generous support of the Treaty movement. Your contribution will help fund vital community initiatives and support First Nations organisers in their important work.",
-    "Your donation makes a real difference in our campaign for justice and reconciliation. Together, we can build a stronger future for all Australians.",
+    'Thank you for your generous support of the Treaty movement. Your contribution will help fund vital community initiatives and support First Nations organisers in their important work.',
+    'Your donation makes a real difference in our campaign for justice and reconciliation. Together, we can build a stronger future for all Australians.',
     "We're grateful for your commitment to the Treaty movement. Your support helps us amplify First Nations voices and create meaningful change.",
-    "Thank you for standing with us in the fight for justice and recognition. Your contribution supports community-led initiatives and cultural preservation.",
+    'Thank you for standing with us in the fight for justice and recognition. Your contribution supports community-led initiatives and cultural preservation.',
   ];
 
   const handleSendCustomReceipt = async () => {
@@ -56,7 +56,7 @@ const CustomReceiptManager: React.FC<CustomReceiptManagerProps> = ({
       } else {
         setError(data.error || 'Failed to send custom receipt');
       }
-    } catch (err) {
+    } catch {
       setError('Failed to send custom receipt');
     } finally {
       setLoading(false);
@@ -90,7 +90,7 @@ const CustomReceiptManager: React.FC<CustomReceiptManagerProps> = ({
   return (
     <div className="max-w-2xl mx-auto p-6 bg-gray-50 border rounded-lg">
       <h3 className="text-xl font-semibold mb-4">Custom Receipt Manager</h3>
-      
+
       <div className="mb-6">
         <label className="block text-sm font-medium mb-2">
           Custom Message (Optional)
@@ -148,7 +148,7 @@ const CustomReceiptManager: React.FC<CustomReceiptManagerProps> = ({
         >
           {loading ? 'Sending...' : 'Send Custom Receipt'}
         </Button>
-        
+
         <Button
           variant="outline"
           onClick={() => setCustomMessage('')}
@@ -159,11 +159,11 @@ const CustomReceiptManager: React.FC<CustomReceiptManagerProps> = ({
       </div>
 
       <div className="mt-4 text-xs text-gray-600">
-        <p><strong>Note:</strong> Custom receipts include substantial content about the campaign impact, 
+        <p><strong>Note:</strong> Custom receipts include substantial content about the campaign impact,
         tax deduction information, and next steps. The receipt is professionally formatted and branded.</p>
       </div>
     </div>
   );
 };
 
-export default CustomReceiptManager; 
+export default CustomReceiptManager;

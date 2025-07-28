@@ -33,9 +33,9 @@ const DonateFormInner: React.FC = () => {
   const handleSubmit = async () => {
     const newErrors: typeof errors = {};
 
-    if (!baseAmount || baseAmount <= 0) newErrors.amount = 'Please enter a valid donation amount.';
-    if (!/\S+@\S+\.\S+/.test(email)) newErrors.email = 'Please enter a valid email address.';
-    if (!cardName.trim()) newErrors.cardName = 'Please enter the name on the card.';
+    if (!baseAmount || baseAmount <= 0) { newErrors.amount = 'Please enter a valid donation amount.'; }
+    if (!(/\S+@\S+\.\S+/).test(email)) { newErrors.email = 'Please enter a valid email address.'; }
+    if (!cardName.trim()) { newErrors.cardName = 'Please enter the name on the card.'; }
 
     const cardElement = elements?.getElement(CardElement);
     if (!cardElement) {
@@ -43,7 +43,7 @@ const DonateFormInner: React.FC = () => {
     }
 
     setErrors(newErrors);
-    if (Object.keys(newErrors).length > 0) return;
+    if (Object.keys(newErrors).length > 0) { return; }
 
     setLoading(true);
 
@@ -71,7 +71,7 @@ const DonateFormInner: React.FC = () => {
       body: JSON.stringify(
         donationType === 'recurring'
           ? { email, paymentMethodId, amount: totalAmount, interval }
-          : { cardName, email, amount: totalAmount, donationType }
+          : { cardName, email, amount: totalAmount, donationType },
       ),
     });
 
@@ -83,12 +83,12 @@ const DonateFormInner: React.FC = () => {
       return;
     }
 
-    const confirmResult =
-      donationType === 'recurring'
+    const confirmResult
+      = donationType === 'recurring'
         ? await stripe!.confirmCardSetup(clientSecret, { payment_method: paymentMethodId })
         : await stripe!.confirmCardPayment(clientSecret, {
-            payment_method: paymentMethodResult.paymentMethod.id,
-          });
+          payment_method: paymentMethodResult.paymentMethod.id,
+        });
 
     if (confirmResult.error) {
       setErrors({ card: confirmResult.error.message || 'Payment failed.' });
@@ -104,8 +104,8 @@ const DonateFormInner: React.FC = () => {
       <h2 className="text-2xl font-bold mb-2">Support The Movement</h2>
       <p className="text-sm mb-6 text-gray-600">
         Your contribution helps support First Nations organisers, community events, and storytelling.
-        <br/> 
-        This campaign is being coordinated by Common Threads, supported by the Centre for Australian Progress. 
+        <br/>
+        This campaign is being coordinated by Common Threads, supported by the Centre for Australian Progress.
         Donations over $2 are tax deductible. Your tax receipt will be issued by the Centre for Australian Progress.
       </p>
 

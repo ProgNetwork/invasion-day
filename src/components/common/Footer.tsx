@@ -1,7 +1,7 @@
-import { ArrowTopRightOnSquareIcon } from "@heroicons/react/16/solid";
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
+import { ArrowTopRightOnSquareIcon } from '@heroicons/react/16/solid';
+import Image from 'next/image';
+import Link from 'next/link';
+import React from 'react';
 
 interface FooterItem {
   label: string;
@@ -20,16 +20,16 @@ interface FooterColumnProps {
 
 const DONATE_ITEMS: (FooterItem | undefined)[] = [
   {
-    label: "Make a donation",
-    path: "/donate",
+    label: 'Make a donation',
+    path: '/donate',
   },
   // {
   //   label: "Gift in your Will",
   //   path: "/donate/willpower",
   // },
   {
-    label: "Donations Policy",
-    path: "/donations-policy",
+    label: 'Donations Policy',
+    path: '/donations-policy',
   },
   // {
   //   label: "Donations Disclosure",
@@ -47,8 +47,8 @@ const INFO_ITEMS: (FooterItem | undefined)[] = [
   //   path: "/unsubscribe",
   // },
   {
-    label: "Privacy Policy",
-    path: "/privacy-policy",
+    label: 'Privacy Policy',
+    path: '/privacy-policy',
   },
   // {
   //   label: "Frequently Asked Questions",
@@ -66,18 +66,18 @@ const INFO_ITEMS: (FooterItem | undefined)[] = [
 
 const FOOTER_SECTIONS: FooterColumn[] = [
   {
-    label: "Donate",
+    label: 'Donate',
     items: DONATE_ITEMS.filter(Boolean) as FooterItem[],
   },
   {
-    label: "Info",
+    label: 'Info',
     items: INFO_ITEMS.filter(Boolean) as FooterItem[],
   },
 ];
 
 const FooterLink: React.FC<{ item: FooterItem }> = ({ item }) => {
-  const linkClasses =
-    "my-3 block text-gray-700 hover:text-primary-600 transition-colors duration-200 flex gap-1 items-center";
+  const linkClasses
+    = 'my-3 block text-gray-700 hover:text-primary-600 transition-colors duration-200 flex gap-1 items-center';
 
   if (item.external) {
     return (
@@ -95,7 +95,7 @@ const FooterLink: React.FC<{ item: FooterItem }> = ({ item }) => {
   );
 };
 
-const FooterColumn: React.FC<FooterColumnProps> = ({ data }) => (
+const FooterColumnComponent: React.FC<FooterColumnProps> = ({ data }) => (
   <div className="mb-8 text-sm sm:text-base md:mb-0 ">
     <h3 className="mb-4 text-xs font-medium tracking-wide text-gray-400 uppercase">{data.label}</h3>
     <nav aria-label={`${data.label} links`}>
@@ -124,7 +124,7 @@ const Footer: React.FC = () => {
           </div>
           <div className="md:block hidden"/>
           {FOOTER_SECTIONS.map((section) => (
-            <FooterColumn key={section.label} data={section} />
+            <FooterColumnComponent key={section.label} data={section} />
           ))}
         </div>
 

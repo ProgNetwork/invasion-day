@@ -37,12 +37,12 @@ const SignupForm: React.FC = () => {
     e.preventDefault();
 
     const newErrors: Errors = {};
-    if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = 'Valid email required.';
-    if (!formData.givenName.trim()) newErrors.givenName = 'First name required.';
-    if (!formData.familyName.trim()) newErrors.familyName = 'Last name required.';
-    if (!formData.postcode.trim()) newErrors.postcode = 'Postcode required.';
+    if (!(/\S+@\S+\.\S+/).test(formData.email)) { newErrors.email = 'Valid email required.'; }
+    if (!formData.givenName.trim()) { newErrors.givenName = 'First name required.'; }
+    if (!formData.familyName.trim()) { newErrors.familyName = 'Last name required.'; }
+    if (!formData.postcode.trim()) { newErrors.postcode = 'Postcode required.'; }
     setErrors(newErrors);
-    if (Object.keys(newErrors).length > 0) return;
+    if (Object.keys(newErrors).length > 0) { return; }
 
     setLoading(true);
 

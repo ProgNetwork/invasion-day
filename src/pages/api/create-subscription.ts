@@ -32,7 +32,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       metadata: {
         donation_type: 'recurring',
         campaign: 'together-for-treaty',
-        interval: interval,
+        interval,
       },
     });
 
@@ -52,7 +52,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       product: product.id,
       metadata: {
         campaign: 'together-for-treaty',
-        interval: interval,
+        interval,
       },
     });
 

@@ -29,7 +29,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       custom_fields: {
         volunteer: volunteer ? 'yes' : 'no',
         atsi: atsi ? 'yes' : 'no',
-        sourceCode: sourceCode,
+        sourceCode,
       },
     };
 

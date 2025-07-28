@@ -68,8 +68,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 'Content-Type': 'application/json',
                 'OSDI-API-Token': API_KEY,
               },
-              body: JSON.stringify({ 
-                add_tags: ['together_for_treaty', sourceCode] 
+              body: JSON.stringify({
+                add_tags: ['together_for_treaty', sourceCode],
               }),
             });
           }
@@ -93,8 +93,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           'Content-Type': 'application/json',
           'OSDI-API-Token': API_KEY,
         },
-        body: JSON.stringify({ 
-          add_tags: ['together_for_treaty', sourceCode] 
+        body: JSON.stringify({
+          add_tags: ['together_for_treaty', sourceCode],
         }),
       });
     }

@@ -15,7 +15,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     email,
     postcode,
     sourceCode,
-    first_nations_identifying,
+    firstNationsIdentifying,
     volunteer,
   } = req.body;
 
@@ -28,7 +28,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       postal_addresses: [{ postal_code: postcode }],
       custom_fields: {
         volunteer: volunteer ? 'yes' : 'no',
-        first_nations_identifying: first_nations_identifying ? 'yes' : 'no',
+        first_nations_identifying: firstNationsIdentifying ? 'yes' : 'no',
         source_code: sourceCode,
       },
     };

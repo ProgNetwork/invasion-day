@@ -47,17 +47,17 @@ const DonateFormInner: React.FC = () => {
 
     setLoading(true);
 
-    const paymentMethodResult = await stripe!.createPaymentMethod({
+    const paymentMethodResult = await stripe?.createPaymentMethod({
       type: 'card',
       card: cardElement!,
-      billing_details: { 
-        name: cardName, 
-        email
+      billing_details: {
+        name: cardName,
+        email,
       },
     });
 
-    if (paymentMethodResult.error || !paymentMethodResult.paymentMethod) {
-      setErrors({ card: paymentMethodResult.error?.message || 'Failed to create payment method.' });
+    if (paymentMethodResult?.error || !paymentMethodResult?.paymentMethod) {
+      setErrors({ card: paymentMethodResult?.error?.message || 'Failed to create payment method.' });
       setLoading(false);
       return;
     }
@@ -88,12 +88,12 @@ const DonateFormInner: React.FC = () => {
 
     const confirmResult
       = donationType === 'recurring'
-        ? await stripe!.confirmCardSetup(clientSecret, { payment_method: paymentMethodId })
-        : await stripe!.confirmCardPayment(clientSecret, {
+        ? await stripe?.confirmCardSetup(clientSecret, { payment_method: paymentMethodId })
+        : await stripe?.confirmCardPayment(clientSecret, {
           payment_method: paymentMethodResult.paymentMethod.id,
         });
 
-    if (confirmResult.error) {
+    if (confirmResult?.error) {
       setErrors({ card: confirmResult.error.message || 'Payment failed.' });
     } else {
       window.location.href = '/?thank-you=true';
@@ -199,11 +199,11 @@ const DonateFormInner: React.FC = () => {
       {errors.cardName && <p className="text-red-600 text-sm mb-2">{errors.cardName}</p>}
 
       <div className="mb-2 p-2 border rounded bg-white">
-        <CardElement 
-          options={{ 
+        <CardElement
+          options={{
             style: { base: { fontSize: '16px' } },
-            hidePostalCode: true
-          }} 
+            hidePostalCode: true,
+          }}
         />
       </div>
       {errors.card && <p className="text-red-600 text-sm mb-2">{errors.card}</p>}

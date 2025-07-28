@@ -35,7 +35,7 @@ const ReceiptsAdminPage: NextPage = () => {
         id: 'pi_0987654321',
         amount: 100.00,
         email: 'supporter@example.com',
-        created: Date.now() / 1000 - 86400, // 1 day ago
+        created: (Date.now() / 1000) - 86400, // 1 day ago
         status: 'succeeded',
         receipt_sent: true,
       },

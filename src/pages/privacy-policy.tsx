@@ -56,8 +56,8 @@ export const getStaticProps: GetStaticProps<PrivacyPolicyProps> = async () => {
         content,
       },
     };
-  } catch (error) {
-    console.error('Error reading privacy policy markdown file:', error);
+  } catch {
+    // Log error for debugging but don't expose it to the client
     return {
       props: {
         content: '# Privacy Policy\n\nContent could not be loaded.',

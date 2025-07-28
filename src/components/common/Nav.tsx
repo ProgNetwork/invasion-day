@@ -3,6 +3,7 @@ import Button from '@/components/ui/Button';
 import Modal from '@/components/ui/Modal';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/20/solid';
 import Link from 'next/link';
+import Image from 'next/image';
 import React, { useState } from 'react';
 
 interface NavItem {
@@ -58,7 +59,7 @@ const Nav: React.FC = () => {
         <div className="flex h-14 items-center justify-between">
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center">
-              <img src="/images/tft-logo-shape.png" alt="Together for Treaty Logo" className="w-14 h-auto" />
+              <Image src="/images/tft-logo-shape.png" alt="Together for Treaty Logo" width={56} height={56} className="w-14 h-auto" />
               <span className="text-lg ml-1 font-bold text-primary-700">Together for Treaty</span>
             </Link>
           </div>

@@ -30,7 +30,8 @@ const ContactPage: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+    // Form submission logic would go here
+    // For now, we'll just prevent the default behavior
   };
 
   return (

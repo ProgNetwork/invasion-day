@@ -2,7 +2,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 const ACTION_NETWORK_API_URL = 'https://actionnetwork.org/api/v2/people';
-const API_KEY = process.env.ACTION_NETWORK_API_KEY!;
+const API_KEY = process.env.ACTION_NETWORK_API_KEY || '';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
@@ -70,14 +70,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             });
           }
 
-          console.log('Patched existing record and applied tag:', {
-            givenName,
-            familyName,
-            email,
-            postcode,
-            volunteer,
-            tag: 'together_for_treaty',
-          });
+          // Log the signup locally (mock example)
           return res.status(200).json({ success: true, message: 'Updated existing record and tagged' });
         } else {
           return res.status(400).json({ error: 'Patch failed', details: patchData });
@@ -100,18 +93,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       });
     }
 
-    // b. Log the signup locally (mock example)
-    console.log('Signup stored locally:', {
-      name: `${givenName} ${familyName}`,
-      email,
-      postcode,
-      volunteer,
-      tag: 'together_for_treaty',
-    });
-
+    // Log the signup locally (mock example)
     return res.status(200).json({ success: true, message: 'New record created and tagged' });
-  } catch (error) {
-    console.error('Server error:', error);
-    return res.status(500).json({ error: 'Server error', details: error });
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    return res.status(500).json({ error: 'Server error', details: errorMessage });
   }
 }

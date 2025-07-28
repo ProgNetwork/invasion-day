@@ -8,7 +8,7 @@ import {
 import { loadStripe } from '@stripe/stripe-js';
 import React, { useMemo, useState } from 'react';
 
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '');
 
 const presetAmounts = [12, 30, 50];
 
@@ -45,11 +45,16 @@ const DonateFormInner: React.FC = () => {
     setErrors(newErrors);
     if (Object.keys(newErrors).length > 0) { return; }
 
+    if (!cardElement) {
+      setErrors({ card: 'Card input could not be found.' });
+      return;
+    }
+
     setLoading(true);
 
     const paymentMethodResult = await stripe?.createPaymentMethod({
       type: 'card',
-      card: cardElement!,
+      card: cardElement,
       billing_details: {
         name: cardName,
         email,

@@ -1,117 +1,269 @@
-# Email Template Customization
+# Email Customization Guide
 
-This document explains how to customize the email templates for donation receipts sent by Stripe.
+This guide explains how to customize email content and templates for the Together For Treaty receipt system.
 
 ## Overview
 
-The donation system now includes configurable email templates that are sent to donors via Stripe's receipt system. The templates are defined in `src/lib/email-config.ts` and used in the payment processing APIs.
+The receipt system uses a template-based approach that allows for easy customization of all email content while maintaining professional branding and legal compliance.
 
-## Configuration Files
+## Template Structure
 
-### `src/lib/email-config.ts`
-Contains all configurable email template parts and organization details.
-
-### `src/lib/utils.ts`
-Contains the `generateDonationEmailDescription()` function that assembles the email template.
-
-## Customizing Email Templates
-
-### 1. Organization Details
-Update the `EMAIL_CONFIG` object in `src/lib/email-config.ts`:
+### ReceiptTemplate Interface
 
 ```typescript
-export const EMAIL_CONFIG = {
-  organization: {
-    name: 'Your Organization Name',
-    address: 'Your Address',
-    email: 'your-email@domain.com',
-    abn: 'Your ABN',
-    dgrPeriod: 'Your DGR Period'
-  },
-  // ... other config
+interface ReceiptTemplate {
+  subject: string;
+  header: string;
+  impactSection: {
+    title: string;
+    description: string;
+    bulletPoints: string[];
+  };
+  taxInfo: string;
+  nextSteps: {
+    title: string;
+    description: string;
+    bulletPoints: string[];
+  };
+  footer: {
+    title: string;
+    description: string;
+    contactInfo: string;
+  };
+  branding: {
+    primaryColor: string;
+    secondaryColor: string;
+    logoUrl?: string;
+  };
 }
 ```
 
-### 2. Email Template Parts
-Modify individual template parts in the `EMAIL_TEMPLATES` object:
+## Customizing Content
+
+### 1. Subject Lines
+
+Update the email subject line for different donation types:
 
 ```typescript
-export const EMAIL_TEMPLATES = {
-  greeting: (firstName: string) => `Dear ${firstName},`,
-  thankYou: `Your custom thank you message...`,
-  campaignInfo: `Your campaign information...`,
-  // ... other template parts
-}
+export const defaultReceiptTemplate: ReceiptTemplate = {
+  subject: 'Thank you for your donation to Together For Treaty',
+  // ...
+};
+
+export const recurringReceiptTemplate: ReceiptTemplate = {
+  subject: 'Thank you for your recurring donation to Together For Treaty',
+  // ...
+};
 ```
 
-### 3. Template Structure
-The email template is structured as follows:
+### 2. Impact Descriptions
 
-1. **Greeting** - Personalized greeting with donor's first name
-2. **Thank You** - Thank you message
-3. **Campaign Info** - Information about the campaign and tax deductibility
-4. **Recurring Info** - Additional text for recurring donations (if applicable)
-5. **Contact Info** - Instructions for questions
-6. **Receipt Details** - Receipt number, date, donor name, and amount
-7. **Organization Details** - Organization contact information
-8. **Tax Info** - Tax deductibility information
-9. **Closing** - Final thank you and contact information
-
-## API Integration
-
-The email templates are automatically used in:
-
-- **One-time donations**: `src/pages/api/create-payment-intent.ts`
-- **Recurring donations**: `src/pages/api/create-subscription.ts`
-
-Both APIs use the `generateDonationEmailDescription()` function to create the email description that Stripe includes in receipts.
-
-## Stripe Configuration
-
-To enable email receipts in Stripe:
-
-1. Go to your Stripe Dashboard
-2. Navigate to Settings > Customer emails
-3. Enable "Email customers for successful payments"
-4. Customize branding (logo, colors) in Branding settings
-
-## Template Variables
-
-The email template supports the following dynamic variables:
-
-- `donorFirstName` - Donor's first name
-- `donorFullName` - Donor's full name
-- `donationAmount` - Donation amount
-- `receiptNumber` - Receipt number (currently set to 'XXX')
-- `donationDate` - Date of donation
-- `isRecurring` - Whether it's a recurring donation
-- `interval` - Recurring interval ('month' or 'week')
-
-## Example Customization
-
-To change the thank you message:
+Customize how you describe the impact of donations:
 
 ```typescript
-// In src/lib/email-config.ts
-export const EMAIL_TEMPLATES = {
-  // ... other templates
-  thankYou: `Thank you for your generous contribution to our cause. Your support makes a real difference in our community.`,
-  // ... other templates
-}
+impactSection: {
+  title: 'Your Impact',
+  description: 'Thank you for supporting the Treaty movement. Your contribution helps fund:',
+  bulletPoints: [
+    'First Nations organisers and community leaders',
+    'Community events and gatherings',
+    'Storytelling and cultural preservation initiatives',
+    'Educational programs and awareness campaigns',
+    'Advocacy and policy development',
+  ],
+},
 ```
+
+### 3. Tax Information
+
+Update tax-related content (ensure legal compliance):
+
+```typescript
+taxInfo: 'This campaign is being coordinated by Common Threads, supported by Centre for Australian Progress. Donations over $2 are tax deductible. Your contribution helps support First Nations organisers, community events, and storytelling.',
+```
+
+### 4. Next Steps
+
+Customize information about ongoing involvement:
+
+```typescript
+nextSteps: {
+  title: 'What happens next?',
+  description: 'Together For Treaty is working towards a future where First Nations peoples have a voice in decisions that affect their lives and communities. Your support helps us:',
+  bulletPoints: [
+    'Build stronger relationships between First Nations and non-Indigenous Australians',
+    'Advocate for meaningful Treaty negotiations',
+    'Support community-led initiatives and cultural programs',
+    'Create opportunities for truth-telling and reconciliation',
+  ],
+},
+```
+
+## Branding Customization
+
+### Colors
+
+Update the primary and secondary colors:
+
+```typescript
+branding: {
+  primaryColor: '#1a1a1a',    // Dark gray for headers
+  secondaryColor: '#2d5a27',   // Green for accents
+},
+```
+
+### Logo
+
+Add a logo URL (optional):
+
+```typescript
+branding: {
+  primaryColor: '#1a1a1a',
+  secondaryColor: '#2d5a27',
+  logoUrl: 'https://example.com/logo.png',
+},
+```
+
+## Template Types
+
+### Default Template
+Used for standard one-off donations under $100.
+
+### Recurring Template
+Used for subscription/recurring donations with emphasis on ongoing support.
+
+### Large Donation Template
+Used for donations of $100+ with enhanced messaging for major supporters.
+
+## Dynamic Content
+
+### Personalization
+
+The system automatically personalizes content:
+
+- **Donor name**: Extracted from payment data
+- **Donation amount**: Formatted with currency
+- **Date**: Formatted for Australian locale
+- **Receipt number**: From Stripe
+
+### Conditional Content
+
+Add conditional content based on donation type:
+
+```typescript
+export const getReceiptTemplate = (amount: number, isRecurring: boolean = false): ReceiptTemplate => {
+  if (isRecurring) {
+    return recurringReceiptTemplate;
+  }
+  
+  if (amount >= 100) {
+    return largeDonationTemplate;
+  }
+  
+  return defaultReceiptTemplate;
+};
+```
+
+## HTML Structure
+
+### Email Layout
+
+The generated HTML includes:
+
+1. **Header** - Branded header with campaign name
+2. **Personal greeting** - "Dear {donor_first_name}"
+3. **Thank you message** - Official thank you from Centre for Australian Progress
+4. **Campaign context** - Information about Together for Treaty
+5. **Official receipt** - Structured receipt with all required details
+6. **DGR information** - Legal tax information
+7. **Impact section** - How donations are used
+8. **Custom message** - Optional personal message
+9. **Next steps** - Ongoing involvement opportunities
+10. **Footer** - Contact information and final thank you
+
+### CSS Styling
+
+Customize the email appearance:
+
+```css
+body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+.container { max-width: 600px; margin: 0 auto; padding: 20px; }
+.header { background: #1a1a1a; color: white; padding: 30px; text-align: center; }
+.content { padding: 30px; background: #f9f9f9; }
+.footer { background: #1a1a1a; color: white; padding: 20px; text-align: center; }
+.amount { font-size: 24px; font-weight: bold; color: #2d5a27; }
+.message { background: white; padding: 20px; margin: 20px 0; border-left: 4px solid #2d5a27; }
+.highlight { background: #e8f5e8; padding: 15px; margin: 15px 0; border-radius: 5px; }
+```
+
+## Legal Compliance
+
+### Required Content
+
+Ensure all receipts include:
+
+- **DGR information**: Centre for Australian Progress Ltd (ABN: 76 158 172 484)
+- **Tax deductibility**: Clear statement about $2+ donations
+- **Contact information**: info@australianprogress.org.au
+- **Address**: 3 Albert Coates Lane, Melbourne VIC 3000
+- **Legal reference**: Item 1 of the table in section 30-15 of the Income Tax Assessment Act 1997
+
+### DGR Period
+
+Current DGR period: 01 Jul 2024 to 30 Jun 2029
 
 ## Testing
 
-To test email templates:
+### Test Cards
 
-1. Make a test donation through the form
-2. Check the Stripe Dashboard for the payment
-3. Verify the email description in the payment details
-4. Check that the receipt email was sent with the correct content
+Use Stripe test cards for testing:
 
-## Notes
+- **Success**: `4242 4242 4242 4242`
+- **Declined**: `4000 0000 0000 0002`
+- **Insufficient funds**: `4000 0000 0000 9995`
 
-- The email description is set on the PaymentIntent/Product description field
-- Stripe will include this description in the receipt emails
-- For recurring donations, the description is also set on the Product
-- All organization details are centralized in the config file for easy updates 
+### Preview Receipts
+
+1. Make a test donation
+2. Access `/admin/receipts`
+3. Send a custom receipt
+4. Check the generated HTML
+
+## Best Practices
+
+### Content Guidelines
+
+1. **Keep it personal** - Use donor's first name
+2. **Be specific** - Explain exactly how donations are used
+3. **Include context** - Explain the importance of Treaty negotiations
+4. **Provide next steps** - Encourage ongoing involvement
+5. **Maintain professionalism** - Use consistent branding
+
+### Technical Guidelines
+
+1. **Test thoroughly** - Verify all content renders correctly
+2. **Check legal compliance** - Ensure all required information is included
+3. **Optimize for mobile** - Test on various email clients
+4. **Monitor delivery** - Track email delivery and open rates
+5. **Backup templates** - Keep version control of template changes
+
+## Troubleshooting
+
+### Common Issues
+
+1. **Missing donor name** - Check payment intent metadata
+2. **Incorrect formatting** - Verify CSS styles
+3. **Legal content missing** - Ensure DGR information is included
+4. **Email not sending** - Check email service integration
+
+### Debug Steps
+
+1. Check browser console for errors
+2. Verify API endpoint responses
+3. Test with different donation amounts
+4. Validate HTML output
+5. Check email client compatibility
+
+## Support
+
+For questions about email customization or technical issues, please contact the development team. 

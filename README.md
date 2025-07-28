@@ -1,40 +1,150 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# Together For Treaty
 
-## Getting Started
+A Next.js application for the Together For Treaty campaign, featuring donation functionality with Stripe integration and comprehensive custom receipt system.
 
-First, run the development server:
+## 🎯 Project Overview
+
+Together For Treaty is a campaign coordinated by Common Threads and supported by the Centre for Australian Progress. This application provides:
+
+- **Donation processing** with Stripe integration
+- **Custom email receipts** with substantial content
+- **Admin interface** for receipt management
+- **Professional branding** and user experience
+
+## 🚀 Getting Started
+
+First, install dependencies:
+
+```bash
+npm install
+# or
+yarn install
+```
+
+Set up your environment variables:
+
+```bash
+cp .env.example .env.local
+```
+
+Add your Stripe keys and other configuration:
+
+```env
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_...
+STRIPE_SECRET_KEY=sk_test_...
+```
+
+Run the development server:
 
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## 📧 Custom Receipt System
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+The application includes a comprehensive custom receipt system with:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+- **Official Centre for Australian Progress content** with DGR information
+- **Substantial text content** explaining campaign impact
+- **Personal greeting** with donor's first name
+- **Professional formatting** and branding
+- **Custom message functionality** for personal touches
+- **Dynamic templates** based on donation type and amount
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Receipt Features
 
-## Learn More
+- ✅ **Complete DGR information** with ABN: 76 158 172 484
+- ✅ **Tax deductibility** details for donations over $2
+- ✅ **Campaign context** about Treaty negotiations
+- ✅ **Impact descriptions** of how donations are used
+- ✅ **Contact information** for questions and support
 
-To learn more about Next.js, take a look at the following resources:
+## 📚 Documentation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+- **[Receipt System Guide](docs/RECEIPT_SYSTEM.md)** - Complete documentation for the custom receipt system
+- **[Email Customization](docs/EMAIL_CUSTOMIZATION.md)** - Guide for customizing email content and templates
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🛠️ API Routes
 
-## Deploy on Vercel
+- `pages/api/create-payment-intent.ts` - Create one-off donations
+- `pages/api/create-subscription.ts` - Create recurring donations
+- `pages/api/send-custom-receipt.ts` - Send custom receipts with substantial content
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🎨 Admin Interface
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+Access the receipt management interface at `/admin/receipts` to:
+
+- View recent payments
+- Send custom receipts
+- Add personal messages
+- Manage receipt templates
+
+## 🧪 Testing
+
+Use Stripe's sandbox test cards for testing:
+
+- **Success:** `4242 4242 4242 4242`
+- **Declined:** `4000 0000 0000 0002`
+- **Insufficient funds:** `4000 0000 0000 9995`
+
+## 📁 Project Structure
+
+```
+src/
+├── components/
+│   ├── CustomReceiptManager.tsx    # Receipt management UI
+│   ├── form/
+│   │   └── DonateForm.tsx         # Donation form
+│   └── ui/                        # UI components
+├── lib/
+│   └── receipt-templates.ts       # Receipt template configuration
+├── pages/
+│   ├── admin/
+│   │   └── receipts.tsx           # Admin interface
+│   ├── api/                       # API routes
+│   └── donate.tsx                 # Donation page
+└── styles/
+    └── globals.css                # Global styles
+```
+
+## 🔧 Customization
+
+### Receipt Templates
+
+Edit receipt content in `src/lib/receipt-templates.ts`:
+
+```typescript
+export const defaultReceiptTemplate: ReceiptTemplate = {
+  subject: 'Thank you for your donation to Together For Treaty',
+  // Customize impact descriptions, tax info, and more
+};
+```
+
+### Branding
+
+Update colors and styling in the template configuration:
+
+```typescript
+branding: {
+  primaryColor: '#1a1a1a',
+  secondaryColor: '#2d5a27',
+}
+```
+
+## 🚀 Deployment
+
+The easiest way to deploy is using [Vercel](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme).
+
+Check out the [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+
+## 📞 Support
+
+For questions about the receipt system or customization needs, please contact the development team.
+
+---
+
+Built with [Next.js](https://nextjs.org/) and [Stripe](https://stripe.com/).

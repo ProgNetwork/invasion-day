@@ -70,14 +70,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   try {
     const ticketData = {
       subject: `Contact Form: ${firstName} ${lastName}`,
-      description: `
-        Name: ${firstName} ${lastName}
-        Email: ${email}
-        Phone: ${phoneNumber}
-        Message: ${message}
-
-        Submitted via Together for Treaty website contact form.
-      `,
+      description: message,
       email,
       priority: 1, // Medium priority
       status: 2, // Open
@@ -85,8 +78,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       // Using individual fields instead of requester object
       name: `${firstName} ${lastName}`,
       phone: phoneNumber,
+      source: 2, // 2 = Portal (website form)
+      // Custom fields need to be in a custom_fields object
       custom_fields: {
-        cf_source: 'Website Contact Form',
         cf_campaign: 'together-for-treaty',
         cf_first_nations_identifying: firstNationsIdentifying ? 'yes' : 'no',
       },

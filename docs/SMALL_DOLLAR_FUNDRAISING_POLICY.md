@@ -52,3 +52,7 @@ Common Threads is in the process of establishing its own DGR-eligible financial 
 * The campaign Stripe account and donor database will be migrated to Common Threads.
 * Website donation pathways will be updated to direct funds to Common Threads' own accounts.
 * Donor communications and receipting will be managed independently.
+
+## Contact Us
+
+If you have any questions about this donations policy or our fundraising practices, please contact us via hello@commonthreads.org.au 

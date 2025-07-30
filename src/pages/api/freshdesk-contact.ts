@@ -176,6 +176,42 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       }),
     });
 
+    // Trigger automation to create person and sign up to ActionNetwork
+    try {
+      const automationResponse = await fetch(`${baseUrl}/api/freshdesk-automation`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ticket: {
+            id: ticket.id,
+            ticket_number: ticket.ticket_number,
+            subject: ticket.subject,
+            description: message,
+            email,
+            name: `${firstName} ${lastName}`,
+            phone: phoneNumber,
+            custom_fields: {
+              cf_campaign: 'together-for-treaty',
+              cf_first_nations_identifying: firstNationsIdentifying ? 'yes' : 'no',
+            },
+          },
+          ticket_created_at: new Date().toISOString(),
+        }),
+      });
+
+      if (automationResponse.ok) {
+        const automationResult = await automationResponse.json();
+        // eslint-disable-next-line no-console
+        console.log('Automation triggered successfully:', automationResult);
+      } else {
+        // eslint-disable-next-line no-console
+        console.error('Automation failed:', await automationResponse.text());
+      }
+    } catch (automationError) {
+      // eslint-disable-next-line no-console
+      console.error('Failed to trigger automation:', automationError);
+    }
+
     return res.status(200).json({
       success: true,
       message: 'Ticket created successfully',

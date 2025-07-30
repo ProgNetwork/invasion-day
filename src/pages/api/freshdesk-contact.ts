@@ -71,22 +71,20 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const ticketData = {
       subject: `Contact Form: ${firstName} ${lastName}`,
       description: `
-Name: ${firstName} ${lastName}
-Email: ${email}
-Phone: ${phoneNumber}
-Message: ${message}
+        Name: ${firstName} ${lastName}
+        Email: ${email}
+        Phone: ${phoneNumber}
+        Message: ${message}
 
-Submitted via Together for Treaty website contact form.
+        Submitted via Together for Treaty website contact form.
       `,
       email,
       priority: 1, // Medium priority
       status: 2, // Open
       type: 'Question', // You can customize this based on your Freshdesk setup
-      requester: {
-        name: `${firstName} ${lastName}`,
-        email,
-        phone: phoneNumber,
-      },
+      // Using individual fields instead of requester object
+      name: `${firstName} ${lastName}`,
+      phone: phoneNumber,
       custom_fields: {
         cf_source: 'Website Contact Form',
         cf_campaign: 'together-for-treaty',
@@ -101,7 +99,7 @@ Submitted via Together for Treaty website contact form.
       priority: ticketData.priority,
       status: ticketData.status,
       type: ticketData.type,
-      requesterName: ticketData.requester.name,
+      requesterName: ticketData.name,
       customFields: ticketData.custom_fields,
       firstNationsIdentifying: firstNationsIdentifying ? 'yes' : 'no',
     });
@@ -140,10 +138,13 @@ Submitted via Together for Treaty website contact form.
         status: response.status,
         statusText: response.statusText,
         error: errorData,
+        errors: errorData.errors,
+        description: errorData.description,
       });
 
       // Log to monitoring endpoint
-      await fetch('/api/freshdesk-monitor', {
+      const baseUrl = process.env.NEXTAUTH_URL || `http://localhost:${process.env.PORT || 3000}`;
+      await fetch(`${baseUrl}/api/freshdesk-monitor`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -170,7 +171,8 @@ Submitted via Together for Treaty website contact form.
     });
 
     // Log to monitoring endpoint
-    await fetch('/api/freshdesk-monitor', {
+    const baseUrl = process.env.NEXTAUTH_URL || `http://localhost:${process.env.PORT || 3000}`;
+    await fetch(`${baseUrl}/api/freshdesk-monitor`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

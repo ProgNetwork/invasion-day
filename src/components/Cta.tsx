@@ -1,4 +1,3 @@
-import DonateForm from '@/components/form/DonateForm';
 import SignupForm from '@/components/form/SignupForm';
 import Button from '@/components/ui/Button';
 import Modal from '@/components/ui/Modal';
@@ -6,12 +5,9 @@ import React, { useState } from 'react';
 
 const Cta: React.FC = () => {
   const [isSignupModalOpen, setIsSignupModalOpen] = useState(false);
-  const [isDonateModalOpen, setIsDonateModalOpen] = useState(false);
 
   const openSignupModal = () => setIsSignupModalOpen(true);
   const closeSignupModal = () => setIsSignupModalOpen(false);
-  const openDonateModal = () => setIsDonateModalOpen(true);
-  const closeDonateModal = () => setIsDonateModalOpen(false);
 
   return (
     <>
@@ -28,7 +24,7 @@ const Cta: React.FC = () => {
             <Button variant="white" size="lg" onClick={openSignupModal}>
               Sign the Petition
             </Button>
-            <Button variant="white-outline" size="lg" onClick={openDonateModal}>
+            <Button variant="white-outline" size="lg" href="/donate">
               Donate
             </Button>
           </div>
@@ -36,9 +32,6 @@ const Cta: React.FC = () => {
       </section>
       <Modal isOpen={isSignupModalOpen} onClose={closeSignupModal} title="" noPadding>
         <SignupForm />
-      </Modal>
-      <Modal isOpen={isDonateModalOpen} onClose={closeDonateModal} title="" noPadding>
-        <DonateForm />
       </Modal>
     </>
   );

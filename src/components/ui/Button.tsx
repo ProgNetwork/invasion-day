@@ -1,4 +1,5 @@
 import { Button as HeadlessButton } from '@headlessui/react';
+import Link from 'next/link';
 import React from 'react';
 
 interface ButtonProps {
@@ -57,9 +58,9 @@ const Button: React.FC<ButtonProps> = ({
     }
 
     return (
-      <HeadlessButton as="a" href={href} className={buttonClasses}>
+      <Link href={href} className={buttonClasses}>
         {children}
-      </HeadlessButton>
+      </Link>
     );
   }
 

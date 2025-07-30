@@ -70,13 +70,19 @@ const Nav: React.FC = () => {
             ))}
           </div>
 
-          <div className="hidden flex-shrink-0 lg:flex">
+          <div className="hidden flex-shrink-0 lg:flex items-center space-x-3">
+            <Button variant="outline" size="md" href="/donate">
+              Donate
+            </Button>
             <Button variant="primary" size="md" onClick={() => setIsModalOpen(true)}>
-              Join the Movement
+              Join
             </Button>
           </div>
 
           <div className="flex items-center lg:hidden">
+            <Button variant="outline" size="sm" className="mr-2" href="/donate">
+              Donate
+            </Button>
             <Button variant="primary" size="sm" className="mr-3" onClick={() => setIsModalOpen(true)}>
               Join
             </Button>
@@ -101,9 +107,12 @@ const Nav: React.FC = () => {
                 <NavLink item={item} onClick={closeMenu} />
               </div>
             ))}
-            <div className="pt-4">
+            <div className="pt-4 space-y-3">
+              <Button variant="outline" size="md" className="w-full" href="/donate">
+                Donate
+              </Button>
               <Button variant="primary" size="md" className="w-full" onClick={() => setIsModalOpen(true)}>
-                Join the movement
+                Join
               </Button>
             </div>
           </div>

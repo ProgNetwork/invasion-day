@@ -84,13 +84,14 @@ const ContactPage: React.FC = () => {
             <p className="text-lg text-gray-600 mb-6">
               Your message has been sent successfully. We'll get back to you soon.
             </p>
-            <Button
-              onClick={() => setSubmitted(false)}
-              variant="primary"
-              className="font-sans"
-            >
-              Send another message
-            </Button>
+            <Link href="/">
+              <Button
+                variant="primary"
+                className="font-sans"
+              >
+                Go To Homepage
+              </Button>
+            </Link>
           </div>
         </div>
       </>

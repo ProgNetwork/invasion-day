@@ -9,9 +9,7 @@ This policy outlines how donations to the Together for Treaty campaign are manag
 
 ## Partnership and Tax Deductibility
 
-Common Threads is a First Nations-led organisation. As we establish independent fundraising systems, donations to the Together for Treaty campaign are currently accepted in partnership with the Centre for Australian Progress, a registered charity with Deductible Gift Recipient (DGR) status.
-
-All donations over $2 are tax-deductible.
+Your contribution helps support First Nations organisers, community events, and storytelling. This campaign is being coordinated by Common Threads, supported by Centre for Australian Progress. Donations over $2 are tax deductible. Your tax receipt will be issued by the Centre for Australian Progress.
 
 ## Privacy and Data Use
 

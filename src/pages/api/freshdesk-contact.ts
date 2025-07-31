@@ -136,22 +136,22 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         description: errorData.description,
       });
 
-          // Log to monitoring endpoint
-    try {
-      const baseUrl = process.env.NEXTAUTH_URL || `http://localhost:${process.env.PORT || 3000}`;
-      await fetch(`${baseUrl}/api/freshdesk-monitor`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          requestId,
-          status: 'error',
-          error: JSON.stringify(errorData),
-        }),
-      });
-    } catch (monitoringError) {
-      // eslint-disable-next-line no-console
-      console.error('Failed to log to monitoring endpoint:', monitoringError);
-    }
+      // Log to monitoring endpoint
+      try {
+        const baseUrl = process.env.NEXTAUTH_URL || `http://localhost:${process.env.PORT || 3000}`;
+        await fetch(`${baseUrl}/api/freshdesk-monitor`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            requestId,
+            status: 'error',
+            error: JSON.stringify(errorData),
+          }),
+        });
+      } catch (monitoringError) {
+        // eslint-disable-next-line no-console
+        console.error('Failed to log to monitoring endpoint:', monitoringError);
+      }
 
       return res.status(response.status).json({
         error: 'Failed to create ticket',

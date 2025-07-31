@@ -61,7 +61,7 @@ export default function Home() {
             priority
           />
         </div>
-        
+
         {/* Background Image - Desktop */}
         <div className="absolute inset-0 opacity-70 hidden lg:block">
           <Image
@@ -72,7 +72,7 @@ export default function Home() {
             priority
           />
         </div>
-        
+
         {/* Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -80,7 +80,7 @@ export default function Home() {
             <div className="hidden lg:block">
               {/* This space is intentionally left transparent */}
             </div>
-            
+
             {/* Donation Form */}
             <div>
               <DonateForm />

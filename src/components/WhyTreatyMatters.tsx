@@ -35,7 +35,7 @@ const WhyTreatyMatters: React.FC = () => {
           className="object-cover"
         />
       </div>
-      
+
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <h2 className="mb-4 text-3xl font-bold text-gray-900 sm:text-4xl">Why Treaty Matters</h2>

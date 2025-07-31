@@ -119,8 +119,9 @@ function useFadeInOnScroll() {
 
     // Cleanup function to unobserve when the component unmounts
     return () => {
-      if (domRef.current) {
-        observer.unobserve(domRef.current);
+      const currentRef = domRef.current;
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, []); // Empty dependency array ensures this runs once on mount
@@ -145,7 +146,6 @@ const EventCard = ({ title, description }: { title: string, description: string 
 };
 
 const Timeline: React.FC = () => {
-
   return (
     <section className="bg-gray-50 py-16 sm:py-24 relative overflow-hidden">
       {/* Background Image */}
@@ -157,7 +157,7 @@ const Timeline: React.FC = () => {
           className="object-cover"
         />
       </div>
-      
+
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-20 text-center">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">The Journey to Treaty</h2>
@@ -171,9 +171,9 @@ const Timeline: React.FC = () => {
               <div key={index} className="flex w-full items-center justify-between">
                 <div className="w-5/12">
                   {event.side === 'left' && (
-                    <EventCard 
-                      title={event.title} 
-                      description={event.description} 
+                    <EventCard
+                      title={event.title}
+                      description={event.description}
                     />
                   )}
                 </div>
@@ -182,9 +182,9 @@ const Timeline: React.FC = () => {
                 </div>
                 <div className="w-5/12">
                   {event.side === 'right' && (
-                    <EventCard 
-                      title={event.title} 
-                      description={event.description} 
+                    <EventCard
+                      title={event.title}
+                      description={event.description}
                     />
                   )}
                 </div>
@@ -203,9 +203,9 @@ const Timeline: React.FC = () => {
                   {event.year}
                 </div>
                 <div className="pt-1">
-                  <EventCard 
-                    title={event.title} 
-                    description={event.description} 
+                  <EventCard
+                    title={event.title}
+                    description={event.description}
                   />
                 </div>
               </div>

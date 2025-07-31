@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import Image from 'next/image';
 
 interface TimelineEvent {
   year: string;
@@ -97,17 +98,67 @@ const events: TimelineEvent[] = [
   },
 ];
 
-const EventCard = ({ title, description }: { title: string, description: string | React.ReactNode }) => (
-  <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-md">
-    <h3 className="mb-2 text-xl font-bold">{title}</h3>
-    <p className="text-gray-600 gap-2 flex flex-col">{description}</p>
-  </div>
-);
+// Custom hook for fade-in on scroll
+function useFadeInOnScroll() {
+  const [isVisible, setVisible] = useState(false);
+  const domRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(entries => {
+      // Only set visible if the element is intersecting (in view)
+      if (entries[0].isIntersecting) {
+        setVisible(true);
+        // Optionally, disconnect the observer after the first fade-in
+        // observer.disconnect();
+      }
+    });
+
+    if (domRef.current) {
+      observer.observe(domRef.current);
+    }
+
+    // Cleanup function to unobserve when the component unmounts
+    return () => {
+      if (domRef.current) {
+        observer.unobserve(domRef.current);
+      }
+    };
+  }, []); // Empty dependency array ensures this runs once on mount
+
+  return [domRef, isVisible];
+}
+
+const EventCard = ({ title, description }: { title: string, description: string | React.ReactNode }) => {
+  const [domRef, isVisible] = useFadeInOnScroll();
+
+  return (
+    <div
+      ref={domRef}
+      className={`rounded-lg border border-gray-200 bg-white p-6 shadow-md transition-all duration-4800 ease-out ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
+      }`}
+    >
+      <h3 className="mb-2 text-xl font-bold">{title}</h3>
+      <div className="text-gray-600 gap-2 flex flex-col">{description}</div>
+    </div>
+  );
+};
 
 const Timeline: React.FC = () => {
+
   return (
-    <section className="bg-gray-50 py-16 sm:py-24">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section className="bg-gray-50 py-16 sm:py-24 relative overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0 opacity-10">
+        <Image
+          src="/images/woman-collage.png"
+          alt=""
+          fill
+          className="object-cover"
+        />
+      </div>
+      
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-20 text-center">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">The Journey to Treaty</h2>
         </div>
@@ -117,15 +168,25 @@ const Timeline: React.FC = () => {
           <div className="absolute top-0 left-1/2 h-full w-0.5 -translate-x-1/2 transform bg-primary-200"></div>
           <div className="space-y-12">
             {events.map((event, index) => (
-              <div key={index} className="flex w-full items-start justify-between">
+              <div key={index} className="flex w-full items-center justify-between">
                 <div className="w-5/12">
-                  {event.side === 'left' && <EventCard title={event.title} description={event.description} />}
+                  {event.side === 'left' && (
+                    <EventCard 
+                      title={event.title} 
+                      description={event.description} 
+                    />
+                  )}
                 </div>
                 <div className="z-10 flex h-10 w-10 items-center justify-center rounded-full bg-primary-700 font-bold text-white shadow-md">
                   {event.year}
                 </div>
                 <div className="w-5/12">
-                  {event.side === 'right' && <EventCard title={event.title} description={event.description} />}
+                  {event.side === 'right' && (
+                    <EventCard 
+                      title={event.title} 
+                      description={event.description} 
+                    />
+                  )}
                 </div>
               </div>
             ))}
@@ -142,7 +203,10 @@ const Timeline: React.FC = () => {
                   {event.year}
                 </div>
                 <div className="pt-1">
-                  <EventCard title={event.title} description={event.description} />
+                  <EventCard 
+                    title={event.title} 
+                    description={event.description} 
+                  />
                 </div>
               </div>
             ))}

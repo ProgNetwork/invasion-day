@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import StoryCard from './StoryCard';
 
 const stories = [
@@ -24,8 +25,18 @@ const stories = [
 
 const WhyTreatyMatters: React.FC = () => {
   return (
-    <section className="bg-gray-50 py-16 sm:py-24">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section className="bg-gray-50 py-16 sm:py-24 relative overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0 opacity-10">
+        <Image
+          src="/images/artboard-2.png"
+          alt=""
+          fill
+          className="object-cover"
+        />
+      </div>
+      
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <h2 className="mb-4 text-3xl font-bold text-gray-900 sm:text-4xl">Why Treaty Matters</h2>
           <p className="mx-auto max-w-3xl text-lg text-gray-600">

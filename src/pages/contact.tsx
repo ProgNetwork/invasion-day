@@ -21,6 +21,7 @@ const ContactPage: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState('');
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -105,15 +106,16 @@ const ContactPage: React.FC = () => {
         <meta name="description" content="Get in touch with the Together for Treaty campaign" />
       </Head>
 
-      <div className="min-h-screen bg-primary-600 py-12 relative overflow-hidden">
+      <div className="min-h-screen py-12 relative overflow-hidden" style={{ backgroundColor: '#f27419' }}>
         {/* Background Image */}
-        <div className="absolute inset-0 opacity-70">
+        <div className={`absolute inset-0 transition-opacity duration-1000 ${imageLoaded ? 'opacity-70' : 'opacity-0'}`}>
           <Image
             src="/images/christopher-ragland-carving.jpg"
             alt="Christopher Ragland carving"
             fill
             className="object-cover"
             priority
+            onLoad={() => setImageLoaded(true)}
           />
         </div>
 

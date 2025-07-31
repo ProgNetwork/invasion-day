@@ -99,7 +99,7 @@ const events: TimelineEvent[] = [
 ];
 
 // Custom hook for fade-in on scroll
-function useFadeInOnScroll() {
+function useFadeInOnScroll(): [React.RefObject<HTMLDivElement | null>, boolean] {
   const [isVisible, setVisible] = useState(false);
   const domRef = useRef<HTMLDivElement>(null);
 

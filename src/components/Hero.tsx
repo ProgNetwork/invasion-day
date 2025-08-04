@@ -11,6 +11,7 @@ const Hero: React.FC = () => {
   return (
     <section className="relative flex h-[420px] items-center justify-center overflow-hidden md:h-[720] border-b-8 border-primary-700">
       <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 bg-black" />
         <Image
           src="/images/hero.png"
           alt="Hero background"

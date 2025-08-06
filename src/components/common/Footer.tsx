@@ -58,10 +58,6 @@ const INFO_ITEMS: (FooterItem | undefined)[] = [
   //   label: "Contact Us",
   //   path: "/contact-us",
   // },
-  // {
-  //   label: "Work at GetUp",
-  //   path: "/about/work-at-getup",
-  // },
 ];
 
 const FOOTER_SECTIONS: FooterColumn[] = [
@@ -111,8 +107,6 @@ const FooterColumnComponent: React.FC<FooterColumnProps> = ({ data }) => (
 );
 
 const Footer: React.FC = () => {
-  const currentYear = new Date().getFullYear();
-
   return (
     <footer className="bg-gray-100 px-4 py-12" role="contentinfo">
       <div className="mx-auto max-w-7xl">
@@ -134,7 +128,7 @@ const Footer: React.FC = () => {
           </p>
 
           <p>
-            © {currentYear} Common Threads All rights reserved. Authorised by L. Baldwin-Roberts, Common Threads.
+            © 2025 Common Threads All rights reserved. Authorised by L. Baldwin-Roberts, Common Threads.
           </p>
         </div>
       </div>

@@ -35,6 +35,38 @@ const Faq: React.FC = () => {
         </p>
       ),
     },
+    {
+      q: 'What is the Truth-telling and Treaty process in Victoria?',
+      a: (
+        <div>
+          <p className="mb-4">
+            <strong>Yoorrook truth-telling process:</strong> The Yoorrook Justice Commission has led a groundbreaking truth-telling process in Victoria: listening to the experiences of First Nations people and charting a course forward for action, healing and justice. After more than four years and over 1,300 submissions, the final report was handed down in July 2025. It includes 100 recommendations to address ongoing and systemic injustices across areas such as health, education, land rights and representation.
+          </p>
+          <p className="mb-4">
+            We can only be our best and create a country where everyone can thrive when we listen and acknowledge the truth of our past and present. We must speak the truth about Australia's history regarding Aboriginal people — including massacres, dispossession, and the violent suppression of language and culture — and understand how these systems continue today. Through truth-telling, we can honour the strength and survival of First Nations peoples and build a more just future together.
+          </p>
+          <p>
+            <strong>Statewide Treaty process:</strong> Right now, the First Peoples' Assembly - an elected body representing First Peoples across Victoria - is negotiating a statewide Treaty with the Victorian government. This Treaty can make sure Aboriginal communities have the freedom and power to set the course and design solutions that work for their mob across a range of areas - like removing unfair barriers to healthcare and housing, making sure young people can thrive, and making sure all Victorians can learn about and celebrate First Nations cultures.
+          </p>
+          <p>
+            The Victorian Treaty legislation is set to be tabled in Parliament before the end of 2025. 
+          </p>
+        </div>
+      ),
+    },
+    {
+      q: 'What about Treaties in other states?',
+      a: (
+        <ul className="space-y-2">
+          <li><strong>NSW:</strong> Committed to a 12-month consultation process in 2023 with discussions beginning in the coming months.</li>
+          <li><strong>Queensland:</strong> A Path to Treaty process which began under Labor in 2019 was scrapped in 2024 by the incoming Liberal National Party.</li>
+          <li><strong>South Australia:</strong> Aboriginal leaders are keen for discussions to restart but the state government has said no treaty will be negotiated before the next state election in March 2026. South Australia has the first state-based voice which was legislated in 2023.</li>
+          <li><strong>Tasmania:</strong> The Tasmanian government has committed to a truth-telling process, but has dropped Treaty discussions.</li>
+          <li><strong>Northern Territory:</strong> The Country Liberal Party (CLP) government scrapped the treaty process in February 2025.</li>
+          <li><strong>Western Australia:</strong> Has made no formal commitments.</li>
+        </ul>
+      ),
+    },
   ];
 
   return (

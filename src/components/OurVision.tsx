@@ -3,11 +3,21 @@ import React from 'react';
 
 const OurVision: React.FC = () => {
   return (
-    <section className="bg-gray-50 py-16 sm:py-24">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section className="bg-gray-50 py-16 sm:py-24 relative overflow-hidden">
+      {/* Background Texture */}
+      <div className="absolute inset-0 opacity-10">
+        <Image
+          src="/images/shapes-texture.png"
+          alt=""
+          fill
+          className="object-cover"
+        />
+      </div>
+
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-2 xl:grid-cols-3 xl:gap-8 items-center">
           <div className="xl:col-span-2">
-            <h2 className="text-primary-700 mb-6 text-3xl font-bold tracking-tight sm:text-4xl ">What's at Stake</h2>
+            <h2 className="text-primary-700 mb-6 text-3xl font-bold tracking-tight sm:text-4xl">What's at Stake</h2>
             <div className="space-y-6 text-xl leading-relaxed text-gray-700">
               <p>
                 Decades of leadership by our Elders have laid the foundations for the historic truth and Treaty process underway in Victoria right now: the first in the country.

@@ -6,15 +6,21 @@ import React, { useState } from 'react';
 
 const Hero: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
 
   return (
     <section className="relative flex h-[420px] items-center justify-center overflow-hidden md:h-[720] border-b-8 border-primary-700">
       <div className="absolute inset-0 z-0">
-        <div
-          className="h-full w-full bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: "url('./images/hero.png')",
-          }}
+        <div className="absolute inset-0 bg-black" />
+        <Image
+          src="/images/hero.png"
+          alt="Hero background"
+          fill
+          className={`object-cover transition-opacity duration-1000 ${
+            isImageLoaded ? 'opacity-100' : 'opacity-0'
+          }`}
+          onLoad={() => setIsImageLoaded(true)}
+          priority
         />
         {/* <div className="absolute inset-0 bg-secondary-700/90"></div> */}
       </div>

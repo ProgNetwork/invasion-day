@@ -137,16 +137,21 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       });
 
       // Log to monitoring endpoint
-      const baseUrl = process.env.NEXTAUTH_URL || `http://localhost:${process.env.PORT || 3000}`;
-      await fetch(`${baseUrl}/api/freshdesk-monitor`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          requestId,
-          status: 'error',
-          error: JSON.stringify(errorData),
-        }),
-      });
+      try {
+        const baseUrl = process.env.NEXTAUTH_URL || `http://localhost:${process.env.PORT || 3000}`;
+        await fetch(`${baseUrl}/api/freshdesk-monitor`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            requestId,
+            status: 'error',
+            error: JSON.stringify(errorData),
+          }),
+        });
+      } catch (monitoringError) {
+        // eslint-disable-next-line no-console
+        console.error('Failed to log to monitoring endpoint:', monitoringError);
+      }
 
       return res.status(response.status).json({
         error: 'Failed to create ticket',
@@ -166,15 +171,20 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     // Log to monitoring endpoint
     const baseUrl = process.env.NEXTAUTH_URL || `http://localhost:${process.env.PORT || 3000}`;
-    await fetch(`${baseUrl}/api/freshdesk-monitor`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        requestId,
-        status: 'success',
-        ticketId: ticket.id,
-      }),
-    });
+    try {
+      await fetch(`${baseUrl}/api/freshdesk-monitor`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          requestId,
+          status: 'success',
+          ticketId: ticket.id,
+        }),
+      });
+    } catch (monitoringError) {
+      // eslint-disable-next-line no-console
+      console.error('Failed to log to monitoring endpoint:', monitoringError);
+    }
 
     // Trigger automation to create person and sign up to ActionNetwork
     try {

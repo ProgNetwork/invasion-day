@@ -18,6 +18,14 @@ const NAV_ITEMS: NavItem[] = [
     path: '/about',
   },
   {
+    label: 'Get Involved',
+    path: '/get-involved',
+  },
+  {
+    label: 'Resources',
+    path: '/resources',
+  },
+  {
     label: 'Contact',
     path: '/contact',
   },
@@ -80,12 +88,6 @@ const Nav: React.FC = () => {
           </div>
 
           <div className="flex items-center lg:hidden">
-            <Button variant="outline" size="sm" className="mr-2" href="/donate">
-              Donate
-            </Button>
-            <Button variant="primary" size="sm" className="mr-3" onClick={() => setIsModalOpen(true)}>
-              Join
-            </Button>
             <button
               onClick={toggleMenu}
               className="hover:text-primary-600 focus:ring-primary-500 inline-flex items-center justify-center rounded-md p-2 text-gray-700 hover:bg-gray-100 focus:ring-2 focus:outline-none focus:ring-inset"
@@ -108,12 +110,6 @@ const Nav: React.FC = () => {
               </div>
             ))}
             <div className="pt-4 space-y-3">
-              <Button variant="outline" size="md" className="w-full" href="/donate">
-                Donate
-              </Button>
-              <Button variant="primary" size="md" className="w-full" onClick={() => setIsModalOpen(true)}>
-                Join
-              </Button>
             </div>
           </div>
         </div>

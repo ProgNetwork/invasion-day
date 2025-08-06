@@ -41,9 +41,9 @@ Approved uses include:
 
 ## Review and Accountability
 
-Alex Hill will conduct a monthly reconciliation of Stripe income attributed to the campaign.
+Monthly reconciliation of Stripe income attributed to the campaign will be conducted.
 
-A financial report will be provided monthly to CAP leadership and to Claire for monitoring and compliance.
+A financial report will be provided monthly to CAP leadership for monitoring and compliance.
 
 ## Transition to Independent Systems
 

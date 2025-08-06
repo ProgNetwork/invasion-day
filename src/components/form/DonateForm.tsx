@@ -111,7 +111,7 @@ const DonateFormInner: React.FC = () => {
     <div className="max-w-xl mx-auto p-6 bg-gray-50 rounded-xl border">
       <h2 className="text-2xl font-bold mb-2">Support The Movement</h2>
       <p className="text-sm mb-6 text-gray-600">
-        Your contribution helps support First Nations organisers, community events, and storytelling.
+        <strong>Your contribution helps support First Nations organisers, community events, and storytelling.</strong>
         <br/>
         This campaign is being coordinated by Common Threads, supported by the Centre for Australian Progress.
         Donations over $2 are tax deductible. Your tax receipt will be issued by the Centre for Australian Progress.

@@ -115,7 +115,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           headers: {
             Authorization: `Basic ${Buffer.from(`${FRESHDESK_API_KEY}:X`).toString('base64')}`,
           },
-        }
+        },
       );
 
       if (searchResponse.ok) {
@@ -124,7 +124,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           personId = searchResults[0].id;
           // eslint-disable-next-line no-console
           console.log('Found existing person in Freshdesk:', {
-            personId: personId,
+            personId,
             name: searchResults[0].name,
             email: searchResults[0].email,
           });
@@ -264,4 +264,4 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       details: errorMessage,
     });
   }
-} 
+}

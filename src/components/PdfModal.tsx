@@ -9,7 +9,9 @@ interface PdfModalProps {
 }
 
 const PdfModal: React.FC<PdfModalProps> = ({ isOpen, onClose, pdfUrl, title }) => {
-  if (!isOpen) return null;
+  if (!isOpen) {
+    return null;
+  }
 
   const handleDownload = () => {
     const link = document.createElement('a');
@@ -23,11 +25,11 @@ const PdfModal: React.FC<PdfModalProps> = ({ isOpen, onClose, pdfUrl, title }) =
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
       {/* Backdrop */}
-      <div 
+      <div
         className="absolute inset-0 bg-black bg-opacity-50"
         onClick={onClose}
       />
-      
+
       {/* Modal */}
       <div className="relative bg-white rounded-lg shadow-xl w-full max-w-6xl h-[90vh] flex flex-col">
         {/* Header */}
@@ -51,7 +53,7 @@ const PdfModal: React.FC<PdfModalProps> = ({ isOpen, onClose, pdfUrl, title }) =
             </button>
           </div>
         </div>
-        
+
         {/* PDF Viewer */}
         <div className="flex-1 p-6">
           <iframe
@@ -65,4 +67,4 @@ const PdfModal: React.FC<PdfModalProps> = ({ isOpen, onClose, pdfUrl, title }) =
   );
 };
 
-export default PdfModal; 
+export default PdfModal;

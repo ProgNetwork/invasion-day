@@ -2,9 +2,7 @@ import Head from 'next/head';
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Button from '@/components/ui/Button';
-import CampaignIcon from '@mui/icons-material/Campaign';
 import ForumIcon from '@mui/icons-material/Forum';
-import DescriptionIcon from '@mui/icons-material/Description';
 import EditIcon from '@mui/icons-material/Edit';
 import GroupsIcon from '@mui/icons-material/Groups';
 import PdfModal from '@/components/PdfModal';
@@ -17,7 +15,7 @@ const ResourcesPage: React.FC = () => {
   }>({
     isOpen: false,
     pdfUrl: '',
-    title: ''
+    title: '',
   });
 
   const handlePdfClick = (pdfUrl: string, title: string) => {
@@ -40,14 +38,14 @@ const ResourcesPage: React.FC = () => {
         <title>Community Resources - Together for Treaty</title>
         <meta name="description" content="Community resources for the Together for Treaty campaign" />
       </Head>
-      
+
       {/* Page Header Section */}
       <section className="bg-white relative py-16 sm:py-24 border-b-8 border-primary-700">
         <div className="absolute inset-0 z-0">
           <div
             className="h-full w-full bg-cover bg-center bg-no-repeat"
             style={{
-              backgroundImage: `url(/images/resources-hero.jpeg)`,
+              backgroundImage: 'url(/images/resources-hero.jpeg)',
             }}
           />
           <div className="absolute inset-0 bg-zinc-900/90"></div>
@@ -78,7 +76,7 @@ const ResourcesPage: React.FC = () => {
 
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="space-y-12">
-            
+
             {/* Poster Pack Section */}
             <div className="bg-primary-700 rounded-lg p-8 text-white relative">
               {/* Coming Soon Ribbon */}
@@ -96,7 +94,7 @@ const ResourcesPage: React.FC = () => {
 
             {/* Resources Grid */}
             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-              
+
               {/* Conversations Guide */}
               <div className="bg-white rounded-lg shadow-md p-6 border border-gray-200">
                 <div className="flex items-center mb-4">
@@ -108,8 +106,8 @@ const ResourcesPage: React.FC = () => {
                 <p className="text-gray-600 mb-6">
                   One-on-one conversations are a powerful way to build support for Treaty, truth-telling, and First Nations justice. Learn about how to make the most of these conversations.
                 </p>
-                <Button 
-                  variant="primary" 
+                <Button
+                  variant="primary"
                   size="md"
                   onClick={() => handlePdfClick('/documents/Together for Treaty - Conversation Guide + FAQ.pdf', 'Conversations Guide')}
                 >
@@ -128,8 +126,8 @@ const ResourcesPage: React.FC = () => {
                 <p className="text-gray-600 mb-6">
                   A kitchen table conversation brings small groups of people together — often friends, neighbours, co-workers or family — to have respectful, values-based conversations about the issues that matter to us all.
                 </p>
-                <Button 
-                  variant="primary" 
+                <Button
+                  variant="primary"
                   size="md"
                   onClick={() => handlePdfClick('/documents/Together for Treaty - Kitchen Table Conversation Guide.pdf', 'Kitchen Table Conversation Guide')}
                 >
@@ -148,8 +146,8 @@ const ResourcesPage: React.FC = () => {
                 <p className="text-gray-600 mb-6">
                   One way we can tip the scales is ensuring grassroots support for Treaty features proudly in our local newspapers and digital media by writing Letters to the Editor. Get tips, tricks and insight into how to get published.
                 </p>
-                <Button 
-                  variant="primary" 
+                <Button
+                  variant="primary"
                   size="md"
                   onClick={() => handlePdfClick('/documents/Together for Treaty - Letter to the Editor Guide.pdf', 'How to: Letters to the Editor')}
                 >
@@ -173,4 +171,4 @@ const ResourcesPage: React.FC = () => {
   );
 };
 
-export default ResourcesPage; 
+export default ResourcesPage;

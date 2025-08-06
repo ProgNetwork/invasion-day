@@ -55,51 +55,51 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const upcomingParams = new URLSearchParams({
       inFutureOnly: 'true',
       page: '1',
-      pageSize: '50'
+      pageSize: '50',
     });
 
     const upcomingResponse = await fetch(`https://api.humanitix.com/v1/events?${upcomingParams}`, {
       headers: {
         'x-api-key': HUMANITIX_API_KEY,
-        'Accept': 'application/json',
+        Accept: 'application/json',
       },
     });
 
     if (!upcomingResponse.ok) {
       console.error('Humanitix API error:', upcomingResponse.status, upcomingResponse.statusText);
-      return res.status(upcomingResponse.status).json({ 
+      return res.status(upcomingResponse.status).json({
         error: 'Failed to fetch events from Humanitix',
-        details: upcomingResponse.statusText 
+        details: upcomingResponse.statusText,
       });
     }
 
     const upcomingData = await upcomingResponse.json();
-    
+
     // Fetch past events (all events, we'll filter by date)
     const pastParams = new URLSearchParams({
       page: '1',
-      pageSize: '50'
+      pageSize: '50',
     });
 
     const pastResponse = await fetch(`https://api.humanitix.com/v1/events?${pastParams}`, {
       headers: {
         'x-api-key': HUMANITIX_API_KEY,
-        'Accept': 'application/json',
+        Accept: 'application/json',
       },
     });
 
     if (!pastResponse.ok) {
       console.error('Humanitix API error:', pastResponse.status, pastResponse.statusText);
-      return res.status(pastResponse.status).json({ 
+      return res.status(pastResponse.status).json({
         error: 'Failed to fetch events from Humanitix',
-        details: pastResponse.statusText 
+        details: pastResponse.statusText,
       });
     }
 
     const pastData = await pastResponse.json();
-    
+
     const now = new Date();
-    
+
     // Filter and transform upcoming events
     const upcomingEvents: HumanitixEvent[] = upcomingData.events
       ?.filter((event: any) => {
@@ -135,8 +135,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         public: event.public,
         timezone: event.timezone,
       }))
-      ?.sort((a: HumanitixEvent, b: HumanitixEvent) => 
-        new Date(a.startDate).getTime() - new Date(b.startDate).getTime()
+      ?.sort((a: HumanitixEvent, b: HumanitixEvent) =>
+        new Date(a.startDate).getTime() - new Date(b.startDate).getTime(),
       ) || [];
 
     // Filter and transform past events
@@ -175,15 +175,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         public: event.public,
         timezone: event.timezone,
       }))
-      ?.sort((a: HumanitixEvent, b: HumanitixEvent) => 
-        new Date(b.startDate).getTime() - new Date(a.startDate).getTime() // Most recent first
+      ?.sort((a: HumanitixEvent, b: HumanitixEvent) =>
+        new Date(b.startDate).getTime() - new Date(a.startDate).getTime(), // Most recent first
       ) || [];
 
     // Paginate the results
     const startIndex = (pageNumber - 1) * pageSize;
     const endIndex = startIndex + pageSize;
 
-    let eventsToReturn: any = { upcomingEvents: [], pastEvents: [] };
+    const eventsToReturn: any = { upcomingEvents: [], pastEvents: [] };
     let hasMore = false;
 
     if (type === 'upcoming' || type === 'all') {
@@ -198,16 +198,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       hasMore = hasMore || pastEvents.length > endIndex;
     }
 
-    return res.status(200).json({ 
+    return res.status(200).json({
       ...eventsToReturn,
       hasMore,
       currentPage: pageNumber,
       totalUpcoming: upcomingEvents.length,
-      totalPast: pastEvents.length
+      totalPast: pastEvents.length,
     });
   } catch (error: unknown) {
     console.error('Error fetching Humanitix events:', error);
     const errorMessage = error instanceof Error ? error.message : 'Unknown error';
     return res.status(500).json({ error: 'Failed to fetch events', details: errorMessage });
   }
-} 
+}

@@ -10,14 +10,14 @@ const GetInvolvedPage: React.FC = () => {
         <title>Get Involved - Together for Treaty</title>
         <meta name="description" content="Get involved with the Together for Treaty campaign" />
       </Head>
-      
+
       {/* Page Header Section */}
       <section className="bg-white relative py-16 sm:py-24 border-b-8 border-primary-700">
         <div className="absolute inset-0 z-0">
           <div
             className="h-full w-full bg-cover bg-center bg-no-repeat"
             style={{
-              backgroundImage: `url(/images/protest2.jpg)`,
+              backgroundImage: 'url(/images/protest2.jpg)',
             }}
           />
           <div className="absolute inset-0 bg-zinc-900/90"></div>
@@ -54,4 +54,4 @@ const GetInvolvedPage: React.FC = () => {
   );
 };
 
-export default GetInvolvedPage; 
+export default GetInvolvedPage;

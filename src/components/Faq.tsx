@@ -49,7 +49,7 @@ const Faq: React.FC = () => {
             <strong>Statewide Treaty process:</strong> Right now, the First Peoples' Assembly - an elected body representing First Peoples across Victoria - is negotiating a statewide Treaty with the Victorian government. This Treaty can make sure Aboriginal communities have the freedom and power to set the course and design solutions that work for their mob across a range of areas - like removing unfair barriers to healthcare and housing, making sure young people can thrive, and making sure all Victorians can learn about and celebrate First Nations cultures.
           </p>
           <p>
-            The Victorian Treaty legislation is set to be tabled in Parliament before the end of 2025. 
+            The Victorian Treaty legislation is set to be tabled in Parliament before the end of 2025.
           </p>
         </div>
       ),

@@ -47,7 +47,7 @@ const GetInvolved: React.FC = () => {
               <Button variant="primary" size="md" onClick={() => setIsModalOpen(true)}>
                 Add Your Name
               </Button>
-              <Button variant="outline" size="md" href="https://events.humanitix.com/host/commonthreads" external>
+              <Button variant="outline" size="md" href="/get-involved">
                 Join an Event
               </Button>
             </div>

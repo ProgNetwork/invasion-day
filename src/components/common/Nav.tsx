@@ -18,6 +18,10 @@ const NAV_ITEMS: NavItem[] = [
     path: '/about',
   },
   {
+    label: 'Updates',
+    path: '/updates',
+  },
+  {
     label: 'Get Involved',
     path: '/get-involved',
   },

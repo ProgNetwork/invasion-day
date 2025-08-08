@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Button from '@/components/ui/Button';
+import { formatDateTime, formatLocation } from '@/lib/utils';
 
 interface HumanitixEvent {
   _id: string;
@@ -90,28 +91,7 @@ const EventList: React.FC = () => {
     }
   };
 
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-AU', {
-      weekday: 'long',
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
-    });
-  };
 
-  const formatLocation = (eventLocation: HumanitixEvent['eventLocation']) => {
-    const parts = [
-      eventLocation.venueName,
-      eventLocation.address,
-      eventLocation.city,
-      eventLocation.region,
-      eventLocation.country,
-    ].filter(Boolean);
-    return parts.join(', ');
-  };
 
   if (loading) {
     return (
@@ -171,7 +151,7 @@ const EventList: React.FC = () => {
                         <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                         </svg>
-                        {formatDate(event.startDate)}
+                        {formatDateTime(event.startDate)}
                       </div>
                       {event.eventLocation.address && (
                         <div className="flex items-center">
@@ -253,7 +233,7 @@ const EventList: React.FC = () => {
                         <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                         </svg>
-                        {formatDate(event.startDate)}
+                        {formatDateTime(event.startDate)}
                       </div>
                       {event.eventLocation.address && (
                         <div className="flex items-center">

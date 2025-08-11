@@ -146,3 +146,73 @@ export function formatLocation(eventLocation: {
   ].filter(Boolean);
   return parts.join(', ');
 }
+
+/**
+ * Set a cookie with the specified name, value, and options
+ */
+export function setCookie(name: string, value: string, options: {
+  days?: number;
+  path?: string;
+  secure?: boolean;
+  sameSite?: 'strict' | 'lax' | 'none';
+} = {}) {
+  const {
+    days = 365, // Default to 1 year
+    path = '/',
+    secure = process.env.NODE_ENV === 'production',
+    sameSite = 'lax',
+  } = options;
+
+  const expires = new Date();
+  expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000));
+
+  const cookieValue = `${name}=${encodeURIComponent(value)}; expires=${expires.toUTCString()}; path=${path}; secure=${secure}; samesite=${sameSite}`;
+
+  if (typeof document !== 'undefined') {
+    document.cookie = cookieValue;
+  }
+}
+
+/**
+ * Get a cookie value by name
+ */
+export function getCookie(name: string): string | null {
+  if (typeof document === 'undefined') {
+    return null;
+  }
+
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) {
+    return decodeURIComponent(parts.pop()?.split(';').shift() || '');
+  }
+  return null;
+}
+
+/**
+ * Check if a cookie exists
+ */
+export function hasCookie(name: string): boolean {
+  return getCookie(name) !== null;
+}
+
+/**
+ * Check if user has completed the signup form
+ */
+export function hasCompletedSignup(): boolean {
+  return hasCookie('tft_signup_completed');
+}
+
+/**
+ * Get signup timestamp if available
+ */
+export function getSignupTimestamp(): string | null {
+  return getCookie('tft_signup_timestamp');
+}
+
+/**
+ * Get signup source code if available
+ */
+export function getSignupSource(): string | null {
+  return getCookie('tft_signup_source');
+}

@@ -4,6 +4,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/Label';
 import React, { useState } from 'react';
+import { setCookie } from '@/lib/utils';
 
 interface Errors {
   email?: string;
@@ -59,22 +60,60 @@ const SignupForm: React.FC = () => {
 
     setLoading(true);
 
-    await fetch('/api/actionnetwork-signup', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        givenName: formData.givenName,
-        familyName: formData.familyName,
-        email: formData.email,
-        postcode: formData.postcode,
-        sourceCode: formData.sourceCode,
-        first_nations_identifying: formData.first_nations_identifying,
-        volunteer: formData.volunteer,
-      }),
-    });
+    try {
+      const response = await fetch('/api/actionnetwork-signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          givenName: formData.givenName,
+          familyName: formData.familyName,
+          email: formData.email,
+          postcode: formData.postcode,
+          sourceCode: formData.sourceCode,
+          first_nations_identifying: formData.first_nations_identifying,
+          volunteer: formData.volunteer,
+        }),
+      });
 
-    setSubmitted(true);
-    setLoading(false);
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        // Set cookie to track successful submission
+        setCookie('tft_signup_completed', 'true', {
+          days: 365, // Cookie lasts 1 year
+          path: '/',
+          secure: process.env.NODE_ENV === 'production',
+          sameSite: 'lax',
+        });
+
+        // Set additional cookie with timestamp
+        setCookie('tft_signup_timestamp', new Date().toISOString(), {
+          days: 365,
+          path: '/',
+          secure: process.env.NODE_ENV === 'production',
+          sameSite: 'lax',
+        });
+
+        // Set cookie with source code for tracking
+        setCookie('tft_signup_source', formData.sourceCode, {
+          days: 365,
+          path: '/',
+          secure: process.env.NODE_ENV === 'production',
+          sameSite: 'lax',
+        });
+
+        setSubmitted(true);
+      } else {
+        // Handle error case
+        console.error('Signup failed:', result.error);
+        setErrors({ email: 'Signup failed. Please try again.' });
+      }
+    } catch (error) {
+      console.error('Signup error:', error);
+      setErrors({ email: 'Signup failed. Please try again.' });
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (submitted) {

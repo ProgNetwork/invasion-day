@@ -59,13 +59,13 @@ export function cleanContent(content: string): string {
 export function extractExcerpt(content: string): string {
   // Remove HTML tags and get plain text
   const plainText = content.replace(/<[^>]*>/g, '');
-  
+
   // Return first 200 characters with ellipsis if longer
   if (plainText.length <= 200) {
     return plainText;
   }
-  
-  return plainText.substring(0, 200) + '...';
+
+  return `${plainText.substring(0, 200)}...`;
 }
 
 /**
@@ -77,7 +77,7 @@ export function formatDate(dateString: string): string {
   return new Date(dateString).toLocaleDateString('en-AU', {
     year: 'numeric',
     month: 'long',
-    day: 'numeric'
+    day: 'numeric',
   });
 }
 

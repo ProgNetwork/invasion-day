@@ -28,18 +28,18 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   try {
     const BLOG_ID = process.env.BLOGGER_BLOG_ID;
     const API_KEY = process.env.BLOGGER_API_KEY;
-    
+
     if (!BLOG_ID || !API_KEY) {
-      return res.status(500).json({ 
+      return res.status(500).json({
         message: 'Blogger API credentials not configured',
-        error: 'Missing BLOGGER_BLOG_ID or BLOGGER_API_KEY environment variables'
+        error: 'Missing BLOGGER_BLOG_ID or BLOGGER_API_KEY environment variables',
       });
     }
 
     const url = `https://www.googleapis.com/blogger/v3/blogs/${BLOG_ID}/posts/${id}?key=${API_KEY}`;
 
     const response = await fetch(url);
-    
+
     if (!response.ok) {
       if (response.status === 404) {
         return res.status(404).json({ message: 'Post not found' });
@@ -48,12 +48,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     const data: BloggerPost = await response.json();
-    
+
     // Check if the post has the 'togetherfortreaty' label
     if (!data.labels || !data.labels.includes('togetherfortreaty')) {
       return res.status(404).json({ message: 'Post not found or does not have required label' });
     }
-    
+
     // Transform the data to a cleaner format
     const post = {
       id: data.id,
@@ -63,17 +63,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       updated: data.updated,
       url: data.url,
       author: data.author.displayName,
-      excerpt: extractExcerpt(data.content)
+      excerpt: extractExcerpt(data.content),
     };
 
     res.status(200).json({ post });
   } catch (error) {
     console.error('Error fetching Blogger post:', error);
-    res.status(500).json({ 
+    res.status(500).json({
       message: 'Failed to fetch post',
-      error: error instanceof Error ? error.message : 'Unknown error'
+      error: error instanceof Error ? error.message : 'Unknown error',
     });
   }
 }
-
- 

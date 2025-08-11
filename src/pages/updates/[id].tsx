@@ -33,11 +33,11 @@ export default function BlogPostDetail() {
     try {
       setLoading(true);
       const response = await fetch(`/api/blogger-post?id=${id}`);
-      
+
       if (!response.ok) {
         throw new Error('Failed to fetch post');
       }
-      
+
       const data = await response.json();
       setPost(data.post);
     } catch (err) {
@@ -47,17 +47,13 @@ export default function BlogPostDetail() {
     }
   };
 
-
-
-
-
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50">
         <Head>
           <title>Loading... - Together for Treaty</title>
         </Head>
-        
+
         <div className="max-w-4xl mx-auto px-4 py-12">
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600 mx-auto"></div>
@@ -74,12 +70,12 @@ export default function BlogPostDetail() {
         <Head>
           <title>Post Not Found - Together for Treaty</title>
         </Head>
-        
+
         <div className="max-w-4xl mx-auto px-4 py-12">
           <div className="text-center">
             <h1 className="text-3xl font-bold text-gray-900 mb-4">Post Not Found</h1>
             <p className="text-gray-600 mb-8">The post you're looking for doesn't exist or has been removed.</p>
-            <Link 
+            <Link
               href="/updates"
               className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 transition-colors duration-200"
             >
@@ -104,11 +100,11 @@ export default function BlogPostDetail() {
       <div className="max-w-4xl mx-auto px-4 py-12">
         {/* Back Button */}
         <div className="mb-8">
-          <Link 
+          <Link
             href="/updates"
             className="inline-flex items-center text-primary-600 hover:text-primary-700 font-medium"
           >
-            <ArrowLeftIcon className="h-5 w-5 mr-2" />
+            <ArrowLeftIcon className="h-5 w-4 mr-2" />
             Back to Updates
           </Link>
         </div>
@@ -116,8 +112,8 @@ export default function BlogPostDetail() {
         {/* Hero Image */}
         {heroImage && (
           <div className="mb-8">
-            <img 
-              src={heroImage} 
+            <img
+              src={heroImage}
               alt={post.title}
               className="w-full h-64 md:h-96 object-cover rounded-lg shadow-lg"
             />
@@ -136,23 +132,23 @@ export default function BlogPostDetail() {
               {calculateReadTime(post.content)} min read
             </div>
           </div>
-          
+
           <h1 className="text-4xl font-bold text-gray-900 mb-6">{post.title}</h1>
         </div>
 
         {/* Post Content */}
         <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
-          <div 
+          <div
             className="prose prose-lg max-w-none"
-            dangerouslySetInnerHTML={{ 
-              __html: cleanContent(post.content) 
+            dangerouslySetInnerHTML={{
+              __html: cleanContent(post.content),
             }}
           />
         </div>
 
         {/* Footer */}
         <div className="mt-8 text-center">
-          <Link 
+          <Link
             href="/updates"
             className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 transition-colors duration-200"
           >
@@ -163,4 +159,4 @@ export default function BlogPostDetail() {
       </div>
     </div>
   );
-} 
+}

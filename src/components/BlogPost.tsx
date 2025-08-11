@@ -23,14 +23,14 @@ export default function BlogPost({ post }: BlogPostProps) {
       {/* Hero Image */}
       {heroImage && (
         <div className="aspect-video overflow-hidden">
-          <img 
-            src={heroImage} 
+          <img
+            src={heroImage}
             alt={post.title}
             className="w-full h-full object-cover"
           />
         </div>
       )}
-      
+
       <div className="p-6">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center space-x-4 text-sm text-gray-500">
@@ -43,7 +43,7 @@ export default function BlogPost({ post }: BlogPostProps) {
               {calculateReadTime(post.content)} min read
             </div>
           </div>
-          <Link 
+          <Link
             href={`/updates/${post.id}`}
             className="flex items-center text-primary-600 hover:text-primary-700 text-sm font-medium"
           >
@@ -51,13 +51,13 @@ export default function BlogPost({ post }: BlogPostProps) {
             <ArrowRightIcon className="h-4 w-4 ml-1" />
           </Link>
         </div>
-        
+
         <h2 className="text-2xl font-bold text-gray-900 mb-3 hover:text-primary-600 transition-colors duration-200">
           <Link href={`/updates/${post.id}`}>
             {post.title}
           </Link>
         </h2>
-        
+
         <div className="prose prose-gray max-w-none">
           <p className="text-gray-600 leading-relaxed">
             {post.excerpt}
@@ -66,4 +66,4 @@ export default function BlogPost({ post }: BlogPostProps) {
       </div>
     </article>
   );
-} 
+}

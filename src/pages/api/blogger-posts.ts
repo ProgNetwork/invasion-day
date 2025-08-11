@@ -27,24 +27,24 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     // You'll need to replace these with your actual Blogger API credentials
     const BLOG_ID = process.env.BLOGGER_BLOG_ID;
     const API_KEY = process.env.BLOGGER_API_KEY;
-    
+
     if (!BLOG_ID || !API_KEY) {
-      return res.status(500).json({ 
+      return res.status(500).json({
         message: 'Blogger API credentials not configured',
-        error: 'Missing BLOGGER_BLOG_ID or BLOGGER_API_KEY environment variables'
+        error: 'Missing BLOGGER_BLOG_ID or BLOGGER_API_KEY environment variables',
       });
     }
 
     const url = `https://www.googleapis.com/blogger/v3/blogs/${BLOG_ID}/posts?key=${API_KEY}&maxResults=10&orderBy=published&labels=togetherfortreaty`;
 
     const response = await fetch(url);
-    
+
     if (!response.ok) {
       throw new Error(`Blogger API responded with status: ${response.status}`);
     }
 
     const data: BloggerResponse = await response.json();
-    
+
     // Transform the data to a cleaner format
     const posts = data.items.map(post => ({
       id: post.id,
@@ -55,17 +55,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       url: post.url,
       author: post.author.displayName,
       // Extract a short excerpt from the content
-      excerpt: extractExcerpt(post.content)
+      excerpt: extractExcerpt(post.content),
     }));
 
     res.status(200).json({ posts });
   } catch (error) {
     console.error('Error fetching Blogger posts:', error);
-    res.status(500).json({ 
+    res.status(500).json({
       message: 'Failed to fetch posts',
-      error: error instanceof Error ? error.message : 'Unknown error'
+      error: error instanceof Error ? error.message : 'Unknown error',
     });
   }
 }
-
- 

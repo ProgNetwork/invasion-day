@@ -27,11 +27,11 @@ export default function Updates() {
     try {
       setLoading(true);
       const response = await fetch('/api/blogger-posts');
-      
+
       if (!response.ok) {
         throw new Error('Failed to fetch posts');
       }
-      
+
       const data = await response.json();
       setPosts(data.posts);
     } catch (err) {
@@ -41,8 +41,6 @@ export default function Updates() {
     }
   };
 
-
-
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50">
@@ -50,7 +48,7 @@ export default function Updates() {
           <title>Updates - Together for Treaty</title>
           <meta name="description" content="Latest updates and news from Together for Treaty" />
         </Head>
-        
+
         <div className="max-w-4xl mx-auto px-4 py-12">
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600 mx-auto"></div>
@@ -68,15 +66,15 @@ export default function Updates() {
           <title>Updates - Together for Treaty</title>
           <meta name="description" content="Latest updates and news from Together for Treaty" />
         </Head>
-        
+
         <div className="max-w-4xl mx-auto px-4 py-12">
           <div className="text-center">
             <h1 className="text-3xl font-bold text-gray-900 mb-4">Updates</h1>
             <div className="bg-red-50 border border-red-200 rounded-lg p-6">
               <p className="text-red-800">Error loading updates: {error}</p>
-              <button 
+              <button
                 onClick={fetchPosts}
-                className="mt-4 bg-primary-600 text-white px-4 py-2 rounded hover:bg-primary-700"
+                className="mt-4 bg-primary-600 text-white px-4 py-3 rounded hover:bg-primary-700"
               >
                 Try Again
               </button>
@@ -121,7 +119,7 @@ export default function Updates() {
         )}
 
         <div className="mt-12 text-center">
-          <Link 
+          <Link
             href="/"
             className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 transition-colors duration-200"
           >
@@ -131,4 +129,4 @@ export default function Updates() {
       </div>
     </div>
   );
-} 
+}

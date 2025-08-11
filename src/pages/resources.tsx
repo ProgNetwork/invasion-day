@@ -34,14 +34,14 @@ const ResourcesPage: React.FC = () => {
     '/posters/1-large.jpg',
     '/posters/2-large.jpg',
     '/posters/3-large.jpg',
-    '/posters/4-large.jpg'
+    '/posters/4-large.jpg',
   ];
 
   const posterPdfs = [
     '/posters/Treaty-Poster-1.pdf',
     '/posters/Treaty-Poster-2.pdf',
     '/posters/Treaty-Poster-3.pdf',
-    '/posters/Treaty-Poster-4.pdf'
+    '/posters/Treaty-Poster-4.pdf',
   ];
 
   const handlePdfClick = (pdfUrl: string, title: string) => {
@@ -77,17 +77,17 @@ const ResourcesPage: React.FC = () => {
   const handleDownloadAll = async () => {
     try {
       const zip = new JSZip();
-      
+
       // Add each PDF to the zip
       for (let i = 0; i < posterPdfs.length; i++) {
         const response = await fetch(posterPdfs[i]);
         const blob = await response.blob();
         zip.file(`Treaty-Poster-${i + 1}.pdf`, blob);
       }
-      
+
       // Generate the zip file
       const zipBlob = await zip.generateAsync({ type: 'blob' });
-      
+
       // Create download link
       const link = document.createElement('a');
       link.href = URL.createObjectURL(zipBlob);
@@ -95,7 +95,7 @@ const ResourcesPage: React.FC = () => {
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-      
+
       // Clean up
       URL.revokeObjectURL(link.href);
     } catch (error) {
@@ -161,39 +161,39 @@ const ResourcesPage: React.FC = () => {
               <p className="text-lg mb-6">
                 Download the poster and put up at your local cafes, pubs, school bulletin boards, community centers, and other popular spots!
               </p>
-              
+
               {/* Poster Thumbnails */}
               <div className="flex flex-wrap justify-center gap-4 mb-6">
                 <div className="bg-white rounded-lg p-2 flex justify-center cursor-pointer hover:bg-gray-50 transition-colors" onClick={() => handlePosterClick(0)}>
-                  <img 
-                    src="/posters/1-thumb.jpg" 
-                    alt="Together for Treaty Poster 1" 
+                  <img
+                    src="/posters/1-thumb.jpg"
+                    alt="Together for Treaty Poster 1"
                     className="w-auto h-auto rounded max-w-[200px]"
                   />
                 </div>
                 <div className="bg-white rounded-lg p-2 flex justify-center cursor-pointer hover:bg-gray-50 transition-colors" onClick={() => handlePosterClick(1)}>
-                  <img 
-                    src="/posters/2-thumb.jpg" 
-                    alt="Together for Treaty Poster 2" 
+                  <img
+                    src="/posters/2-thumb.jpg"
+                    alt="Together for Treaty Poster 2"
                     className="w-auto h-auto rounded max-w-[200px]"
                   />
                 </div>
                 <div className="bg-white rounded-lg p-2 flex justify-center cursor-pointer hover:bg-gray-50 transition-colors" onClick={() => handlePosterClick(2)}>
-                  <img 
-                    src="/posters/3-thumb.jpg" 
-                    alt="Together for Treaty Poster 3" 
+                  <img
+                    src="/posters/3-thumb.jpg"
+                    alt="Together for Treaty Poster 3"
                     className="w-auto h-auto rounded max-w-[200px]"
                   />
                 </div>
                 <div className="bg-white rounded-lg p-2 flex justify-center cursor-pointer hover:bg-gray-50 transition-colors" onClick={() => handlePosterClick(3)}>
-                  <img 
-                    src="/posters/4-thumb.jpg" 
-                    alt="Together for Treaty Poster 4" 
+                  <img
+                    src="/posters/4-thumb.jpg"
+                    alt="Together for Treaty Poster 4"
                     className="w-auto h-auto rounded max-w-[200px]"
                   />
                 </div>
               </div>
-              
+
               <Button variant="white" size="lg" onClick={handleDownloadAll}>
                 Download All Here
               </Button>

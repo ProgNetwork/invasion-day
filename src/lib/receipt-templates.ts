@@ -189,7 +189,7 @@ export const generateReceiptHtml = (
           <h1>${template.header}</h1>
           <p>Thank you for your support</p>
         </div>
-        
+
         <div class="content">
           <div class="message">
             <p><strong>Dear ${donorFirstName},</strong></p>
@@ -202,20 +202,20 @@ export const generateReceiptHtml = (
             <div class="official-header">
               <h3 style="margin: 0; color: #333;">Official Receipt</h3>
             </div>
-            
+
             <div class="receipt-details">
               <p><strong>Receipt #:</strong> ${receiptNumber}</p>
               <p><strong>Date:</strong> ${date}</p>
               <p><strong>Donor Name:</strong> ${donorName || 'Anonymous'}</p>
               <p><strong>Donation Total:</strong> <span class="amount">$${amount.toFixed(2)} AUD</span></p>
             </div>
-            
+
             <div style="margin: 20px 0; padding: 15px; background: #f9f9f9; border-radius: 5px;">
               <p style="margin: 0; font-weight: bold;">Centre for Australian Progress</p>
               <p style="margin: 5px 0;">3 Albert Coates Lane, Melbourne VIC 3000</p>
               <p style="margin: 5px 0;">info@australianprogress.org.au</p>
             </div>
-            
+
             <div class="dgr-info">
               <p style="margin: 0;">This is the receipt for your donation. Centre for Australian Progress Ltd (ABN: 76 158 172 484) is listed by name as a Deductible Gift Recipient (DGR) from 01 Jul 2024 to 30 Jun 2029. It is covered by Item 1 of the table in section 30-15 of the Income Tax Assessment Act 1997. Donations of $2 or more are tax deductible.</p>
             </div>
@@ -242,7 +242,7 @@ export const generateReceiptHtml = (
             <ul>
               ${template.nextSteps.bulletPoints.map(point => `<li>${point}</li>`).join('')}
             </ul>
-            
+
             <p>We'll keep you updated on our progress and ways you can continue to support the movement.</p>
           </div>
 
@@ -252,7 +252,7 @@ export const generateReceiptHtml = (
             <p><strong>Supported by:</strong> Centre for Australian Progress</p>
           </div>
         </div>
-        
+
         <div class="footer">
           <p>${template.footer.title}</p>
           <p>${template.footer.description}</p>

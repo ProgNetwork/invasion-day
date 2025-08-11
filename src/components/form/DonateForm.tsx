@@ -33,9 +33,15 @@ const DonateFormInner: React.FC = () => {
   const handleSubmit = async () => {
     const newErrors: typeof errors = {};
 
-    if (!baseAmount || baseAmount <= 0) { newErrors.amount = 'Please enter a valid donation amount.'; }
-    if (!(/\S+@\S+\.\S+/).test(email)) { newErrors.email = 'Please enter a valid email address.'; }
-    if (!cardName.trim()) { newErrors.cardName = 'Please enter the name on the card.'; }
+    if (!baseAmount || baseAmount <= 0) {
+      newErrors.amount = 'Please enter a valid donation amount.';
+    }
+    if (!(/\S+@\S+\.\S+/).test(email)) {
+      newErrors.email = 'Please enter a valid email address.';
+    }
+    if (!cardName.trim()) {
+      newErrors.cardName = 'Please enter the name on the card.';
+    }
 
     const cardElement = elements?.getElement(CardElement);
     if (!cardElement) {
@@ -43,7 +49,9 @@ const DonateFormInner: React.FC = () => {
     }
 
     setErrors(newErrors);
-    if (Object.keys(newErrors).length > 0) { return; }
+    if (Object.keys(newErrors).length > 0) {
+      return;
+    }
 
     if (!cardElement) {
       setErrors({ card: 'Card input could not be found.' });

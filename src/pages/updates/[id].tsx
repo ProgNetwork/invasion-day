@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
 import { CalendarIcon, ArrowLeftIcon } from '@heroicons/react/24/outline';
-import { extractHeroImage, extractAllImages, cleanContent, formatDate } from '@/lib/utils';
+import { extractAllImages, cleanContent, formatDate } from '@/lib/utils';
 import ImageLightbox from '@/components/ImageLightbox';
 import ClickableContent from '@/components/ClickableContent';
 
@@ -28,13 +28,7 @@ export default function BlogPostDetail() {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
 
-  useEffect(() => {
-    if (id) {
-      fetchPost();
-    }
-  }, [id]);
-
-  const fetchPost = async () => {
+  const fetchPost = useCallback(async () => {
     try {
       setLoading(true);
       const response = await fetch(`/api/blogger-post?id=${id}`);
@@ -50,7 +44,23 @@ export default function BlogPostDetail() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [id]);
+
+  useEffect(() => {
+    if (id) {
+      fetchPost();
+    }
+  }, [id, fetchPost]);
+
+  const allImages = extractAllImages(post?.content || '');
+
+  const handleImageClick = useCallback((imageUrl: string) => {
+    const imageIndex = allImages.findIndex(img => img === imageUrl);
+    if (imageIndex !== -1) {
+      setLightboxIndex(imageIndex);
+      setLightboxOpen(true);
+    }
+  }, [allImages]);
 
   if (loading) {
     return (
@@ -93,30 +103,19 @@ export default function BlogPostDetail() {
     );
   }
 
-  const heroImage = extractHeroImage(post.content);
-  const allImages = extractAllImages(post.content);
-  
   // Create a mapping from thumbnail URLs to full-size URLs
   // We need to extract both to create the mapping
   const thumbnailImages = post.content.match(/<img[^>]+src="([^"]+)"/g)?.map(match => {
     const srcMatch = match.match(/src="([^"]+)"/);
     return srcMatch ? srcMatch[1] : '';
   }).filter(Boolean) || [];
-  
+
   const imageUrlMap: Record<string, string> = {};
   thumbnailImages.forEach((thumbnailUrl, index) => {
     if (allImages[index]) {
       imageUrlMap[thumbnailUrl] = allImages[index];
     }
   });
-
-  const handleImageClick = (imageUrl: string) => {
-    const imageIndex = allImages.findIndex(img => img === imageUrl);
-    if (imageIndex !== -1) {
-      setLightboxIndex(imageIndex);
-      setLightboxOpen(true);
-    }
-  };
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -148,50 +147,48 @@ export default function BlogPostDetail() {
             </Link>
           </div>
 
+          {/* Combined Post Header and Content */}
+          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-8 mb-8">
+            <div className="flex items-center space-x-4 text-sm text-gray-500 mb-4">
+              <div className="flex items-center">
+                <CalendarIcon className="h-4 w-4 mr-1" />
+                {formatDate(post.published)}
+              </div>
+            </div>
 
+            <h1 className="text-4xl font-bold text-gray-900 mb-6">{post.title}</h1>
 
-        {/* Combined Post Header and Content */}
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-8 mb-8">
-          <div className="flex items-center space-x-4 text-sm text-gray-500 mb-4">
-            <div className="flex items-center">
-              <CalendarIcon className="h-4 w-4 mr-1" />
-              {formatDate(post.published)}
+            <div className="border-t border-gray-200 pt-6">
+              <ClickableContent
+                content={cleanContent(post.content)}
+                onImageClick={handleImageClick}
+                className="prose prose-lg max-w-none"
+                imageUrlMap={imageUrlMap}
+              />
             </div>
           </div>
 
-          <h1 className="text-4xl font-bold text-gray-900 mb-6">{post.title}</h1>
-          
-          <div className="border-t border-gray-200 pt-6">
-            <ClickableContent
-              content={cleanContent(post.content)}
-              onImageClick={handleImageClick}
-              className="prose prose-lg max-w-none"
-              imageUrlMap={imageUrlMap}
-            />
+          {/* Footer */}
+          <div className="mt-8 text-center">
+            <Link
+              href="/updates"
+              className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 transition-colors duration-200"
+            >
+              <ArrowLeftIcon className="h-5 w-5 mr-2" />
+              Back to Updates
+            </Link>
           </div>
-        </div>
 
-        {/* Footer */}
-        <div className="mt-8 text-center">
-          <Link
-            href="/updates"
-            className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 transition-colors duration-200"
-          >
-            <ArrowLeftIcon className="h-5 w-5 mr-2" />
-            Back to Updates
-          </Link>
+          {/* Image Lightbox */}
+          {allImages.length > 0 && (
+            <ImageLightbox
+              images={allImages}
+              initialIndex={lightboxIndex}
+              isOpen={lightboxOpen}
+              onClose={() => setLightboxOpen(false)}
+            />
+          )}
         </div>
-
-        {/* Image Lightbox */}
-        {allImages.length > 0 && (
-          <ImageLightbox
-            images={allImages}
-            initialIndex={lightboxIndex}
-            isOpen={lightboxOpen}
-            onClose={() => setLightboxOpen(false)}
-          />
-        )}
-      </div>
       </section>
     </div>
   );

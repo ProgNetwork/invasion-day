@@ -16,7 +16,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     BLOGGER_API_KEY: process.env.BLOGGER_API_KEY ? 'SET' : 'NOT SET',
     // Check if the values are actually there (without exposing the full API key)
     BLOGGER_BLOG_ID_VALUE: process.env.BLOGGER_BLOG_ID,
-    BLOGGER_API_KEY_PREFIX: process.env.BLOGGER_API_KEY ? process.env.BLOGGER_API_KEY.substring(0, 10) + '...' : 'NOT SET',
+    BLOGGER_API_KEY_PREFIX: process.env.BLOGGER_API_KEY ? `${process.env.BLOGGER_API_KEY.substring(0, 10)}...` : 'NOT SET',
   };
 
   res.status(200).json(envVars);

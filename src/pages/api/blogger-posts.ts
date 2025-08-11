@@ -34,7 +34,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       BLOG_ID: BLOG_ID ? 'SET' : 'NOT SET',
       API_KEY: API_KEY ? 'SET' : 'NOT SET',
       BLOG_ID_VALUE: BLOG_ID,
-      API_KEY_PREFIX: API_KEY ? API_KEY.substring(0, 10) + '...' : 'NOT SET'
+      API_KEY_PREFIX: API_KEY ? `${API_KEY.substring(0, 10)}...` : 'NOT SET',
     });
 
     if (!BLOG_ID || !API_KEY) {

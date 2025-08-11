@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { XMarkIcon, ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 
 interface ImageLightboxProps {
@@ -18,10 +18,20 @@ export default function ImageLightbox({ images, initialIndex, isOpen, onClose, d
     setCurrentIndex(initialIndex);
   }, [initialIndex]);
 
+  const goToPrevious = useCallback(() => {
+    setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+  }, [images.length]);
+
+  const goToNext = useCallback(() => {
+    setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev + 1));
+  }, [images.length]);
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (!isOpen) return;
-      
+      if (!isOpen) {
+        return;
+      }
+
       switch (e.key) {
         case 'Escape':
           onClose();
@@ -37,27 +47,21 @@ export default function ImageLightbox({ images, initialIndex, isOpen, onClose, d
 
     document.addEventListener('keydown', handleKeyDown);
     return () => document.removeEventListener('keydown', handleKeyDown);
-  }, [isOpen, currentIndex]);
+  }, [isOpen, goToNext, goToPrevious, onClose]);
 
-  const goToPrevious = () => {
-    setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
-  };
-
-  const goToNext = () => {
-    setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
-  };
-
-  const handleTouchStart = (e: React.TouchEvent) => {
+  const handleTouchStart = useCallback((e: React.TouchEvent) => {
     setTouchStart(e.targetTouches[0].clientX);
-  };
+  }, []);
 
-  const handleTouchMove = (e: React.TouchEvent) => {
+  const handleTouchMove = useCallback((e: React.TouchEvent) => {
     setTouchEnd(e.targetTouches[0].clientX);
-  };
+  }, []);
 
-  const handleTouchEnd = () => {
-    if (!touchStart || !touchEnd) return;
-    
+  const handleTouchEnd = useCallback(() => {
+    if (!touchStart || !touchEnd) {
+      return;
+    }
+
     const distance = touchStart - touchEnd;
     const isLeftSwipe = distance > 50;
     const isRightSwipe = distance < -50;
@@ -70,9 +74,11 @@ export default function ImageLightbox({ images, initialIndex, isOpen, onClose, d
 
     setTouchStart(null);
     setTouchEnd(null);
-  };
+  }, [touchStart, touchEnd, goToNext, goToPrevious]);
 
-  if (!isOpen) return null;
+  if (!isOpen) {
+    return null;
+  }
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90">
@@ -116,7 +122,7 @@ export default function ImageLightbox({ images, initialIndex, isOpen, onClose, d
           >
             <ChevronLeftIcon className="h-12 w-12" />
           </button>
-          
+
           <button
             onClick={goToNext}
             className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-2 text-white hover:text-gray-300 transition-colors"
@@ -128,7 +134,7 @@ export default function ImageLightbox({ images, initialIndex, isOpen, onClose, d
       )}
 
       {/* Image Container */}
-      <div 
+      <div
         className="relative w-full h-full flex items-center justify-center p-8"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}

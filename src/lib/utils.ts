@@ -50,11 +50,13 @@ export function extractAllImages(content: string): string[] {
       return hrefMatch ? hrefMatch[1] : '';
     }).filter(Boolean);
   }
-  
+
   // Fallback to extracting from img src attributes if no links found
   const imgMatches = content.match(/<img[^>]+src="([^"]+)"/g);
-  if (!imgMatches) return [];
-  
+  if (!imgMatches) {
+    return [];
+  }
+
   return imgMatches.map(match => {
     const srcMatch = match.match(/src="([^"]+)"/);
     return srcMatch ? srcMatch[1] : '';

@@ -113,13 +113,13 @@ function useFadeInOnScroll(): [React.RefObject<HTMLDivElement | null>, boolean] 
       }
     });
 
-    if (domRef.current) {
-      observer.observe(domRef.current);
+    const currentRef = domRef.current;
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     // Cleanup function to unobserve when the component unmounts
     return () => {
-      const currentRef = domRef.current;
       if (currentRef) {
         observer.unobserve(currentRef);
       }

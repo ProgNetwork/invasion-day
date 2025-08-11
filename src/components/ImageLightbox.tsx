@@ -108,7 +108,7 @@ export default function ImageLightbox({ images, initialIndex, isOpen, onClose, d
               document.body.removeChild(link);
             }
           }}
-          className="absolute top-4 right-16 z-10 px-4 py-2 text-white hover:text-gray-100 transition-colors bg-primary-700 hover:bg-primary-800 rounded-lg font-semibold text-base flex items-center gap-2"
+          className="absolute top-4 right-16 z-10 px-4 py-2 text-white hover:text-gray-100 transition-colors bg-primary-700 hover:bg-primary-800 rounded-lg font-semibold text-base flex items-center gap-2 cursor-pointer"
           aria-label="Download poster PDF"
         >
           Download Poster

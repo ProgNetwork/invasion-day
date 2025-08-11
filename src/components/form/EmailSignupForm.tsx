@@ -91,7 +91,7 @@ const EmailSignupForm: React.FC<EmailSignupFormProps> = ({ onSuccess, onClose })
             type="button"
             variant="white"
             onClick={onClose}
-            className="flex-1"
+            className="flex-1 font-sans"
             disabled={loading}
           >
             Cancel
@@ -99,7 +99,7 @@ const EmailSignupForm: React.FC<EmailSignupFormProps> = ({ onSuccess, onClose })
           <Button
             type="submit"
             variant="primary"
-            className="flex-1"
+            className="flex-1 font-sans"
             disabled={loading}
           >
             {loading ? 'Joining...' : 'Join & Download'}

@@ -7,7 +7,9 @@ import EditIcon from '@mui/icons-material/Edit';
 import GroupsIcon from '@mui/icons-material/Groups';
 import PdfModal from '@/components/PdfModal';
 import ImageLightbox from '@/components/ImageLightbox';
+import DownloadSignupModal from '@/components/DownloadSignupModal';
 import JSZip from 'jszip';
+import { hasCookie } from '@/lib/utils';
 
 const ResourcesPage: React.FC = () => {
   const [modalState, setModalState] = useState<{
@@ -30,6 +32,14 @@ const ResourcesPage: React.FC = () => {
     startIndex: 0,
   });
 
+  const [downloadSignupModal, setDownloadSignupModal] = useState<{
+    isOpen: boolean;
+    downloadAction:(() => void) | null;
+      }>({
+        isOpen: false,
+        downloadAction: null,
+      });
+
   const posterImages = [
     '/posters/1-large.jpg',
     '/posters/2-large.jpg',
@@ -45,6 +55,23 @@ const ResourcesPage: React.FC = () => {
   ];
 
   const handlePdfClick = (pdfUrl: string, title: string) => {
+    // Check if user has signed up
+    if (!hasCookie('tft_signup_completed')) {
+      setDownloadSignupModal({
+        isOpen: true,
+        downloadAction: () => {
+          // Check if we're on desktop (window width > 768px)
+          if (typeof window !== 'undefined' && window.innerWidth > 768) {
+            setModalState({ isOpen: true, pdfUrl, title });
+          } else {
+            // On mobile, open in new tab
+            window.open(pdfUrl, '_blank', 'noopener,noreferrer');
+          }
+        },
+      });
+      return;
+    }
+
     // Check if we're on desktop (window width > 768px)
     if (typeof window !== 'undefined' && window.innerWidth > 768) {
       setModalState({ isOpen: true, pdfUrl, title });
@@ -75,6 +102,49 @@ const ResourcesPage: React.FC = () => {
   };
 
   const handleDownloadAll = async () => {
+    // Check if user has signed up
+    if (!hasCookie('tft_signup_completed')) {
+      setDownloadSignupModal({
+        isOpen: true,
+        downloadAction: async () => {
+          try {
+            const zip = new JSZip();
+
+            // Add each PDF to the zip
+            for (let i = 0; i < posterPdfs.length; i++) {
+              const response = await fetch(posterPdfs[i]);
+              const blob = await response.blob();
+              zip.file(`Treaty-Poster-${i + 1}.pdf`, blob);
+            }
+
+            // Generate the zip file
+            const zipBlob = await zip.generateAsync({ type: 'blob' });
+
+            // Create download link
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(zipBlob);
+            link.download = 'Together-for-Treaty-Poster-Pack.zip';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            // Clean up
+            URL.revokeObjectURL(link.href);
+          } catch (error) {
+            console.error('Error creating zip file:', error);
+            // Fallback: download files individually
+            posterPdfs.forEach((pdf, index) => {
+              const link = document.createElement('a');
+              link.href = pdf;
+              link.download = `Treaty-Poster-${index + 1}.pdf`;
+              link.click();
+            });
+          }
+        },
+      });
+      return;
+    }
+
     try {
       const zip = new JSZip();
 
@@ -282,6 +352,40 @@ const ResourcesPage: React.FC = () => {
         images={lightboxState.images}
         initialIndex={lightboxState.startIndex}
         downloadUrls={posterPdfs}
+        onDownloadRequest={(url, filename) => {
+          // Check if user has signed up
+          if (!hasCookie('tft_signup_completed')) {
+            setDownloadSignupModal({
+              isOpen: true,
+              downloadAction: () => {
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = filename;
+                link.click();
+              },
+            });
+            return;
+          }
+
+          // User has signed up, proceed with download
+          const link = document.createElement('a');
+          link.href = url;
+          link.download = filename;
+          link.click();
+        }}
+      />
+
+      {/* Download Signup Modal */}
+      <DownloadSignupModal
+        isOpen={downloadSignupModal.isOpen}
+        onClose={() => setDownloadSignupModal({ isOpen: false, downloadAction: null })}
+        onDownload={() => {
+          setDownloadSignupModal({ isOpen: false, downloadAction: null });
+          // Re-trigger the download action after successful signup
+          if (downloadSignupModal.downloadAction) {
+            downloadSignupModal.downloadAction();
+          }
+        }}
       />
     </main>
   );

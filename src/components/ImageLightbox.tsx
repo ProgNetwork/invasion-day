@@ -7,9 +7,10 @@ interface ImageLightboxProps {
   isOpen: boolean;
   onClose: () => void;
   downloadUrls?: string[];
+  onDownloadRequest?: (url: string, filename: string) => void;
 }
 
-export default function ImageLightbox({ images, initialIndex, isOpen, onClose, downloadUrls }: ImageLightboxProps) {
+export default function ImageLightbox({ images, initialIndex, isOpen, onClose, downloadUrls, onDownloadRequest }: ImageLightboxProps) {
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
@@ -95,12 +96,17 @@ export default function ImageLightbox({ images, initialIndex, isOpen, onClose, d
       {downloadUrls && downloadUrls[currentIndex] && (
         <button
           onClick={() => {
-            const link = document.createElement('a');
-            link.href = downloadUrls[currentIndex];
-            link.download = `Treaty-Poster-${currentIndex + 1}.pdf`;
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
+            if (onDownloadRequest) {
+              onDownloadRequest(downloadUrls[currentIndex], `Treaty-Poster-${currentIndex + 1}.pdf`);
+            } else {
+              // Fallback to direct download
+              const link = document.createElement('a');
+              link.href = downloadUrls[currentIndex];
+              link.download = `Treaty-Poster-${currentIndex + 1}.pdf`;
+              document.body.appendChild(link);
+              link.click();
+              document.body.removeChild(link);
+            }
           }}
           className="absolute top-4 right-16 z-10 px-4 py-2 text-white hover:text-gray-100 transition-colors bg-primary-700 hover:bg-primary-800 rounded-lg font-semibold text-base flex items-center gap-2"
           aria-label="Download poster PDF"

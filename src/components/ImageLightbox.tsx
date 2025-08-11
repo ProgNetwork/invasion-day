@@ -23,7 +23,7 @@ export default function ImageLightbox({ images, initialIndex, isOpen, onClose, d
   }, [images.length]);
 
   const goToNext = useCallback(() => {
-    setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev + 1));
+    setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
   }, [images.length]);
 
   useEffect(() => {

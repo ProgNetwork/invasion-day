@@ -355,6 +355,9 @@ const ResourcesPage: React.FC = () => {
         onDownloadRequest={(url, filename) => {
           // Check if user has signed up
           if (!hasCookie('tft_signup_completed')) {
+            // Close the lightbox first
+            closeLightbox();
+            // Then open the signup modal
             setDownloadSignupModal({
               isOpen: true,
               downloadAction: () => {

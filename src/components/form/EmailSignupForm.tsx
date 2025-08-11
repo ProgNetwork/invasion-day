@@ -26,32 +26,56 @@ const EmailSignupForm: React.FC<EmailSignupFormProps> = ({ onSuccess, onClose })
     setError('');
 
     try {
-      // Set cookies for tracking
-      setCookie('tft_signup_completed', 'true', {
-        days: 365,
-        path: '/',
-        secure: process.env.NODE_ENV === 'production',
-        sameSite: 'lax',
+      // Send to Action Network API (reusing existing functionality)
+      const response = await fetch('/api/actionnetwork-signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          givenName: '', // Empty since we only collect email
+          familyName: '', // Empty since we only collect email
+          email: email,
+          postcode: '', // Empty since we only collect email
+          sourceCode: 'website-tft',
+          first_nations_identifying: false,
+          volunteer: false,
+        }),
       });
 
-      setCookie('tft_signup_timestamp', new Date().toISOString(), {
-        days: 365,
-        path: '/',
-        secure: process.env.NODE_ENV === 'production',
-        sameSite: 'lax',
-      });
+      const result = await response.json();
 
-      setCookie('tft_signup_source', 'website-tft', {
-        days: 365,
-        path: '/',
-        secure: process.env.NODE_ENV === 'production',
-        sameSite: 'lax',
-      });
+      if (response.ok && result.success) {
+        // Set cookies for tracking (same as full signup form)
+        setCookie('tft_signup_completed', 'true', {
+          days: 365,
+          path: '/',
+          secure: process.env.NODE_ENV === 'production',
+          sameSite: 'lax',
+        });
 
-      // Call success callback to trigger download
-      onSuccess();
-    } catch {
-      setError('Something went wrong. Please try again.');
+        setCookie('tft_signup_timestamp', new Date().toISOString(), {
+          days: 365,
+          path: '/',
+          secure: process.env.NODE_ENV === 'production',
+          sameSite: 'lax',
+        });
+
+        setCookie('tft_signup_source', 'website-tft', {
+          days: 365,
+          path: '/',
+          secure: process.env.NODE_ENV === 'production',
+          sameSite: 'lax',
+        });
+
+        // Call success callback to trigger download
+        onSuccess();
+      } else {
+        // Handle error case
+        console.error('Signup failed:', result.error);
+        setError('Signup failed. Please try again.');
+      }
+    } catch (error) {
+      console.error('Signup error:', error);
+      setError('Signup failed. Please try again.');
     } finally {
       setLoading(false);
     }

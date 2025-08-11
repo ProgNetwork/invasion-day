@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import { CalendarIcon, ClockIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
-import { calculateReadTime, extractHeroImage, formatDate } from '@/lib/utils';
+import { CalendarIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
+import { extractHeroImage, formatDate } from '@/lib/utils';
 
 interface BlogPostProps {
   post: {
@@ -37,10 +37,6 @@ export default function BlogPost({ post }: BlogPostProps) {
             <div className="flex items-center">
               <CalendarIcon className="h-4 w-4 mr-1" />
               {formatDate(post.published)}
-            </div>
-            <div className="flex items-center">
-              <ClockIcon className="h-4 w-4 mr-1" />
-              {calculateReadTime(post.content)} min read
             </div>
           </div>
           <Link

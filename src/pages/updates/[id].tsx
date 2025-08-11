@@ -2,8 +2,11 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Link from 'next/link';
-import { CalendarIcon, ClockIcon, ArrowLeftIcon } from '@heroicons/react/24/outline';
-import { calculateReadTime, extractHeroImage, cleanContent, formatDate } from '@/lib/utils';
+import Image from 'next/image';
+import { CalendarIcon, ArrowLeftIcon } from '@heroicons/react/24/outline';
+import { extractHeroImage, extractAllImages, cleanContent, formatDate } from '@/lib/utils';
+import ImageLightbox from '@/components/ImageLightbox';
+import ClickableContent from '@/components/ClickableContent';
 
 interface Post {
   id: string;
@@ -22,6 +25,8 @@ export default function BlogPostDetail() {
   const [post, setPost] = useState<Post | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
 
   useEffect(() => {
     if (id) {
@@ -89,6 +94,29 @@ export default function BlogPostDetail() {
   }
 
   const heroImage = extractHeroImage(post.content);
+  const allImages = extractAllImages(post.content);
+  
+  // Create a mapping from thumbnail URLs to full-size URLs
+  // We need to extract both to create the mapping
+  const thumbnailImages = post.content.match(/<img[^>]+src="([^"]+)"/g)?.map(match => {
+    const srcMatch = match.match(/src="([^"]+)"/);
+    return srcMatch ? srcMatch[1] : '';
+  }).filter(Boolean) || [];
+  
+  const imageUrlMap: Record<string, string> = {};
+  thumbnailImages.forEach((thumbnailUrl, index) => {
+    if (allImages[index]) {
+      imageUrlMap[thumbnailUrl] = allImages[index];
+    }
+  });
+
+  const handleImageClick = (imageUrl: string) => {
+    const imageIndex = allImages.findIndex(img => img === imageUrl);
+    if (imageIndex !== -1) {
+      setLightboxIndex(imageIndex);
+      setLightboxOpen(true);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -97,53 +125,50 @@ export default function BlogPostDetail() {
         <meta name="description" content={post.excerpt} />
       </Head>
 
-      <div className="max-w-4xl mx-auto px-4 py-12">
-        {/* Back Button */}
-        <div className="mb-8">
-          <Link
-            href="/updates"
-            className="inline-flex items-center text-primary-600 hover:text-primary-700 font-medium"
-          >
-            <ArrowLeftIcon className="h-5 w-4 mr-2" />
-            Back to Updates
-          </Link>
+      <section className="bg-gray-50 py-16 sm:py-24 relative overflow-hidden">
+        {/* Background Texture */}
+        <div className="absolute inset-0 opacity-10">
+          <Image
+            src="/images/shapes-texture.png"
+            alt=""
+            fill
+            className="object-cover"
+          />
         </div>
 
-        {/* Hero Image */}
-        {heroImage && (
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          {/* Back Button */}
           <div className="mb-8">
-            <img
-              src={heroImage}
-              alt={post.title}
-              className="w-full h-64 md:h-96 object-cover rounded-lg shadow-lg"
-            />
+            <Link
+              href="/updates"
+              className="inline-flex items-center text-primary-600 hover:text-primary-700 font-medium"
+            >
+              <ArrowLeftIcon className="h-5 w-4 mr-2" />
+              Back to Updates
+            </Link>
           </div>
-        )}
 
-        {/* Post Header */}
+
+
+        {/* Combined Post Header and Content */}
         <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-8 mb-8">
           <div className="flex items-center space-x-4 text-sm text-gray-500 mb-4">
             <div className="flex items-center">
               <CalendarIcon className="h-4 w-4 mr-1" />
               {formatDate(post.published)}
             </div>
-            <div className="flex items-center">
-              <ClockIcon className="h-4 w-4 mr-1" />
-              {calculateReadTime(post.content)} min read
-            </div>
           </div>
 
           <h1 className="text-4xl font-bold text-gray-900 mb-6">{post.title}</h1>
-        </div>
-
-        {/* Post Content */}
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
-          <div
-            className="prose prose-lg max-w-none"
-            dangerouslySetInnerHTML={{
-              __html: cleanContent(post.content),
-            }}
-          />
+          
+          <div className="border-t border-gray-200 pt-6">
+            <ClickableContent
+              content={cleanContent(post.content)}
+              onImageClick={handleImageClick}
+              className="prose prose-lg max-w-none"
+              imageUrlMap={imageUrlMap}
+            />
+          </div>
         </div>
 
         {/* Footer */}
@@ -156,7 +181,18 @@ export default function BlogPostDetail() {
             Back to Updates
           </Link>
         </div>
+
+        {/* Image Lightbox */}
+        {allImages.length > 0 && (
+          <ImageLightbox
+            images={allImages}
+            initialIndex={lightboxIndex}
+            isOpen={lightboxOpen}
+            onClose={() => setLightboxOpen(false)}
+          />
+        )}
       </div>
+      </section>
     </div>
   );
 }

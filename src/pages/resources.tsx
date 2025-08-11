@@ -6,6 +6,8 @@ import ForumIcon from '@mui/icons-material/Forum';
 import EditIcon from '@mui/icons-material/Edit';
 import GroupsIcon from '@mui/icons-material/Groups';
 import PdfModal from '@/components/PdfModal';
+import ImageLightbox from '@/components/ImageLightbox';
+import JSZip from 'jszip';
 
 const ResourcesPage: React.FC = () => {
   const [modalState, setModalState] = useState<{
@@ -17,6 +19,30 @@ const ResourcesPage: React.FC = () => {
     pdfUrl: '',
     title: '',
   });
+
+  const [lightboxState, setLightboxState] = useState<{
+    isOpen: boolean;
+    images: string[];
+    startIndex: number;
+  }>({
+    isOpen: false,
+    images: [],
+    startIndex: 0,
+  });
+
+  const posterImages = [
+    '/posters/1-large.jpg',
+    '/posters/2-large.jpg',
+    '/posters/3-large.jpg',
+    '/posters/4-large.jpg'
+  ];
+
+  const posterPdfs = [
+    '/posters/Treaty-Poster-1.pdf',
+    '/posters/Treaty-Poster-2.pdf',
+    '/posters/Treaty-Poster-3.pdf',
+    '/posters/Treaty-Poster-4.pdf'
+  ];
 
   const handlePdfClick = (pdfUrl: string, title: string) => {
     // Check if we're on desktop (window width > 768px)
@@ -30,6 +56,58 @@ const ResourcesPage: React.FC = () => {
 
   const closeModal = () => {
     setModalState({ isOpen: false, pdfUrl: '', title: '' });
+  };
+
+  const handlePosterClick = (index: number) => {
+    setLightboxState({
+      isOpen: true,
+      images: posterImages,
+      startIndex: index,
+    });
+  };
+
+  const closeLightbox = () => {
+    setLightboxState({
+      isOpen: false,
+      images: [],
+      startIndex: 0,
+    });
+  };
+
+  const handleDownloadAll = async () => {
+    try {
+      const zip = new JSZip();
+      
+      // Add each PDF to the zip
+      for (let i = 0; i < posterPdfs.length; i++) {
+        const response = await fetch(posterPdfs[i]);
+        const blob = await response.blob();
+        zip.file(`Treaty-Poster-${i + 1}.pdf`, blob);
+      }
+      
+      // Generate the zip file
+      const zipBlob = await zip.generateAsync({ type: 'blob' });
+      
+      // Create download link
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(zipBlob);
+      link.download = 'Together-for-Treaty-Poster-Pack.zip';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      
+      // Clean up
+      URL.revokeObjectURL(link.href);
+    } catch (error) {
+      console.error('Error creating zip file:', error);
+      // Fallback: download files individually
+      posterPdfs.forEach((pdf, index) => {
+        const link = document.createElement('a');
+        link.href = pdf;
+        link.download = `Treaty-Poster-${index + 1}.pdf`;
+        link.click();
+      });
+    }
   };
 
   return (
@@ -78,17 +156,46 @@ const ResourcesPage: React.FC = () => {
           <div className="space-y-12">
 
             {/* Poster Pack Section */}
-            <div className="bg-primary-700 rounded-lg p-8 text-white relative">
-              {/* Coming Soon Ribbon */}
-              <div className="absolute -top-2 -right-2 bg-secondary-500 text-white px-4 py-1 rounded-full text-sm font-semibold shadow-lg">
-                Coming Soon
-              </div>
+            <div className="bg-primary-700 rounded-lg p-8 text-white">
               <h2 className="text-2xl font-bold mb-4">Spread the word! Download the Together for Treaty poster pack</h2>
               <p className="text-lg mb-6">
                 Download the poster and put up at your local cafes, pubs, school bulletin boards, community centers, and other popular spots!
               </p>
-              <Button variant="white" size="lg" disabled>
-                Download here!
+              
+              {/* Poster Thumbnails */}
+              <div className="flex flex-wrap justify-center gap-4 mb-6">
+                <div className="bg-white rounded-lg p-2 flex justify-center cursor-pointer hover:bg-gray-50 transition-colors" onClick={() => handlePosterClick(0)}>
+                  <img 
+                    src="/posters/1-thumb.jpg" 
+                    alt="Together for Treaty Poster 1" 
+                    className="w-auto h-auto rounded max-w-[200px]"
+                  />
+                </div>
+                <div className="bg-white rounded-lg p-2 flex justify-center cursor-pointer hover:bg-gray-50 transition-colors" onClick={() => handlePosterClick(1)}>
+                  <img 
+                    src="/posters/2-thumb.jpg" 
+                    alt="Together for Treaty Poster 2" 
+                    className="w-auto h-auto rounded max-w-[200px]"
+                  />
+                </div>
+                <div className="bg-white rounded-lg p-2 flex justify-center cursor-pointer hover:bg-gray-50 transition-colors" onClick={() => handlePosterClick(2)}>
+                  <img 
+                    src="/posters/3-thumb.jpg" 
+                    alt="Together for Treaty Poster 3" 
+                    className="w-auto h-auto rounded max-w-[200px]"
+                  />
+                </div>
+                <div className="bg-white rounded-lg p-2 flex justify-center cursor-pointer hover:bg-gray-50 transition-colors" onClick={() => handlePosterClick(3)}>
+                  <img 
+                    src="/posters/4-thumb.jpg" 
+                    alt="Together for Treaty Poster 4" 
+                    className="w-auto h-auto rounded max-w-[200px]"
+                  />
+                </div>
+              </div>
+              
+              <Button variant="white" size="lg" onClick={handleDownloadAll}>
+                Download All Here
               </Button>
             </div>
 
@@ -166,6 +273,15 @@ const ResourcesPage: React.FC = () => {
         onClose={closeModal}
         pdfUrl={modalState.pdfUrl}
         title={modalState.title}
+      />
+
+      {/* Image Lightbox */}
+      <ImageLightbox
+        isOpen={lightboxState.isOpen}
+        onClose={closeLightbox}
+        images={lightboxState.images}
+        initialIndex={lightboxState.startIndex}
+        downloadUrls={posterPdfs}
       />
     </main>
   );

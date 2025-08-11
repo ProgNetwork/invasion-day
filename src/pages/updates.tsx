@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import Image from 'next/image';
 import BlogPost from '@/components/BlogPost';
+import PageHeader from '@/components/PageHeader';
 
 interface Post {
   id: string;
@@ -92,13 +94,24 @@ export default function Updates() {
         <meta name="description" content="Latest updates and news from Together for Treaty" />
       </Head>
 
-      <div className="max-w-4xl mx-auto px-4 py-12">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Updates</h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Stay informed with the latest news, events, and updates from the Together for Treaty movement.
-          </p>
+      <PageHeader title="Updates" image="/images/rock-texture.jpg">
+        <p>
+          Stay informed with the latest news, events, and updates from the Together for Treaty movement.
+        </p>
+      </PageHeader>
+
+      <section className="bg-gray-50 py-16 sm:py-24 relative overflow-hidden">
+        {/* Background Texture */}
+        <div className="absolute inset-0 opacity-10">
+          <Image
+            src="/images/shapes-texture.png"
+            alt=""
+            fill
+            className="object-cover"
+          />
         </div>
+
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
         {posts.length === 0 ? (
           <div className="text-center py-12">
@@ -111,7 +124,7 @@ export default function Updates() {
             <p className="text-gray-600">Check back soon for the latest news and updates.</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {posts.map((post) => (
               <BlogPost key={post.id} post={post} />
             ))}
@@ -127,6 +140,7 @@ export default function Updates() {
           </Link>
         </div>
       </div>
+      </section>
     </div>
   );
 }

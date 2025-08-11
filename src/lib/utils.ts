@@ -37,6 +37,31 @@ export function extractHeroImage(content: string): string | null {
 }
 
 /**
+ * Extract all images from blog post content
+ * @param content - The HTML content of the blog post
+ * @returns Array of image URLs (preferring full-size images from href attributes)
+ */
+export function extractAllImages(content: string): string[] {
+  // First try to find full-size images from href attributes in links containing images
+  const linkMatches = content.match(/<a[^>]+href="([^"]+)"[^>]*>.*?<img[^>]*>/g);
+  if (linkMatches) {
+    return linkMatches.map(match => {
+      const hrefMatch = match.match(/href="([^"]+)"/);
+      return hrefMatch ? hrefMatch[1] : '';
+    }).filter(Boolean);
+  }
+  
+  // Fallback to extracting from img src attributes if no links found
+  const imgMatches = content.match(/<img[^>]+src="([^"]+)"/g);
+  if (!imgMatches) return [];
+  
+  return imgMatches.map(match => {
+    const srcMatch = match.match(/src="([^"]+)"/);
+    return srcMatch ? srcMatch[1] : '';
+  }).filter(Boolean);
+}
+
+/**
  * Clean HTML content by decoding HTML entities
  * @param content - The HTML content to clean
  * @returns Cleaned HTML content

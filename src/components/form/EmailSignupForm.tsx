@@ -33,7 +33,7 @@ const EmailSignupForm: React.FC<EmailSignupFormProps> = ({ onSuccess, onClose })
         body: JSON.stringify({
           givenName: '', // Empty since we only collect email
           familyName: '', // Empty since we only collect email
-          email: email,
+          email,
           postcode: '', // Empty since we only collect email
           sourceCode: 'website-tft',
           first_nations_identifying: false,

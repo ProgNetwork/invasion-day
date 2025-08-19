@@ -196,7 +196,7 @@ const SignupForm: React.FC = () => {
             onCheckedChange={(checked) => handleCheckboxChange(checked, 'first_nations_identifying')}
           />
           <Label htmlFor="first_nations_identifying" className="ml-2">
-            Do you identify as Aboriginal and/or Torres Strait Islander?
+            Are you Aboriginal and/or Torres Strait Islander?
           </Label>
         </div>
         <div className="flex items-center">

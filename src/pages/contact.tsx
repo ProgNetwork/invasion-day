@@ -174,7 +174,7 @@ const ContactPage: React.FC = () => {
                       htmlFor="firstNationsIdentifying"
                       className="font-medium text-gray-700"
                     >
-                      Do you identify as Aboriginal and/or Torres Strait Islander?
+                      Are you Aboriginal and/or Torres Strait Islander?
                     </Label>
                   </div>
                 </div>

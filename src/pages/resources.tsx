@@ -286,7 +286,7 @@ const ResourcesPage: React.FC = () => {
                 <Button
                   variant="primary"
                   size="md"
-                  onClick={() => handlePdfClick('/documents/Together for Treaty - Conversation Guide + FAQ.pdf', 'Conversations Guide')}
+                  onClick={() => handlePdfClick('/documents/together_for_treaty_conversation_guide_faq.pdf', 'Conversations Guide')}
                 >
                   Read more
                 </Button>
@@ -306,7 +306,7 @@ const ResourcesPage: React.FC = () => {
                 <Button
                   variant="primary"
                   size="md"
-                  onClick={() => handlePdfClick('/documents/Together for Treaty - Kitchen Table Conversation Guide.pdf', 'Kitchen Table Conversation Guide')}
+                  onClick={() => handlePdfClick('/documents/together_for_treaty_kitchen_table_conversation_guide.pdf', 'Kitchen Table Conversation Guide')}
                 >
                   Read more
                 </Button>
@@ -326,7 +326,7 @@ const ResourcesPage: React.FC = () => {
                 <Button
                   variant="primary"
                   size="md"
-                  onClick={() => handlePdfClick('/documents/Together for Treaty - Letter to the Editor Guide.pdf', 'How to: Letters to the Editor')}
+                  onClick={() => handlePdfClick('/documents/together_for_treaty_letter_to_editor_guide.pdf', 'How to: Letters to the Editor')}
                 >
                   Read more
                 </Button>

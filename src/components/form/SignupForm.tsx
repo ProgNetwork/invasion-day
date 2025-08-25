@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/Label';
 import React, { useState } from 'react';
 import { setCookie } from '@/lib/utils';
+import { trackSignup } from '@/lib/gtm';
 
 interface Errors {
   email?: string;
@@ -101,6 +102,9 @@ const SignupForm: React.FC = () => {
           secure: process.env.NODE_ENV === 'production',
           sameSite: 'lax',
         });
+
+        // Track successful signup
+        trackSignup('full');
 
         setSubmitted(true);
       } else {

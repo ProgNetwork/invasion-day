@@ -7,6 +7,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react';
+import { trackContact } from '@/lib/gtm';
 
 const ContactPage: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -51,6 +52,9 @@ const ContactPage: React.FC = () => {
       const data = await response.json();
 
       if (response.ok) {
+        // Track successful contact form submission
+        trackContact('website');
+
         setSubmitted(true);
         // Reset form
         setFormData({

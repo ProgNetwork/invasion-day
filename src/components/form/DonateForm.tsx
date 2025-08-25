@@ -7,6 +7,7 @@ import {
 } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import React, { useMemo, useState } from 'react';
+import { trackDonation } from '@/lib/gtm';
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '');
 
@@ -109,6 +110,8 @@ const DonateFormInner: React.FC = () => {
     if (confirmResult?.error) {
       setErrors({ card: confirmResult.error.message || 'Payment failed.' });
     } else {
+      // Track successful donation
+      trackDonation(totalAmount, donationType);
       window.location.href = '/?thank-you=true';
     }
 

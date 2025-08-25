@@ -3,6 +3,7 @@ import Button from '@/components/ui/Button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/Label';
 import { setCookie } from '@/lib/utils';
+import { trackSignup } from '@/lib/gtm';
 
 interface EmailSignupFormProps {
   onSuccess: () => void;
@@ -65,6 +66,9 @@ const EmailSignupForm: React.FC<EmailSignupFormProps> = ({ onSuccess, onClose })
           secure: process.env.NODE_ENV === 'production',
           sameSite: 'lax',
         });
+
+        // Track successful signup
+        trackSignup('email');
 
         // Call success callback to trigger download
         onSuccess();

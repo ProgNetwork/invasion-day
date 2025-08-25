@@ -10,6 +10,7 @@ import ImageLightbox from '@/components/ImageLightbox';
 import DownloadSignupModal from '@/components/DownloadSignupModal';
 import JSZip from 'jszip';
 import { hasCookie } from '@/lib/utils';
+import { trackDownload } from '@/lib/gtm';
 
 const ResourcesPage: React.FC = () => {
   const [modalState, setModalState] = useState<{
@@ -32,13 +33,15 @@ const ResourcesPage: React.FC = () => {
     startIndex: 0,
   });
 
+  /* eslint-disable func-call-spacing, indent */
   const [downloadSignupModal, setDownloadSignupModal] = useState<{
     isOpen: boolean;
-    downloadAction:(() => void) | null;
-      }>({
-        isOpen: false,
-        downloadAction: null,
-      });
+    downloadAction: (() => void) | null;
+  }>({
+    isOpen: false,
+    downloadAction: null,
+  });
+  /* eslint-enable func-call-spacing, indent */
 
   const posterImages = [
     '/posters/1-large.jpg',
@@ -71,6 +74,9 @@ const ResourcesPage: React.FC = () => {
       });
       return;
     }
+
+    // Track PDF view/download
+    trackDownload(title);
 
     // Check if we're on desktop (window width > 768px)
     if (typeof window !== 'undefined' && window.innerWidth > 768) {
@@ -371,6 +377,7 @@ const ResourcesPage: React.FC = () => {
           }
 
           // User has signed up, proceed with download
+          trackDownload(filename);
           const link = document.createElement('a');
           link.href = url;
           link.download = filename;

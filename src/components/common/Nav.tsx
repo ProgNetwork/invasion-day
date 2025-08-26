@@ -26,6 +26,10 @@ const NAV_ITEMS: NavItem[] = [
     path: '/resources',
   },
   {
+    label: 'Updates',
+    path: '/updates',
+  },
+  {
     label: 'Contact',
     path: '/contact',
   },

@@ -11,14 +11,7 @@ declare global {
         [key: string]: unknown;
       }
     ) => void;
-    dataLayer: Array<{
-      event: string;
-      page_path?: string;
-      event_category?: string;
-      event_label?: string;
-      value?: number;
-      [key: string]: unknown;
-    }>;
+    dataLayer: any[];
   }
 }
 

@@ -3,16 +3,7 @@ import React from 'react';
 
 const OurVision: React.FC = () => {
   return (
-    <section className="bg-gray-50 py-16 sm:py-24 relative overflow-hidden">
-      {/* Background Texture */}
-      <div className="absolute inset-0 opacity-10">
-        <Image
-          src="/images/shapes-texture.png"
-          alt=""
-          fill
-          className="object-cover"
-        />
-      </div>
+    <section className="bg-gray-50 py-16 sm:py-24">
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-2 xl:grid-cols-3 xl:gap-8 items-center">

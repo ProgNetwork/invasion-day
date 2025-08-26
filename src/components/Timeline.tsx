@@ -148,10 +148,10 @@ const EventCard = ({ title, description }: { title: string, description: string 
 const Timeline: React.FC = () => {
   return (
     <section className="bg-gray-50 py-16 sm:py-24 relative overflow-hidden">
-      {/* Background Image */}
+      {/* Background Texture */}
       <div className="absolute inset-0 opacity-10">
         <Image
-          src="/images/woman-collage.png"
+          src="/images/shapes-texture.png"
           alt=""
           fill
           className="object-cover"

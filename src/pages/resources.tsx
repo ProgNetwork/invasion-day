@@ -199,7 +199,7 @@ const ResourcesPage: React.FC = () => {
           <div
             className="h-full w-full bg-cover bg-center bg-no-repeat"
             style={{
-              backgroundImage: 'url(/images/resources-hero.jpeg)',
+              backgroundImage: 'url(/images/alice.jpg)',
             }}
           />
           <div className="absolute inset-0 bg-zinc-900/90"></div>

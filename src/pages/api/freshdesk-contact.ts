@@ -201,8 +201,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             name: `${firstName} ${lastName}`,
             phone: phoneNumber,
             custom_fields: {
-              cf_campaign: 'together-for-treaty',
-              cf_first_nations_identifying: firstNationsIdentifying ? 'yes' : 'no',
+              cf_cf_campaign: 'together-for-treaty',
+              cf_cf_first_nations_identifying: firstNationsIdentifying ? 'yes' : 'no',
             },
           },
           ticket_created_at: new Date().toISOString(),

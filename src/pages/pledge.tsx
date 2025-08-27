@@ -46,7 +46,7 @@ export default function PledgePage() {
               <h1 className="text-primary-700 text-4xl font-bold tracking-tight sm:text-5xl">Sign the Pledge</h1>
               <div className="mt-6 space-y-4 text-xl leading-relaxed text-gray-50">
                 <p>
-                  Victoria is closer to a Treaty than ever before – with legislation tabled in State Parliament.
+                  Victoria is closer to a Treaty than ever before.
                   It will be the first Treaty with First Nations people in this country and is a critical step
                   towards self-determination, justice and acknowledging the past.
                 </p>

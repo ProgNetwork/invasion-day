@@ -17,6 +17,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     sourceCode,
     firstNationsIdentifying,
     volunteer,
+    phone,
+    utmSource,
+    utmMedium,
+    utmCampaign,
+    utmTerm,
+    utmContent,
   } = req.body;
 
   try {
@@ -30,6 +36,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         volunteer: volunteer ? 'yes' : 'no',
         first_nations_identifying: firstNationsIdentifying ? 'yes' : 'no',
         source_code: sourceCode,
+        phone: phone || '',
+        utm_source: utmSource || '',
+        utm_medium: utmMedium || '',
+        utm_campaign: utmCampaign || '',
+        utm_term: utmTerm || '',
+        utm_content: utmContent || '',
       },
     };
 

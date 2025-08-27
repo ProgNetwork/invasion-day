@@ -216,3 +216,27 @@ export function getSignupTimestamp(): string | null {
 export function getSignupSource(): string | null {
   return getCookie('tft_signup_source');
 }
+
+/**
+ * Extract UTM parameters from the current URL
+ * @returns Object containing UTM parameters (utm_source, utm_medium, utm_campaign, utm_term, utm_content)
+ */
+export function getUTMParams(): Record<string, string> {
+  if (typeof window === 'undefined') {
+    return {};
+  }
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const utmParams: Record<string, string> = {};
+  
+  const utmKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+  
+  utmKeys.forEach(key => {
+    const value = urlParams.get(key);
+    if (value) {
+      utmParams[key] = value;
+    }
+  });
+  
+  return utmParams;
+}

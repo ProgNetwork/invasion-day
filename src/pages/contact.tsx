@@ -9,6 +9,15 @@ import Link from 'next/link';
 import React, { useState } from 'react';
 import { trackContact } from '@/lib/gtm';
 
+interface FormErrors {
+  firstName?: string;
+  lastName?: string;
+  email?: string;
+  phoneNumber?: string;
+  message?: string;
+  agreeToPolicy?: string;
+}
+
 const ContactPage: React.FC = () => {
   const [formData, setFormData] = useState({
     firstName: '',
@@ -22,6 +31,7 @@ const ContactPage: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState('');
+  const [errors, setErrors] = useState<FormErrors>({});
   const [imageLoaded, setImageLoaded] = useState(false);
 
   const handleInputChange = (
@@ -29,14 +39,64 @@ const ContactPage: React.FC = () => {
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    
+    // Clear error when user starts typing
+    if (errors[name as keyof FormErrors]) {
+      setErrors(prev => ({ ...prev, [name]: undefined }));
+    }
   };
 
   const handleCheckedChange = (checked: boolean | 'indeterminate', field: string) => {
     setFormData((prev) => ({ ...prev, [field]: !!checked }));
+    
+    // Clear error when user checks the box
+    if (field === 'agreeToPolicy' && errors.agreeToPolicy) {
+      setErrors(prev => ({ ...prev, agreeToPolicy: undefined }));
+    }
+  };
+
+  const validateForm = (): boolean => {
+    const newErrors: FormErrors = {};
+
+    if (!formData.firstName.trim()) {
+      newErrors.firstName = 'First name is required.';
+    }
+
+    if (!formData.lastName.trim()) {
+      newErrors.lastName = 'Last name is required.';
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required.';
+    } else if (!(/\S+@\S+\.\S+/).test(formData.email)) {
+      newErrors.email = 'Please enter a valid email address.';
+    }
+
+    if (!formData.phoneNumber.trim()) {
+      newErrors.phoneNumber = 'Phone number is required.';
+    } else if (!/^\d{8,15}$/.test(formData.phoneNumber.replace(/\D/g, ''))) {
+      newErrors.phoneNumber = 'Please enter a valid phone number.';
+    }
+
+    if (!formData.message.trim()) {
+      newErrors.message = 'Message is required.';
+    }
+
+    if (!formData.agreeToPolicy) {
+      newErrors.agreeToPolicy = 'You must agree to the Privacy Policy.';
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!validateForm()) {
+      return;
+    }
+
     setLoading(true);
     setError('');
 
@@ -145,24 +205,79 @@ const ContactPage: React.FC = () => {
                 <div className="grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-2">
                   <div className="space-y-2">
                     <Label htmlFor="firstName">First name</Label>
-                    <Input type="text" name="firstName" id="firstName" required value={formData.firstName} onChange={handleInputChange} placeholder="First name"/>
+                    <Input 
+                      type="text" 
+                      name="firstName" 
+                      id="firstName" 
+                      value={formData.firstName} 
+                      onChange={handleInputChange} 
+                      placeholder="First name"
+                      className={errors.firstName ? 'border-red-500' : ''}
+                    />
+                    {errors.firstName && (
+                      <p className="text-red-500 text-sm mt-1">{errors.firstName}</p>
+                    )}
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="lastName">Last name</Label>
-                    <Input type="text" name="lastName" id="lastName" required value={formData.lastName} onChange={handleInputChange} placeholder="Last name"/>
+                    <Input 
+                      type="text" 
+                      name="lastName" 
+                      id="lastName" 
+                      value={formData.lastName} 
+                      onChange={handleInputChange} 
+                      placeholder="Last name"
+                      className={errors.lastName ? 'border-red-500' : ''}
+                    />
+                    {errors.lastName && (
+                      <p className="text-red-500 text-sm mt-1">{errors.lastName}</p>
+                    )}
                   </div>
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="email">Email</Label>
-                  <Input type="email" name="email" id="email" required value={formData.email} onChange={handleInputChange} placeholder="Email"/>
+                  <Input 
+                    type="email" 
+                    name="email" 
+                    id="email" 
+                    value={formData.email} 
+                    onChange={handleInputChange} 
+                    placeholder="Email"
+                    className={errors.email ? 'border-red-500' : ''}
+                  />
+                  {errors.email && (
+                    <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+                  )}
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="phoneNumber">Phone number</Label>
-                  <Input type="tel" name="phoneNumber" id="phoneNumber" required value={formData.phoneNumber} onChange={handleInputChange} placeholder="Phone number"/>
+                  <Input 
+                    type="tel" 
+                    name="phoneNumber" 
+                    id="phoneNumber" 
+                    value={formData.phoneNumber} 
+                    onChange={handleInputChange} 
+                    placeholder="Phone number"
+                    className={errors.phoneNumber ? 'border-red-500' : ''}
+                  />
+                  {errors.phoneNumber && (
+                    <p className="text-red-500 text-sm mt-1">{errors.phoneNumber}</p>
+                  )}
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="message">Message</Label>
-                  <Textarea name="message" id="message" rows={4} required value={formData.message} onChange={handleInputChange} placeholder="Message"/>
+                  <Textarea 
+                    name="message" 
+                    id="message" 
+                    rows={4} 
+                    value={formData.message} 
+                    onChange={handleInputChange} 
+                    placeholder="Message"
+                    className={errors.message ? 'border-red-500' : ''}
+                  />
+                  {errors.message && (
+                    <p className="text-red-500 text-sm mt-1">{errors.message}</p>
+                  )}
                 </div>
                 <div className="flex items-center">
                   <Checkbox
@@ -189,7 +304,6 @@ const ContactPage: React.FC = () => {
                     className="h-4 w-4 rounded border-gray-300 text-primary-600 focus:ring-primary-500"
                     checked={formData.agreeToPolicy}
                     onCheckedChange={(checked) => handleCheckedChange(checked, 'agreeToPolicy')}
-                    required
                   />
 
                   <div className="ml-3 text-sm">
@@ -206,6 +320,9 @@ const ContactPage: React.FC = () => {
                       </Link>
                     </Label>
                   </div>
+                  {errors.agreeToPolicy && (
+                    <p className="text-red-500 text-sm mt-1 ml-3">{errors.agreeToPolicy}</p>
+                  )}
                 </div>
                 <div className="flex mt-4">
                   <Button

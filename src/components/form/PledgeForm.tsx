@@ -1,7 +1,10 @@
 import Button from '@/components/ui/Button';
+import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/Label';
 import React, { useState } from 'react';
+import { getUTMParams } from '@/lib/utils';
+import { trackPledge } from '@/lib/gtm';
 
 interface Errors {
   email?: string;
@@ -18,9 +21,9 @@ const PledgeForm: React.FC = () => {
     email: '',
     postcode: '',
     phone: '',
+    first_nations_identifying: false,
   });
   const [loading, setLoading] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState<Errors>({});
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -33,6 +36,10 @@ const PledgeForm: React.FC = () => {
     } else {
       setFormData((prev) => ({ ...prev, [name]: value }));
     }
+  };
+
+  const handleCheckboxChange = (checked: boolean | 'indeterminate', field: string) => {
+    setFormData((prev) => ({ ...prev, [field]: !!checked }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -59,40 +66,59 @@ const PledgeForm: React.FC = () => {
     setLoading(true);
 
     try {
-      // For now, just simulate a successful submission
-      // You can integrate with your actual API endpoint later
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      setSubmitted(true);
+      // Get UTM parameters from the current URL
+      const utmParams = getUTMParams();
+      
+      // Prepare the data to send to Action Network
+      const actionNetworkData = {
+        givenName: formData.givenName,
+        familyName: formData.familyName,
+        email: formData.email,
+        postcode: formData.postcode,
+        phone: formData.phone || '',
+        firstNationsIdentifying: formData.first_nations_identifying,
+        sourceCode: 'pledge_signature_website',
+        // Include UTM parameters as custom fields
+        utmSource: utmParams.utm_source || '',
+        utmMedium: utmParams.utm_medium || '',
+        utmCampaign: utmParams.utm_campaign || '',
+        utmTerm: utmParams.utm_term || '',
+        utmContent: utmParams.utm_content || '',
+      };
+
+      const response = await fetch('/api/actionnetwork-signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(actionNetworkData),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to submit pledge');
+      }
+
+      // Track the successful pledge submission in GTM
+      trackPledge(utmParams);
+
+      // Change the hash to #share to show the success state
+      window.location.hash = '#share';
+      
     } catch (error) {
       console.error('Error submitting pledge:', error);
+      // You might want to show an error message to the user here
+      alert('There was an error submitting your pledge. Please try again.');
     } finally {
       setLoading(false);
     }
   };
 
-  if (submitted) {
-    return (
-      <div className="text-center py-8">
-        <div className="text-6xl mb-4">🎉</div>
-        <h3 className="text-2xl font-bold text-primary-700 mb-2">Thank you for your pledge!</h3>
-        <p className="text-gray-600 mb-6">
-          You've joined thousands of Australians supporting Treaties in Victoria and across the country.
-        </p>
-        <Button
-          variant="primary"
-          onClick={() => setSubmitted(false)}
-        >
-          Sign another pledge
-        </Button>
-      </div>
-    );
-  }
-
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <Label htmlFor="givenName">First Name *</Label>
+          <Label htmlFor="givenName" className="pb-1">First Name *</Label>
           <Input
             id="givenName"
             name="givenName"
@@ -107,7 +133,7 @@ const PledgeForm: React.FC = () => {
           )}
         </div>
         <div>
-          <Label htmlFor="familyName">Last Name *</Label>
+          <Label htmlFor="familyName" className="pb-1">Last Name *</Label>
           <Input
             id="familyName"
             name="familyName"
@@ -124,7 +150,7 @@ const PledgeForm: React.FC = () => {
       </div>
 
       <div>
-        <Label htmlFor="email">Email Address *</Label>
+        <Label htmlFor="email" className="pb-1">Email Address *</Label>
         <Input
           id="email"
           name="email"
@@ -140,7 +166,7 @@ const PledgeForm: React.FC = () => {
       </div>
 
       <div>
-        <Label htmlFor="postcode">Postcode *</Label>
+        <Label htmlFor="postcode" className="pb-1">Postcode *</Label>
         <Input
           id="postcode"
           name="postcode"
@@ -156,7 +182,7 @@ const PledgeForm: React.FC = () => {
       </div>
 
       <div>
-        <Label htmlFor="phone">Phone Number (Optional)</Label>
+        <Label htmlFor="phone" className="pb-1">Phone Number (Optional)</Label>
         <Input
           id="phone"
           name="phone"
@@ -170,6 +196,22 @@ const PledgeForm: React.FC = () => {
         {errors.phone && (
           <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
         )}
+      </div>
+
+      <div className="flex items-center">
+        <Checkbox
+          name="first_nations_identifying"
+          id="first_nations_identifying"
+          checked={formData.first_nations_identifying}
+          onCheckedChange={(checked) => handleCheckboxChange(checked, 'first_nations_identifying')}
+        />
+        <Label 
+          htmlFor="first_nations_identifying" 
+          className="ml-2 cursor-pointer"
+          onClick={() => setFormData(prev => ({ ...prev, first_nations_identifying: !prev.first_nations_identifying }))}
+        >
+          Are you Aboriginal and/or Torres Strait Islander?
+        </Label>
       </div>
 
       <Button

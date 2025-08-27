@@ -58,3 +58,30 @@ export const trackContact = (method: string) => {
     label: method,
   });
 };
+
+export const trackPledge = (utmParams: Record<string, string>) => {
+  if (typeof window !== 'undefined' && window.dataLayer) {
+    window.dataLayer.push({
+      event: 'pledge_signup',
+      event_category: 'engagement',
+      event_label: 'pledge_signature_website',
+      utm_source: utmParams.utm_source || '',
+      utm_medium: utmParams.utm_medium || '',
+      utm_campaign: utmParams.utm_campaign || '',
+    });
+  }
+};
+
+export const trackSocialShare = (platform: string, utmParams: Record<string, string>) => {
+  if (typeof window !== 'undefined' && window.dataLayer) {
+    window.dataLayer.push({
+      event: 'social_share',
+      event_category: 'engagement',
+      event_label: platform,
+      social_platform: platform,
+      utm_source: utmParams.utm_source || '',
+      utm_medium: utmParams.utm_medium || '',
+      utm_campaign: utmParams.utm_campaign || '',
+    });
+  }
+};

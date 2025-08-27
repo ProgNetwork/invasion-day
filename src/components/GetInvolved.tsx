@@ -1,15 +1,12 @@
-import SignupForm from '@/components/form/SignupForm';
 import Button from '@/components/ui/Button';
-import Modal from '@/components/ui/Modal';
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React from 'react';
 
 const GetInvolved: React.FC = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const actions = [
     {
-      title: 'Sign the Petition',
+      title: 'Sign the Pledge',
       description: 'Add your name to show community support for truth-telling and Treaty across the country.',
     },
     {
@@ -44,8 +41,8 @@ const GetInvolved: React.FC = () => {
               ))}
             </div>
             <div className="mt-8 flex flex-wrap gap-4">
-              <Button variant="primary" size="md" onClick={() => setIsModalOpen(true)}>
-                Add Your Name
+              <Button variant="primary" size="md" href="/pledge?utm_source=homepage&utm_medium=get_involved&utm_campaign=treaty_pledge">
+                Sign the Pledge
               </Button>
               <Button variant="outline" size="md" href="/get-involved">
                 Join an Event
@@ -63,9 +60,6 @@ const GetInvolved: React.FC = () => {
           </div>
         </div>
       </div>
-      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} noPadding>
-        <SignupForm />
-      </Modal>
     </section>
   );
 };

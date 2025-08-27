@@ -6,7 +6,6 @@ import React, { useState } from 'react';
 const Cta: React.FC = () => {
   const [isSignupModalOpen, setIsSignupModalOpen] = useState(false);
 
-  const openSignupModal = () => setIsSignupModalOpen(true);
   const closeSignupModal = () => setIsSignupModalOpen(false);
 
   return (

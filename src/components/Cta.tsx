@@ -6,6 +6,7 @@ import React, { useState } from 'react';
 const Cta: React.FC = () => {
   const [isSignupModalOpen, setIsSignupModalOpen] = useState(false);
 
+  const openSignupModal = () => setIsSignupModalOpen(true);
   const closeSignupModal = () => setIsSignupModalOpen(false);
 
   return (
@@ -20,8 +21,8 @@ const Cta: React.FC = () => {
             standing side-by-side for truth-telling, Treaties and justice.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <Button variant="white" size="lg" href="/pledge?utm_source=homepage&utm_medium=cta&utm_campaign=treaty_pledge">
-              Sign the Pledge
+            <Button variant="white" size="lg" onClick={openSignupModal}>
+              Sign the Petition
             </Button>
             <Button variant="white-outline" size="lg" href="/donate">
               Donate

@@ -25,7 +25,7 @@ const PledgeForm: React.FC = () => {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    
+
     // For phone field, only allow digits
     if (name === 'phone') {
       const digitsOnly = value.replace(/\D/g, '');
@@ -78,8 +78,8 @@ const PledgeForm: React.FC = () => {
         <p className="text-gray-600 mb-6">
           You've joined thousands of Australians supporting Treaties in Victoria and across the country.
         </p>
-        <Button 
-          variant="primary" 
+        <Button
+          variant="primary"
           onClick={() => setSubmitted(false)}
         >
           Sign another pledge
@@ -122,7 +122,7 @@ const PledgeForm: React.FC = () => {
           )}
         </div>
       </div>
-      
+
       <div>
         <Label htmlFor="email">Email Address *</Label>
         <Input
@@ -138,7 +138,7 @@ const PledgeForm: React.FC = () => {
           <p className="text-red-500 text-sm mt-1">{errors.email}</p>
         )}
       </div>
-      
+
       <div>
         <Label htmlFor="postcode">Postcode *</Label>
         <Input
@@ -154,7 +154,7 @@ const PledgeForm: React.FC = () => {
           <p className="text-red-500 text-sm mt-1">{errors.postcode}</p>
         )}
       </div>
-      
+
       <div>
         <Label htmlFor="phone">Phone Number (Optional)</Label>
         <Input

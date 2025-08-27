@@ -3,7 +3,6 @@ import Image from 'next/image';
 import React from 'react';
 
 const GetInvolved: React.FC = () => {
-
   const actions = [
     {
       title: 'Sign the Pledge',

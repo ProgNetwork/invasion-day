@@ -9,17 +9,17 @@ const SocialShare: React.FC = () => {
     const facebookImageUrl = `${window.location.origin}/images/treaty-now.jpg`;
     const instagramImageUrl = `${window.location.origin}/images/pledge-insta-square.png`;
     const shareText = "We're closer to Treaty in Victoria than ever before ❤️💛🖤 Join me and show your support for truth-telling, Treaty and First Nations justice. Sign the pledge! #Treaty #Treatynow";
-    
+
     const shareUrls = {
       facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(pledgeUrl)}&quote=${encodeURIComponent(shareText)}&picture=${encodeURIComponent(facebookImageUrl)}`,
-      instagram: `https://www.instagram.com/?url=${encodeURIComponent(pledgeUrl)}&caption=${encodeURIComponent(shareText)}&image=${encodeURIComponent(instagramImageUrl)}`
+      instagram: `https://www.instagram.com/?url=${encodeURIComponent(pledgeUrl)}&caption=${encodeURIComponent(shareText)}&image=${encodeURIComponent(instagramImageUrl)}`,
     };
 
     if (shareUrls[platform as keyof typeof shareUrls]) {
       // Track the social share action
       const utmParams = getUTMParams();
       trackSocialShare(platform, utmParams);
-      
+
       // Open the share URL
       window.open(shareUrls[platform as keyof typeof shareUrls], '_blank', 'noopener,noreferrer');
     }

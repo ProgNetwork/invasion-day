@@ -68,7 +68,7 @@ const PledgeForm: React.FC = () => {
     try {
       // Get UTM parameters from the current URL
       const utmParams = getUTMParams();
-      
+
       // Prepare the data to send to Action Network
       const actionNetworkData = {
         givenName: formData.givenName,
@@ -104,7 +104,6 @@ const PledgeForm: React.FC = () => {
 
       // Change the hash to #share to show the success state
       window.location.hash = '#share';
-      
     } catch (error) {
       console.error('Error submitting pledge:', error);
       // You might want to show an error message to the user here
@@ -205,8 +204,8 @@ const PledgeForm: React.FC = () => {
           checked={formData.first_nations_identifying}
           onCheckedChange={(checked) => handleCheckboxChange(checked, 'first_nations_identifying')}
         />
-        <Label 
-          htmlFor="first_nations_identifying" 
+        <Label
+          htmlFor="first_nations_identifying"
           className="ml-2 cursor-pointer"
           onClick={() => setFormData(prev => ({ ...prev, first_nations_identifying: !prev.first_nations_identifying }))}
         >

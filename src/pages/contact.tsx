@@ -39,7 +39,7 @@ const ContactPage: React.FC = () => {
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
-    
+
     // Clear error when user starts typing
     if (errors[name as keyof FormErrors]) {
       setErrors(prev => ({ ...prev, [name]: undefined }));
@@ -48,7 +48,7 @@ const ContactPage: React.FC = () => {
 
   const handleCheckedChange = (checked: boolean | 'indeterminate', field: string) => {
     setFormData((prev) => ({ ...prev, [field]: !!checked }));
-    
+
     // Clear error when user checks the box
     if (field === 'agreeToPolicy' && errors.agreeToPolicy) {
       setErrors(prev => ({ ...prev, agreeToPolicy: undefined }));
@@ -74,7 +74,7 @@ const ContactPage: React.FC = () => {
 
     if (!formData.phoneNumber.trim()) {
       newErrors.phoneNumber = 'Phone number is required.';
-    } else if (!/^\d{8,15}$/.test(formData.phoneNumber.replace(/\D/g, ''))) {
+    } else if (!(/^\d{8,15}$/).test(formData.phoneNumber.replace(/\D/g, ''))) {
       newErrors.phoneNumber = 'Please enter a valid phone number.';
     }
 
@@ -92,7 +92,7 @@ const ContactPage: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!validateForm()) {
       return;
     }
@@ -205,12 +205,12 @@ const ContactPage: React.FC = () => {
                 <div className="grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-2">
                   <div className="space-y-2">
                     <Label htmlFor="firstName">First name</Label>
-                    <Input 
-                      type="text" 
-                      name="firstName" 
-                      id="firstName" 
-                      value={formData.firstName} 
-                      onChange={handleInputChange} 
+                    <Input
+                      type="text"
+                      name="firstName"
+                      id="firstName"
+                      value={formData.firstName}
+                      onChange={handleInputChange}
                       placeholder="First name"
                       className={errors.firstName ? 'border-red-500' : ''}
                     />
@@ -220,12 +220,12 @@ const ContactPage: React.FC = () => {
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="lastName">Last name</Label>
-                    <Input 
-                      type="text" 
-                      name="lastName" 
-                      id="lastName" 
-                      value={formData.lastName} 
-                      onChange={handleInputChange} 
+                    <Input
+                      type="text"
+                      name="lastName"
+                      id="lastName"
+                      value={formData.lastName}
+                      onChange={handleInputChange}
                       placeholder="Last name"
                       className={errors.lastName ? 'border-red-500' : ''}
                     />
@@ -236,12 +236,12 @@ const ContactPage: React.FC = () => {
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="email">Email</Label>
-                  <Input 
-                    type="email" 
-                    name="email" 
-                    id="email" 
-                    value={formData.email} 
-                    onChange={handleInputChange} 
+                  <Input
+                    type="email"
+                    name="email"
+                    id="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
                     placeholder="Email"
                     className={errors.email ? 'border-red-500' : ''}
                   />
@@ -251,12 +251,12 @@ const ContactPage: React.FC = () => {
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="phoneNumber">Phone number</Label>
-                  <Input 
-                    type="tel" 
-                    name="phoneNumber" 
-                    id="phoneNumber" 
-                    value={formData.phoneNumber} 
-                    onChange={handleInputChange} 
+                  <Input
+                    type="tel"
+                    name="phoneNumber"
+                    id="phoneNumber"
+                    value={formData.phoneNumber}
+                    onChange={handleInputChange}
                     placeholder="Phone number"
                     className={errors.phoneNumber ? 'border-red-500' : ''}
                   />
@@ -266,12 +266,12 @@ const ContactPage: React.FC = () => {
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="message">Message</Label>
-                  <Textarea 
-                    name="message" 
-                    id="message" 
-                    rows={4} 
-                    value={formData.message} 
-                    onChange={handleInputChange} 
+                  <Textarea
+                    name="message"
+                    id="message"
+                    rows={4}
+                    value={formData.message}
+                    onChange={handleInputChange}
                     placeholder="Message"
                     className={errors.message ? 'border-red-500' : ''}
                   />

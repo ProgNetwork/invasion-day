@@ -48,10 +48,6 @@ const ContactMethodSelector: React.FC<ContactMethodSelectorProps> = ({
     <div className="bg-white py-12">
       <div className="container mx-auto px-4">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center bg-primary-100 text-primary-800 px-4 py-2 rounded-full text-sm font-medium mb-4">
-            <span className="mr-2">🎯</span>
-            Select how you want to contact
-          </div>
           <h2 className="text-2xl font-bold text-gray-900 mb-2">
             Choose Your Action
           </h2>

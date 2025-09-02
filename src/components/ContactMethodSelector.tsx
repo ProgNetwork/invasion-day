@@ -18,7 +18,7 @@ const ContactMethodSelector: React.FC<ContactMethodSelectorProps> = ({
       title: 'Call His Office',
       subtitle: 'Brad Battin MP',
       details: 'Electorate: Berwick',
-      contact: '(03) 9707 2000',
+      contact: '(03) 5953 0216',
       icon: <Phone className="w-8 h-8" />,
       color: 'border-gray-300 bg-gray-50',
       selectedColor: 'border-primary-500 bg-primary-50',
@@ -63,7 +63,12 @@ const ContactMethodSelector: React.FC<ContactMethodSelectorProps> = ({
               key={method.id}
               onClick={() => {
                 onMethodChange(method.id);
-                window.location.hash = `#${method.id}`;
+                const hashMap = {
+                  'call': '#call',
+                  'email': '#send-email',
+                  'facebook': '#facebook'
+                };
+                window.location.hash = hashMap[method.id] || `#${method.id}`;
               }}
               className={`p-4 rounded-lg border-2 transition-all duration-200 hover:shadow-md text-left cursor-pointer ${
                 selectedMethod === method.id

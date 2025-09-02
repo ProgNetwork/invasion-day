@@ -56,7 +56,7 @@ const ContactMethodSelector: React.FC<ContactMethodSelectorProps> = ({
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {contactMethods.map((method) => (
             <button
               key={method.id}

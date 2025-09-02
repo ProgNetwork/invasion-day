@@ -117,7 +117,7 @@ const ContactRepForm: React.FC<ContactRepFormProps> = ({ contactMethod }) => {
         utmMedium: utmParams.utm_medium || '',
         utmCampaign: utmParams.utm_campaign || '',
         utmTerm: utmParams.utm_term || '',
-        utmContent: utmParams.utm_content || '',
+        utmContent: `contact_rep_${contactMethod}`,
       };
 
       const response = await fetch('/api/actionnetwork-signup', {

@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import ContactRepForm from '@/components/form/ContactRepForm';
+import ContactMethodSelector, { ContactMethod } from '@/components/ContactMethodSelector';
 import SocialShare from '@/components/SocialShare';
 import Accordion, { AccordionItem } from '@/components/ui/Accordion';
 
 export default function VicOppositionTreatyPage() {
   const [showSocialShare, setShowSocialShare] = useState(false);
+  const [selectedContactMethod, setSelectedContactMethod] = useState<ContactMethod>('call');
 
   useEffect(() => {
     // Check if the hash is '#share' on component mount
@@ -53,6 +55,14 @@ export default function VicOppositionTreatyPage() {
           </div>
         </section>
 
+        {/* Contact Method Selector */}
+        {!showSocialShare && (
+          <ContactMethodSelector
+            onMethodChange={setSelectedContactMethod}
+            selectedMethod={selectedContactMethod}
+          />
+        )}
+
         {/* Main Content Section */}
         <section className="container mx-auto px-4 py-16">
           <div className="max-w-6xl mx-auto">
@@ -72,7 +82,7 @@ export default function VicOppositionTreatyPage() {
                         Tell Brad Battin MP and the Liberal Party that you support Treaty.
                       </p>
                     </div>
-                    <ContactRepForm />
+                    <ContactRepForm contactMethod={selectedContactMethod} />
                   </>
                 )}
               </div>
@@ -259,7 +269,7 @@ export default function VicOppositionTreatyPage() {
                         Tell Brad Battin MP and the Liberal Party that you support Treaty.
                       </p>
                     </div>
-                    <ContactRepForm />
+                    <ContactRepForm contactMethod={selectedContactMethod} />
                   </>
                 )}
               </div>

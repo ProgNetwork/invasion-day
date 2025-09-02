@@ -5,6 +5,7 @@ import { Label } from '@/components/ui/Label';
 import React, { useState } from 'react';
 import { getUTMParams } from '@/lib/utils';
 import { trackPledge } from '@/lib/gtm';
+import { ContactMethod } from '@/components/ContactMethodSelector';
 
 interface Errors {
   email?: string;
@@ -14,7 +15,24 @@ interface Errors {
   phone?: string;
 }
 
-const ContactRepForm: React.FC = () => {
+interface ContactRepFormProps {
+  contactMethod: ContactMethod;
+}
+
+const ContactRepForm: React.FC<ContactRepFormProps> = ({ contactMethod }) => {
+  const getButtonText = (method: ContactMethod) => {
+    switch (method) {
+      case 'call':
+        return 'I\'ll Call His Office';
+      case 'email':
+        return 'I\'ll Send an Email';
+      case 'facebook':
+        return 'I\'ll Comment on Facebook';
+      default:
+        return 'Contact Representative';
+    }
+  };
+
   const [formData, setFormData] = useState({
     givenName: '',
     familyName: '',
@@ -72,6 +90,20 @@ const ContactRepForm: React.FC = () => {
       // Get UTM parameters from the current URL
       const utmParams = getUTMParams();
 
+      // Get source code based on contact method
+      const getSourceCode = (method: ContactMethod) => {
+        switch (method) {
+          case 'call':
+            return 'contact_rep_call_batton';
+          case 'email':
+            return 'contact_rep_email_batton';
+          case 'facebook':
+            return 'contact_rep_facebook_batton';
+          default:
+            return 'contact_rep_website_batton';
+        }
+      };
+
       // Prepare the data to send to Action Network
       const actionNetworkData = {
         givenName: formData.givenName,
@@ -80,7 +112,8 @@ const ContactRepForm: React.FC = () => {
         postcode: formData.postcode,
         phone: formData.phone || '',
         firstNationsIdentifying: formData.first_nations_identifying,
-        sourceCode: 'contact_rep_website_batton',
+        sourceCode: getSourceCode(contactMethod),
+        contactMethod,
         // Include UTM parameters as custom fields
         utmSource: utmParams.utm_source || '',
         utmMedium: utmParams.utm_medium || '',
@@ -223,7 +256,7 @@ const ContactRepForm: React.FC = () => {
         disabled={loading}
         className="mt-8"
       >
-        {loading ? 'Submitting...' : 'Contact Representative'}
+        {loading ? 'Submitting...' : getButtonText(contactMethod)}
       </Button>
     </form>
   );

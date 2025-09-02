@@ -23,11 +23,11 @@ const ContactRepForm: React.FC<ContactRepFormProps> = ({ contactMethod }) => {
   const getButtonText = (method: ContactMethod) => {
     switch (method) {
       case 'call':
-        return 'I\'ll Call His Office';
+        return 'I Called His Office';
       case 'email':
-        return 'I\'ll Send an Email';
+        return 'I Sent an Email';
       case 'facebook':
-        return 'I\'ll Comment on Facebook';
+        return 'I Commented on Facebook';
       default:
         return 'Contact Representative';
     }

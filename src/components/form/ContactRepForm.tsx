@@ -108,7 +108,6 @@ const ContactRepForm: React.FC = () => {
       // Change the hash to #share to show the success state
       window.location.hash = '#share';
     } catch (error) {
-      console.error('Error submitting contact form:', error);
       // You might want to show an error message to the user here
       alert('There was an error submitting your contact form. Please try again.');
     } finally {

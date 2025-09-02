@@ -9,6 +9,32 @@ export default function VicOppositionTreatyPage() {
   const [showSocialShare, setShowSocialShare] = useState(false);
   const [selectedContactMethod, setSelectedContactMethod] = useState<ContactMethod>('call');
 
+  const getFormHeading = (method: ContactMethod) => {
+    switch (method) {
+      case 'call':
+        return 'I Called Him';
+      case 'email':
+        return 'I Emailed Him';
+      case 'facebook':
+        return 'I Commented on Facebook';
+      default:
+        return 'Take Action';
+    }
+  };
+
+  const getFormDescription = (method: ContactMethod) => {
+    switch (method) {
+      case 'call':
+        return 'I told Brad Battin MP and the Liberal Party that I support Treaty.';
+      case 'email':
+        return 'I told Brad Battin MP and the Liberal Party that I support Treaty.';
+      case 'facebook':
+        return 'I told Brad Battin MP and the Liberal Party that I support Treaty.';
+      default:
+        return 'Tell Brad Battin MP and the Liberal Party that you support Treaty.';
+    }
+  };
+
   useEffect(() => {
     // Check if the hash is '#share' on component mount
     if (window.location.hash === '#share') {
@@ -76,10 +102,10 @@ export default function VicOppositionTreatyPage() {
                   <>
                     <div className="text-center mb-8">
                       <h3 className="text-2xl font-bold text-primary-700 mb-4">
-                        Take Action
+                        {getFormHeading(selectedContactMethod)}
                       </h3>
                       <p className="text-lg text-gray-700">
-                        Tell Brad Battin MP and the Liberal Party that you support Treaty.
+                        {getFormDescription(selectedContactMethod)}
                       </p>
                     </div>
                     <ContactRepForm contactMethod={selectedContactMethod} />
@@ -263,10 +289,10 @@ export default function VicOppositionTreatyPage() {
                   <>
                     <div className="text-center mb-8">
                       <h3 className="text-3xl font-bold text-primary-700 mb-4">
-                        Take Action
+                        {getFormHeading(selectedContactMethod)}
                       </h3>
                       <p className="text-lg text-gray-700">
-                        Tell Brad Battin MP and the Liberal Party that you support Treaty.
+                        {getFormDescription(selectedContactMethod)}
                       </p>
                     </div>
                     <ContactRepForm contactMethod={selectedContactMethod} />

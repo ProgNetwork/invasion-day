@@ -32,7 +32,6 @@ const ContactRepForm: React.FC<ContactRepFormProps> = ({ contactMethod }) => {
         return 'Contact Representative';
     }
   };
-
   const [formData, setFormData] = useState({
     givenName: '',
     familyName: '',

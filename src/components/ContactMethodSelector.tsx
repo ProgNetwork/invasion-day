@@ -1,4 +1,5 @@
 import React from 'react';
+import { Phone, Mail, MessageCircle } from 'lucide-react';
 
 export type ContactMethod = 'call' | 'email' | 'facebook';
 
@@ -14,33 +15,33 @@ const ContactMethodSelector: React.FC<ContactMethodSelectorProps> = ({
   const contactMethods = [
     {
       id: 'call' as ContactMethod,
-      title: 'Call his office',
+      title: 'Call His Office',
       subtitle: 'Brad Battin MP',
       details: 'Electorate: Berwick',
-      contact: 'Phone: (03) 9707 2000',
-      icon: '📞',
-      color: 'border-blue-500 bg-blue-50',
-      selectedColor: 'border-blue-600 bg-blue-100',
+      contact: '(03) 9707 2000',
+      icon: <Phone className="w-8 h-8" />,
+      color: 'border-gray-300 bg-gray-50',
+      selectedColor: 'border-primary-500 bg-primary-50',
     },
     {
       id: 'email' as ContactMethod,
-      title: 'Send him an email',
+      title: 'Send Him An Email',
       subtitle: 'Brad Battin MP',
       details: 'Electorate: Berwick',
-      contact: 'Email: berwick@parliament.vic.gov.au',
-      icon: '✉️',
-      color: 'border-green-500 bg-green-50',
-      selectedColor: 'border-green-600 bg-green-100',
+      contact: 'brad.battin@parliament.vic.gov.au',
+      icon: <Mail className="w-8 h-8" />,
+      color: 'border-gray-300 bg-gray-50',
+      selectedColor: 'border-primary-500 bg-primary-50',
     },
     {
       id: 'facebook' as ContactMethod,
-      title: 'Leave a respectful comment',
+      title: 'Leave A Respectful Comment',
       subtitle: 'on his Facebook',
-      details: 'Public engagement',
-      contact: 'Facebook: @BradBattinMP',
-      icon: '📱',
-      color: 'border-purple-500 bg-purple-50',
-      selectedColor: 'border-purple-600 bg-purple-100',
+      details: 'Electorate: Berwick',
+      contact: '@BradBattinMP',
+      icon: <MessageCircle className="w-8 h-8" />,
+      color: 'border-gray-300 bg-gray-50',
+      selectedColor: 'border-primary-500 bg-primary-50',
     },
   ];
 
@@ -49,7 +50,7 @@ const ContactMethodSelector: React.FC<ContactMethodSelectorProps> = ({
       <div className="container mx-auto px-4">
         <div className="text-center mb-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-2">
-            Choose Your Action
+            Click To Choose Your Action
           </h2>
           <p className="text-gray-600">
             Pick how you'd like to reach out to Brad Battin MP about Treaty support
@@ -60,15 +61,18 @@ const ContactMethodSelector: React.FC<ContactMethodSelectorProps> = ({
           {contactMethods.map((method) => (
             <button
               key={method.id}
-              onClick={() => onMethodChange(method.id)}
-              className={`p-6 rounded-lg border-2 transition-all duration-200 hover:shadow-md text-left ${
+              onClick={() => {
+                onMethodChange(method.id);
+                window.location.hash = `#${method.id}`;
+              }}
+              className={`p-4 rounded-lg border-2 transition-all duration-200 hover:shadow-md text-left cursor-pointer ${
                 selectedMethod === method.id
                   ? method.selectedColor
                   : `${method.color} hover:shadow-sm`
               }`}
             >
               <div className="flex items-start space-x-4">
-                <div className="text-3xl">{method.icon}</div>
+                <div className="text-gray-600">{method.icon}</div>
                 <div className="flex-1">
                   <h3 className="font-semibold text-gray-900 mb-1">
                     {method.title}
@@ -95,6 +99,30 @@ const ContactMethodSelector: React.FC<ContactMethodSelectorProps> = ({
                   </div>
                 )}
               </div>
+              {selectedMethod === method.id && method.id === 'facebook' && (
+                <div className="mt-4">
+                  <a
+                    href="https://www.facebook.com/share/p/15BvDchjya/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center w-full px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors duration-200 text-sm font-medium"
+                  >
+                    <MessageCircle className="w-4 h-4 mr-2" />
+                    Comment on Facebook
+                  </a>
+                </div>
+              )}
+              {selectedMethod === method.id && method.id === 'email' && (
+                <div className="mt-4">
+                  <a
+                    href="mailto:brad.battin@parliament.vic.gov.au"
+                    className="inline-flex items-center justify-center w-full px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors duration-200 text-sm font-medium"
+                  >
+                    <Mail className="w-4 h-4 mr-2" />
+                    Email Now
+                  </a>
+                </div>
+              )}
             </button>
           ))}
         </div>

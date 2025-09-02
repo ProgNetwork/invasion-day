@@ -32,6 +32,7 @@ const ContactRepForm: React.FC<ContactRepFormProps> = ({ contactMethod }) => {
         return 'Contact Representative';
     }
   };
+
   const [formData, setFormData] = useState({
     givenName: '',
     familyName: '',
@@ -75,9 +76,7 @@ const ContactRepForm: React.FC<ContactRepFormProps> = ({ contactMethod }) => {
     if (!formData.postcode.trim()) {
       newErrors.postcode = 'Postcode required.';
     }
-    if (!formData.phone.trim()) {
-      newErrors.phone = 'Phone number required.';
-    }
+
     setErrors(newErrors);
     if (Object.keys(newErrors).length > 0) {
       return;
@@ -215,7 +214,7 @@ const ContactRepForm: React.FC<ContactRepFormProps> = ({ contactMethod }) => {
       </div>
 
       <div>
-        <Label htmlFor="phone" className="pb-1">Phone Number *</Label>
+        <Label htmlFor="phone" className="pb-1">Phone Number</Label>
         <Input
           id="phone"
           name="phone"

@@ -11,7 +11,7 @@ export const AccordionItem: React.FC<AccordionItemProps> = ({ title, children })
     <div className="border-b border-gray-200 py-6">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex w-full items-center justify-between text-left"
+        className="flex w-full items-center justify-between text-left cursor-pointer"
         aria-expanded={isOpen}
       >
         <span className="text-lg font-medium text-gray-900">{title}</span>

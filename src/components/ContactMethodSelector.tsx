@@ -64,9 +64,9 @@ const ContactMethodSelector: React.FC<ContactMethodSelectorProps> = ({
               onClick={() => {
                 onMethodChange(method.id);
                 const hashMap = {
-                  'call': '#call',
-                  'email': '#send-email',
-                  'facebook': '#facebook'
+                  call: '#call',
+                  email: '#send-email',
+                  facebook: '#facebook',
                 };
                 window.location.hash = hashMap[method.id] || `#${method.id}`;
               }}

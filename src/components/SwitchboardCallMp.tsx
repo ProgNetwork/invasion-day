@@ -18,7 +18,7 @@ const SwitchboardCallMp: React.FC = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-2">
-            Call Your MP About Treaty
+            Call Your Member of Parliament About Treaty
           </h2>
           <p className="text-gray-600">
             Use our calling tool to connect directly to your MP's office. All you need is your postcode.

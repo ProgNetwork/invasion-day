@@ -59,7 +59,7 @@ const SwitchboardCallMp: React.FC = () => {
             <a
               href="tel:0489079839"
               className="block md:hidden inline-flex items-center justify-center w-full px-4 py-2 mt-6 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors duration-200 text-2xl font-medium"
-                >
+            >
               Click to Call Now
             </a>
           </div>

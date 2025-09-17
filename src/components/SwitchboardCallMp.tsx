@@ -7,7 +7,7 @@ const SwitchboardCallMp: React.FC = () => {
     title: 'Call Your MP',
     subtitle: 'Use our calling tool',
     details: 'We\'ll connect you directly to your MP\'s office. <strong>All you need is your postcode.</strong>',
-    contact: '0408 000 000',
+    contact: '0489 079 839',
     icon: <Phone className="w-8 h-8" />,
     color: 'border-gray-300 bg-gray-50',
     selectedColor: 'border-primary-500 bg-primary-50',

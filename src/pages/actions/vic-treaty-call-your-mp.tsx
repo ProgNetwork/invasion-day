@@ -125,7 +125,7 @@ export default function VicTreatyCallYourMpPage() {
                     <h3 className="text-2xl font-bold text-gray-900 mb-6">Take Action</h3>
                     <Accordion>
                       <AccordionItem title="How to make your call:">
-                        <p className="text-gray-700 leading-relaxed mb-4">Click on the Call Now! Button on this page. The Together for Treaty auto-dialler will ask you a few short questions and then connect you straight to your MPs office where a staffer will answer. From there:</p>
+                        <p className="text-gray-700 leading-relaxed mb-4"><span className="font-semibold hidden lg:inline">Call The Number</span><span className="font-semibold lg:hidden">Click on the Call Now! Button</span> on this page. The Together for Treaty auto-dialler will ask you a few short questions and then connect you straight to your MPs office where a staffer will answer. From there:</p>
                         <ul className="list-disc pl-5 space-y-2 text-gray-700 leading-relaxed">
                           <li>Introduce yourself — tell them your name and your suburb/town.</li>
                           <li>Tell them why you're calling - Treaty legislation has just been introduced in Parliament!</li>
@@ -197,7 +197,7 @@ export default function VicTreatyCallYourMpPage() {
                 <div className="mt-12">
                   <Accordion>
                     <AccordionItem title="How to make your call:">
-                      <p className="text-gray-700 leading-relaxed mb-4">Click on the Call Now! Button on this page. The Together for Treaty auto-dialler will ask you a few short questions and then connect you straight to your MPs office where a staffer will answer. From there:</p>
+                      <p className="text-gray-700 leading-relaxed mb-4"><span className="font-semibold hidden lg:inline">Call The Number</span><span className="font-semibold lg:hidden">Click on the Call Now! Button</span> on this page. The Together for Treaty auto-dialler will ask you a few short questions and then connect you straight to your MPs office where a staffer will answer. From there:</p>
                       <ul className="list-disc pl-5 space-y-2 text-gray-700 leading-relaxed">
                         <li>Introduce yourself — tell them your name and your suburb/town.</li>
                         <li>Tell them why you're calling - Treaty legislation has just been introduced in Parliament!</li>

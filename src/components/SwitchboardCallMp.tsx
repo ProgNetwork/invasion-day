@@ -6,7 +6,7 @@ const SwitchboardCallMp: React.FC = () => {
     id: 'call' as const,
     title: 'Call Your MP',
     subtitle: 'Use our calling tool',
-    details: 'We\'ll connect you directly to your MP\'s office. <strong>All you need is your postcode.</strong>',
+    details: 'We\'ll connect you directly to your MP\'s office. </br><strong>To connect, <span class="md:hidden">click the Call Now button</span><span class="hidden md:inline">dial the number</span> below: </strong>',
     contact: '0489 079 839',
     icon: <Phone className="w-8 h-8" />,
     color: 'border-gray-300 bg-gray-50',
@@ -20,17 +20,31 @@ const SwitchboardCallMp: React.FC = () => {
           <h2 className="text-2xl font-bold text-gray-900 mb-2">
             Call Your Member of Parliament About Treaty
           </h2>
-          <p className="text-gray-600">
-            Use our calling tool to connect directly to your MP's office. All you need is your postcode.
-          </p>
+          <div className="space-y-4">
+            <div>
+              <h3 className="text-lg font-semibold text-primary-700 inline">How it works:</h3>
+              <p className="text-gray-600 inline ml-1">
+                The calling tool will ask a few short questions including your postcode. Use your keypad to answer.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-primary-700 inline">When a staffer answers:</h3>
+              <p className="text-gray-600 inline ml-1">
+                Introduce yourself, share why Treaty matters to you, and ask your local MP to support Treaty (if they don't already).
+              </p>
+            </div>
+            <p className="text-gray-600 font-medium">
+              For more tips, see the example script below!
+            </p>
+          </div>
         </div>
 
         <div className="max-w-4xl mx-auto">
           <div
-            className="w-full p-8 rounded-lg border-2 transition-all duration-200 hover:shadow-md text-left cursor-pointer border-primary-500 bg-primary-50 hover:shadow-sm"
+            className="w-full p-8 rounded-lg border-2 transition-all duration-200 hover:shadow-md text-left cursor-pointer border-primary-700 bg-primary-50 hover:shadow-sm"
           >
             <div className="flex items-center space-x-6">
-              <div className="text-gray-600 flex-shrink-0">
+              <div className="text-primary-700 flex-shrink-0">
                 <Phone className="w-12 h-12" />
               </div>
               <div className="flex-1">
@@ -46,7 +60,7 @@ const SwitchboardCallMp: React.FC = () => {
                   {callMethod.contact}
                 </p>
               </div>
-              <div className="text-primary-600 flex-shrink-0">
+              <div className="text-primary-700 flex-shrink-0">
                 <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
                   <path
                     fillRule="evenodd"

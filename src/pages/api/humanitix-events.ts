@@ -48,7 +48,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   const { page = '1', type = 'all' } = req.query;
   const pageNumber = parseInt(page as string, 10);
-  const pageSize = 6;
+  const pageSize = 9;
 
   try {
     // Fetch upcoming events

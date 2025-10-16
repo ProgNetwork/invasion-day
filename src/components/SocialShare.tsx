@@ -3,16 +3,29 @@ import Button from '@/components/ui/Button';
 import { trackSocialShare } from '@/lib/gtm';
 import { getUTMParams } from '@/lib/utils';
 
-const SocialShare: React.FC = () => {
+interface SocialShareProps {
+  customText?: string;
+  customUrl?: string;
+  customHashtags?: string;
+}
+
+const SocialShare: React.FC<SocialShareProps> = ({
+  customText,
+  customUrl,
+  customHashtags = "#DefendTreaty #TreatyNow"
+}) => {
   const handleShare = (platform: string) => {
-    const pledgeUrl = `${window.location.origin}/pledge`;
+    const defaultUrl = `${window.location.origin}/pledge`;
+    const shareUrl = customUrl || defaultUrl;
     const facebookImageUrl = `${window.location.origin}/images/treaty-now.jpg`;
     const instagramImageUrl = `${window.location.origin}/images/pledge-insta-square.png`;
-    const shareText = "We're closer to Treaty in Victoria than ever before ❤️💛🖤 Join me and show your support for truth-telling, Treaty and First Nations justice. Sign the pledge! #Treaty #Treatynow";
+
+    const defaultText = "We're closer to Treaty in Victoria than ever before ❤️💛🖤 Join me and show your support for truth-telling, Treaty and First Nations justice. Sign the pledge! #Treaty #Treatynow";
+    const shareText = customText || defaultText;
 
     const shareUrls = {
-      facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(pledgeUrl)}&quote=${encodeURIComponent(shareText)}&picture=${encodeURIComponent(facebookImageUrl)}`,
-      instagram: `https://www.instagram.com/?url=${encodeURIComponent(pledgeUrl)}&caption=${encodeURIComponent(shareText)}&image=${encodeURIComponent(instagramImageUrl)}`,
+      facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}&quote=${encodeURIComponent(shareText)}&picture=${encodeURIComponent(facebookImageUrl)}`,
+      instagram: `https://www.instagram.com/?url=${encodeURIComponent(shareUrl)}&caption=${encodeURIComponent(shareText)}&image=${encodeURIComponent(instagramImageUrl)}`,
     };
 
     if (shareUrls[platform as keyof typeof shareUrls]) {

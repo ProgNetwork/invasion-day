@@ -140,18 +140,6 @@ I just chipped in to help plaster his electorate with posters showing that Victo
                     Now it's up to us to remind him — and every Liberal MP watching — that Victorians won't stand by while they try to undo progress.
                   </p>
                   <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                    Opposition Leader Brad Battin has crossed a line. Promising that if elected next year, the Victorian Liberals will rip up Treaty within their first 100 days.
-                  </p>
-                  <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                    After years of consultation, truth-telling and hard work led by thousands of First Nations people, this is a disgraceful betrayal.
-                  </p>
-                  <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                    Treaty should be a moment of pride, unity and hope. Instead, Battin's turning it into an opportunity for political point-scoring and division.
-                  </p>
-                  <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                    Now it's up to us to remind him — and every Liberal MP watching — that Victorians won't stand by while they try to undo progress.
-                  </p>
-                  <p className="text-lg text-gray-700 leading-relaxed mb-6">
                     Your donation will help:
                   </p>
                   <ul className="list-none space-y-2 text-lg text-gray-700 mb-6">
@@ -178,6 +166,7 @@ I just chipped in to help plaster his electorate with posters showing that Victo
                 <DonateForm
                   title="Chip in to plaster Battin's local area with giant street posters supporting Treaty!"
                   subtitle="Your donation will help plaster Berwick — Brad Battin's electorate — with bold street posters reminding him that tearing up Treaty will cost votes."
+                  showDonationTypes={['once']}
                 />
               )}
             </div>

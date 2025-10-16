@@ -16,15 +16,17 @@ const presetAmounts = [12, 30, 50];
 interface DonateFormProps {
   title?: string;
   subtitle?: string;
+  showDonationTypes?: ('once' | 'recurring')[];
 }
 
 const DonateFormInner: React.FC<DonateFormProps> = ({
   title = 'Support The Movement',
   subtitle = 'Your contribution helps support First Nations organisers, community events, and storytelling.',
+  showDonationTypes = ['once', 'recurring'],
 }) => {
   const [amount, setAmount] = useState<number | ''>(12);
   const [customAmount, setCustomAmount] = useState('');
-  const [donationType, setDonationType] = useState<'once' | 'recurring'>('once');
+  const [donationType, setDonationType] = useState<'once' | 'recurring'>(showDonationTypes[0] || 'once');
   const [interval, setInterval] = useState<'month' | 'week'>('month');
   const [email, setEmail] = useState('');
   const [cardName, setCardName] = useState('');
@@ -136,22 +138,28 @@ const DonateFormInner: React.FC<DonateFormProps> = ({
         Donations over $2 are tax deductible. Your tax receipt will be issued by the Centre for Australian Progress.
       </p>
 
-      <div className="flex space-x-2 mb-4">
-        <Button
-          variant={donationType === 'once' ? 'primary' : 'outline'}
-          className="font-sans"
-          onClick={() => setDonationType('once')}
-        >
-          One-off
-        </Button>
-        <Button
-          variant={donationType === 'recurring' ? 'primary' : 'outline'}
-          className="font-sans"
-          onClick={() => setDonationType('recurring')}
-        >
-          Recurring
-        </Button>
-      </div>
+      {showDonationTypes.length > 1 && (
+        <div className="flex space-x-2 mb-4">
+          {showDonationTypes.includes('once') && (
+            <Button
+              variant={donationType === 'once' ? 'primary' : 'outline'}
+              className="font-sans"
+              onClick={() => setDonationType('once')}
+            >
+              One-off
+            </Button>
+          )}
+          {showDonationTypes.includes('recurring') && (
+            <Button
+              variant={donationType === 'recurring' ? 'primary' : 'outline'}
+              className="font-sans"
+              onClick={() => setDonationType('recurring')}
+            >
+              Recurring
+            </Button>
+          )}
+        </div>
+      )}
 
       {donationType === 'recurring' && (
         <div className="mb-4">

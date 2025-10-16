@@ -19,8 +19,8 @@ interface DonateFormProps {
 }
 
 const DonateFormInner: React.FC<DonateFormProps> = ({
-  title = "Support The Movement",
-  subtitle = "Your contribution helps support First Nations organisers, community events, and storytelling."
+  title = 'Support The Movement',
+  subtitle = 'Your contribution helps support First Nations organisers, community events, and storytelling.',
 }) => {
   const [amount, setAmount] = useState<number | ''>(12);
   const [customAmount, setCustomAmount] = useState('');

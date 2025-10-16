@@ -6,13 +6,11 @@ import { getUTMParams } from '@/lib/utils';
 interface SocialShareProps {
   customText?: string;
   customUrl?: string;
-  customHashtags?: string;
 }
 
 const SocialShare: React.FC<SocialShareProps> = ({
   customText,
   customUrl,
-  customHashtags = "#DefendTreaty #TreatyNow"
 }) => {
   const handleShare = (platform: string) => {
     const defaultUrl = `${window.location.origin}/pledge`;

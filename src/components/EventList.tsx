@@ -73,7 +73,7 @@ const EventList: React.FC = () => {
       setHasMore(data.hasMore);
       setCurrentPage(data.currentPage);
     } catch (err) {
-      console.error('Error fetching events:', err);
+      // console.error('Error fetching events:', err);
       setError(err instanceof Error ? err.message : 'Failed to load events');
     } finally {
       setLoading(false);

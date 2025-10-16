@@ -13,7 +13,15 @@ const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY 
 
 const presetAmounts = [12, 30, 50];
 
-const DonateFormInner: React.FC = () => {
+interface DonateFormProps {
+  title?: string;
+  subtitle?: string;
+}
+
+const DonateFormInner: React.FC<DonateFormProps> = ({
+  title = "Support The Movement",
+  subtitle = "Your contribution helps support First Nations organisers, community events, and storytelling."
+}) => {
   const [amount, setAmount] = useState<number | ''>(12);
   const [customAmount, setCustomAmount] = useState('');
   const [donationType, setDonationType] = useState<'once' | 'recurring'>('once');
@@ -120,9 +128,9 @@ const DonateFormInner: React.FC = () => {
 
   return (
     <div className="max-w-xl mx-auto p-6 bg-gray-50 rounded-xl border">
-      <h2 className="text-2xl font-bold mb-2">Support The Movement</h2>
+      <h2 className="text-2xl font-bold mb-2">{title}</h2>
       <p className="text-sm mb-6 text-gray-600">
-        <strong>Your contribution helps support First Nations organisers, community events, and storytelling.</strong>
+        <strong>{subtitle}</strong>
         <br/>
         This campaign is being coordinated by Common Threads, supported by the Centre for Australian Progress.
         Donations over $2 are tax deductible. Your tax receipt will be issued by the Centre for Australian Progress.
@@ -241,9 +249,9 @@ const DonateFormInner: React.FC = () => {
   );
 };
 
-const DonateForm = () => (
+const DonateForm: React.FC<DonateFormProps> = (props) => (
   <Elements stripe={stripePromise}>
-    <DonateFormInner />
+    <DonateFormInner {...props} />
   </Elements>
 );
 

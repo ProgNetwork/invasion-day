@@ -49,15 +49,6 @@ export default function DefendTreatyPostersPage() {
                 <p>
                   Opposition Leader Brad Battin has crossed a line. Promising that if elected next year, the Victorian Liberals will rip up Treaty within their first 100 days.
                 </p>
-                <p>
-                  After years of consultation, truth-telling and hard work led by thousands of First Nations people, this is a disgraceful betrayal.
-                </p>
-                <p>
-                  Treaty should be a moment of pride, unity and hope. Instead, Battin's turning it into an opportunity for political point-scoring and division.
-                </p>
-                <p>
-                  Now it's up to us to remind him — and every Liberal MP watching — that Victorians won't stand by while they try to undo progress.
-                </p>
               </div>
             </div>
           </div>
@@ -72,20 +63,18 @@ export default function DefendTreatyPostersPage() {
               <div id="donate-form" className="bg-gray-50 p-8 rounded-lg border border-gray-200 mb-12">
                 {showSocialShare ? (
                   <SocialShare
-                    customText="Brad Battin wants to rip up Treaty — we're not letting him get away with it. I just chipped in to help plaster his electorate with posters showing that Victorians back Treaty. Can you join me? 👉 togetherfortreaty.org.au/donate #DefendTreaty #TreatyNow"
-                    customUrl={`${window.location.origin}/actions/defend-treaty-posters`}
+                    customText="Brad Battin wants to rip up Treaty — we're not letting him get away with it.
+I just chipped in to help plaster his electorate with posters showing that Victorians back Treaty. Can you join me?
+ 👉 togetherfortreaty.org.au/donate
+#DefendTreaty #TreatyNow"
+                    customUrl="/actions/defend-treaty-posters"
                   />
                 ) : (
                   <>
-                    <div className="text-center mb-8">
-                      <h3 className="text-2xl font-bold text-primary-700 mb-4">
-                        Chip in to plaster Battin's local area with giant street posters supporting Treaty!
-                      </h3>
-                      <p className="text-lg text-gray-700">
-                        Your donation will help plaster Berwick — Brad Battin's electorate — with bold street posters reminding him that tearing up Treaty will cost votes.
-                      </p>
-                    </div>
-                    <DonateForm />
+                    <DonateForm
+                      title="Chip in to plaster Battin's local area with giant street posters supporting Treaty!"
+                      subtitle="Your donation will help plaster Berwick — Brad Battin's electorate — with bold street posters reminding him that tearing up Treaty will cost votes."
+                    />
                   </>
                 )}
               </div>
@@ -94,33 +83,42 @@ export default function DefendTreatyPostersPage() {
               <div className="space-y-8">
                 <div>
                   <h2 className="text-3xl font-bold text-black mb-6 font-rock-salt">
-                    {showSocialShare ? 'Thank You for Your Support!' : 'Now it's up to us to remind him'}
+                    Make your voice heard!
                   </h2>
-                  {showSocialShare ? (
-                    <>
-                      <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                        Brad Battin wants to rip up Treaty — we're not letting him get away with it.
-                      </p>
-                      <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                        Thanks to your donation, we'll be able to plaster his electorate with posters showing that Victorians back Treaty. Together, we're defending truth, justice and unity.
-                      </p>
-                    </>
-                  ) : (
-                    <>
-                      <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                        Your donation will help:
-                      </p>
-                      <ul className="list-none space-y-2 text-lg text-gray-700 mb-6">
-                        <li>✅ <strong>Plaster Berwick — Brad Battin's electorate — with bold street posters</strong> reminding him that tearing up Treaty will cost votes.</li>
-                        <li>✅ <strong>Take the message statewide</strong> — if we raise enough, we'll get posters up across key Liberal seats to show this movement's strength.</li>
-                        <li>✅ <strong>Back mob and allies</strong> leading the push for truth, justice and self-determination across Victoria.</li>
-                      </ul>
-                      <p className="text-lg text-gray-700 leading-relaxed">
-                        Chip in now to defend Treaty and show that Victorians back truth, justice and unity.
-                      </p>
-                    </>
-                  )}
+                  <p className="text-lg text-gray-700 leading-relaxed mb-6">
+                    After years of consultation, truth-telling and hard work led by thousands of First Nations people, this is a disgraceful betrayal.
+                  </p>
+                  <p className="text-lg text-gray-700 leading-relaxed mb-6">
+                    Treaty should be a moment of pride, unity and hope. Instead, Battin's turning it into an opportunity for political point-scoring and division.
+                  </p>
+                  <p className="text-lg text-gray-700 leading-relaxed mb-6">
+                    Now it's up to us to remind him — and every Liberal MP watching — that Victorians won't stand by while they try to undo progress.
+                  </p>
+                  <p className="text-lg text-gray-700 leading-relaxed mb-6">
+                    Opposition Leader Brad Battin has crossed a line. Promising that if elected next year, the Victorian Liberals will rip up Treaty within their first 100 days.
+                  </p>
+                  <p className="text-lg text-gray-700 leading-relaxed mb-6">
+                    After years of consultation, truth-telling and hard work led by thousands of First Nations people, this is a disgraceful betrayal.
+                  </p>
+                  <p className="text-lg text-gray-700 leading-relaxed mb-6">
+                    Treaty should be a moment of pride, unity and hope. Instead, Battin's turning it into an opportunity for political point-scoring and division.
+                  </p>
+                  <p className="text-lg text-gray-700 leading-relaxed mb-6">
+                    Now it's up to us to remind him — and every Liberal MP watching — that Victorians won't stand by while they try to undo progress.
+                  </p>
+                  <p className="text-lg text-gray-700 leading-relaxed mb-6">
+                    Your donation will help:
+                  </p>
+                  <ul className="list-none space-y-2 text-lg text-gray-700 mb-6">
+                    <li>✅ <strong>Plaster Berwick — Brad Battin's electorate — with bold street posters</strong> reminding him that tearing up Treaty will cost votes.</li>
+                    <li>✅ <strong>Take the message statewide</strong> — if we raise enough, we'll get posters up across key Liberal seats to show this movement's strength.</li>
+                    <li>✅ <strong>Back mob and allies</strong> leading the push for truth, justice and self-determination across Victoria.</li>
+                  </ul>
+                  <p className="text-lg text-gray-700 leading-relaxed">
+                    Chip in now to defend Treaty and show that Victorians back truth, justice and unity.
+                  </p>
                 </div>
+
               </div>
             </div>
 
@@ -130,32 +128,40 @@ export default function DefendTreatyPostersPage() {
               <div className="space-y-8">
                 <div>
                   <h2 className="text-3xl font-bold text-black mb-6 font-rock-salt">
-                    {showSocialShare ? 'Thank You for Your Support!' : 'Now it's up to us to remind him'}
+                    {showSocialShare ? 'Thank You!' : 'Make your voice heard!'}
                   </h2>
-                  {showSocialShare ? (
-                    <>
-                      <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                        Brad Battin wants to rip up Treaty — we're not letting him get away with it.
-                      </p>
-                      <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                        Thanks to your donation, we'll be able to plaster his electorate with posters showing that Victorians back Treaty. Together, we're defending truth, justice and unity.
-                      </p>
-                    </>
-                  ) : (
-                    <>
-                      <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                        Your donation will help:
-                      </p>
-                      <ul className="list-none space-y-2 text-lg text-gray-700 mb-6">
-                        <li>✅ <strong>Plaster Berwick — Brad Battin's electorate — with bold street posters</strong> reminding him that tearing up Treaty will cost votes.</li>
-                        <li>✅ <strong>Take the message statewide</strong> — if we raise enough, we'll get posters up across key Liberal seats to show this movement's strength.</li>
-                        <li>✅ <strong>Back mob and allies</strong> leading the push for truth, justice and self-determination across Victoria.</li>
-                      </ul>
-                      <p className="text-lg text-gray-700 leading-relaxed">
-                        Chip in now to defend Treaty and show that Victorians back truth, justice and unity.
-                      </p>
-                    </>
-                  )}
+                  <p className="text-lg text-gray-700 leading-relaxed mb-6">
+                    After years of consultation, truth-telling and hard work led by thousands of First Nations people, this is a disgraceful betrayal.
+                  </p>
+                  <p className="text-lg text-gray-700 leading-relaxed mb-6">
+                    Treaty should be a moment of pride, unity and hope. Instead, Battin's turning it into an opportunity for political point-scoring and division.
+                  </p>
+                  <p className="text-lg text-gray-700 leading-relaxed mb-6">
+                    Now it's up to us to remind him — and every Liberal MP watching — that Victorians won't stand by while they try to undo progress.
+                  </p>
+                  <p className="text-lg text-gray-700 leading-relaxed mb-6">
+                    Opposition Leader Brad Battin has crossed a line. Promising that if elected next year, the Victorian Liberals will rip up Treaty within their first 100 days.
+                  </p>
+                  <p className="text-lg text-gray-700 leading-relaxed mb-6">
+                    After years of consultation, truth-telling and hard work led by thousands of First Nations people, this is a disgraceful betrayal.
+                  </p>
+                  <p className="text-lg text-gray-700 leading-relaxed mb-6">
+                    Treaty should be a moment of pride, unity and hope. Instead, Battin's turning it into an opportunity for political point-scoring and division.
+                  </p>
+                  <p className="text-lg text-gray-700 leading-relaxed mb-6">
+                    Now it's up to us to remind him — and every Liberal MP watching — that Victorians won't stand by while they try to undo progress.
+                  </p>
+                  <p className="text-lg text-gray-700 leading-relaxed mb-6">
+                    Your donation will help:
+                  </p>
+                  <ul className="list-none space-y-2 text-lg text-gray-700 mb-6">
+                    <li>✅ <strong>Plaster Berwick — Brad Battin's electorate — with bold street posters</strong> reminding him that tearing up Treaty will cost votes.</li>
+                    <li>✅ <strong>Take the message statewide</strong> — if we raise enough, we'll get posters up across key Liberal seats to show this movement's strength.</li>
+                    <li>✅ <strong>Back mob and allies</strong> leading the push for truth, justice and self-determination across Victoria.</li>
+                  </ul>
+                  <p className="text-lg text-gray-700 leading-relaxed">
+                    Chip in now to defend Treaty and show that Victorians back truth, justice and unity.
+                  </p>
                 </div>
               </div>
 
@@ -163,21 +169,17 @@ export default function DefendTreatyPostersPage() {
               <div id="donate-form" className="bg-gray-50 p-8 rounded-lg border border-gray-200">
                 {showSocialShare ? (
                   <SocialShare
-                    customText="Brad Battin wants to rip up Treaty — we're not letting him get away with it. I just chipped in to help plaster his electorate with posters showing that Victorians back Treaty. Can you join me? 👉 togetherfortreaty.org.au/donate #DefendTreaty #TreatyNow"
-                    customUrl={`${window.location.origin}/actions/defend-treaty-posters`}
+                    customText="Brad Battin wants to rip up Treaty — we're not letting him get away with it.
+I just chipped in to help plaster his electorate with posters showing that Victorians back Treaty. Can you join me?
+ 👉 togetherfortreaty.org.au/donate
+#DefendTreaty #TreatyNow"
+                    customUrl="/actions/defend-treaty-posters"
                   />
                 ) : (
-                  <>
-                    <div className="text-center mb-8">
-                      <h3 className="text-3xl font-bold text-primary-700 mb-4">
-                        Chip in to plaster Battin's local area with giant street posters supporting Treaty!
-                      </h3>
-                      <p className="text-lg text-gray-700">
-                        Your donation will help plaster Berwick — Brad Battin's electorate — with bold street posters reminding him that tearing up Treaty will cost votes.
-                      </p>
-                    </div>
-                    <DonateForm />
-                  </>
+                  <DonateForm
+                    title="Chip in to plaster Battin's local area with giant street posters supporting Treaty!"
+                    subtitle="Your donation will help plaster Berwick — Brad Battin's electorate — with bold street posters reminding him that tearing up Treaty will cost votes."
+                  />
                 )}
               </div>
             </div>

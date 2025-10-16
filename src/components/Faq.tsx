@@ -66,7 +66,7 @@ const Faq: React.FC = () => {
           <li><strong>Western Australia:</strong> Has made no formal commitments.</li>
           <li><strong>ACT:</strong> In early 2023, the ACT Government announced it would set up an Aboriginal and Torres Strait Island Eminent Panel. While it was anticipated that this would be established by late 2023, no progress has been seen.</li>
         </ul>
-      ),
+      )
     }
   ];
 

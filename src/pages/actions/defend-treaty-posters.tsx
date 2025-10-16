@@ -166,22 +166,20 @@ I just chipped in to help plaster his electorate with posters showing that Victo
               </div>
 
               {/* Right Column - Donate Form or Social Share */}
-              <div id="donate-form" className="bg-gray-50 p-8 rounded-lg border border-gray-200">
-                {showSocialShare ? (
-                  <SocialShare
-                    customText="Brad Battin wants to rip up Treaty — we're not letting him get away with it.
+              {showSocialShare ? (
+                <SocialShare
+                  customText="Brad Battin wants to rip up Treaty — we're not letting him get away with it.
 I just chipped in to help plaster his electorate with posters showing that Victorians back Treaty. Can you join me?
  👉 togetherfortreaty.org.au/donate
 #DefendTreaty #TreatyNow"
-                    customUrl="/actions/defend-treaty-posters"
-                  />
-                ) : (
-                  <DonateForm
-                    title="Chip in to plaster Battin's local area with giant street posters supporting Treaty!"
-                    subtitle="Your donation will help plaster Berwick — Brad Battin's electorate — with bold street posters reminding him that tearing up Treaty will cost votes."
-                  />
-                )}
-              </div>
+                  customUrl="/actions/defend-treaty-posters"
+                />
+              ) : (
+                <DonateForm
+                  title="Chip in to plaster Battin's local area with giant street posters supporting Treaty!"
+                  subtitle="Your donation will help plaster Berwick — Brad Battin's electorate — with bold street posters reminding him that tearing up Treaty will cost votes."
+                />
+              )}
             </div>
           </div>
         </section>

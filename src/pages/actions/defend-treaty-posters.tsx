@@ -73,7 +73,7 @@ I just chipped in to help plaster his electorate with posters showing that Victo
                   <>
                     <DonateForm
                       title="Chip in to plaster Battin's local area with giant street posters supporting Treaty!"
-                      subtitle="Your donation will help plaster Berwick — Brad Battin's electorate — with bold street posters reminding him that tearing up Treaty will cost votes."
+                      subtitle="Your donation will help plaster Berwick — Brad Battin's electorate — with bold street posters reminding him that Victorians back Treaty."
                     />
                   </>
                 )}
@@ -110,7 +110,7 @@ I just chipped in to help plaster his electorate with posters showing that Victo
                     Your donation will help:
                   </p>
                   <ul className="list-none space-y-2 text-lg text-gray-700 mb-6">
-                    <li>✅ <strong>Plaster Berwick — Brad Battin's electorate — with bold street posters</strong> reminding him that tearing up Treaty will cost votes.</li>
+                    <li>✅ <strong>Plaster Berwick — Brad Battin's electorate — with bold street posters</strong> reminding him that Victorians back Treaty.</li>
                     <li>✅ <strong>Take the message statewide</strong> — if we raise enough, we'll get posters up across key Liberal seats to show this movement's strength.</li>
                     <li>✅ <strong>Back mob and allies</strong> leading the push for truth, justice and self-determination across Victoria.</li>
                   </ul>
@@ -143,7 +143,7 @@ I just chipped in to help plaster his electorate with posters showing that Victo
                     Your donation will help:
                   </p>
                   <ul className="list-none space-y-2 text-lg text-gray-700 mb-6">
-                    <li>✅ <strong>Plaster Berwick — Brad Battin's electorate — with bold street posters</strong> reminding him that tearing up Treaty will cost votes.</li>
+                    <li>✅ <strong>Plaster Berwick — Brad Battin's electorate — with bold street posters</strong> reminding him that Victorians back Treaty.</li>
                     <li>✅ <strong>Take the message statewide</strong> — if we raise enough, we'll get posters up across key Liberal seats to show this movement's strength.</li>
                     <li>✅ <strong>Back mob and allies</strong> leading the push for truth, justice and self-determination across Victoria.</li>
                   </ul>
@@ -165,7 +165,7 @@ I just chipped in to help plaster his electorate with posters showing that Victo
               ) : (
                 <DonateForm
                   title="Chip in to plaster Battin's local area with giant street posters supporting Treaty!"
-                  subtitle="Your donation will help plaster Berwick — Brad Battin's electorate — with bold street posters reminding him that tearing up Treaty will cost votes."
+                  subtitle="Your donation will help plaster Berwick — Brad Battin's electorate — with bold street posters reminding him that Victorians back Treaty."
                   showDonationTypes={['once']}
                 />
               )}

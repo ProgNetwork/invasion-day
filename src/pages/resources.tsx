@@ -338,6 +338,26 @@ const ResourcesPage: React.FC = () => {
                 </Button>
               </div>
 
+              {/* Taking Action for Treaty | Supporter Guide */}
+              <div className="bg-white rounded-lg shadow-md p-6 border border-gray-200">
+                <div className="flex items-center mb-4">
+                  <div className="h-14 w-14 flex items-center justify-center rounded-md bg-primary-100 text-primary-700 mr-4">
+                    <GroupsIcon fontSize="large" className="!text-2xl" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900">Taking Action for Treaty | Supporter Guide</h3>
+                </div>
+                <p className="text-gray-600 mb-6">
+                  This guide provides a comprehensive overview of actions you can take to support truth-telling and Treaty, including social media advocacy, community conversations, and engagement with political representatives. It highlights the significance of the Victorian Treaty process and offers valuable resources for individuals and groups to build momentum for First Nations justice.
+                </p>
+                <Button
+                  variant="primary"
+                  size="md"
+                  onClick={() => handlePdfClick('/documents/together_for_treaty_action_guide.pdf', 'Taking Action for Treaty | Supporter Guide')}
+                >
+                  Read more
+                </Button>
+              </div>
+
             </div>
           </div>
         </div>

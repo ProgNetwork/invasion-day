@@ -137,12 +137,15 @@ function useFadeInOnScroll(): [React.RefObject<HTMLDivElement | null>, boolean] 
   return [domRef, isVisible];
 }
 
-const TimelineImage = ({ src }: { src: string }) => {
+const TimelineImage = ({ src, height }: { src: string, height?: number }) => {
   const [domRef, isVisible] = useFadeInOnScroll();
+  const imageHeight = height && height > 0 ? height : 200; // Fallback height of 200px
+
   return (
     <div
       ref={domRef}
-      className={`relative h-48 w-full rounded-lg shadow-md transition-all duration-4800 ease-out overflow-hidden ${
+      style={{ height: `${imageHeight}px` }}
+      className={`relative w-full rounded-lg shadow-md transition-all duration-4800 ease-out overflow-hidden ${
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
       }`}
     >
@@ -156,8 +159,15 @@ const TimelineImage = ({ src }: { src: string }) => {
   );
 };
 
-const EventCard = ({ title, description }: { title: string, description: string | React.ReactNode }) => {
+const EventCard = ({ title, description, setHeight }: { title: string, description: string | React.ReactNode, setHeight?: (height: number) => void }) => {
   const [domRef, isVisible] = useFadeInOnScroll();
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (contentRef.current && setHeight) {
+      setHeight(contentRef.current.offsetHeight);
+    }
+  }, [description, setHeight]);
 
   return (
     <div
@@ -167,12 +177,13 @@ const EventCard = ({ title, description }: { title: string, description: string 
       }`}
     >
       <h3 className="mb-2 text-xl font-bold">{title}</h3>
-      <div className="text-gray-600 gap-2 flex flex-col">{description}</div>
+      <div ref={contentRef} className="text-gray-600 gap-2 flex flex-col">{description}</div>
     </div>
   );
 };
 
 const Timeline: React.FC = () => {
+  const [cardHeights, setCardHeights] = useState<{[key: number]: number}>({});
   return (
     <section className="bg-gray-50 py-16 sm:py-24 relative overflow-hidden">
       {/* Background Texture */}
@@ -201,10 +212,11 @@ const Timeline: React.FC = () => {
                     <EventCard
                       title={event.title}
                       description={event.description}
+                      setHeight={(height) => setCardHeights(prev => ({...prev, [index]: height}))}
                     />
                   )}
                   {event.side === 'right' && (
-                    <TimelineImage src={event.image} />
+                    <TimelineImage src={event.image} height={cardHeights[index]} />
                   )}
                 </div>
                 <div className="z-10 flex h-10 w-10 items-center justify-center rounded-full bg-primary-700 font-bold text-white shadow-md">
@@ -215,10 +227,11 @@ const Timeline: React.FC = () => {
                     <EventCard
                       title={event.title}
                       description={event.description}
+                      setHeight={(height) => setCardHeights(prev => ({...prev, [index]: height}))}
                     />
                   )}
                   {event.side === 'left' && (
-                    <TimelineImage src={event.image} />
+                    <TimelineImage src={event.image} height={cardHeights[index]} />
                   )}
                 </div>
               </div>
@@ -236,10 +249,11 @@ const Timeline: React.FC = () => {
                   {event.year}
                 </div>
                 <div className="pt-1">
-                  <TimelineImage src={event.image} />
+                  <TimelineImage src={event.image} height={cardHeights[index]} />
                   <EventCard
                     title={event.title}
                     description={event.description}
+                    setHeight={(height) => setCardHeights(prev => ({...prev, [index]: height}))}
                   />
                 </div>
               </div>

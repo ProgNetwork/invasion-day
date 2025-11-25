@@ -6,6 +6,7 @@ interface TimelineEvent {
   title: string;
   description: string | React.ReactNode;
   side: 'left' | 'right';
+  image: string;
 }
 
 const events: TimelineEvent[] = [
@@ -22,6 +23,7 @@ const events: TimelineEvent[] = [
           </p>
         </>,
     side: 'left',
+    image: '/images/timeline/timeline1.jpg',
   },
   {
     year: '2',
@@ -36,6 +38,7 @@ const events: TimelineEvent[] = [
           </p>
         </>,
     side: 'right',
+    image: '/images/timeline/timeline2.jpg',
   },
   {
     year: '3',
@@ -50,6 +53,7 @@ const events: TimelineEvent[] = [
       </p>
     </>,
     side: 'left',
+    image: '/images/timeline/timeline3.jpg',
   },
   {
     year: '4',
@@ -57,6 +61,7 @@ const events: TimelineEvent[] = [
     description:
       "Formal community consultation towards Treaty in Victoria began with the Treaty Working Group in 2016. In 2018, the First Peoples' Assembly was established as an elected representative body to work toward Treaty. Now, in 2025, the Assembly is on the cusp of signing the first statewide Treaty in the country. This also follows a landmark truth-telling process through the Yoorrook Justice Commission.",
     side: 'right',
+    image: '/images/timeline/timeline4.jpg',
   },
   {
     year: '5',
@@ -67,6 +72,7 @@ const events: TimelineEvent[] = [
         <p>This landmark document led to the 2023 referendum on a First Nations Voice to Parliament. In the absence of bipartisan support, we saw a No campaign based in racism, fear and misinformation take hold. However, we also saw millions of Australians educate themselves and take action in support of First Nations communities - many for the first time.</p>
       </>,
     side: 'left',
+    image: '/images/timeline/timeline5.jpeg',
   },
   {
     year: '6',
@@ -81,6 +87,7 @@ const events: TimelineEvent[] = [
         </p>
       </>,
     side: 'right',
+    image: '/images/timeline/timeline6.png',
   },
   {
     year: '7',
@@ -95,6 +102,7 @@ const events: TimelineEvent[] = [
         </p>
       </>,
     side: 'left',
+    image: '/images/timeline/timeline7.jpg',
   },
 ];
 
@@ -128,6 +136,25 @@ function useFadeInOnScroll(): [React.RefObject<HTMLDivElement | null>, boolean] 
 
   return [domRef, isVisible];
 }
+
+const TimelineImage = ({ src }: { src: string }) => {
+  const [domRef, isVisible] = useFadeInOnScroll();
+  return (
+    <div
+      ref={domRef}
+      className={`relative h-48 w-full rounded-lg shadow-md transition-all duration-4800 ease-out overflow-hidden ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
+      }`}
+    >
+      <Image
+        src={src}
+        alt="Timeline image"
+        fill
+        className="object-cover"
+      />
+    </div>
+  );
+};
 
 const EventCard = ({ title, description }: { title: string, description: string | React.ReactNode }) => {
   const [domRef, isVisible] = useFadeInOnScroll();
@@ -176,6 +203,9 @@ const Timeline: React.FC = () => {
                       description={event.description}
                     />
                   )}
+                  {event.side === 'right' && (
+                    <TimelineImage src={event.image} />
+                  )}
                 </div>
                 <div className="z-10 flex h-10 w-10 items-center justify-center rounded-full bg-primary-700 font-bold text-white shadow-md">
                   {event.year}
@@ -186,6 +216,9 @@ const Timeline: React.FC = () => {
                       title={event.title}
                       description={event.description}
                     />
+                  )}
+                  {event.side === 'left' && (
+                    <TimelineImage src={event.image} />
                   )}
                 </div>
               </div>
@@ -203,6 +236,7 @@ const Timeline: React.FC = () => {
                   {event.year}
                 </div>
                 <div className="pt-1">
+                  <TimelineImage src={event.image} />
                   <EventCard
                     title={event.title}
                     description={event.description}

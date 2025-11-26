@@ -149,11 +149,10 @@ const TimelineImage = ({ src, height }: { src: string, height?: number }) => {
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
       }`}
     >
-      <Image
+      <img
         src={src}
         alt="Timeline image"
-        fill
-        className="object-cover"
+        className="object-cover w-full h-full"
       />
     </div>
   );

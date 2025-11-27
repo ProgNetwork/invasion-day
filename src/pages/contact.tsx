@@ -189,7 +189,7 @@ const ContactPage: React.FC = () => {
             <div className="relative overflow-hidden lg:col-span-2 mb-8">
               <div className="pointer-events-none absolute inset-0 sm:hidden" aria-hidden="true">
               </div>
-              <h2 className="text-2xl font-bold mb-2">Get In Touch</h2>
+              <h2 className="text-2xl font-bold mb-2 text-black">Get In Touch</h2>
               <p className="mt-6 text-base text-gray-600">
                 Have a question or want to get involved? We'd love to hear from you. Fill out the form or use the contact details below.
               </p>

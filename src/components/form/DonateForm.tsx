@@ -130,8 +130,8 @@ const DonateFormInner: React.FC<DonateFormProps> = ({
 
   return (
     <div className="max-w-xl mx-auto p-6 bg-gray-50 rounded-xl border">
-      <h2 className="text-2xl font-bold mb-2">{title}</h2>
-      <p className="text-sm mb-6 text-gray-600">
+      <h2 className="text-2xl font-bold mb-2 text-black">{title}</h2>
+      <p className="text-sm mb-6 text-gray-800">
         <strong>{subtitle}</strong>
         <br/>
         This campaign is being coordinated by Common Threads, supported by the Centre for Australian Progress.
@@ -163,7 +163,7 @@ const DonateFormInner: React.FC<DonateFormProps> = ({
 
       {donationType === 'recurring' && (
         <div className="mb-4">
-          <label className="block text-sm font-medium mb-2">Frequency</label>
+          <label className="block text-sm font-medium mb-2 text-black">Frequency</label>
           <select
             value={interval}
             onChange={(e) => setInterval(e.target.value as 'month' | 'week')}
@@ -179,7 +179,7 @@ const DonateFormInner: React.FC<DonateFormProps> = ({
         {presetAmounts.map((amt) => (
           <button
             key={amt}
-            className={`px-4 py-2 rounded border ${amount === amt ? 'bg-black text-white' : 'bg-white'}`}
+            className={`px-4 py-2 rounded border ${amount === amt ? 'bg-black text-white' : 'bg-white text-gray-800'}`}
             onClick={() => {
               setAmount(amt);
               setCustomAmount('');
@@ -197,12 +197,12 @@ const DonateFormInner: React.FC<DonateFormProps> = ({
             setCustomAmount(e.target.value);
             setAmount('');
           }}
-          className={`w-24 px-3 py-2 border rounded ${errors.amount ? 'border-red-500 font-semibold' : ''}`}
+          className={`w-24 px-3 py-2 border rounded text-black ${errors.amount ? 'border-red-500 font-semibold' : ''}`}
         />
       </div>
       {errors.amount && <p className="text-red-600 text-sm mb-2">{errors.amount}</p>}
 
-      <label className="flex items-center mb-4 text-sm">
+      <label className="flex items-center mb-4 text-sm text-black">
         <input
           type="checkbox"
           checked={coverFees}
@@ -217,7 +217,7 @@ const DonateFormInner: React.FC<DonateFormProps> = ({
         placeholder="Email Address"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        className={`w-full p-2 mb-1 border rounded ${errors.email ? 'border-red-500 font-semibold' : ''}`}
+        className={`w-full p-2 mb-1 border rounded text-black ${errors.email ? 'border-red-500 font-semibold' : ''}`}
       />
       {errors.email && <p className="text-red-600 text-sm mb-2">{errors.email}</p>}
 
@@ -226,7 +226,7 @@ const DonateFormInner: React.FC<DonateFormProps> = ({
         placeholder="Name on Card"
         value={cardName}
         onChange={(e) => setCardName(e.target.value)}
-        className={`w-full p-2 mb-1 border rounded ${errors.cardName ? 'border-red-500 font-semibold' : ''}`}
+        className={`w-full p-2 mb-1 border rounded text-black ${errors.cardName ? 'border-red-500 font-semibold' : ''}`}
       />
       {errors.cardName && <p className="text-red-600 text-sm mb-2">{errors.cardName}</p>}
 
@@ -249,7 +249,7 @@ const DonateFormInner: React.FC<DonateFormProps> = ({
         {loading ? 'Processing…' : `DONATE $${totalAmount.toFixed(2)}`}
       </Button>
 
-      <div className="text-xs text-gray-500 mt-4 space-y-2">
+      <div className="text-xs text-black mt-4 space-y-2">
         <p>Together For Treaty can only accept donations from Australian citizens, residents, or entities for electoral expenditure. For more information, see our Donations Policy.</p>
         <p>By pressing Donate, I confirm I am an Australian citizen or resident and agree to Together For Treaty's Donations Policy and Privacy Policy.</p>
       </div>

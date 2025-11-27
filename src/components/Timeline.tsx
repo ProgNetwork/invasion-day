@@ -149,10 +149,12 @@ const TimelineImage = ({ src, height }: { src: string, height?: number }) => {
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
       }`}
     >
-      <img
+      <Image
         src={src}
         alt="Timeline image"
-        className="object-cover w-full h-full"
+        fill
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        style={{ objectFit: "cover" }}
       />
     </div>
   );

@@ -26,8 +26,8 @@
 }
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.141 0.005 285.823);
+  --background: #1A1A1A; /* Setting default background to dark gray */
+  --foreground: #FFFFFF; /* Setting default foreground to white */
   --primary-50: #fef2f2;
   --primary-100: #fee2e2;
   --primary-200: #fecaca;
@@ -159,8 +159,9 @@ body {
 }
 
 .dark {
-  --background: oklch(0.141 0.005 285.823);
-  --foreground: oklch(0.985 0 0);
+  /* Remove these to avoid conflicts with :root */
+  /* --background: oklch(0.141 0.005 285.823);
+  --foreground: oklch(0.985 0 0); */
   --card: oklch(0.21 0.006 285.885);
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.21 0.006 285.885);

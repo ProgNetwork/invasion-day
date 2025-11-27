@@ -177,7 +177,7 @@ const EventCard = ({ title, description, setHeight }: { title: string, descripti
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
       }`}
     >
-      <h3 className="mb-2 text-xl font-bold">{title}</h3>
+      <h3 className="mb-2 text-xl font-bold text-black">{title}</h3>
       <div ref={contentRef} className="text-gray-600 gap-2 flex flex-col">{description}</div>
     </div>
   );

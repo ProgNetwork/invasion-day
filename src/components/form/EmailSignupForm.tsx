@@ -69,7 +69,7 @@ const EmailSignupForm: React.FC<EmailSignupFormProps> = ({ onSuccess, onClose })
       } else {
         onSuccess();
       }
-    } catch (error) {
+    } catch {
       onSuccess();
     } finally {
       setLoading(false);

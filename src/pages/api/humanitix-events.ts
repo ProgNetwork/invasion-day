@@ -35,6 +35,7 @@ interface HumanitixEvent {
   published: boolean;
   public: boolean;
   timezone: string;
+  suspendSales: boolean; // Add this line
 }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -132,6 +133,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         published: event.published,
         public: event.public,
         timezone: event.timezone,
+        suspendSales: event.suspendSales, // Add this line
       }))
       ?.sort((a: HumanitixEvent, b: HumanitixEvent) =>
         new Date(a.startDate).getTime() - new Date(b.startDate).getTime(),
@@ -172,6 +174,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         published: event.published,
         public: event.public,
         timezone: event.timezone,
+        suspendSales: event.suspendSales, // Add this line
       }))
       ?.sort((a: HumanitixEvent, b: HumanitixEvent) =>
         new Date(b.startDate).getTime() - new Date(a.startDate).getTime(), // Most recent first

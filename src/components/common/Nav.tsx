@@ -29,6 +29,10 @@ const NAV_ITEMS: NavItem[] = [
     label: 'Contact',
     path: '/contact',
   },
+  {
+    label: 'Merch',
+    path: '/merch',
+  },
 ];
 
 const NavLink: React.FC<{ item: NavItem; onClick?: () => void }> = ({ item, onClick }) => {
@@ -110,6 +114,12 @@ const Nav: React.FC = () => {
               </div>
             ))}
             <div className="pt-4 space-y-3">
+              <Button variant="outline" size="md" href="/donate" className="w-full">
+                Donate
+              </Button>
+              <Button variant="primary" size="md" onClick={() => setIsModalOpen(true)} className="w-full">
+                Join
+              </Button>
             </div>
           </div>
         </div>

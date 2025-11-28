@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 
 interface TimelineEvent {
@@ -160,15 +160,15 @@ const TimelineImage = ({ src, height }: { src: string, height?: number }) => {
   );
 };
 
-const EventCard = ({ title, description, setHeight }: { title: string, description: string | React.ReactNode, setHeight?: (height: number) => void }) => {
+const EventCard = ({ title, description, index, setCardHeight }: { title: string, description: string | React.ReactNode, index: number, setCardHeight: (index: number, height: number) => void }) => {
   const [domRef, isVisible] = useFadeInOnScroll();
   const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (contentRef.current && setHeight) {
-      setHeight(contentRef.current.offsetHeight);
+    if (contentRef.current && setCardHeight) {
+      setCardHeight(index, contentRef.current.offsetHeight);
     }
-  }, [description, setHeight]);
+  }, [index, setCardHeight]);
 
   return (
     <div
@@ -185,6 +185,11 @@ const EventCard = ({ title, description, setHeight }: { title: string, descripti
 
 const Timeline: React.FC = () => {
   const [cardHeights, setCardHeights] = useState<{[key: number]: number}>({});
+
+  const handleSetCardHeight = useCallback((index: number, height: number) => {
+    setCardHeights(prev => ({ ...prev, [index]: height }));
+  }, []);
+
   return (
     <section className="bg-gray-50 py-16 sm:py-24 relative overflow-hidden">
       {/* Background Texture */}
@@ -213,7 +218,8 @@ const Timeline: React.FC = () => {
                     <EventCard
                       title={event.title}
                       description={event.description}
-                      setHeight={(height) => setCardHeights(prev => ({ ...prev, [index]: height }))}
+                      index={index}
+                      setCardHeight={handleSetCardHeight}
                     />
                   )}
                   {event.side === 'right' && (
@@ -228,7 +234,8 @@ const Timeline: React.FC = () => {
                     <EventCard
                       title={event.title}
                       description={event.description}
-                      setHeight={(height) => setCardHeights(prev => ({ ...prev, [index]: height }))}
+                      index={index}
+                      setCardHeight={handleSetCardHeight}
                     />
                   )}
                   {event.side === 'left' && (
@@ -254,7 +261,8 @@ const Timeline: React.FC = () => {
                   <EventCard
                     title={event.title}
                     description={event.description}
-                    setHeight={(height) => setCardHeights(prev => ({ ...prev, [index]: height }))}
+                    index={index}
+                    setCardHeight={handleSetCardHeight}
                   />
                 </div>
               </div>

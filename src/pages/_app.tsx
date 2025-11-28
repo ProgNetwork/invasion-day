@@ -23,7 +23,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Nav />
-      <Component {...pageProps} />
+      <Component {...pageProps} key={router.asPath} />
       <Footer />
     </>
   );

@@ -74,11 +74,9 @@ const EmailSignupForm: React.FC<EmailSignupFormProps> = ({ onSuccess, onClose })
         onSuccess();
       } else {
         // Handle error case
-        console.error('Signup failed:', result.error);
         setError('Signup failed. Please try again.');
       }
     } catch (error) {
-      console.error('Signup error:', error);
       setError('Signup failed. Please try again.');
     } finally {
       setLoading(false);

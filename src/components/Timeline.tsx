@@ -154,7 +154,7 @@ const TimelineImage = ({ src, height }: { src: string, height?: number }) => {
         alt="Timeline image"
         fill
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        style={{ objectFit: "cover" }}
+        style={{ objectFit: 'cover' }}
       />
     </div>
   );
@@ -213,7 +213,7 @@ const Timeline: React.FC = () => {
                     <EventCard
                       title={event.title}
                       description={event.description}
-                      setHeight={(height) => setCardHeights(prev => ({...prev, [index]: height}))}
+                      setHeight={(height) => setCardHeights(prev => ({ ...prev, [index]: height }))}
                     />
                   )}
                   {event.side === 'right' && (
@@ -228,7 +228,7 @@ const Timeline: React.FC = () => {
                     <EventCard
                       title={event.title}
                       description={event.description}
-                      setHeight={(height) => setCardHeights(prev => ({...prev, [index]: height}))}
+                      setHeight={(height) => setCardHeights(prev => ({ ...prev, [index]: height }))}
                     />
                   )}
                   {event.side === 'left' && (
@@ -254,7 +254,7 @@ const Timeline: React.FC = () => {
                   <EventCard
                     title={event.title}
                     description={event.description}
-                    setHeight={(height) => setCardHeights(prev => ({...prev, [index]: height}))}
+                    setHeight={(height) => setCardHeights(prev => ({ ...prev, [index]: height }))}
                   />
                 </div>
               </div>

@@ -2,14 +2,13 @@ import Head from 'next/head';
 import React, { useState } from 'react';
 import PageHeader from '../components/PageHeader';
 import Image from 'next/image';
-import Footer from '../components/common/Footer';
 import ImageLightbox from '../components/ImageLightbox';
 import AllyFriendlyBadge from '../components/common/AllyFriendlyBadge';
 
 const productImages = [
-  "/images/merch/together-for-treaty-pin-3.jpg",
-  "/images/merch/together-for-treaty-pin-1.jpg",
-  "/images/merch/together-for-treaty-pin-2.jpg",
+  '/images/merch/together-for-treaty-pin-3.jpg',
+  '/images/merch/together-for-treaty-pin-1.jpg',
+  '/images/merch/together-for-treaty-pin-2.jpg',
 ];
 
 const MerchPage: React.FC = () => {

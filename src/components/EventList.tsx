@@ -133,7 +133,7 @@ const EventList: React.FC = () => {
                 <Link key={event._id} href={`/events/${event._id}`} className="block">
                   <div className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow duration-200 cursor-pointer">
                     {imageUrl && (
-                      <div className="aspect-video bg-gray-200">
+                      <div className="aspect-video bg-gray-200 relative">
                         <Image
                           src={imageUrl}
                           alt={event.name}
@@ -236,7 +236,7 @@ const EventList: React.FC = () => {
                 <Link key={event._id} href={`/events/${event._id}`} className="block">
                   <div className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow duration-200 opacity-75 cursor-pointer">
                     {imageUrl && (
-                      <div className="aspect-video bg-gray-200">
+                      <div className="aspect-video bg-gray-200 relative">
                         <Image
                           src={imageUrl}
                           alt={event.name}

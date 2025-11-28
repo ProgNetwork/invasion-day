@@ -111,7 +111,7 @@ const SignupForm: React.FC = () => {
         // Handle error case
         setErrors({ email: 'Signup failed. Please try again.' });
       }
-    } catch (error) {
+    } catch {
       setErrors({ email: 'Signup failed. Please try again.' });
     } finally {
       setLoading(false);

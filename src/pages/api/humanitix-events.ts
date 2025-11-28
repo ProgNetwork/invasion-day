@@ -66,14 +66,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     });
 
     if (!upcomingResponse.ok) {
-      console.error('Humanitix API error:', upcomingResponse.status, upcomingResponse.statusText);
       return res.status(upcomingResponse.status).json({
         error: 'Failed to fetch events from Humanitix',
         details: upcomingResponse.statusText,
       });
     }
 
-    const upcomingData = await upcomingResponse.json();
+    const upcomingData: { events?: HumanitixEvent[] } = await upcomingResponse.json();
 
     // Fetch past events (all events, we'll filter by date)
     const pastParams = new URLSearchParams({
@@ -89,23 +88,22 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     });
 
     if (!pastResponse.ok) {
-      console.error('Humanitix API error:', pastResponse.status, pastResponse.statusText);
       return res.status(pastResponse.status).json({
         error: 'Failed to fetch events from Humanitix',
         details: pastResponse.statusText,
       });
     }
 
-    const pastData = await pastResponse.json();
+    const pastData: { events?: HumanitixEvent[] } = await pastResponse.json();
 
     const now = new Date();
 
     // Filter and transform upcoming events
     const upcomingEvents: HumanitixEvent[] = upcomingData.events
-      ?.filter((event: any) => {
+      ?.filter((event) => {
         return event.published && event.public && !event.suspendSales;
       })
-      ?.map((event: any) => ({
+      ?.map((event) => ({
         _id: event._id,
         name: event.name,
         description: event.description || '',
@@ -119,7 +117,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           country: event.eventLocation?.country || '',
           onlineUrl: event.eventLocation?.onlineUrl,
         },
-        ticketTypes: event.ticketTypes?.filter((ticket: any) => !ticket.disabled && !ticket.deleted).map((ticket: any) => ({
+        ticketTypes: event.ticketTypes?.filter((ticket) => !ticket.disabled && !ticket.deleted).map((ticket) => ({
           _id: ticket._id,
           name: ticket.name,
           price: ticket.price,
@@ -141,11 +139,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     // Filter and transform past events
     const pastEvents: HumanitixEvent[] = pastData.events
-      ?.filter((event: any) => {
+      ?.filter((event) => {
         const eventDate = new Date(event.endDate);
         return event.published && event.public && !event.suspendSales && eventDate < now;
       })
-      ?.map((event: any) => ({
+      ?.map((event) => ({
         _id: event._id,
         name: event.name,
         description: event.description || '',
@@ -159,7 +157,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           country: event.eventLocation?.country || '',
           onlineUrl: event.eventLocation?.onlineUrl,
         },
-        ticketTypes: event.ticketTypes?.filter((ticket: any) => !ticket.disabled && !ticket.deleted).map((ticket: any) => ({
+        ticketTypes: event.ticketTypes?.filter((ticket) => !ticket.disabled && !ticket.deleted).map((ticket) => ({
           _id: ticket._id,
           name: ticket.name,
           price: ticket.price,
@@ -183,7 +181,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const startIndex = (pageNumber - 1) * pageSize;
     const endIndex = startIndex + pageSize;
 
-    const eventsToReturn: any = { upcomingEvents: [], pastEvents: [] };
+    const eventsToReturn: { upcomingEvents: HumanitixEvent[]; pastEvents: HumanitixEvent[] } = { upcomingEvents: [], pastEvents: [] };
     let hasMore = false;
 
     if (type === 'upcoming' || type === 'all') {
@@ -206,7 +204,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       totalPast: pastEvents.length,
     });
   } catch (error: unknown) {
-    console.error('Error fetching Humanitix events:', error);
     const errorMessage = error instanceof Error ? error.message : 'Unknown error';
     return res.status(500).json({ error: 'Failed to fetch events', details: errorMessage });
   }

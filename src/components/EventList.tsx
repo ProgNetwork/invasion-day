@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image'; // Import Image component
 import { formatDateTime, formatLocation } from '@/lib/utils';
 
 interface HumanitixEvent {
@@ -133,9 +134,10 @@ const EventList: React.FC = () => {
                   <div className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow duration-200 cursor-pointer">
                     {imageUrl && (
                       <div className="aspect-video bg-gray-200">
-                        <img
+                        <Image
                           src={imageUrl}
                           alt={event.name}
+                          fill // Use fill prop for automatic sizing
                           className="w-full h-full object-cover"
                         />
                       </div>
@@ -235,9 +237,10 @@ const EventList: React.FC = () => {
                   <div className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow duration-200 opacity-75 cursor-pointer">
                     {imageUrl && (
                       <div className="aspect-video bg-gray-200">
-                        <img
+                        <Image
                           src={imageUrl}
                           alt={event.name}
+                          fill // Use fill prop for automatic sizing
                           className="w-full h-full object-cover"
                         />
                       </div>

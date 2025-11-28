@@ -136,8 +136,7 @@ const ResourcesPage: React.FC = () => {
 
             // Clean up
             URL.revokeObjectURL(link.href);
-          } catch (error) {
-            console.error('Error creating zip file:', error);
+          } catch {
             // Fallback: download files individually
             posterPdfs.forEach((pdf, index) => {
               const link = document.createElement('a');
@@ -174,8 +173,7 @@ const ResourcesPage: React.FC = () => {
 
       // Clean up
       URL.revokeObjectURL(link.href);
-    } catch (error) {
-      console.error('Error creating zip file:', error);
+    } catch {
       // Fallback: download files individually
       posterPdfs.forEach((pdf, index) => {
         const link = document.createElement('a');

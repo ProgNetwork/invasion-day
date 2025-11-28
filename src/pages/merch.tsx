@@ -150,19 +150,6 @@ const MerchPage: React.FC = () => {
                 Ally friendly merch is for everyone. When we see non-Indigenous people wearing our designs,
                 we feel proud that they are repping our merch and culture.
               </p>
-              <p className="text-gray-700 mb-4">
-                When we see Aboriginal designs in the world, it means Indigenous people are not invisible in the landscape.
-              </p>
-              <p className="text-gray-700 mb-4">
-                But, purchasing from Aboriginal brands, businesses and wearing Indigenous designs alone is surface-level allyship.
-                There needs to be more commitment than just buying from Aboriginal brands and businesses.
-              </p>
-              <p className="text-gray-700 mb-4">
-                Wearing Aboriginal design is not dismantling a system that oppresses Indigenous people. Allies need to do more and learn more.
-                Wearing our tees is a great starting point. We have equipped you with our merch and some of the educational content to go with them.
-                We want you to go out in the world, have these important conversations and find ways to do more and support more.
-              </p>
-              <a href="https://www.clothingthegaps.com.au/blogs/blog/ally-friendly-merch-guide" target="_blank" rel="noopener noreferrer" className="text-primary-700 hover:underline font-medium">Learn more.</a>
             </div>
 
           </div>

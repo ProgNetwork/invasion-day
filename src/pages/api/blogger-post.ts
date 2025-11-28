@@ -68,7 +68,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     res.status(200).json({ post });
   } catch (error) {
-    console.error('Error fetching Blogger post:', error);
     res.status(500).json({
       message: 'Failed to fetch post',
       error: error instanceof Error ? error.message : 'Unknown error',

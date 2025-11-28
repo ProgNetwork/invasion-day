@@ -422,7 +422,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
         country: eventData.eventLocation?.country || '',
         onlineUrl: eventData.eventLocation?.onlineUrl || null,
       },
-      ticketTypes: eventData.ticketTypes?.filter((ticket: any) => !ticket.disabled && !ticket.deleted).map((ticket: any) => ({
+      ticketTypes: eventData.ticketTypes?.filter((ticket: { disabled: boolean; deleted: boolean; }) => !ticket.disabled && !ticket.deleted).map((ticket: { _id: string; name: string; price: number; quantity: number; description: string | null; disabled: boolean; deleted: boolean; }) => ({
         _id: ticket._id,
         name: ticket.name,
         price: ticket.price,
@@ -454,8 +454,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
         event,
       },
     };
-  } catch (error) {
-    console.error('Error fetching event:', error);
+  } catch {
     return {
       props: {
         event: null,

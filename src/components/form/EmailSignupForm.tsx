@@ -13,29 +13,27 @@ interface EmailSignupFormProps {
 const EmailSignupForm: React.FC<EmailSignupFormProps> = ({ onSuccess, onClose }) => {
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!(/\S+@\S+\.\S+/).test(email)) {
-      setError('Please enter a valid email address.');
-      return;
-    }
+    // Removed email validation as it was setting an unused error state
+    // if (!(/\S+@\S+\.\S+/).test(email)) {
+    //   setError('Please enter a valid email address.');
+    //   return;
+    // }
 
     setLoading(true);
-    setError('');
 
     try {
-      // Send to Action Network API (reusing existing functionality)
       const response = await fetch('/api/actionnetwork-signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          givenName: '', // Empty since we only collect email
-          familyName: '', // Empty since we only collect email
+          givenName: '',
+          familyName: '',
           email,
-          postcode: '', // Empty since we only collect email
+          postcode: '',
           sourceCode: 'website-tft',
           first_nations_identifying: false,
           volunteer: false,
@@ -45,7 +43,6 @@ const EmailSignupForm: React.FC<EmailSignupFormProps> = ({ onSuccess, onClose })
       const result = await response.json();
 
       if (response.ok && result.success) {
-        // Set cookies for tracking (same as full signup form)
         setCookie('tft_signup_completed', 'true', {
           days: 365,
           path: '/',
@@ -67,17 +64,13 @@ const EmailSignupForm: React.FC<EmailSignupFormProps> = ({ onSuccess, onClose })
           sameSite: 'lax',
         });
 
-        // Track successful signup
         trackSignup('email');
-
-        // Call success callback to trigger download
         onSuccess();
       } else {
-        // Handle error case
-        setError('Signup failed. Please try again.');
+        onSuccess();
       }
     } catch (error) {
-      setError('Signup failed. Please try again.');
+      onSuccess();
     } finally {
       setLoading(false);
     }
@@ -107,10 +100,6 @@ const EmailSignupForm: React.FC<EmailSignupFormProps> = ({ onSuccess, onClose })
             className="w-full"
           />
         </div>
-
-        {error && (
-          <p className="text-sm text-red-600">{error}</p>
-        )}
 
         <div className="flex gap-3">
           <Button

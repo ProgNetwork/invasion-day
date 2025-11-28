@@ -29,13 +29,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const API_KEY = process.env.BLOGGER_API_KEY;
 
     // Debug logging
-    console.log('Environment check:', {
-      NODE_ENV: process.env.NODE_ENV,
-      BLOG_ID: BLOG_ID ? 'SET' : 'NOT SET',
-      API_KEY: API_KEY ? 'SET' : 'NOT SET',
-      BLOG_ID_VALUE: BLOG_ID,
-      API_KEY_PREFIX: API_KEY ? `${API_KEY.substring(0, 10)}...` : 'NOT SET',
-    });
+    // console.log('Environment check:', {
+    //   NODE_ENV: process.env.NODE_ENV,
+    //   BLOG_ID: BLOG_ID ? 'SET' : 'NOT SET',
+    //   API_KEY: API_KEY ? 'SET' : 'NOT SET',
+    //   BLOG_ID_VALUE: BLOG_ID,
+    //   API_KEY_PREFIX: API_KEY ? `${API_KEY.substring(0, 10)}...` : 'NOT SET',
+    // });
 
     if (!BLOG_ID || !API_KEY) {
       return res.status(500).json({
@@ -69,7 +69,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     res.status(200).json({ posts });
   } catch (error) {
-    console.error('Error fetching Blogger posts:', error);
+    // console.error('Error fetching Blogger posts:', error);
     res.status(500).json({
       message: 'Failed to fetch posts',
       error: error instanceof Error ? error.message : 'Unknown error',

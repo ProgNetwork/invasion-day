@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image'; // Import Image component
 import { CalendarIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 import { extractHeroImage, formatDate } from '@/lib/utils';
 
@@ -23,9 +24,10 @@ export default function BlogPost({ post }: BlogPostProps) {
       {/* Hero Image */}
       {heroImage && (
         <div className="aspect-video overflow-hidden">
-          <img
+          <Image
             src={heroImage}
             alt={post.title}
+            fill // Use fill prop for automatic sizing
             className="w-full h-full object-cover"
           />
         </div>

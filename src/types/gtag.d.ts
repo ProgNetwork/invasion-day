@@ -11,7 +11,7 @@ declare global {
         [key: string]: unknown;
       }
     ) => void;
-    dataLayer: any[];
+    dataLayer: unknown[];
   }
 }
 

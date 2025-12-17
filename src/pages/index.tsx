@@ -5,6 +5,7 @@ import Hero from '@/components/Hero';
 import PowerfulMovement from '@/components/PowerfulMovement';
 import TimeForTreaty from '@/components/TimeForTreaty';
 import WhyTreatyMatters from '@/components/WhyTreatyMatters';
+import SummitPromo from '@/components/SummitPromo';
 import DonateForm from '@/components/form/DonateForm';
 import Head from 'next/head';
 import Modal from '@/components/ui/Modal';
@@ -48,6 +49,7 @@ export default function Home() {
       <TimeForTreaty />
       <JoinTheMovement />
       <WhyTreatyMatters />
+      <SummitPromo />
       <PowerfulMovement />
       <GetInvolved />
       <div className="min-h-screen bg-primary-600 py-12 relative overflow-hidden">

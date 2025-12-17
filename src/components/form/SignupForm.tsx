@@ -124,7 +124,7 @@ const SignupForm: React.FC = () => {
 
   return (
     <div className="max-w-xl mx-auto p-6 bg-gray-50 rounded-xl border">
-      <h2 className="text-2xl font-bold mb-2">Add your details to join!</h2>
+      <h2 className="text-2xl font-bold mb-2 text-primary-700">Add your details to join!</h2>
       <p className="text-md text-gray-500">
         Sign up to receive updates and find out how you can be part of the movement for Treaty.
       </p>
@@ -197,7 +197,7 @@ const SignupForm: React.FC = () => {
             checked={formData.first_nations_identifying}
             onCheckedChange={(checked) => handleCheckboxChange(checked, 'first_nations_identifying')}
           />
-          <Label htmlFor="first_nations_identifying" className="ml-2">
+          <Label htmlFor="first_nations_identifying" className="ml-2 text-primary-700">
             Are you Aboriginal and/or Torres Strait Islander?
           </Label>
         </div>
@@ -208,7 +208,7 @@ const SignupForm: React.FC = () => {
             checked={formData.volunteer}
             onCheckedChange={(checked) => handleCheckboxChange(checked, 'volunteer')}
           />
-          <Label htmlFor="volunteer" className="ml-2">
+          <Label htmlFor="volunteer" className="ml-2 text-primary-700">
             I'm interested in volunteering with the campaign
           </Label>
         </div>

@@ -50,7 +50,7 @@ const PowerfulMovement: React.FC = () => {
     <section className="bg-white py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <h2 className="mb-4 text-3xl font-bold sm:text-4xl">Let's Make It Happen</h2>
+          <h2 className="mb-4 text-3xl font-bold sm:text-4xl text-black">Let's Make It Happen</h2>
           <p className="mx-auto max-w-3xl text-lg text-gray-600">
             If we build a huge movement with loud, proud support for truth and Treaties,
             then governments across the country will be forced to act towards transformational change.

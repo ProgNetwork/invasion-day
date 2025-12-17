@@ -80,7 +80,7 @@ const EmailSignupForm: React.FC<EmailSignupFormProps> = ({ onSuccess, onClose })
   return (
     <div className="bg-white rounded-lg p-6 max-w-md mx-auto">
       <div className="text-center mb-6">
-        <h3 className="text-xl font-bold text-gray-900 mb-2">Join Together for Treaty</h3>
+        <h3 className="text-xl font-bold text-primary-700 mb-2">Join Together for Treaty</h3>
         <p className="text-gray-600">
           Get updates and resources to help build momentum for Treaty in your community.
         </p>

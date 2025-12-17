@@ -185,10 +185,12 @@ const EventPage: React.FC<EventPageProps> = ({ event, error }) => {
           {imageUrl && (
             <div className="mb-12">
               <div className="aspect-video bg-gray-200 rounded-lg overflow-hidden shadow-lg">
-                <img
+                <Image
                   src={imageUrl}
                   alt={event.name}
                   className="w-full h-full object-cover"
+                  width={1280}
+                  height={720}
                 />
               </div>
             </div>

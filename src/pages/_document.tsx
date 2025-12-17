@@ -1,4 +1,5 @@
 import { Head, Html, Main, NextScript } from 'next/document';
+import Script from 'next/script';
 import { GTM_ID } from '@/lib/gtm';
 
 export default function Document() {
@@ -17,7 +18,9 @@ export default function Document() {
         <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png" />
 
         {/* Google Tag Manager */}
-        <script
+        <Script
+          id="gtm-script"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':

@@ -9,6 +9,16 @@ export const pageview = (url: string) => {
   }
 };
 
+interface EventData {
+  event: string;
+  event_category: string;
+  event_label?: string;
+  value?: number;
+  utm_source?: string;
+  utm_medium?: string;
+  utm_campaign?: string;
+}
+
 export const event = ({ action, category, label, value, utmParams }: {
   action: string;
   category: string;
@@ -17,7 +27,7 @@ export const event = ({ action, category, label, value, utmParams }: {
   utmParams?: Record<string, string>;
 }) => {
   if (typeof window !== 'undefined' && window.dataLayer) {
-    const eventData: any = {
+    const eventData: EventData = {
       event: action,
       event_category: category,
       event_label: label,

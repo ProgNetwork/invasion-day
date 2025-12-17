@@ -14,11 +14,11 @@ const GetInvolvedPage: React.FC = () => {
       {/* Page Header Section */}
       <section className="bg-white relative py-16 sm:py-24 border-b-8 border-primary-700">
         <div className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
-            style={{
-              backgroundImage: 'url(/images/protest2.jpg)',
-            }}
-          />
-          <div className="absolute inset-0 bg-zinc-900/90"></div>
+          style={{
+            backgroundImage: 'url(/images/protest2.jpg)',
+          }}
+        />
+        <div className="absolute inset-0 bg-zinc-900/90"></div>
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl">
             <h1 className="text-primary-700 text-4xl font-bold tracking-tight sm:text-5xl">Get Involved</h1>

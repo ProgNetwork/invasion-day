@@ -239,31 +239,39 @@ const ResourcesPage: React.FC = () => {
               {/* Poster Thumbnails */}
               <div className="flex flex-wrap justify-center gap-4 mb-6">
                 <div className="bg-white rounded-lg p-2 flex justify-center cursor-pointer hover:bg-gray-50 transition-colors" onClick={() => handlePosterClick(0)}>
-                  <img
+                  <Image
                     src="/posters/1-thumb.jpg"
                     alt="Together for Treaty Poster 1"
                     className="w-auto h-auto rounded max-w-[200px]"
+                    width={200}
+                    height={200}
                   />
                 </div>
                 <div className="bg-white rounded-lg p-2 flex justify-center cursor-pointer hover:bg-gray-50 transition-colors" onClick={() => handlePosterClick(1)}>
-                  <img
+                  <Image
                     src="/posters/2-thumb.jpg"
                     alt="Together for Treaty Poster 2"
                     className="w-auto h-auto rounded max-w-[200px]"
+                    width={200}
+                    height={200}
                   />
                 </div>
                 <div className="bg-white rounded-lg p-2 flex justify-center cursor-pointer hover:bg-gray-50 transition-colors" onClick={() => handlePosterClick(2)}>
-                  <img
+                  <Image
                     src="/posters/3-thumb.jpg"
                     alt="Together for Treaty Poster 3"
                     className="w-auto h-auto rounded max-w-[200px]"
+                    width={200}
+                    height={200}
                   />
                 </div>
                 <div className="bg-white rounded-lg p-2 flex justify-center cursor-pointer hover:bg-gray-50 transition-colors" onClick={() => handlePosterClick(3)}>
-                  <img
+                  <Image
                     src="/posters/4-thumb.jpg"
                     alt="Together for Treaty Poster 4"
                     className="w-auto h-auto rounded max-w-[200px]"
+                    width={200}
+                    height={200}
                   />
                 </div>
               </div>

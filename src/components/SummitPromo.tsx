@@ -18,4 +18,3 @@ const SummitPromo: React.FC = () => {
 };
 
 export default SummitPromo;
-

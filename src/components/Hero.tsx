@@ -4,11 +4,9 @@ import Modal from '@/components/ui/Modal';
 import Image from 'next/image';
 import React, { useState } from 'react';
 
-interface HeroProps {
-  title?: string;
-}
+interface HeroProps {}
 
-const Hero: React.FC<HeroProps> = ({ title }) => {
+const Hero: React.FC<HeroProps> = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isImageLoaded, setIsImageLoaded] = useState(false);
 

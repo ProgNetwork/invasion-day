@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import Image from 'next/image';
 import { XMarkIcon, ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 
 interface ImageLightboxProps {
@@ -148,11 +149,12 @@ export default function ImageLightbox({ images, initialIndex, isOpen, onClose, d
         role="region"
         aria-label="Image gallery"
       >
-        <img
+        <Image
           src={images[currentIndex]}
           alt={`Image ${currentIndex + 1} of ${images.length}`}
           className="max-w-full max-h-full w-auto h-auto object-contain"
           draggable={false}
+          fill
         />
       </div>
 
@@ -174,10 +176,12 @@ export default function ImageLightbox({ images, initialIndex, isOpen, onClose, d
                 index === currentIndex ? 'border-white' : 'border-transparent hover:border-gray-400'
               }`}
             >
-              <img
+              <Image
                 src={image}
                 alt={`Thumbnail ${index + 1}`}
                 className="w-full h-full object-cover"
+                width={64}
+                height={64}
               />
             </button>
           ))}

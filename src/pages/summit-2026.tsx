@@ -30,7 +30,7 @@ const Summit2026 = () => {
 
             <p className="text-2xl font-bold text-orange-600 mb-2">WHERE: <span className="text-gray-900">Naarm / Melbourne (exact location to be shared closer to the date)</span></p>
             <p className="text-2xl font-bold text-orange-600 mb-8">WHEN: <span className="text-gray-900">Saturday 21 February - Sunday 22 February 2026 (~10am-4pm each day)</span></p>
-            
+
             <p className="text-lg text-gray-700 mb-4">
               Who: First Nations people and allies from across the continent who are keen to grow the Together for Treaty campaign in your community
             </p>
@@ -54,4 +54,3 @@ const Summit2026 = () => {
 };
 
 export default Summit2026;
-

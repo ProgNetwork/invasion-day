@@ -25,7 +25,7 @@ const Summit2026 = () => {
             <h2 className="text-3xl font-bold tracking-tight text-primary-700 sm:text-4xl font-rock-salt"><span className="block">Common Threads <br />Summit 2026</span></h2>
             <br/>
             <p className="text-md mb-8 leading-relaxed text-gray-900 sm:text-2xl font-bold">
-              A three-day summit designed for, both First Nations people and allies - to connect, yarn, learn and plan for action
+              A two-day summit designed for, both First Nations people and allies - to connect, yarn, learn and plan for action
             </p>
 
             <p className="text-2xl font-bold text-orange-600 mb-2">WHERE: <span className="text-gray-900">Naarm / Melbourne (exact location to be shared closer to the date)</span></p>

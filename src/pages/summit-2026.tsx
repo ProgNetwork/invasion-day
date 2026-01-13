@@ -82,7 +82,7 @@ const Summit2026 = () => {
                   </div>
                   
                   <h2 className="mb-5 text-2xl font-bold text-gray-900 sm:text-3xl lg:text-4xl uppercase tracking-tight leading-tight">
-                    Together for Treaty<br />Summit
+                    Together for Treaty<br />Summit 2026
                   </h2>
                   
                   <div className="h-px w-24 bg-gray-300 my-6"></div>

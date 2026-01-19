@@ -79,7 +79,7 @@ impactSection: {
 Update tax-related content (ensure legal compliance):
 
 ```typescript
-taxInfo: 'This campaign is being coordinated by Common Threads, supported by Centre for Australian Progress. Donations over $2 are tax deductible. Your contribution helps support First Nations organisers, community events, and storytelling.',
+taxInfo: 'This campaign is being coordinated by Common Threads. Donations over $2 are tax deductible. Your contribution helps support First Nations organisers, community events, and storytelling.',
 ```
 
 ### 4. Next Steps
@@ -172,7 +172,7 @@ The generated HTML includes:
 
 1. **Header** - Branded header with campaign name
 2. **Personal greeting** - "Dear {donor_first_name}"
-3. **Thank you message** - Official thank you from Centre for Australian Progress
+3. **Thank you message** - Official thank you from Common Threads
 4. **Campaign context** - Information about Together for Treaty
 5. **Official receipt** - Structured receipt with all required details
 6. **DGR information** - Legal tax information
@@ -202,7 +202,7 @@ body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
 
 Ensure all receipts include:
 
-- **DGR information**: Centre for Australian Progress Ltd (ABN: 76 158 172 484)
+- **DGR information**: Common Threads Indigenous Peoples Organisation Ltd (ABN: 43 687 271 227)
 - **Tax deductibility**: Clear statement about $2+ donations
 - **Contact information**: info@australianprogress.org.au
 - **Address**: 3 Albert Coates Lane, Melbourne VIC 3000

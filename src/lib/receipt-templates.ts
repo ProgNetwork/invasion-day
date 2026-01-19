@@ -40,7 +40,7 @@ export const defaultReceiptTemplate: ReceiptTemplate = {
     ],
   },
 
-  taxInfo: 'This campaign is being coordinated by Common Threads, supported by Centre for Australian Progress. Donations over $2 are tax deductible. Your contribution helps support First Nations organisers, community events, and storytelling.',
+  taxInfo: 'This campaign is being coordinated by Common Threads. Donations over $2 are tax deductible. Your contribution helps support First Nations organisers, community events, and storytelling.',
 
   nextSteps: {
     title: 'What happens next?',
@@ -54,9 +54,9 @@ export const defaultReceiptTemplate: ReceiptTemplate = {
   },
 
   footer: {
-    title: 'Centre for Australian Progress',
-    description: 'Building a stronger future for all Australians',
-    contactInfo: 'For questions about your donation, please contact us at info@australianprogress.org.au',
+    title: 'Common Threads Indigenous Peoples Organisation Ltd',
+    description: 'Building Indigenous power and driving systemic change',
+    contactInfo: 'For questions about your donation, please contact us at info@commonthreads.org.au',
   },
 
   branding: {
@@ -94,9 +94,9 @@ export const recurringReceiptTemplate: ReceiptTemplate = {
   },
 
   footer: {
-    title: 'Centre for Australian Progress',
-    description: 'Building a stronger future for all Australians',
-    contactInfo: 'For questions about your donation, please contact us at info@australianprogress.org.au',
+    title: 'Common Threads Indigenous Peoples Organisation Ltd',
+    description: 'Building Indigenous power and driving systemic change',
+    contactInfo: 'For questions about your donation, please contact us at info@commonthreads.org.au',
   },
 };
 
@@ -130,9 +130,9 @@ export const largeDonationTemplate: ReceiptTemplate = {
   },
 
   footer: {
-    title: 'Centre for Australian Progress',
-    description: 'Building a stronger future for all Australians',
-    contactInfo: 'For questions about your donation, please contact us at info@australianprogress.org.au',
+    title: 'Common Threads Indigenous Peoples Organisation Ltd',
+    description: 'Building Indigenous power and driving systemic change',
+    contactInfo: 'For questions about your donation, please contact us at info@commonthreads.org.au',
   },
 };
 
@@ -193,7 +193,7 @@ export const generateReceiptHtml = (
         <div class="content">
           <div class="message">
             <p><strong>Dear ${donorFirstName},</strong></p>
-            <p>Thank you so much for your generous donation to the Centre for Australian Progress in support of the Together for Treaty campaign.</p>
+            <p>Thank you so much for your generous donation to the Common Threads Indigenous Peoples Organisation Ltd in support of the Together for Treaty campaign.</p>
             <p>${template.taxInfo}</p>
             <p>This is your donation receipt for your records. If you have any questions with regard to your donation, please reach out to us at info@australianprogress.org.au.</p>
           </div>
@@ -211,13 +211,13 @@ export const generateReceiptHtml = (
             </div>
 
             <div style="margin: 20px 0; padding: 15px; background: #f9f9f9; border-radius: 5px;">
-              <p style="margin: 0; font-weight: bold;">Centre for Australian Progress</p>
+              <p style="margin: 0; font-weight: bold;">Common Threads Indigenous Peoples Organisation Ltd</p>
               <p style="margin: 5px 0;">3 Albert Coates Lane, Melbourne VIC 3000</p>
               <p style="margin: 5px 0;">info@australianprogress.org.au</p>
             </div>
 
             <div class="dgr-info">
-              <p style="margin: 0;">This is the receipt for your donation. Centre for Australian Progress Ltd (ABN: 76 158 172 484) is listed by name as a Deductible Gift Recipient (DGR) from 01 Jul 2024 to 30 Jun 2029. It is covered by Item 1 of the table in section 30-15 of the Income Tax Assessment Act 1997. Donations of $2 or more are tax deductible.</p>
+              <p style="margin: 0;">This is the receipt for your donation. Common Threads Indigenous Peoples Organisation Ltd (ABN: 43 687 271 227) is listed by name as a Deductible Gift Recipient (DGR) from 01 Jul 2024 to 30 Jun 2029. It is covered by Item 1 of the table in section 30-15 of the Income Tax Assessment Act 1997. Donations of $2 or more are tax deductible.</p>
             </div>
           </div>
 
@@ -249,7 +249,6 @@ export const generateReceiptHtml = (
           <div class="highlight">
             <p><strong>Campaign:</strong> Together For Treaty</p>
             <p><strong>Coordinated by:</strong> Common Threads</p>
-            <p><strong>Supported by:</strong> Centre for Australian Progress</p>
           </div>
         </div>
 

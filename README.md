@@ -4,7 +4,7 @@ A Next.js application for the Together For Treaty campaign, featuring donation f
 
 ## 🎯 Project Overview
 
-Together For Treaty is a campaign coordinated by Common Threads and supported by the Centre for Australian Progress. This application provides:
+Together For Treaty is a campaign coordinated by Common Threads. This application provides:
 
 - **Donation processing** with Stripe integration
 - **Custom email receipts** with substantial content
@@ -48,7 +48,6 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 The application includes a comprehensive custom receipt system with:
 
-- **Official Centre for Australian Progress content** with DGR information
 - **Substantial text content** explaining campaign impact
 - **Personal greeting** with donor's first name
 - **Professional formatting** and branding

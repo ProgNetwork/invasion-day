@@ -17,7 +17,7 @@ This privacy notice aims to give you information on how we collect and process y
 * When you speak to us  
 * Via website cookies, and through social media engagement
 
-Common Threads is supported by the Centre for Australian Progress Ltd (ABN 76158172484). Donations to the Together for Treaty campaign are accepted by the Centre for Australian Progress. Donations over $2 are tax-deductible. By donating to this campaign, you agree that your contact details will be shared with the Centre for Australian Progress for the sole purpose of communicating with you regarding your donation (for example, providing your donation receipt via email).
+We are supported by the Common Threads Indigenous Peoples Organisation Ltd Ltd (ABN 43 687 271 227). Donations to the Together for Treaty campaign are accepted by the Common Threads Indigenous Peoples Organisation Ltd. Donations over $2 are tax-deductible. By donating to this campaign, you agree that your contact details will be shared with the Common Threads Indigenous Peoples Organisation Ltd for the sole purpose of communicating with you regarding your donation (for example, providing your donation receipt via email).
 
 ## 2. The Data We Collect About You
 

@@ -134,8 +134,8 @@ const DonateFormInner: React.FC<DonateFormProps> = ({
       <p className="text-sm mb-6 text-gray-800">
         <strong>{subtitle}</strong>
         <br/>
-        This campaign is being coordinated by Common Threads, supported by the Centre for Australian Progress.
-        Donations over $2 are tax deductible. Your tax receipt will be issued by the Centre for Australian Progress.
+        This campaign is being coordinated by Common Threads Indigenous Peoples Organisation Ltd.
+        Donations over $2 are tax deductible.
       </p>
 
       {showDonationTypes.length > 1 && (

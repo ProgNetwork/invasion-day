@@ -1,7 +1,7 @@
 # Donations Policy Statement
 ## Together for Treaty Campaign
 **Effective July 2025**  
-**Issued by Common Threads, in partnership with the Centre for Australian Progress**
+**Issued by Common Threads Indigenous Peoples Organisation Ltd**
 
 ## Purpose
 
@@ -9,11 +9,11 @@ This policy outlines how donations to the Together for Treaty campaign are manag
 
 ## Partnership and Tax Deductibility
 
-Your contribution helps support First Nations organisers, community events, and storytelling. This campaign is being coordinated by Common Threads, supported by Centre for Australian Progress. Donations over $2 are tax deductible. Your tax receipt will be issued by the Centre for Australian Progress.
+Your contribution helps support First Nations organisers, community events, and storytelling. This campaign is being coordinated by Common Threads Indigenous Peoples Organisation Ltd. Donations over $2 are tax deductible. Your tax receipt will be issued by the Common Threads Indigenous Peoples Organisation Ltd.
 
 ## Privacy and Data Use
 
-When you donate to the campaign, your contact details are shared with the Centre for Australian Progress only for the purpose of issuing receipts and communicating with you about your donation. Your data will not be sold or used for unrelated purposes.
+When you donate to the campaign, your contact details are shared with the Common Threads Indigenous Peoples Organisation Ltd only for the purpose of issuing receipts and communicating with you about your donation. Your data will not be sold or used for unrelated purposes.
 
 ## Looking Ahead
 

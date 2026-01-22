@@ -3,7 +3,6 @@ import DonateForm from '@/components/form/DonateForm';
 import Hero from '@/components/Hero';
 import TimeForInvasion from '@/components/TimeForInvasion';
 import WhyInvasionMatters from '@/components/WhyInvasionMatters';
-import AustraliaMap from '@/components/AustraliaMap';
 import EventList from '@/components/EventList';
 import Head from 'next/head';
 import Modal from '@/components/ui/Modal';

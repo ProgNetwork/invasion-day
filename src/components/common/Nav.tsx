@@ -3,7 +3,6 @@ import Button from '@/components/ui/Button';
 import Modal from '@/components/ui/Modal';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/20/solid';
 import Link from 'next/link';
-import Image from 'next/image';
 import React, { useState } from 'react';
 
 interface NavItem {
@@ -42,13 +41,6 @@ const Nav: React.FC = () => {
 
   const closeMenu = () => {
     setIsMenuOpen(false);
-  };
-
-  const scrollToRallies = () => {
-    const ralliesSection = document.getElementById('nation-rallies');
-    if (ralliesSection) {
-      ralliesSection.scrollIntoView({ behavior: 'smooth' });
-    }
   };
 
   const scrollToDonate = () => {

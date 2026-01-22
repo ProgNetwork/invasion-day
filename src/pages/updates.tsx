@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
+import { ArrowLeftIcon } from '@heroicons/react/20/solid';
 import BlogPost from '@/components/BlogPost';
 import PageHeader from '@/components/PageHeader';
 

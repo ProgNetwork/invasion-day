@@ -98,8 +98,8 @@ const AustraliaMap: React.FC = () => {
           const scaleY = svgRect.height / 628.37;
 
           setPopupPosition({
-            x: svgRect.left - containerRect.left + coordinates.x * scaleX,
-            y: svgRect.top - containerRect.top + coordinates.y * scaleY - 30,
+            x: svgRect.left - containerRect.left + (coordinates.x * scaleX),
+            y: svgRect.top - containerRect.top + (coordinates.y * scaleY) - 30,
           });
           setHoveredEvent(event);
         }
@@ -123,37 +123,37 @@ const AustraliaMap: React.FC = () => {
           className="w-full h-full"
           style={{ background: 'linear-gradient(to bottom, #000000 0%, #000000 50%, #FF0000 50%, #FF0000 100%)' }}
         >
-        {/* Australia SVG content */}
-        <image
-          href="/images/australia.svg"
-          width="674.71"
-          height="628.37"
-          preserveAspectRatio="xMidYMid meet"
-        />
+          {/* Australia SVG content */}
+          <image
+            href="/images/australia.svg"
+            width="674.71"
+            height="628.37"
+            preserveAspectRatio="xMidYMid meet"
+          />
 
-        {/* Event markers embedded in SVG */}
-        {upcomingEvents.map((event: Event) => {
-          const coordinates = eventCoordinates[event.location.city as keyof typeof eventCoordinates];
-          if (!coordinates) {
-            return null;
-          }
+          {/* Event markers embedded in SVG */}
+          {upcomingEvents.map((event: Event) => {
+            const coordinates = eventCoordinates[event.location.city as keyof typeof eventCoordinates];
+            if (!coordinates) {
+              return null;
+            }
 
-          return (
-            <g key={event.id}>
-              <circle
-                cx={coordinates.x}
-                cy={coordinates.y}
-                r="8"
-                fill="#ef4444"
-                stroke="#ffffff"
-                strokeWidth="2"
-                className="cursor-pointer hover:fill-red-600 transition-colors animate-pulse"
-                onMouseEnter={(e) => handleMarkerHover(event, e)}
-                onMouseLeave={handleMarkerLeave}
-              />
-            </g>
-          );
-        })}
+            return (
+              <g key={event.id}>
+                <circle
+                  cx={coordinates.x}
+                  cy={coordinates.y}
+                  r="8"
+                  fill="#ef4444"
+                  stroke="#ffffff"
+                  strokeWidth="2"
+                  className="cursor-pointer hover:fill-red-600 transition-colors animate-pulse"
+                  onMouseEnter={(e) => handleMarkerHover(event, e)}
+                  onMouseLeave={handleMarkerLeave}
+                />
+              </g>
+            );
+          })}
         </svg>
 
         {/* Hover popup */}

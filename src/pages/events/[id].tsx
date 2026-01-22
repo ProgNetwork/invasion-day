@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { GetServerSideProps } from 'next';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import Button from '@/components/ui/Button';
 import { formatDateTime, formatLocation } from '@/lib/utils';
@@ -31,16 +31,6 @@ interface EventPageProps {
 }
 
 const EventPage: React.FC<EventPageProps> = ({ event, error }) => {
-  const [isPastEvent, setIsPastEvent] = useState(false);
-
-  useEffect(() => {
-    if (event) {
-      const eventEndDate = new Date(event.endDate);
-      const now = new Date();
-      setIsPastEvent(eventEndDate < now);
-    }
-  }, [event]);
-
   if (error) {
     return (
       <main className="min-h-screen bg-black">

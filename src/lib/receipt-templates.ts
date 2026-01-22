@@ -84,7 +84,7 @@ export const recurringReceiptTemplate: ReceiptTemplate = {
 
   nextSteps: {
     title: 'Your continued support makes a difference',
-    description: 'As a recurring donor, you're helping us build sustainable, long-term change. Your ongoing commitment supports:',
+    description: 'As a recurring donor, you\'re helping us build sustainable, long-term change. Your ongoing commitment supports:',
     bulletPoints: [
       'Consistent funding for community initiatives',
       'Long-term relationship building with First Nations communities',
@@ -120,7 +120,7 @@ export const largeDonationTemplate: ReceiptTemplate = {
 
   nextSteps: {
     title: 'Your leadership in action',
-    description: 'As a major supporter, you're helping to lead the way towards reconciliation. Your contribution supports:',
+    description: 'As a major supporter, you\'re helping to lead the way towards reconciliation. Your contribution supports:',
     bulletPoints: [
       'Pioneering community-led initiatives',
       'Innovative approaches to Invasion advocacy',

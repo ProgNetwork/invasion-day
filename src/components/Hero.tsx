@@ -37,7 +37,7 @@ const Hero: React.FC<HeroProps> = () => {
     }, blackDuration + displayDuration + transitionDuration);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [images.length]);
 
   const scrollToRallies = () => {
     const ralliesSection = document.getElementById('nation-rallies');

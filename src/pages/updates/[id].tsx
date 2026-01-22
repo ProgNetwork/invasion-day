@@ -105,8 +105,8 @@ export default function BlogPostDetail() {
 
   // Create a mapping from thumbnail URLs to full-size URLs
   // We need to extract both to create the mapping
-  const thumbnailImages = post.content.match(/<img[^>]+src=\"([^\"]+)\"/g)?.map(match => {
-    const srcMatch = match.match(/src=\"([^\"]+)\"/);
+  const thumbnailImages = post.content.match(/<img[^>]+src="([^"]+)"/g)?.map(match => {
+    const srcMatch = match.match(/src="([^"]+)"/);
     return srcMatch ? srcMatch[1] : '';
   }).filter(Boolean) || [];
 

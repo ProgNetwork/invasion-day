@@ -1,5 +1,4 @@
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/16/solid';
-import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 

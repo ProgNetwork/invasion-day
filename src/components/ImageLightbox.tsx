@@ -98,12 +98,12 @@ export default function ImageLightbox({ images, initialIndex, isOpen, onClose, d
         <button
           onClick={() => {
             if (onDownloadRequest) {
-              onDownloadRequest(downloadUrls[currentIndex], `Treaty-Poster-${currentIndex + 1}.pdf`);
+              onDownloadRequest(downloadUrls[currentIndex], `Invasion-Day-Poster-${currentIndex + 1}.pdf`);
             } else {
               // Fallback to direct download
               const link = document.createElement('a');
               link.href = downloadUrls[currentIndex];
-              link.download = `Treaty-Poster-${currentIndex + 1}.pdf`;
+              link.download = `Invasion-Day-Poster-${currentIndex + 1}.pdf`;
               document.body.appendChild(link);
               link.click();
               document.body.removeChild(link);

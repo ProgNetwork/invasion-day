@@ -12,7 +12,7 @@ export default function DonationsPolicy({ content }: DonationsPolicyProps) {
   return (
     <div className="min-h-screen bg-gray-50 py-12">
       <Head>
-        <title>Donations Policy - Together for Treaty</title>
+        <title>Donations Policy - Invasion Day</title>
       </Head>
       <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
         <article className="prose prose-lg max-w-none">

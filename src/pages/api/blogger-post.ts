@@ -49,8 +49,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     const data: BloggerPost = await response.json();
 
-    // Check if the post has the 'togetherfortreaty' label
-    if (!data.labels || !data.labels.includes('togetherfortreaty')) {
+    // Check if the post has the 'invasionday' label
+    if (!data.labels || !data.labels.includes('invasionday')) {
       return res.status(404).json({ message: 'Post not found or does not have required label' });
     }
 

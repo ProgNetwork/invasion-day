@@ -220,7 +220,7 @@ const PledgeForm: React.FC = () => {
         disabled={loading}
         className="mt-8"
       >
-        {loading ? 'Signing Pledge...' : 'Treaty Now!'}
+        {loading ? 'Signing Pledge...' : 'Invasion Day Now!'}
       </Button>
     </form>
   );

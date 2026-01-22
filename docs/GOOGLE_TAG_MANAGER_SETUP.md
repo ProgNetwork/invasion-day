@@ -1,6 +1,6 @@
 # Google Tag Manager & Google Analytics Setup
 
-This guide explains how to set up Google Tag Manager (GTM) and Google Analytics (GA4) for your Together for Treaty website.
+This guide explains how to set up Google Tag Manager (GTM) and Google Analytics (GA4) for your Invasion Day website.
 
 ## What's Been Implemented
 
@@ -28,7 +28,7 @@ This guide explains how to set up Google Tag Manager (GTM) and Google Analytics 
 ### 1. Create Google Tag Manager Account
 
 1. Go to [Google Tag Manager](https://tagmanager.google.com/)
-2. Create a new account for "Together for Treaty"
+2. Create a new account for "Invasion Day"
 3. Create a new container for your website
 4. Copy your GTM Container ID (format: GTM-XXXXXXX)
 

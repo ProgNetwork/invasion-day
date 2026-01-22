@@ -1,16 +1,17 @@
 import { useEffect, useState } from 'react';
-import JoinTheMovement from '@/components/Cta';
-import GetInvolved from '@/components/GetInvolved';
-import Hero from '@/components/Hero';
-import PowerfulMovement from '@/components/PowerfulMovement';
-import TimeForTreaty from '@/components/TimeForTreaty';
-import WhyTreatyMatters from '@/components/WhyTreatyMatters';
-import SummitPromo from '@/components/SummitPromo';
-import Summit2026Section from '@/components/Summit2026Section';
 import DonateForm from '@/components/form/DonateForm';
+import Hero from '@/components/Hero';
+import TimeForInvasion from '@/components/TimeForInvasion';
+import WhyInvasionMatters from '@/components/WhyInvasionMatters';
+import AustraliaMap from '@/components/AustraliaMap';
+import EventList from '@/components/EventList';
 import Head from 'next/head';
 import Modal from '@/components/ui/Modal';
 import Image from 'next/image';
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
+
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '');
 
 export default function Home() {
   const [showThankYouModal, setShowThankYouModal] = useState(false);
@@ -27,10 +28,10 @@ export default function Home() {
   const closeThankYouModal = () => setShowThankYouModal(false);
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-black">
       <Head>
-        <title>Together for Treaty</title>
-        <meta name="description" content="Together for Treaty is a movement of First Nations people and allies standing side-by-side for truth-telling, Treaties and justice." />
+        <title>Invasion Day</title>
+        <meta name="description" content="Invasion Day is a movement of First Nations people and allies standing side-by-side for truth-telling, Invasions and justice." />
       </Head>
 
       <Modal isOpen={showThankYouModal} onClose={closeThankYouModal} title="">
@@ -47,51 +48,43 @@ export default function Home() {
       </Modal>
 
       <Hero />
-      <TimeForTreaty />
-      <Summit2026Section />
-      <WhyTreatyMatters />
-      <SummitPromo />
-      <PowerfulMovement />
-      <JoinTheMovement />
-      <GetInvolved />
-      <div className="min-h-screen bg-primary-600 py-12 relative overflow-hidden">
-        {/* Background Image - Mobile/Tablet */}
-        <div className="absolute inset-0 opacity-70 lg:hidden">
-          <Image
-            src="/images/artboard-2.png"
-            alt="Together for Treaty campaign"
-            fill
-            className="object-cover"
-            priority
-          />
-        </div>
+      <TimeForInvasion />
 
-        {/* Background Image - Desktop */}
-        <div className="absolute inset-0 opacity-70 hidden lg:block">
-          <Image
-            src="/images/girl-collage.png"
-            alt="Together for Treaty campaign"
-            fill
-            className="object-cover"
-            priority
-          />
-        </div>
-
-        {/* Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* Transparent Block */}
-            <div className="hidden lg:block">
-              {/* This space is intentionally left transparent */}
-            </div>
-
-            {/* Donation Form */}
-            <div>
-              <DonateForm />
-            </div>
+      {/* Events Section */}
+      <section id="nation-rallies" className="bg-black py-16 sm:py-24 relative overflow-hidden">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-12">
+          <div className="text-center">
+            <h2 className="text-3xl font-bold text-gray-100 sm:text-4xl">Nation Rallies</h2>
           </div>
         </div>
-      </div>
+
+        {/* <div className="relative z-10 mx-auto">
+          <AustraliaMap />
+        </div> */}
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <EventList />
+        </div>
+      </section>
+      <WhyInvasionMatters />
+
+      {/* Donate Section */}
+      <section id="donate" className="relative py-16 sm:py-24 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/rally5.jpg"
+            alt=""
+            fill
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-black/60"></div>
+        </div>
+
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <Elements stripe={stripePromise}>
+            <DonateForm />
+          </Elements>
+        </div>
+      </section>
     </main>
   );
 }

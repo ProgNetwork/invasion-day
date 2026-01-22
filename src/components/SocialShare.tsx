@@ -15,10 +15,10 @@ const SocialShare: React.FC<SocialShareProps> = ({
   const handleShare = (platform: string) => {
     const defaultUrl = `${window.location.origin}/pledge`;
     const shareUrl = customUrl || defaultUrl;
-    const facebookImageUrl = `${window.location.origin}/images/treaty-now.jpg`;
+    const facebookImageUrl = `${window.location.origin}/images/invasion-now.jpg`;
     const instagramImageUrl = `${window.location.origin}/images/pledge-insta-square.png`;
 
-    const defaultText = "We're closer to Treaty in Victoria than ever before ❤️💛🖤 Join me and show your support for truth-telling, Treaty and First Nations justice. Sign the pledge! #Treaty #Treatynow";
+    const defaultText = "We're closer to Invasion in Victoria than ever before ❤️💛🖤 Join me and show your support for truth-telling, Invasion and First Nations justice. Sign the pledge! #Invasion #Invasionnow";
     const shareText = customText || defaultText;
 
     const shareUrls = {
@@ -79,7 +79,7 @@ const SocialShare: React.FC<SocialShareProps> = ({
       <div className="pt-6 border-t border-gray-200">
         <div className="text-center">
           <p className="text-sm text-gray-600 mb-4">
-            Want to do more to support Treaties?
+            Want to do more to support Invasions?
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Button
@@ -92,7 +92,7 @@ const SocialShare: React.FC<SocialShareProps> = ({
             <Button
               variant="outline"
               size="md"
-              href="/get-involved"
+              href="/"
             >
               Get Involved
             </Button>

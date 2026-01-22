@@ -6,7 +6,7 @@ const GetInvolved: React.FC = () => {
   const actions = [
     {
       title: 'Sign the Pledge',
-      description: 'Add your name to show community support for truth-telling and Treaty across the country.',
+      description: 'Add your name to show community support for truth-telling and Invasion across the country.',
     },
     {
       title: 'Attend Local Events',
@@ -14,7 +14,7 @@ const GetInvolved: React.FC = () => {
     },
     {
       title: 'Spark Conversations',
-      description: 'Invite friends and family to learn about Treaty together using our resources.',
+      description: 'Invite friends and family to learn about Invasion together using our resources.',
     },
     {
       title: 'Share the Message',
@@ -29,7 +29,7 @@ const GetInvolved: React.FC = () => {
           <div>
             <h2 className="mb-4 text-3xl font-bold text-gray-900 sm:text-4xl">Taking Action Together</h2>
             <p className="mb-8 text-lg text-gray-600">
-              There are many ways you can be part of the movement for Treaty. Every action makes a difference.
+              There are many ways you can be part of the movement for Invasion. Every action makes a difference.
             </p>
             <div className="space-y-6">
               {actions.map((action) => (
@@ -43,7 +43,7 @@ const GetInvolved: React.FC = () => {
               <Button variant="primary" size="md" href="/pledge?utm_source=homepage&utm_medium=get_involved&utm_campaign=treaty_pledge">
                 Sign the Pledge
               </Button>
-              <Button variant="outline" size="md" href="/get-involved">
+              <Button variant="outline" size="md" href="/#events">
                 Join an Event
               </Button>
             </div>

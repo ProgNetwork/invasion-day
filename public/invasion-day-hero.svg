@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2000" height="2000" viewBox="0 0 2000 2000">
+  <g font-family="'Cooper Black', 'Luckiest Guy', 'Baloo 2', 'Arial Rounded MT Bold', system-ui, sans-serif"
+     font-weight="900"
+     text-anchor="middle">
+
+    <!-- INVASION -->
+    <text x="1000" y="850"
+          font-size="320"
+          fill="#E10600"
+          stroke="#FFD200"
+          stroke-width="28"
+          paint-order="stroke fill"
+          letter-spacing="4">
+      INVASION
+    </text>
+
+    <!-- DAY -->
+    <text x="1000" y="1150"
+          font-size="320"
+          fill="#E10600"
+          stroke="#FFD200"
+          stroke-width="28"
+          paint-order="stroke fill"
+          letter-spacing="4">
+      DAY
+    </text>
+
+    <!-- JAN 26 (original cream colour) -->
+    <text x="1000" y="1450"
+          font-size="260"
+          fill="#E6D9CC"
+          letter-spacing="4">
+      JAN 26
+    </text>
+
+  </g>
+</svg>

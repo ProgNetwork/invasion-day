@@ -21,7 +21,7 @@ const SignupForm: React.FC = () => {
     familyName: '',
     email: '',
     postcode: '',
-    sourceCode: 'website-tft',
+    sourceCode: 'website-invasion',
     first_nations_identifying: false,
     volunteer: false,
   });
@@ -126,7 +126,7 @@ const SignupForm: React.FC = () => {
     <div className="max-w-xl mx-auto p-6 bg-gray-50 rounded-xl border">
       <h2 className="text-2xl font-bold mb-2 text-primary-700">Add your details to join!</h2>
       <p className="text-md text-gray-500">
-        Sign up to receive updates and find out how you can be part of the movement for Treaty.
+        Sign up to receive updates and find out how you can be part of the movement to abolish Australia Day.
       </p>
       <form className="mt-4 space-y-4" onSubmit={handleSubmit}>
         <div className="gap-2 flex flex-col">

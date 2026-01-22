@@ -18,7 +18,7 @@ const SwitchboardCallMp: React.FC = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-2">
-            Call Your Member of Parliament About Treaty
+            Call Your Member of Parliament About Invasion
           </h2>
           <div className="space-y-4">
             <div>
@@ -30,7 +30,7 @@ const SwitchboardCallMp: React.FC = () => {
             <div>
               <h3 className="text-lg font-semibold text-primary-700 inline">When a staffer answers:</h3>
               <p className="text-gray-600 inline ml-1">
-                Introduce yourself, share why Treaty matters to you, and ask your local MP to support Treaty (if they don't already).
+                Introduce yourself, share why Invasion matters to you, and ask your local MP to support Invasion (if they don't already).
               </p>
             </div>
             <p className="text-gray-600 font-medium">

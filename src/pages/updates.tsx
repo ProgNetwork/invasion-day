@@ -47,8 +47,8 @@ export default function Updates() {
     return (
       <div className="min-h-screen bg-gray-50">
         <Head>
-          <title>Updates - Together for Treaty</title>
-          <meta name="description" content="Latest updates and news from Together for Treaty" />
+          <title>Updates - Invasion Day</title>
+          <meta name="description" content="Latest updates and news from Invasion Day" />
         </Head>
 
         <div className="max-w-4xl mx-auto px-4 py-12">
@@ -65,8 +65,8 @@ export default function Updates() {
     return (
       <div className="min-h-screen bg-gray-50">
         <Head>
-          <title>Updates - Together for Treaty</title>
-          <meta name="description" content="Latest updates and news from Together for Treaty" />
+          <title>Updates - Invasion Day</title>
+          <meta name="description" content="Latest updates and news from Invasion Day" />
         </Head>
 
         <div className="max-w-4xl mx-auto px-4 py-12">
@@ -90,13 +90,13 @@ export default function Updates() {
   return (
     <div className="min-h-screen bg-gray-50">
       <Head>
-        <title>Updates - Together for Treaty</title>
-        <meta name="description" content="Latest updates and news from Together for Treaty" />
+        <title>Updates - Invasion Day</title>
+        <meta name="description" content="Latest updates and news from Invasion Day" />
       </Head>
 
       <PageHeader title="Updates" image="/images/rock-texture.jpg">
         <p>
-          Stay informed with the latest news, events, and updates from the Together for Treaty movement.
+          Stay informed with the latest news, events, and updates from the Invasion Day movement.
         </p>
       </PageHeader>
 
@@ -135,6 +135,7 @@ export default function Updates() {
               href="/"
               className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 transition-colors duration-200"
             >
+              <ArrowLeftIcon className="h-5 w-5 mr-2" />
               Back to Home
             </Link>
           </div>

@@ -129,7 +129,7 @@ const DonateFormInner: React.FC<DonateFormProps> = ({
   };
 
   return (
-    <div className="max-w-xl mx-auto p-6 bg-gray-50 rounded-xl border">
+    <div className="max-w-xl mx-auto p-6 bg-white rounded-xl border shadow-lg">
       <h2 className="text-2xl font-bold mb-2 text-black">{title}</h2>
       <p className="text-sm mb-6 text-gray-800">
         <strong>{subtitle}</strong>
@@ -250,8 +250,8 @@ const DonateFormInner: React.FC<DonateFormProps> = ({
       </Button>
 
       <div className="text-xs text-black mt-4 space-y-2">
-        <p>Together For Treaty can only accept donations from Australian citizens, residents, or entities for electoral expenditure. For more information, see our Donations Policy.</p>
-        <p>By pressing Donate, I confirm I am an Australian citizen or resident and agree to Together For Treaty's Donations Policy and Privacy Policy.</p>
+        <p>Invasion Day can only accept donations from Australian citizens, residents, or entities for electoral expenditure. For more information, see our Donations Policy.</p>
+        <p>By pressing Donate, I confirm I am an Australian citizen or resident and agree to Invasion Day's Donations Policy and Privacy Policy.</p>
       </div>
     </div>
   );

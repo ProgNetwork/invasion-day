@@ -53,7 +53,7 @@ const ContactMethodSelector: React.FC<ContactMethodSelectorProps> = ({
             Click To Choose Your Action
           </h2>
           <p className="text-gray-600">
-            Pick how you'd like to reach out to Brad Battin MP about Treaty support
+            Pick how you'd like to reach out to Brad Battin MP about Invasion support
           </p>
         </div>
 

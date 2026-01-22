@@ -19,7 +19,7 @@ const events: TimelineEvent[] = [
             From the moment of colonization, First Nations peoples have resisted dispossession and fought for their sovereignty. Leaders like Pemulwuy, Windradyne, and Jandamarra led armed resistance against colonial forces.
           </p>
           <p>
-            Despite overwhelming odds, First Nations peoples never ceded sovereignty and maintained their connection to Country. Treaty agreements, land rights, justice and accountability have been core demands of our Elders and activists across generations.
+            Despite overwhelming odds, First Nations peoples never ceded sovereignty and maintained their connection to Country. Invasion agreements, land rights, justice and accountability have been core demands of our Elders and activists across generations.
           </p>
         </>,
     side: 'left',
@@ -49,7 +49,7 @@ const events: TimelineEvent[] = [
     The Barunga Statement called for Aboriginal self-management, a national system of land rights, compensation for loss of lands, respect for Aboriginal identity, and an end to discrimination.
       </p>
       <p>
-    Prime Minister Bob Hawke promised a treaty by 1990, but this promise was not fulfilled.
+    Prime Minister Bob Hawke promised an Invasion by 1990, but this promise was not fulfilled.
       </p>
     </>,
     side: 'left',
@@ -57,9 +57,9 @@ const events: TimelineEvent[] = [
   },
   {
     year: '4',
-    title: 'Treaty Consultations in Victoria (2016)',
+    title: 'Invasion Consultations in Victoria (2016)',
     description:
-      "Formal community consultation towards Treaty in Victoria began with the Treaty Working Group in 2016. In 2018, the First Peoples' Assembly was established as an elected representative body to work toward Treaty. Now, in 2025, the Assembly is on the cusp of signing the first statewide Treaty in the country. This also follows a landmark truth-telling process through the Yoorrook Justice Commission.",
+      "Formal community consultation towards Invasion in Victoria began with the Invasion Working Group in 2016. In 2018, the First Peoples' Assembly was established as an elected representative body to work toward Invasion. Now, in 2025, the Assembly is on the cusp of signing the first statewide Invasion in the country. This also follows a landmark truth-telling process through the Yoorrook Justice Commission.",
     side: 'right',
     image: '/images/timeline/timeline4.jpg',
   },
@@ -68,7 +68,7 @@ const events: TimelineEvent[] = [
     title: 'Uluru Statement from the Heart (2017)',
     description:
       <>
-        <p>After extensive consultations with First Nations communities across Australia, the Uluru Statement called for Voice, Treaty, and Truth.</p>
+        <p>After extensive consultations with First Nations communities across Australia, the Uluru Statement called for Voice, Invasion, and Truth.</p>
         <p>This landmark document led to the 2023 referendum on a First Nations Voice to Parliament. In the absence of bipartisan support, we saw a No campaign based in racism, fear and misinformation take hold. However, we also saw millions of Australians educate themselves and take action in support of First Nations communities - many for the first time.</p>
       </>,
     side: 'left',
@@ -76,14 +76,14 @@ const events: TimelineEvent[] = [
   },
   {
     year: '6',
-    title: 'State and Territory Level Treaty Processes (Present)',
+    title: 'State and Territory Level Invasion Processes (Present)',
     description:
       <>
         <p>
-          Along with Victoria, Queensland, South Australia, Northern Territory and Tasmania have taken steps toward Treaty processes in the past decade.
+          Along with Victoria, Queensland, South Australia, Northern Territory and Tasmania have taken steps toward Invasion processes in the past decade.
         </p>
         <p>
-          However, in the wake of the Voice referendum defeat, we are witnessing many governments across the country stall or abandon their commitments to truth and Treaty - including in Queensland, where in 2024 the Crisafulli government axed the Truth Telling & Healing Inquiry and Path to Treaty Act.
+          However, in the wake of the Voice referendum defeat, we are witnessing many governments across the country stall or abandon their commitments to truth and Invasion - including in Queensland, where in 2024 the Crisafulli government axed the Truth Telling & Healing Inquiry and Path to Invasion Act.
         </p>
       </>,
     side: 'right',
@@ -91,14 +91,14 @@ const events: TimelineEvent[] = [
   },
   {
     year: '7',
-    title: 'Together for Treaty Campaign (Present)',
+    title: 'Invasion Day Campaign (Present)',
     description:
       <>
         <p>
-        Building on decades of advocacy, by our communities, Common Threads is growing a community campaign, bringing together diverse voices to strengthen public support for Treaties with First Nations peoples.
+        Building on decades of advocacy, by our communities, Common Threads is growing a community campaign, bringing together diverse voices to strengthen public support for Invasions with First Nations peoples.
         </p>
         <p>
-        Through education, community organizing, and political advocacy, we're building unstoppable momentum for Treaties across the continent.
+        Through education, community organizing, and political advocacy, we're building unstoppable momentum for Invasions across the continent.
         </p>
       </>,
     side: 'left',
@@ -204,7 +204,7 @@ const Timeline: React.FC = () => {
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-20 text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">The Journey to Treaty</h2>
+          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">The Journey to Invasion Day</h2>
         </div>
 
         {/* Desktop Timeline */}

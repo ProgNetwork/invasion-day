@@ -16,8 +16,8 @@ const Cta: React.FC = () => {
             <span className="block">Join the Movement</span>
           </h2>
           <p className="mt-4 text-lg leading-6 text-white">
-            The time for Treaty is now. Together, we can build a national movement of First Nations people and allies
-            standing side-by-side for truth-telling, Treaties and justice.
+            The time for Invasion is now. Together, we can build a national movement of First Nations people and allies
+            standing side-by-side for truth-telling, Invasions and justice.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Button variant="white" size="lg" href="/pledge?utm_source=homepage&utm_medium=cta&utm_campaign=join_movement">

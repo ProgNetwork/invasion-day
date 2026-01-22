@@ -25,12 +25,12 @@ export interface ReceiptTemplate {
 }
 
 export const defaultReceiptTemplate: ReceiptTemplate = {
-  subject: 'Thank you for your donation to Together For Treaty',
-  header: 'Together For Treaty - Thank you for your support',
+  subject: 'Thank you for your donation to Invasion Day',
+  header: 'Invasion Day - Thank you for your support',
 
   impactSection: {
     title: 'Your Impact',
-    description: 'Thank you for supporting the Treaty movement. Your contribution helps fund:',
+    description: 'Thank you for supporting the Invasion movement. Your contribution helps fund:',
     bulletPoints: [
       'First Nations organisers and community leaders',
       'Community events and gatherings',
@@ -44,10 +44,10 @@ export const defaultReceiptTemplate: ReceiptTemplate = {
 
   nextSteps: {
     title: 'What happens next?',
-    description: 'Together For Treaty is working towards a future where First Nations peoples have a voice in decisions that affect their lives and communities. Your support helps us:',
+    description: 'Invasion Day is working towards a future where First Nations peoples have a voice in decisions that affect their lives and communities. Your support helps us:',
     bulletPoints: [
       'Build stronger relationships between First Nations and non-Indigenous Australians',
-      'Advocate for meaningful Treaty negotiations',
+      'Advocate for meaningful Invasion negotiations',
       'Support community-led initiatives and cultural programs',
       'Create opportunities for truth-telling and reconciliation',
     ],
@@ -67,12 +67,12 @@ export const defaultReceiptTemplate: ReceiptTemplate = {
 
 export const recurringReceiptTemplate: ReceiptTemplate = {
   ...defaultReceiptTemplate,
-  subject: 'Thank you for your recurring donation to Together For Treaty',
-  header: 'Together For Treaty - Thank you for your ongoing support',
+  subject: 'Thank you for your recurring donation to Invasion Day',
+  header: 'Invasion Day - Thank you for your ongoing support',
 
   impactSection: {
     title: 'Your Ongoing Impact',
-    description: 'Thank you for your commitment to the Treaty movement. Your recurring contribution helps sustain:',
+    description: 'Thank you for your commitment to the Invasion movement. Your recurring contribution helps sustain:',
     bulletPoints: [
       'Long-term community engagement programs',
       'Ongoing advocacy and policy work',
@@ -84,11 +84,11 @@ export const recurringReceiptTemplate: ReceiptTemplate = {
 
   nextSteps: {
     title: 'Your continued support makes a difference',
-    description: 'As a recurring donor, you\'re helping us build sustainable, long-term change. Your ongoing commitment supports:',
+    description: 'As a recurring donor, you're helping us build sustainable, long-term change. Your ongoing commitment supports:',
     bulletPoints: [
       'Consistent funding for community initiatives',
       'Long-term relationship building with First Nations communities',
-      'Sustained advocacy for Treaty negotiations',
+      'Sustained advocacy for Invasion negotiations',
       'Ongoing educational and awareness programs',
     ],
   },
@@ -102,12 +102,12 @@ export const recurringReceiptTemplate: ReceiptTemplate = {
 
 export const largeDonationTemplate: ReceiptTemplate = {
   ...defaultReceiptTemplate,
-  subject: 'Thank you for your generous donation to Together For Treaty',
-  header: 'Together For Treaty - Thank you for your generous support',
+  subject: 'Thank you for your generous donation to Invasion Day',
+  header: 'Invasion Day - Thank you for your generous support',
 
   impactSection: {
     title: 'Your Generous Impact',
-    description: 'Thank you for your significant contribution to the Treaty movement. Your generous donation enables:',
+    description: 'Thank you for your significant contribution to the Invasion movement. Your generous donation enables:',
     bulletPoints: [
       'Major community initiatives and events',
       'Comprehensive advocacy campaigns',
@@ -120,10 +120,10 @@ export const largeDonationTemplate: ReceiptTemplate = {
 
   nextSteps: {
     title: 'Your leadership in action',
-    description: 'As a major supporter, you\'re helping to lead the way towards reconciliation. Your contribution supports:',
+    description: 'As a major supporter, you're helping to lead the way towards reconciliation. Your contribution supports:',
     bulletPoints: [
       'Pioneering community-led initiatives',
-      'Innovative approaches to Treaty advocacy',
+      'Innovative approaches to Invasion advocacy',
       'Comprehensive cultural preservation programs',
       'Advanced educational and awareness campaigns',
     ],
@@ -193,7 +193,7 @@ export const generateReceiptHtml = (
         <div class="content">
           <div class="message">
             <p><strong>Dear ${donorFirstName},</strong></p>
-            <p>Thank you so much for your generous donation to the Common Threads Indigenous Peoples Organisation Ltd in support of the Together for Treaty campaign.</p>
+            <p>Thank you so much for your generous donation to the Common Threads Indigenous Peoples Organisation Ltd in support of the Invasion Day campaign.</p>
             <p>${template.taxInfo}</p>
             <p>This is your donation receipt for your records. If you have any questions with regard to your donation, please reach out to us at info@australianprogress.org.au.</p>
           </div>
@@ -247,7 +247,7 @@ export const generateReceiptHtml = (
           </div>
 
           <div class="highlight">
-            <p><strong>Campaign:</strong> Together For Treaty</p>
+            <p><strong>Campaign:</strong> Invasion Day</p>
             <p><strong>Coordinated by:</strong> Common Threads</p>
           </div>
         </div>

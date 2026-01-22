@@ -31,17 +31,17 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       },
       metadata: {
         donation_type: 'recurring',
-        campaign: 'together-for-treaty',
+        campaign: 'invasion-day',
         interval,
       },
     });
 
     const product = await stripe.products.create({
-      name: 'Recurring Donation - Together For Treaty',
-      description: `Recurring ${interval}ly donation to support the Treaty movement`,
+      name: 'Recurring Donation - Invasion Day',
+      description: `Recurring ${interval}ly donation to support the Invasion movement`,
       metadata: {
-        campaign: 'together-for-treaty',
-        receipt_message: `Thank you for your ongoing support of the Treaty movement. Your ${interval}ly contribution of $${amount} helps fund First Nations organisers, community events, and storytelling initiatives. Your commitment to justice and reconciliation makes a real difference.`,
+        campaign: 'invasion-day',
+        receipt_message: `Thank you for your ongoing support of the Invasion movement. Your ${interval}ly contribution of $${amount} helps fund First Nations organisers, community events, and storytelling initiatives. Your commitment to justice and reconciliation makes a real difference.`,
       },
     });
 
@@ -51,7 +51,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       recurring: { interval },
       product: product.id,
       metadata: {
-        campaign: 'together-for-treaty',
+        campaign: 'invasion-day',
         interval,
       },
     });
@@ -66,9 +66,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         save_default_payment_method: 'on_subscription',
       },
       metadata: {
-        campaign: 'together-for-treaty',
+        campaign: 'invasion-day',
         donor_name: cardName,
-        receipt_message: `Thank you for your ongoing support of the Treaty movement. Your ${interval}ly contribution of $${amount} helps fund First Nations organisers, community events, and storytelling initiatives. Your commitment to justice and reconciliation makes a real difference.`,
+        receipt_message: `Thank you for your ongoing support of the Invasion movement. Your ${interval}ly contribution of $${amount} helps fund First Nations organisers, community events, and storytelling initiatives. Your commitment to justice and reconciliation makes a real difference.`,
       },
     });
 

@@ -24,7 +24,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       name: cardName,
       metadata: {
         donation_type: donationType || 'one-off',
-        campaign: 'together-for-treaty',
+        campaign: 'invasion-day',
       },
     });
 
@@ -36,12 +36,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       metadata: {
         integration_check: 'donation_oneoff',
         donation_type: donationType || 'one-off',
-        campaign: 'together-for-treaty',
+        campaign: 'invasion-day',
         donor_name: cardName,
-        receipt_message: 'Thank you for supporting the Treaty movement. Your contribution helps fund First Nations organisers, community events, and storytelling initiatives. Together, we can build a stronger future for all Australians.',
+        receipt_message: 'Thank you for supporting the Invasion movement. Your contribution helps fund First Nations organisers, community events, and storytelling initiatives. Together, we can build a stronger future for all Australians.',
       },
-      description: `Donation to Together For Treaty - ${donationType || 'one-off'} contribution`,
-      statement_descriptor_suffix: 'TOGETHER FOR TREATY',
+      description: `Donation to Invasion Day - ${donationType || 'one-off'} contribution`,
+      statement_descriptor_suffix: 'INVASION DAY',
     });
 
     return res.status(200).json({ clientSecret: paymentIntent.client_secret });

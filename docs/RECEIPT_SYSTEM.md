@@ -1,15 +1,15 @@
 # Custom Receipt System
 
-This system provides comprehensive custom email receipts with substantial text content for Together For Treaty donations.
+This system provides comprehensive custom email receipts with substantial text content for Invasion Day donations.
 
 ## Features
 
 ### 🎯 Substantial Content
-- **Detailed impact descriptions** - Explain exactly how donations support the Treaty movement
-- **Campaign context** - Provide background on the importance of Treaty negotiations
+- **Detailed impact descriptions** - Explain exactly how donations support the Invasion movement
+- **Campaign context** - Provide background on the importance of Invasion negotiations
 - **Tax information** - Clear details about tax deductibility
 - **Next steps** - Information about ongoing involvement opportunities
-- **Professional branding** - Branded email templates with Together For Treaty styling
+- **Professional branding** - Branded email templates with Invasion Day styling
 
 ### 📧 Custom Messages
 - Add personal messages to each receipt
@@ -39,12 +39,12 @@ Edit the receipt templates in `src/lib/receipt-templates.ts`:
 
 ```typescript
 export const defaultReceiptTemplate: ReceiptTemplate = {
-  subject: 'Thank you for your donation to Together For Treaty',
-  header: 'Together For Treaty - Thank you for your support',
+  subject: 'Thank you for your donation to Invasion Day',
+  header: 'Invasion Day - Thank you for your support',
   
   impactSection: {
     title: 'Your Impact',
-    description: 'Thank you for supporting the Treaty movement. Your contribution helps fund:',
+    description: 'Thank you for supporting the Invasion movement. Your contribution helps fund:',
     bulletPoints: [
       'First Nations organisers and community leaders',
       'Community events and gatherings',
@@ -72,7 +72,7 @@ Used for donations of $100+ with enhanced messaging for major supporters.
 
 ### 1. Text Content
 - **Impact descriptions** - Explain how donations are used
-- **Campaign messaging** - Context about the Treaty movement
+- **Campaign messaging** - Context about the Invasion movement
 - **Tax information** - Details about tax deductibility
 - **Next steps** - Information about ongoing involvement
 
@@ -86,7 +86,7 @@ Add new message templates in `CustomReceiptManager.tsx`:
 
 ```typescript
 const defaultMessages = [
-  "Thank you for your generous support of the Treaty movement...",
+  "Thank you for your generous support of the Invasion movement...",
   "Your donation makes a real difference in our campaign...",
   // Add more templates
 ];
@@ -109,7 +109,7 @@ Sends custom receipts with substantial content.
   "message": "Custom receipt prepared",
   "emailContent": {
     "to": "donor@example.com",
-    "subject": "Thank you for your donation to Together For Treaty",
+    "subject": "Thank you for your donation to Invasion Day",
     "html": "<!DOCTYPE html>..."
   },
   "receiptUrl": "https://receipt.stripe.com/..."
@@ -134,7 +134,7 @@ import AWS from 'aws-sdk';
 
 const ses = new AWS.SES();
 await ses.sendEmail({
-  Source: 'noreply@togetherfortreaty.org',
+  Source: 'noreply@invasionday.org',
   Destination: { ToAddresses: [receiptEmail.to] },
   Message: {
     Subject: { Data: receiptEmail.subject },
@@ -151,7 +151,7 @@ await ses.sendEmail({
 - Emphasize First Nations leadership and community-led initiatives
 
 ### Campaign Context
-- Explain the importance of Treaty negotiations
+- Explain the importance of Invasion negotiations
 - Highlight the role of reconciliation and truth-telling
 - Connect individual donations to broader movement goals
 

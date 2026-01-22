@@ -35,7 +35,7 @@ const SignupAnalytics: React.FC<SignupAnalyticsProps> = ({
         </div>
         <div className="ml-3">
           <p className="text-sm font-medium text-green-800">
-            Welcome! You're already signed up to the Together for Treaty movement.
+            Welcome! You're already signed up to the Invasion Day movement.
           </p>
           {showDetails && signupTimestamp && (
             <p className="text-xs text-green-600 mt-1">

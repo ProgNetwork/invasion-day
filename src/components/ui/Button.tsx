@@ -28,16 +28,16 @@ const Button: React.FC<ButtonProps> = ({
   fullWidth = false,
 }) => {
   const baseClasses
-    = 'inline-flex items-center justify-center font-medium rounded-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer font-semibold font-rock-salt';
+    = 'inline-flex items-center justify-center font-medium rounded-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer font-bold font-special-gothic';
 
   const variantClasses = {
-    primary: 'bg-primary-600 hover:bg-primary-700 text-white shadow-sm hover:shadow-md focus:ring-primary-500',
-    secondary: 'bg-secondary-600 hover:bg-secondary-700 text-white shadow-sm hover:shadow-md focus:ring-secondary-500',
+    primary: 'bg-primary-600 text-white shadow-sm focus:ring-primary-500',
+    secondary: 'bg-secondary-600 text-white shadow-sm focus:ring-secondary-500',
     outline:
-      'border-2 border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white focus:ring-primary-500',
-    ghost: 'text-primary-600 hover:bg-primary-50 focus:ring-primary-500',
-    white: 'bg-white hover:bg-gray-50 text-gray-900 shadow-sm hover:shadow-md focus:ring-gray-500 border border-gray-300',
-    'white-outline': 'border-2 border-white text-white hover:bg-white hover:text-gray-900 focus:ring-white',
+      'border-2 border-primary-600 text-primary-600 focus:ring-primary-500',
+    ghost: 'text-primary-600 focus:ring-primary-500',
+    white: 'bg-white text-gray-900 shadow-sm focus:ring-gray-500 border border-gray-300',
+    'white-outline': 'border-2 border-white text-white focus:ring-white',
   };
 
   const sizeClasses = {

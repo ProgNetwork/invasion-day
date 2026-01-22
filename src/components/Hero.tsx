@@ -1,43 +1,80 @@
-import SignupForm from '@/components/form/SignupForm';
 import Button from '@/components/ui/Button';
-import Modal from '@/components/ui/Modal';
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 interface HeroProps {}
 
 const Hero: React.FC<HeroProps> = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isImageLoaded, setIsImageLoaded] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  const images = ['/images/rally2.jpg', '/images/rally3.jpg', '/images/rally4.jpg'];
+  const transitionDuration = 2000; // 2 seconds for fade
+  const displayDuration = 6000; // 6 seconds showing each image
+  const blackDuration = 4000; // 4 seconds of black between images
+
+  useEffect(() => {
+    const cycleImages = () => {
+      setIsTransitioning(true);
+
+      // After fade out, change image
+      setTimeout(() => {
+        setCurrentImageIndex((prev) => (prev + 1) % images.length);
+        setIsTransitioning(false);
+      }, transitionDuration);
+    };
+
+    const scheduleNextCycle = () => {
+      // Show black for 4 seconds, then show image for 6 seconds, then fade out over 2 seconds
+      setTimeout(cycleImages, blackDuration + displayDuration);
+    };
+
+    scheduleNextCycle();
+
+    const interval = setInterval(() => {
+      cycleImages();
+      setTimeout(scheduleNextCycle, transitionDuration);
+    }, blackDuration + displayDuration + transitionDuration);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const scrollToRallies = () => {
+    const ralliesSection = document.getElementById('nation-rallies');
+    if (ralliesSection) {
+      ralliesSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
-    <section className="relative flex h-[420px] items-center justify-center overflow-hidden md:h-[720] border-b-8 border-primary-700">
+    <section className="relative flex h-[420px] items-center justify-center overflow-hidden md:h-[720]">
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-black" />
-        <Image
-          src="/images/hero.png"
-          alt="Hero background"
-          fill
-          className={`object-cover transition-opacity duration-1000 ${
-            isImageLoaded ? 'opacity-100' : 'opacity-0'
+        <div
+          className={`absolute inset-0 transition-all duration-2000 ease-in-out ${
+            isTransitioning ? 'opacity-0 scale-100' : 'opacity-30 scale-105'
           }`}
-          onLoad={() => setIsImageLoaded(true)}
-          priority
+          style={{
+            backgroundImage: `url(${images[currentImageIndex]})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+          }}
         />
-        {/* <div className="absolute inset-0 bg-secondary-700/90"></div> */}
       </div>
 
-      <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-        <Image src="/images/tft-logo.png" alt="Together forTreaty Logo" className="w-2/3 mx-auto" width={1000} height={1000} />
-        <div className="text-md mb-8 leading-relaxed text-white sm:text-2xl font-bold">
-          <p className="mb-4">
-            Join a national movement of First Nations peoples and allies building unstoppable momentum for truth, Treaty and justice.
-          </p>
-        </div>
+      <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8 pt-0">
+        <Image
+          src="/invasion-day-hero.svg"
+          alt="Invasion Day - January 26"
+          className="w-full max-w-2xl mx-auto -mt-8 lg:-mt-16"
+          width={800}
+          height={800}
+        />
 
-        <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <Button variant="primary" size="lg" className="w-full sm:w-auto" onClick={() => setIsModalOpen(true)}>
-            Join the Movement
+        <div className="flex flex-col items-center justify-center gap-4 sm:flex-row -mt-4 lg:-mt-12">
+          <Button variant="white" size="lg" className="w-full sm:w-auto lg:text-xl lg:px-8 lg:py-4" onClick={scrollToRallies}>
+            Join a Rally
           </Button>
           {/* <Button
             variant="secondary"
@@ -48,9 +85,6 @@ const Hero: React.FC<HeroProps> = () => {
           </Button> */}
         </div>
       </div>
-      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} noPadding>
-        <SignupForm/>
-      </Modal>
     </section>
   );
 };

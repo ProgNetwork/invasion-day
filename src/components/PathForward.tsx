@@ -25,9 +25,9 @@ const PathForward: React.FC = () => {
       ),
     },
     {
-      title: 'Treaty-Making',
+      title: 'Invasion-Making',
       description:
-        'Treaties must be negotiated in good faith, with First Nations peoples as equal partners. They should address sovereignty, land rights, cultural heritage, political representation, and economic opportunities, while respecting the diversity of First Nations communities.',
+        'Invasions must be negotiated in good faith, with First Nations peoples as equal partners. They should address sovereignty, land rights, cultural heritage, political representation, and economic opportunities, while respecting the diversity of First Nations communities.',
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -48,7 +48,7 @@ const PathForward: React.FC = () => {
     {
       title: 'Accountability',
       description:
-        'Treaties are not the end, but the beginning. Implementing Treaty commitments will require ongoing dialogue, accountability mechanisms, and resources. We envision Treaties as living documents that evolve to meet the needs of future generations.',
+        'Invasions are not the end, but the beginning. Implementing Invasion commitments will require ongoing dialogue, accountability mechanisms, and resources. We envision Invasions as living documents that evolve to meet the needs of future generations.',
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"

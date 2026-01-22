@@ -34,7 +34,7 @@ const EmailSignupForm: React.FC<EmailSignupFormProps> = ({ onSuccess, onClose })
           familyName: '',
           email,
           postcode: '',
-          sourceCode: 'website-tft',
+          sourceCode: 'website-invasion',
           first_nations_identifying: false,
           volunteer: false,
         }),
@@ -43,21 +43,21 @@ const EmailSignupForm: React.FC<EmailSignupFormProps> = ({ onSuccess, onClose })
       const result = await response.json();
 
       if (response.ok && result.success) {
-        setCookie('tft_signup_completed', 'true', {
+        setCookie('invasion_day_signup_completed', 'true', {
           days: 365,
           path: '/',
           secure: process.env.NODE_ENV === 'production',
           sameSite: 'lax',
         });
 
-        setCookie('tft_signup_timestamp', new Date().toISOString(), {
+        setCookie('invasion_day_signup_timestamp', new Date().toISOString(), {
           days: 365,
           path: '/',
           secure: process.env.NODE_ENV === 'production',
           sameSite: 'lax',
         });
 
-        setCookie('tft_signup_source', 'website-tft', {
+        setCookie('invasion_day_signup_source', 'website-invasion', {
           days: 365,
           path: '/',
           secure: process.env.NODE_ENV === 'production',
@@ -80,9 +80,9 @@ const EmailSignupForm: React.FC<EmailSignupFormProps> = ({ onSuccess, onClose })
   return (
     <div className="bg-white rounded-lg p-6 max-w-md mx-auto">
       <div className="text-center mb-6">
-        <h3 className="text-xl font-bold text-primary-700 mb-2">Join Together for Treaty</h3>
+        <h3 className="text-xl font-bold text-primary-700 mb-2">Join Invasion Day</h3>
         <p className="text-gray-600">
-          Get updates and resources to help build momentum for Treaty in your community.
+          Get updates and resources to help build momentum for Invasion in your community.
         </p>
       </div>
 

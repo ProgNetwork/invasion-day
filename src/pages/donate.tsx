@@ -7,7 +7,7 @@ const DonatePage = () => (
     <div className="absolute inset-0 opacity-70 lg:hidden">
       <Image
         src="/images/artboard-2.png"
-        alt="Together for Treaty campaign"
+        alt="Invasion Day campaign"
         fill
         className="object-cover"
         priority
@@ -18,7 +18,7 @@ const DonatePage = () => (
     <div className="absolute inset-0 opacity-70 hidden lg:block">
       <Image
         src="/images/girl-collage.png"
-        alt="Together for Treaty campaign"
+        alt="Invasion Day campaign"
         fill
         className="object-cover"
         priority

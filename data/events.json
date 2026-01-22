@@ -1,0 +1,104 @@
+[
+  {
+    "id": "event-1",
+    "name": "Invasion Day Rally Melbourne",
+    "description": "Join us for the Invasion Day Rally in Melbourne to demand justice and sovereignty for First Nations peoples. Gather at Parliament House and march through the city.",
+    "startDate": "2026-01-26T11:00:00Z",
+    "endDate": "2026-01-26T15:00:00Z",
+    "location": {
+      "venueName": "Parliament House",
+      "address": "Spring St",
+      "city": "Melbourne",
+      "region": "VIC",
+      "country": "Australia"
+    },
+    "imageUrl": "/images/melbourne.jpg",
+    "url": "/events/event-1",
+    "timezone": "Australia/Melbourne"
+  },
+  {
+    "id": "event-2",
+    "name": "Brisbane Invasion Day March",
+    "description": "Stand in solidarity at the Brisbane Invasion Day March. We will gather to protest the ongoing injustices and call for truth and treaty.",
+    "startDate": "2026-01-26T10:00:00Z",
+    "endDate": "2026-01-26T14:00:00Z",
+    "location": {
+      "venueName": "Queens Gardens",
+      "address": "144 George St",
+      "city": "Brisbane",
+      "region": "QLD",
+      "country": "Australia"
+    },
+    "imageUrl": "/images/brisbane.jpg",
+    "url": "/events/event-2",
+    "timezone": "Australia/Brisbane"
+  },
+  {
+    "id": "event-3",
+    "name": "Invasion Day Rally Sydney",
+    "description": "Join us for the Invasion Day Rally in Sydney to demand justice and sovereignty for First Nations peoples. Gather at Hyde Park and march through the city.",
+    "startDate": "2026-01-26T10:00:00Z",
+    "endDate": "2026-01-26T14:00:00Z",
+    "location": {
+      "venueName": "Hyde Park",
+      "address": "Elizabeth St",
+      "city": "Sydney",
+      "region": "NSW",
+      "country": "Australia"
+    },
+    "imageUrl": "/images/sydney.jpg",
+    "url": "/events/event-3",
+    "timezone": "Australia/Sydney"
+  },
+  {
+    "id": "event-4",
+    "name": "Invasion Day Rally Hobart",
+    "description": "Stand in solidarity at the Hobart Invasion Day Rally. We will gather to protest the ongoing injustices and call for truth and treaty.",
+    "startDate": "2026-01-26T11:00:00Z",
+    "endDate": "2026-01-26T15:00:00Z",
+    "location": {
+      "venueName": "198 Elizabeth Street",
+      "address": "198 Elizabeth St",
+      "city": "Hobart",
+      "region": "TAS",
+      "country": "Australia"
+    },
+    "imageUrl": "/images/hobart.jpg",
+    "url": "/events/event-4",
+    "timezone": "Australia/Hobart"
+  },
+  {
+    "id": "event-5",
+    "name": "Invasion Day Rally Adelaide",
+    "description": "Join us for the Invasion Day Rally in Adelaide to demand justice and sovereignty for First Nations peoples. Gather at Victoria Square and march through the city.",
+    "startDate": "2026-01-26T11:30:00Z",
+    "endDate": "2026-01-26T15:30:00Z",
+    "location": {
+      "venueName": "Victoria Square",
+      "address": "Victoria Square",
+      "city": "Adelaide",
+      "region": "SA",
+      "country": "Australia"
+    },
+    "imageUrl": "/images/adelaide.jpg",
+    "url": "/events/event-5",
+    "timezone": "Australia/Adelaide"
+  },
+  {
+    "id": "event-6",
+    "name": "Invasion Day Rally Perth",
+    "description": "Stand in solidarity at the Perth Invasion Day Rally. We will gather to protest the ongoing injustices and call for truth and treaty.",
+    "startDate": "2026-01-26T12:00:00Z",
+    "endDate": "2026-01-26T16:00:00Z",
+    "location": {
+      "venueName": "Forrest Place",
+      "address": "Forrest Place",
+      "city": "Perth",
+      "region": "WA",
+      "country": "Australia"
+    },
+    "imageUrl": "/images/perth.jpg",
+    "url": "/events/event-6",
+    "timezone": "Australia/Perth"
+  }
+]

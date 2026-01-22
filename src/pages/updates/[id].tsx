@@ -66,7 +66,7 @@ export default function BlogPostDetail() {
     return (
       <div className="min-h-screen bg-gray-50">
         <Head>
-          <title>Loading... - Together for Treaty</title>
+          <title>Loading... - Invasion Day</title>
         </Head>
 
         <div className="max-w-4xl mx-auto px-4 py-12">
@@ -83,7 +83,7 @@ export default function BlogPostDetail() {
     return (
       <div className="min-h-screen bg-gray-50">
         <Head>
-          <title>Post Not Found - Together for Treaty</title>
+          <title>Post Not Found - Invasion Day</title>
         </Head>
 
         <div className="max-w-4xl mx-auto px-4 py-12">
@@ -105,8 +105,8 @@ export default function BlogPostDetail() {
 
   // Create a mapping from thumbnail URLs to full-size URLs
   // We need to extract both to create the mapping
-  const thumbnailImages = post.content.match(/<img[^>]+src="([^"]+)"/g)?.map(match => {
-    const srcMatch = match.match(/src="([^"]+)"/);
+  const thumbnailImages = post.content.match(/<img[^>]+src=\"([^\"]+)\"/g)?.map(match => {
+    const srcMatch = match.match(/src=\"([^\"]+)\"/);
     return srcMatch ? srcMatch[1] : '';
   }).filter(Boolean) || [];
 
@@ -120,7 +120,7 @@ export default function BlogPostDetail() {
   return (
     <div className="min-h-screen bg-gray-50">
       <Head>
-        <title>{post.title} - Together for Treaty</title>
+        <title>{post.title} - Invasion Day</title>
         <meta name="description" content={post.excerpt} />
       </Head>
 

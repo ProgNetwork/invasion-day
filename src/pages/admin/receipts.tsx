@@ -78,7 +78,7 @@ const ReceiptsAdminPage: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Receipt Management - Together For Treaty</title>
+        <title>Receipt Management - Invasion Day</title>
         <meta name="description" content="Manage custom receipts and donor communications" />
       </Head>
 
@@ -201,10 +201,10 @@ const ReceiptsAdminPage: NextPage = () => {
                 </h3>
                 <ul className="text-blue-800 space-y-2">
                   <li>• <strong>Substantial content:</strong> Detailed information about campaign impact and next steps</li>
-                  <li>• <strong>Professional branding:</strong> Branded email templates with Together For Treaty styling</li>
+                  <li>• <strong>Professional branding:</strong> Branded email templates with Invasion Day styling</li>
                   <li>• <strong>Custom messages:</strong> Add personal messages to each receipt</li>
                   <li>• <strong>Tax information:</strong> Clear tax deduction details for donors</li>
-                  <li>• <strong>Campaign context:</strong> Explain how donations support the Treaty movement</li>
+                  <li>• <strong>Campaign context:</strong> Explain how donations support the Invasion movement</li>
                   <li>• <strong>Future engagement:</strong> Information about ongoing involvement opportunities</li>
                 </ul>
               </div>

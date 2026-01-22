@@ -73,7 +73,7 @@ const FOOTER_SECTIONS: FooterColumn[] = [
 
 const FooterLink: React.FC<{ item: FooterItem }> = ({ item }) => {
   const linkClasses
-    = 'my-3 block text-gray-700 hover:text-primary-600 transition-colors duration-200 flex gap-1 items-center';
+    = 'my-3 block text-gray-300 hover:text-gray-100 transition-colors duration-200 flex gap-1 items-center';
 
   if (item.external) {
     return (
@@ -93,7 +93,7 @@ const FooterLink: React.FC<{ item: FooterItem }> = ({ item }) => {
 
 const FooterColumnComponent: React.FC<FooterColumnProps> = ({ data }) => (
   <div className="mb-8 text-sm sm:text-base md:mb-0 ">
-    <h3 className="mb-4 text-xs font-medium tracking-wide text-gray-400 uppercase">{data.label}</h3>
+    <h3 className="mb-4 text-xs font-medium tracking-wide text-gray-300 uppercase">{data.label}</h3>
     <nav aria-label={`${data.label} links`}>
       <ul className="space-y-3">
         {data.items.map((item) => (
@@ -108,21 +108,15 @@ const FooterColumnComponent: React.FC<FooterColumnProps> = ({ data }) => (
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-gray-100 px-4 py-12" role="contentinfo">
+    <footer className="bg-black px-4 py-12" role="contentinfo">
       <div className="mx-auto max-w-7xl">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-2 md:gap-8 items-start">
-          <div className="md:col-span-1 mb-8 md:mb-0">
-            <div className="w-full ml-0">
-              <Image src="/images/tft-logo.png" alt="Together for Treaty Logo" className="w-2/3 mx-auto md:mx-0" width={1000} height={1000} />
-            </div>
-          </div>
-          <div className="md:block hidden"/>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-8 items-start">
           {FOOTER_SECTIONS.map((section) => (
             <FooterColumnComponent key={section.label} data={section} />
           ))}
         </div>
 
-        <div className="mt-12 space-y-4 text-xs text-gray-500">
+        <div className="mt-12 space-y-4 text-xs text-gray-300">
           <p>
             We pay respect to our Elders and acknowledge the Traditional Owners who’ve cared for country since time immemorial. Sovereignty was never ceded - it always was, and always will be, Aboriginal land.
           </p>

@@ -17,7 +17,7 @@ This privacy notice aims to give you information on how we collect and process y
 * When you speak to us  
 * Via website cookies, and through social media engagement
 
-We are supported by the Common Threads Indigenous Peoples Organisation Ltd (ABN 43 687 271 227). Donations to the Together for Treaty campaign are accepted by the Common Threads Indigenous Peoples Organisation Ltd. Donations over $2 are tax-deductible. By donating to this campaign, you agree that your contact details will be shared with the Common Threads Indigenous Peoples Organisation Ltd. for the sole purpose of communicating with you regarding your donation (for example, providing your donation receipt via email).
+We are supported by the Common Threads Indigenous Peoples Organisation Ltd (ABN 43 687 271 227). Donations to the Invasion Day campaign are accepted by the Common Threads Indigenous Peoples Organisation Ltd. Donations over $2 are tax-deductible. By donating to this campaign, you agree that your contact details will be shared with the Common Threads Indigenous Peoples Organisation Ltd. for the sole purpose of communicating with you regarding your donation (for example, providing your donation receipt via email).
 
 ## 2. The Data We Collect About You
 
@@ -31,7 +31,7 @@ Personal data means any information about an individual from which that person c
 
 Where relevant to your participation in our programs and campaigns, we may collect additional personal data relating to: your job role or organisation; your identity, particularly in regards to cultural background and First Nations status; and records of your participation in our programs.
 
-We do not collect financial information, such as credit card details (these may or may not be retained by third parties such as Stripe or Humanitix, dependent on their own privacy policies and your choices).
+We do not collect financial information, such as credit card details (these may or may not be retained by third parties such as Stripe, dependent on their own privacy policies and your choices).
 
 ## 3. How We Use Your Personal Data
 

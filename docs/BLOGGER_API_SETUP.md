@@ -1,6 +1,6 @@
 # Blogger API Setup
 
-This document explains how to set up the Blogger API integration for the Together for Treaty website.
+This document explains how to set up the Blogger API integration for the Invasion Day website.
 
 ## Overview
 

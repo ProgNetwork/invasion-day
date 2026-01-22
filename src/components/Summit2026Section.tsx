@@ -74,7 +74,7 @@ const Summit2026Section: React.FC = () => {
                   <div className="h-1 w-16 bg-[#f27419] mt-2"></div>
                 </div>
                 <h2 className="mb-5 text-2xl font-bold text-gray-900 sm:text-3xl lg:text-4xl uppercase tracking-tight leading-tight">
-                  Together for Treaty<br />Summit 2026
+                  Invasion Day<br />Summit 2026
                 </h2>
                 <div className="h-px w-24 bg-gray-300 my-6"></div>
                 <p className="text-lg leading-relaxed text-gray-700 mb-10 font-medium">
@@ -106,7 +106,7 @@ const Summit2026Section: React.FC = () => {
                     </div>
                     <div className="flex-1">
                       <p className="text-xs font-bold text-[#f27419] uppercase tracking-wider mb-2">Who</p>
-                      <p className="text-base text-gray-900 leading-relaxed">Both First Nations people and allies from across the continent who are keen to grow the Together for Treaty campaign in your community</p>
+                      <p className="text-base text-gray-900 leading-relaxed">Both First Nations people and allies from across the continent who are keen to grow the Invasion Day campaign in your community</p>
                     </div>
                   </div>
                 </div>

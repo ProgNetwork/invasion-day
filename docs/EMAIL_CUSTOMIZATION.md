@@ -1,6 +1,6 @@
 # Email Customization Guide
 
-This guide explains how to customize email content and templates for the Together For Treaty receipt system.
+This guide explains how to customize email content and templates for the Invasion Day receipt system.
 
 ## Overview
 
@@ -46,12 +46,12 @@ Update the email subject line for different donation types:
 
 ```typescript
 export const defaultReceiptTemplate: ReceiptTemplate = {
-  subject: 'Thank you for your donation to Together For Treaty',
+  subject: 'Thank you for your donation to Invasion Day',
   // ...
 };
 
 export const recurringReceiptTemplate: ReceiptTemplate = {
-  subject: 'Thank you for your recurring donation to Together For Treaty',
+  subject: 'Thank you for your recurring donation to Invasion Day',
   // ...
 };
 ```
@@ -63,7 +63,7 @@ Customize how you describe the impact of donations:
 ```typescript
 impactSection: {
   title: 'Your Impact',
-  description: 'Thank you for supporting the Treaty movement. Your contribution helps fund:',
+  description: 'Thank you for supporting the Invasion movement. Your contribution helps fund:',
   bulletPoints: [
     'First Nations organisers and community leaders',
     'Community events and gatherings',
@@ -89,10 +89,10 @@ Customize information about ongoing involvement:
 ```typescript
 nextSteps: {
   title: 'What happens next?',
-  description: 'Together For Treaty is working towards a future where First Nations peoples have a voice in decisions that affect their lives and communities. Your support helps us:',
+  description: 'Invasion Day is working towards a future where First Nations peoples have a voice in decisions that affect their lives and communities. Your support helps us:',
   bulletPoints: [
     'Build stronger relationships between First Nations and non-Indigenous Australians',
-    'Advocate for meaningful Treaty negotiations',
+    'Advocate for meaningful Invasion negotiations',
     'Support community-led initiatives and cultural programs',
     'Create opportunities for truth-telling and reconciliation',
   ],
@@ -173,7 +173,7 @@ The generated HTML includes:
 1. **Header** - Branded header with campaign name
 2. **Personal greeting** - "Dear {donor_first_name}"
 3. **Thank you message** - Official thank you from Common Threads
-4. **Campaign context** - Information about Together for Treaty
+4. **Campaign context** - Information about Invasion Day
 5. **Official receipt** - Structured receipt with all required details
 6. **DGR information** - Legal tax information
 7. **Impact section** - How donations are used
@@ -235,7 +235,7 @@ Use Stripe test cards for testing:
 
 1. **Keep it personal** - Use donor's first name
 2. **Be specific** - Explain exactly how donations are used
-3. **Include context** - Explain the importance of Treaty negotiations
+3. **Include context** - Explain the importance of Invasion negotiations
 4. **Provide next steps** - Encourage ongoing involvement
 5. **Maintain professionalism** - Use consistent branding
 

@@ -4,14 +4,15 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Button from '@/components/ui/Button';
 import { formatDateTime, formatLocation } from '@/lib/utils';
+import eventsData from '../../../data/events.json';
 
-interface HumanitixEvent {
-  _id: string;
+interface Event {
+  id: string;
   name: string;
   description: string;
   startDate: string;
   endDate: string;
-  eventLocation: {
+  location: {
     venueName: string;
     address: string;
     city: string;
@@ -19,29 +20,13 @@ interface HumanitixEvent {
     country: string;
     onlineUrl?: string | null;
   };
-  ticketTypes: Array<{
-    _id: string;
-    name: string;
-    price: number;
-    quantity: number;
-    description?: string | null;
-    disabled: boolean;
-    deleted: boolean;
-  }>;
+  imageUrl?: string;
   url: string;
-  bannerImage?: {
-    url: string;
-  } | null;
-  featureImage?: {
-    url: string;
-  } | null;
-  published: boolean;
-  public: boolean;
   timezone: string;
 }
 
 interface EventPageProps {
-  event: HumanitixEvent | null;
+  event: Event | null;
   error?: string;
 }
 
@@ -58,17 +43,17 @@ const EventPage: React.FC<EventPageProps> = ({ event, error }) => {
 
   if (error) {
     return (
-      <main className="min-h-screen bg-white">
+      <main className="min-h-screen bg-black">
         <Head>
-          <title>Event Not Found - Together for Treaty</title>
+          <title>Event Not Found - Invasion Day</title>
           <meta name="description" content="The requested event could not be found" />
         </Head>
 
-        <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="min-h-screen flex items-center justify-center bg-black">
           <div className="text-center">
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">Event Not Found</h1>
-            <p className="text-gray-600 mb-8">The event you're looking for doesn't exist or has been removed.</p>
-            <Button href="/get-involved" variant="primary">
+            <h1 className="text-4xl font-bold text-white mb-4">Event Not Found</h1>
+            <p className="text-gray-300 mb-8">The event you're looking for doesn't exist or has been removed.</p>
+            <Button href="/" variant="primary">
               View All Events
             </Button>
           </div>
@@ -79,37 +64,36 @@ const EventPage: React.FC<EventPageProps> = ({ event, error }) => {
 
   if (!event) {
     return (
-      <main className="min-h-screen bg-white">
+      <main className="min-h-screen bg-black">
         <Head>
-          <title>Loading Event - Together for Treaty</title>
+          <title>Loading Event - Invasion Day</title>
           <meta name="description" content="Loading event details..." />
         </Head>
 
-        <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="min-h-screen flex items-center justify-center bg-black">
           <div className="text-center">
-            <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600 mb-4"></div>
-            <p className="text-gray-600">Loading event details...</p>
+            <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary-500 mb-4"></div>
+            <p className="text-gray-300">Loading event details...</p>
           </div>
         </div>
       </main>
     );
   }
 
-  const imageUrl = (event.bannerImage?.url) || (event.featureImage?.url) || null;
-  const isOnlineEvent = event.eventLocation.onlineUrl && event.eventLocation.onlineUrl !== null;
+  const isOnlineEvent = event.location.onlineUrl && event.location.onlineUrl !== null;
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-black">
       <Head>
-        <title>{event.name} - Together for Treaty</title>
+        <title>{event.name} - Invasion Day</title>
         <meta name="description" content={event.description.replace(/<[^>]*>/g, '').substring(0, 160)} />
         <meta property="og:title" content={event.name} />
         <meta property="og:description" content={event.description.replace(/<[^>]*>/g, '').substring(0, 160)} />
-        {imageUrl && <meta property="og:image" content={imageUrl} />}
+        {event.imageUrl && <meta property="og:image" content={event.imageUrl} />}
       </Head>
 
       {/* Hero Section */}
-      <section className="bg-white relative py-16 sm:py-24 border-b-8 border-primary-700">
+      <section className="bg-black relative py-16 sm:py-24 border-b-8 border-primary-700">
         <div className="absolute inset-0 z-0">
           <div
             className="h-full w-full bg-cover bg-center bg-no-repeat"
@@ -117,23 +101,23 @@ const EventPage: React.FC<EventPageProps> = ({ event, error }) => {
               backgroundImage: 'url(/images/protest2.jpg)',
             }}
           />
-          <div className="absolute inset-0 bg-zinc-900/90"></div>
+          <div className="absolute inset-0 bg-black/80"></div>
         </div>
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl">
             <div className="mb-4">
               <Button
-                href="/get-involved"
+                href="/"
                 variant="outline"
                 size="sm"
                 className="text-white border-white hover:bg-white hover:text-gray-900"
               >
-                ← Back to Events
+                ← Back to Home
               </Button>
             </div>
 
-            <h1 className="text-primary-700 text-4xl font-bold tracking-tight sm:text-5xl mb-6">
+            <h1 className="text-white text-4xl font-bold tracking-tight sm:text-5xl mb-6">
               {event.name}
             </h1>
 
@@ -145,13 +129,13 @@ const EventPage: React.FC<EventPageProps> = ({ event, error }) => {
                 <span className="font-semibold">{formatDateTime(event.startDate)}</span>
               </div>
 
-              {event.eventLocation.address && (
+              {event.location.address && (
                 <div className="flex items-center">
                   <svg className="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
-                  <span>{formatLocation(event.eventLocation)}</span>
+                  <span>{formatLocation(event.location)}</span>
                 </div>
               )}
 
@@ -182,11 +166,11 @@ const EventPage: React.FC<EventPageProps> = ({ event, error }) => {
 
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {/* Event Image */}
-          {imageUrl && (
+          {event.imageUrl && (
             <div className="mb-12">
               <div className="aspect-video bg-gray-200 rounded-lg overflow-hidden shadow-lg">
                 <Image
-                  src={imageUrl}
+                  src={event.imageUrl}
                   alt={event.name}
                   className="w-full h-full object-cover"
                   width={1280}
@@ -209,75 +193,11 @@ const EventPage: React.FC<EventPageProps> = ({ event, error }) => {
                     dangerouslySetInnerHTML={{ __html: event.description }}
                   />
                 )}
-
-                {event.ticketTypes.length > 0 && (
-                  <div className="mt-8">
-                    <h3 className="text-xl font-semibold text-gray-900 mb-4">Ticket Information</h3>
-                    <div className="space-y-3">
-                      {event.ticketTypes.map((ticket) => (
-                        <div key={ticket._id} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
-                          <div>
-                            <h4 className="font-medium text-gray-900">{ticket.name}</h4>
-                            {ticket.description && (
-                              <p className="text-sm text-gray-600 mt-1">{ticket.description}</p>
-                            )}
-                          </div>
-                          <div className="text-right">
-                            <div className="font-semibold text-gray-900">
-                              {ticket.price === 0 ? 'Free' : `$${ticket.price.toFixed(2)}`}
-                            </div>
-                            <div className="text-sm text-gray-500">
-                              {ticket.quantity > 0 ? `${ticket.quantity} available` : 'Sold out'}
-                            </div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
               </div>
             </div>
 
             {/* Sidebar */}
             <div className="space-y-6">
-              {/* Registration Card */}
-              <div className="bg-white rounded-lg shadow-lg p-6">
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                  {isPastEvent ? 'Event Completed' : 'Register Now'}
-                </h3>
-
-                {!isPastEvent ? (
-                  <div className="space-y-4">
-                    <p className="text-gray-600">
-                      Join us for this important event and be part of the movement for Treaty.
-                    </p>
-                    <Button
-                      href={`${event.url}/tickets`}
-                      variant="primary"
-                      size="lg"
-                      external
-                      className="w-full"
-                    >
-                      Register on Humanitix
-                    </Button>
-                  </div>
-                ) : (
-                  <div className="space-y-4">
-                    <p className="text-gray-600">
-                      This event has already taken place. Thank you to everyone who participated!
-                    </p>
-                    <Button
-                      href={event.url}
-                      variant="outline"
-                      size="lg"
-                      external
-                      className="w-full"
-                    >
-                      View Event Details
-                    </Button>
-                  </div>
-                )}
-              </div>
 
               {/* Event Details Card */}
               <div className="bg-white rounded-lg shadow-lg p-6">
@@ -289,10 +209,10 @@ const EventPage: React.FC<EventPageProps> = ({ event, error }) => {
                     <p className="text-gray-600">{formatDateTime(event.startDate)}</p>
                   </div>
 
-                  {event.eventLocation.address && (
+                  {event.location.address && (
                     <div>
                       <h4 className="font-medium text-gray-900 mb-1">Location</h4>
-                      <p className="text-gray-600">{formatLocation(event.eventLocation)}</p>
+                      <p className="text-gray-600">{formatLocation(event.location)}</p>
                     </div>
                   )}
 
@@ -360,110 +280,22 @@ const EventPage: React.FC<EventPageProps> = ({ event, error }) => {
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const { id: eventId } = params as { id: string };
 
-  if (!eventId) {
+  const event = eventsData.find((e) => e.id === eventId);
+
+  if (!event) {
     return {
       props: {
         event: null,
-        error: 'Event ID is required',
+        error: 'Event not found',
       },
     };
   }
 
-  try {
-    // Fetch the specific event from Humanitix API
-    const { HUMANITIX_API_KEY } = process.env;
-
-    if (!HUMANITIX_API_KEY) {
-      return {
-        props: {
-          event: null,
-          error: 'API configuration error',
-        },
-      };
-    }
-
-    const response = await fetch(`https://api.humanitix.com/v1/events/${eventId}`, {
-      headers: {
-        'x-api-key': HUMANITIX_API_KEY,
-        Accept: 'application/json',
-      },
-    });
-
-    if (!response.ok) {
-      if (response.status === 404) {
-        return {
-          props: {
-            event: null,
-            error: 'Event not found',
-          },
-        };
-      }
-
-      return {
-        props: {
-          event: null,
-          error: 'Failed to fetch event',
-        },
-      };
-    }
-
-    const eventData = await response.json();
-
-    // Transform the event data to match our interface
-    const event: HumanitixEvent = {
-      _id: eventData._id,
-      name: eventData.name,
-      description: eventData.description || '',
-      startDate: eventData.startDate,
-      endDate: eventData.endDate,
-      eventLocation: {
-        venueName: eventData.eventLocation?.venueName || '',
-        address: eventData.eventLocation?.address || '',
-        city: eventData.eventLocation?.city || '',
-        region: eventData.eventLocation?.region || '',
-        country: eventData.eventLocation?.country || '',
-        onlineUrl: eventData.eventLocation?.onlineUrl || null,
-      },
-      ticketTypes: eventData.ticketTypes?.filter((ticket: { disabled: boolean; deleted: boolean; }) => !ticket.disabled && !ticket.deleted).map((ticket: { _id: string; name: string; price: number; quantity: number; description: string | null; disabled: boolean; deleted: boolean; }) => ({
-        _id: ticket._id,
-        name: ticket.name,
-        price: ticket.price,
-        quantity: ticket.quantity,
-        description: ticket.description || null,
-        disabled: ticket.disabled,
-        deleted: ticket.deleted,
-      })) || [],
-      url: eventData.url,
-      bannerImage: eventData.bannerImage || null,
-      featureImage: eventData.featureImage || null,
-      published: eventData.published,
-      public: eventData.public,
-      timezone: eventData.timezone,
-    };
-
-    // Check if event is published and public
-    if (!event.published || !event.public) {
-      return {
-        props: {
-          event: null,
-          error: 'Event not available',
-        },
-      };
-    }
-
-    return {
-      props: {
-        event,
-      },
-    };
-  } catch {
-    return {
-      props: {
-        event: null,
-        error: 'Failed to load event',
-      },
-    };
-  }
+  return {
+    props: {
+      event,
+    },
+  };
 };
 
 export default EventPage;

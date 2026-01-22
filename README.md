@@ -1,10 +1,10 @@
-# Together For Treaty
+# Invasion Day
 
-A Next.js application for the Together For Treaty campaign, featuring donation functionality with Stripe integration and comprehensive custom receipt system.
+A Next.js application for the Invasion Day campaign, featuring donation functionality with Stripe integration and comprehensive custom receipt system.
 
 ## 🎯 Project Overview
 
-Together For Treaty is a campaign coordinated by Common Threads. This application provides:
+Invasion Day is a campaign coordinated by Common Threads. This application provides:
 
 - **Donation processing** with Stripe integration
 - **Custom email receipts** with substantial content
@@ -58,7 +58,7 @@ The application includes a comprehensive custom receipt system with:
 
 - ✅ **Complete DGR information** with ABN: 76 158 172 484
 - ✅ **Tax deductibility** details for donations over $2
-- ✅ **Campaign context** about Treaty negotiations
+- ✅ **Campaign context** about Invasion negotiations
 - ✅ **Impact descriptions** of how donations are used
 - ✅ **Contact information** for questions and support
 
@@ -90,6 +90,13 @@ Use Stripe's sandbox test cards for testing:
 - **Declined:** `4000 0000 0000 0002`
 - **Insufficient funds:** `4000 0000 0000 9995`
 
+### Preview Receipts
+
+1. Make a test donation
+2. Access `/admin/receipts`
+3. Send a custom receipt
+4. Check the generated HTML
+
 ## 📁 Project Structure
 
 ```
@@ -118,7 +125,7 @@ Edit receipt content in `src/lib/receipt-templates.ts`:
 
 ```typescript
 export const defaultReceiptTemplate: ReceiptTemplate = {
-  subject: 'Thank you for your donation to Together For Treaty',
+  subject: 'Thank you for your donation to Invasion Day',
   // Customize impact descriptions, tax info, and more
 };
 ```

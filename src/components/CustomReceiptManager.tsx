@@ -20,9 +20,9 @@ const CustomReceiptManager: React.FC<CustomReceiptManagerProps> = ({
   const [error, setError] = useState('');
 
   const defaultMessages = [
-    'Thank you for your generous support of the Treaty movement. Your contribution will help fund vital community initiatives and support First Nations organisers in their important work.',
+    'Thank you for your generous support of the Invasion movement. Your contribution will help fund vital community initiatives and support First Nations organisers in their important work.',
     'Your donation makes a real difference in our campaign for justice and reconciliation. Together, we can build a stronger future for all Australians.',
-    "We're grateful for your commitment to the Treaty movement. Your support helps us amplify First Nations voices and create meaningful change.",
+    "We're grateful for your commitment to the Invasion movement. Your support helps us amplify First Nations voices and create meaningful change.",
     'Thank you for standing with us in the fight for justice and recognition. Your contribution supports community-led initiatives and cultural preservation.',
   ];
 

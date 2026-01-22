@@ -1,11 +1,11 @@
 # Donations Policy Statement
-## Together for Treaty Campaign
+## Invasion Day Campaign
 **Effective July 2025**  
 **Issued by Common Threads Indigenous Peoples Organisation Ltd**
 
 ## Purpose
 
-This policy outlines how donations to the Together for Treaty campaign are managed and how we protect donor information. It is intended to provide transparency and clarity to supporters of the campaign.
+This policy outlines how donations to the Invasion Day campaign are managed and how we protect donor information. It is intended to provide transparency and clarity to supporters of the campaign.
 
 ## Partnership and Tax Deductibility
 
@@ -22,4 +22,4 @@ Common Threads is in the process of establishing independent systems for donatio
 ## Questions?
 
 If you have any questions about this policy or your donation, please contact us at:
-contact@commonthreads.org.au
+info@commonthreads.org.au

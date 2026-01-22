@@ -29,8 +29,11 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-black">
       <Head>
-        <title>Invasion Day</title>
-        <meta name="description" content="Invasion Day is a movement of First Nations people and allies standing side-by-side for truth-telling, Invasions and justice." />
+        <title>Invasion Day - Jan 26</title>
+        <meta name="description" content="January 26 marks a day of profound horror in our history. Join the rally for truth-telling and justice - for freedom, land rights, an end to racism, and thriving futures for First Nations peoples." />
+        <meta property="og:title" content="Invasion Day - Jan 26" />
+        <meta property="og:description" content="Stand against the horror of invasion. Rally for justice, treaty, and a better future for all who call these lands home." />
+        <meta property="og:type" content="website" />
       </Head>
 
       <Modal isOpen={showThankYouModal} onClose={closeThankYouModal} title="">

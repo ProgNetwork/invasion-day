@@ -6,7 +6,7 @@ const TimeForInvasion: React.FC = () => {
     <section className="bg-black py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-gray-100">
-          <h2 className="mb-12 text-3xl font-bold sm:text-4xl text-center">Truth and Treaty Now</h2>
+          <h2 className="mb-12 text-3xl font-bold sm:text-4xl text-center">Not A Date To Celebrate</h2>
           <div className="grid items-center gap-12 md:grid-cols-2">
             <div className="relative h-80 overflow-hidden rounded-lg shadow-lg md:h-96">
               <Image src="/images/rally.jpg" alt="" layout="fill" objectFit="cover" />

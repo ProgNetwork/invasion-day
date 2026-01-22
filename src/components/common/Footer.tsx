@@ -18,10 +18,10 @@ interface FooterColumnProps {
 }
 
 const DONATE_ITEMS: (FooterItem | undefined)[] = [
-  {
-    label: 'Make a donation',
-    path: '/donate',
-  },
+  // {
+  //   label: 'Make a donation',
+  //   path: '/donate',
+  // },
   // {
   //   label: "Gift in your Will",
   //   path: "/donate/willpower",

@@ -1,44 +1,10 @@
 import Button from '@/components/ui/Button';
 import Image from 'next/image';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 interface HeroProps {}
 
 const Hero: React.FC<HeroProps> = () => {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-
-  const images = ['/images/rally2.jpg', '/images/rally3.jpg', '/images/rally4.jpg'];
-  const transitionDuration = 2000; // 2 seconds for fade
-  const displayDuration = 6000; // 6 seconds showing each image
-  const blackDuration = 4000; // 4 seconds of black between images
-
-  useEffect(() => {
-    const cycleImages = () => {
-      setIsTransitioning(true);
-
-      // After fade out, change image
-      setTimeout(() => {
-        setCurrentImageIndex((prev) => (prev + 1) % images.length);
-        setIsTransitioning(false);
-      }, transitionDuration);
-    };
-
-    const scheduleNextCycle = () => {
-      // Show black for 4 seconds, then show image for 6 seconds, then fade out over 2 seconds
-      setTimeout(cycleImages, blackDuration + displayDuration);
-    };
-
-    scheduleNextCycle();
-
-    const interval = setInterval(() => {
-      cycleImages();
-      setTimeout(scheduleNextCycle, transitionDuration);
-    }, blackDuration + displayDuration + transitionDuration);
-
-    return () => clearInterval(interval);
-  }, [images.length]);
-
   const scrollToRallies = () => {
     const ralliesSection = document.getElementById('nation-rallies');
     if (ralliesSection) {
@@ -50,17 +16,6 @@ const Hero: React.FC<HeroProps> = () => {
     <section className="relative flex h-[420px] items-center justify-center overflow-hidden md:h-[720]">
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-black" />
-        <div
-          className={`absolute inset-0 transition-all duration-2000 ease-in-out ${
-            isTransitioning ? 'opacity-0 scale-100' : 'opacity-30 scale-105'
-          }`}
-          style={{
-            backgroundImage: `url(${images[currentImageIndex]})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-          }}
-        />
       </div>
 
       <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8 pt-0">

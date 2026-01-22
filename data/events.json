@@ -1,10 +1,10 @@
 [
   {
     "id": "event-1",
-    "name": "Invasion Day Rally Melbourne",
-    "description": "Join us for the Invasion Day Rally in Melbourne to demand justice and sovereignty for First Nations peoples. Gather at Parliament House and march through the city.",
-    "startDate": "2026-01-26T11:00:00Z",
-    "endDate": "2026-01-26T15:00:00Z",
+    "name": "Naarm/Melbourne Invasion Day Rally",
+    "description": "Gather in the heart of Naarm/Melbourne at Parliament House for a powerful Invasion Day rally. We stand together to honor the Kulin nations, demand justice for First Nations peoples, and march for truth-telling and treaty rights that will heal our shared future.",
+    "startDate": "2026-01-26T11:00:00+11:00",
+    "endDate": "2026-01-26T15:00:00+11:00",
     "location": {
       "venueName": "Parliament House",
       "address": "Spring St",
@@ -18,10 +18,10 @@
   },
   {
     "id": "event-2",
-    "name": "Brisbane Invasion Day March",
-    "description": "Stand in solidarity at the Brisbane Invasion Day March. We will gather to protest the ongoing injustices and call for truth and treaty.",
-    "startDate": "2026-01-26T10:00:00Z",
-    "endDate": "2026-01-26T14:00:00Z",
+    "name": "Magandjin/Brisbane Invasion Day March",
+    "description": "Join the Magandjin/Brisbane Invasion Day March starting at Queens Gardens. We march to acknowledge the Turrbal and Yuggera peoples' enduring connection to country, protest colonial injustices, and call for genuine treaty negotiations that respect Indigenous sovereignty.",
+    "startDate": "2026-01-26T10:00:00+10:00",
+    "endDate": "2026-01-26T14:00:00+10:00",
     "location": {
       "venueName": "Queens Gardens",
       "address": "144 George St",
@@ -35,10 +35,10 @@
   },
   {
     "id": "event-3",
-    "name": "Invasion Day Rally Sydney",
-    "description": "Join us for the Invasion Day Rally in Sydney to demand justice and sovereignty for First Nations peoples. Gather at Hyde Park and march through the city.",
-    "startDate": "2026-01-26T10:00:00Z",
-    "endDate": "2026-01-26T14:00:00Z",
+    "name": "Gadigal land/Sydney Invasion Day Rally",
+    "description": "Come together on Gadigal land/Sydney at Hyde Park for Invasion Day. We honor the Gadigal people's ancient custodianship of this harbor city, stand against ongoing dispossession, and rally for the Uluru Statement from the Heart to be implemented through genuine treaty processes.",
+    "startDate": "2026-01-26T10:00:00+11:00",
+    "endDate": "2026-01-26T14:00:00+11:00",
     "location": {
       "venueName": "Hyde Park",
       "address": "Elizabeth St",
@@ -52,10 +52,10 @@
   },
   {
     "id": "event-4",
-    "name": "Invasion Day Rally Hobart",
-    "description": "Stand in solidarity at the Hobart Invasion Day Rally. We will gather to protest the ongoing injustices and call for truth and treaty.",
-    "startDate": "2026-01-26T11:00:00Z",
-    "endDate": "2026-01-26T15:00:00Z",
+    "name": "Nipaluna/Hobart Invasion Day Rally",
+    "description": "March through Nipaluna/Hobart from 198 Elizabeth Street to demand justice for Palawa peoples. We stand in solidarity against the ongoing impacts of colonization on Tasmania's First Nations communities, calling for truth-telling about the Black Wars and meaningful treaty arrangements.",
+    "startDate": "2026-01-26T11:00:00+11:00",
+    "endDate": "2026-01-26T15:00:00+11:00",
     "location": {
       "venueName": "198 Elizabeth Street",
       "address": "198 Elizabeth St",
@@ -69,10 +69,10 @@
   },
   {
     "id": "event-5",
-    "name": "Invasion Day Rally Adelaide",
-    "description": "Join us for the Invasion Day Rally in Adelaide to demand justice and sovereignty for First Nations peoples. Gather at Victoria Square and march through the city.",
-    "startDate": "2026-01-26T11:30:00Z",
-    "endDate": "2026-01-26T15:30:00Z",
+    "name": "Tarndanyangga/Adelaide Invasion Day Rally",
+    "description": "Gather at Victoria Square in Tarndanyangga/Adelaide to honor the Kaurna people's deep spiritual connection to this land. We rally against the ongoing erasure of Indigenous cultures, demand accountability for colonial violence, and call for treaty processes that restore Kaurna self-determination.",
+    "startDate": "2026-01-26T11:30:00+10:30",
+    "endDate": "2026-01-26T15:30:00+10:30",
     "location": {
       "venueName": "Victoria Square",
       "address": "Victoria Square",
@@ -86,10 +86,10 @@
   },
   {
     "id": "event-6",
-    "name": "Invasion Day Rally Perth",
-    "description": "Stand in solidarity at the Perth Invasion Day Rally. We will gather to protest the ongoing injustices and call for truth and treaty.",
-    "startDate": "2026-01-26T12:00:00Z",
-    "endDate": "2026-01-26T16:00:00Z",
+    "name": "Boorloo/Perth Invasion Day Rally",
+    "description": "Stand together at Forrest Place in Boorloo/Perth to acknowledge the Whadjuk Noongar people's ancient sovereignty over this land. We march against the ongoing impacts of colonial expansion, demand justice for the Stolen Generations, and rally for treaty agreements that honor Noongar rights and knowledge.",
+    "startDate": "2026-01-26T12:00:00+08:00",
+    "endDate": "2026-01-26T16:00:00+08:00",
     "location": {
       "venueName": "Forrest Place",
       "address": "Forrest Place",

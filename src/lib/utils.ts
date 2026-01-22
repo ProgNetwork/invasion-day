@@ -113,7 +113,7 @@ export function formatDate(dateString: string): string {
  * @param dateString - ISO date string
  * @returns Formatted date string with time (e.g., "Monday, 6 August 2025 at 2:30 PM")
  */
-export function formatDateTime(dateString: string): string {
+export function formatDateTime(dateString: string, timezone?: string): string {
   const date = new Date(dateString);
   return date.toLocaleDateString('en-AU', {
     weekday: 'long',
@@ -122,6 +122,7 @@ export function formatDateTime(dateString: string): string {
     day: 'numeric',
     hour: '2-digit',
     minute: '2-digit',
+    timeZone: timezone,
   });
 }
 

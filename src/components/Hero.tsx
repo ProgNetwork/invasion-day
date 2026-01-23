@@ -16,6 +16,14 @@ const Hero: React.FC<HeroProps> = () => {
     <section className="relative flex h-[420px] items-center justify-center overflow-hidden md:h-[720]">
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-black" />
+        {/* Rally Images Slideshow with Crossfade and Black & White Filter */}
+        <div className="rally-slideshow">
+          <figure style={{ backgroundImage: "url('/images/rally.jpg')" }}></figure>
+          <figure style={{ backgroundImage: "url('/images/rally2.jpg')" }}></figure>
+          <figure style={{ backgroundImage: "url('/images/rally3.jpg')" }}></figure>
+          <figure style={{ backgroundImage: "url('/images/rally4.jpg')" }}></figure>
+          <figure style={{ backgroundImage: "url('/images/rally5.jpg')" }}></figure>
+        </div>
       </div>
 
       <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8 pt-0">

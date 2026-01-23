@@ -1,5 +1,6 @@
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/16/solid';
 import Link from 'next/link';
+import Image from 'next/image';
 import React from 'react';
 
 interface FooterItem {
@@ -113,9 +114,22 @@ const Footer: React.FC = () => {
           {FOOTER_SECTIONS.map((section) => (
             <FooterColumnComponent key={section.label} data={section} />
           ))}
+          <div className="mb-8 text-sm sm:text-base md:mb-0 ">
+            <h3 className="mb-4 text-xs font-medium tracking-wide text-gray-300 uppercase">A Project Of</h3>
+            <a href="https://www.commonthreads.org.au" target="_blank" rel="noopener noreferrer">
+              <Image
+                src="/images/ct.jpg"
+                alt="Common Threads"
+                width={120}
+                height={40}
+              />
+            </a>
+          </div>
+          {/* Project Attribution - inline with columns */}
+
         </div>
 
-        <div className="mt-12 space-y-4 text-xs text-gray-300">
+        <div className="mt-8 space-y-4 text-xs text-gray-300">
           <p>
             We pay respect to our Elders and acknowledge the Traditional Owners who’ve cared for country since time immemorial. Sovereignty was never ceded - it always was, and always will be, Aboriginal land.
           </p>

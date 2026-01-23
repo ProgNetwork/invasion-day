@@ -3,6 +3,7 @@ import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import { join } from 'path';
 import ReactMarkdown from 'react-markdown';
+import Button from '@/components/ui/Button';
 
 interface PrivacyPolicyProps {
   content: string;
@@ -15,6 +16,11 @@ export default function PrivacyPolicy({ content }: PrivacyPolicyProps) {
         <title>Privacy Policy - Invasion Day</title>
       </Head>
       <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
+        <div className="mb-8">
+          <Button href="/" variant="outline" size="sm">
+            ← Back to Home
+          </Button>
+        </div>
         <article className="prose prose-lg max-w-none">
           <ReactMarkdown
             components={{
